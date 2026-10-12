@@ -15,7 +15,6 @@
       --primary: #38bdf8;
       --primary-dim: #0284c7;
       --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.2);
       --warning: #f59e0b;
       --danger: #ef4444;
       --purple: #c084fc;
@@ -23,7 +22,7 @@
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      --code: monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -55,12 +54,10 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid var(--primary);
+      color: var(--primary);
     }
-    .badge-sim { background: rgba(56, 189, 248, 0.15); border: 1px solid var(--primary); color: var(--primary); }
-    .badge-terminal { background: rgba(16, 185, 129, 0.15); border: 1px solid var(--accent); color: var(--accent); }
-    .badge-warroom { background: rgba(244, 63, 94, 0.15); border: 1px solid var(--pink); color: var(--pink); }
-    .badge-canvas { background: rgba(192, 132, 252, 0.15); border: 1px solid var(--purple); color: var(--purple); }
-    .badge-matrix { background: rgba(245, 158, 11, 0.15); border: 1px solid var(--warning); color: var(--warning); }
 
     .container { max-width: 1000px; margin: 0 auto; padding: 18px; }
 
@@ -190,80 +187,6 @@
     .tier-2-hdr { color: var(--purple); }
     .tier-3-hdr { color: var(--accent); }
 
-    /* Interactive Archetype Blocks */
-    .terminal-window {
-      background: #020617;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
-      font-family: var(--code);
-      font-size: 0.85rem;
-      color: #38bdf8;
-      padding: 16px;
-      margin: 16px 0;
-      overflow-x: auto;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-    }
-    .terminal-bar {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #1e293b;
-      padding-bottom: 8px;
-    }
-    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
-    .term-red { background: #ef4444; }
-    .term-yellow { background: #f59e0b; }
-    .term-green { background: #10b981; }
-
-    .war-room-panel {
-      background: rgba(244, 63, 94, 0.05);
-      border: 1px solid rgba(244, 63, 94, 0.3);
-      border-left: 4px solid var(--pink);
-      border-radius: 10px;
-      padding: 18px;
-      margin: 18px 0;
-    }
-    .war-room-title { font-size: 0.9rem; font-weight: 800; color: var(--pink); text-transform: uppercase; margin-bottom: 8px; }
-
-    .canvas-spec-board {
-      background: var(--surface-card);
-      border: 1px solid var(--border-accent);
-      border-radius: 12px;
-      padding: 20px;
-      margin: 18px 0;
-      text-align: center;
-    }
-    .live-slot-preview {
-      margin: 16px auto;
-      background: #070b14;
-      border: 2px dashed var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--primary);
-      font-weight: 700;
-      font-size: 0.85rem;
-      transition: all 0.3s;
-    }
-
-    .matrix-decision-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin: 18px 0;
-    }
-    .matrix-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .matrix-card:hover { border-color: var(--warning); transform: translateY(-2px); }
-    .matrix-card.active { border-color: var(--warning); background: rgba(245, 158, 11, 0.08); }
-    .matrix-card strong { display: block; color: var(--warning); margin-bottom: 4px; }
-
     /* Interactive Calculators & Labs */
     .lab-box {
       background: var(--surface-card);
@@ -307,7 +230,6 @@
 
     /* Content Typography & Tables */
     h2 { font-size: 1.25rem; color: var(--primary); margin: 24px 0 10px 0; border-left: 4px solid var(--primary); padding-left: 10px; }
-    h3 { font-size: 1.05rem; color: #cbd5e1; margin: 18px 0 8px 0; }
     p { font-size: 0.96rem; color: #cbd5e1; margin-bottom: 14px; }
     ul, ol { margin: 10px 0 16px 22px; font-size: 0.94rem; color: #cbd5e1; }
     li { margin-bottom: 8px; }
@@ -371,7 +293,7 @@
 
   <header>
     <div class="brand"><span>🌐</span> OmniAdTech Enterprise Academy</div>
-    <div class="archetype-badge badge-sim" id="archetype-indicator">Simulation Mode</div>
+    <div class="archetype-badge" id="archetype-indicator">Simulation Mode</div>
   </header>
 
   <div class="container">
@@ -382,7 +304,7 @@
         <span>Curated Enterprise Corpus + Live Wiki API</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. SSP, DSP, Header Bidding, Floor Price, VAST, UID2)...">
+        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. Display Ads, IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding)...">
         <button type="button" class="btn-search" id="btn-trigger-search">Search</button>
       </div>
     </div>
@@ -400,7 +322,7 @@
       <select class="day-select" id="day-dropdown"></select>
     </div>
 
-    <!-- Classroom Container -->
+    <!-- Classroom Shell -->
     <div class="classroom-shell">
       <div class="class-hero">
         <div class="class-title" id="class-title-display">Day 001: The Market Players & Ecosystem Foundations</div>
@@ -411,10 +333,25 @@
         </div>
       </div>
 
-      <!-- DYNAMIC CONTAINER: Renders Pedagogical Pipeline -->
-      <div id="dynamic-content-mount"></div>
+      <!-- DYNAMIC CONTAINER -->
+      <div id="dynamic-content-mount">
+        <!-- Day 001 Hardcoded Fallback (Ensures zero blank screens on load) -->
+        <div class="pedagogy-card">
+          <div class="pedagogy-header tier-1-hdr">
+            <span>📚 Tier 1: Core Fundamentals & Plain-English Blueprint</span>
+          </div>
+          <h2>1. What Is It?</h2>
+          <p>The digital advertising ecosystem is the commercial value chain that connects four primary entities: <strong>The Advertiser</strong> (the business funding media to generate demand), <strong>The Publisher</strong> (the media owner trading attention for monetization), <strong>The Agency</strong> (the operational partner managing strategy and procurement), and <strong>The Consumer/Audience</strong> (the user consuming content).</p>
+          <h2>2. Why Does It Exist & Why Is It Useful?</h2>
+          <p>Without advertising, the open internet would not be free. Google Search, YouTube, news portals, and mobile apps would require mandatory paid subscription paywalls. Advertising provides the revenue engine that funds content creation at scale while giving brands targeted access to buyers.</p>
+          <h2>3. Where Is It Used In The Real World?</h2>
+          <p>Across every commercial transaction on the web: when a brand allocates budgets in Google Ads or Meta Ads Manager, when an agency plans media flights in Prisma, and when publishers package inventory in Google Ad Manager 360.</p>
+          <h2>4. Real-World Enterprise Examples</h2>
+          <p>Nike (Advertiser) partnering with WPP (Agency) to run a $500,000 seasonal sports campaign across ESPN (Publisher) to reach running enthusiasts (Audience) on their smartphones.</p>
+        </div>
+      </div>
 
-      <!-- 10 Questions Assessment Engine with Dynamic Permutations -->
+      <!-- 10 Questions Assessment Engine -->
       <div class="lab-box" style="margin-top:24px;">
         <div class="lab-title">
           <span>📝 1-Hour Certification Assessment (10 Dynamically Generated Questions)</span>
@@ -448,9 +385,6 @@
   </div>
 
   <script>
-    /* =========================================================================
-       COMPLETE 180-DAY SYLLABUS DIRECTORY
-       ========================================================================= */
     var SYLLABUS_TITLES = [
       "The Market Players & Ecosystem Foundations (Advertiser, Publisher, Agency, Consumer)",
       "Digital Real Estate & Inventory Taxonomy (Ad Units, Placements, ATF vs. BTF, Fold Geometry)",
@@ -690,12 +624,8 @@
       }
     ];
 
-    /* =========================================================================
-       PEDAGOGICAL DOSSIER GENERATOR: WHAT -> WHY -> WHERE -> EXAMPLES -> SPECS
-       ========================================================================= */
-
-    function getConceptualFoundations(dayIdx, title) {
-      if (title.includes("SSP") || title.includes("Supply Stack")) {
+    function getFoundationsData(dayIdx, title) {
+      if (title.indexOf("SSP") !== -1 || title.indexOf("Supply Stack") !== -1) {
         return {
           what: "A <strong>Supply-Side Platform (SSP)</strong> is enterprise software used by digital publishers (websites, apps, CTV networks) to automate the monetization and selling of their ad inventory.",
           why: "Before SSPs existed, publishers had to manually negotiate with hundreds of ad networks and advertisers via phone and email. This was slow, caused unsold space, and left revenue on the table. An SSP automates this by broadcasting an impression to dozens of buyers in milliseconds to maximize revenue (yield).",
@@ -708,9 +638,9 @@
             { term: "Match Table", def: "The database where an SSP syncs its publisher user IDs with buyer DSP cookie identifiers." }
           ]
         };
-      } else if (title.includes("DSP") || title.includes("Demand Stack")) {
+      } else if (title.indexOf("DSP") !== -1 || title.indexOf("Demand Stack") !== -1) {
         return {
-          what: "A <strong>Demand-Side Platform (DSP)</strong> is media-buying software that allows advertisers, agencies, and brands to buy digital advertising across thousands of websites and apps through a single platform.",
+          what: "A <strong>Demand-Side Platform (DSP)</strong> is media-buying software that allows advertisers, agencies, and brands to buy digital advertising across thousands of websites and apps through a single centralized interface.",
           why: "Instead of calling ESPN, CNN, and Forbes separately to buy banners, a media buyer uses one DSP to target their audience across the entire internet simultaneously with centralized frequency capping and algorithmic bid optimization.",
           where: "It is operated by media planners, agency traders, and brand in-house growth teams.",
           examples: "<strong>The Trade Desk (TTD)</strong> (the leading independent DSP for open web and CTV), <strong>Google Display & Video 360 (DV360)</strong>, and <strong>Amazon DSP</strong> (exclusive access to Amazon shopper purchase intent data).",
@@ -721,7 +651,7 @@
             { term: "Seat ID", def: "The unique account number identifying an agency or brand buyer on an ad exchange." }
           ]
         };
-      } else if (title.includes("Currencies") || title.includes("Pricing Models")) {
+      } else if (title.indexOf("Currencies") !== -1 || title.indexOf("Pricing Models") !== -1) {
         return {
           what: "<strong>Pricing Models (CPM, CPC, CPA, vCPM)</strong> are the commercial financial contracts that define how attention, traffic, and conversions are valued and billed in digital advertising.",
           why: "Different advertisers have different business goals. A brand launching a new car wants mass visibility (CPM), an e-commerce store wants site visits (CPC), and a subscription software app wants paying customers (CPA). Currencies balance financial risk between buyers and publishers.",
@@ -736,8 +666,8 @@
         };
       } else {
         return {
-          what: "<strong>" + title + "</strong> is a core component of the enterprise digital marketing and ad operations infrastructure.",
-          why: "It ensures that campaigns deliver accurately, inventory is priced correctly, tracking signals pass without errors, and media spend translates into business growth.",
+          what: "<strong>" + title + "</strong> is an essential component of the enterprise digital marketing and ad operations infrastructure.",
+          why: "It ensures campaigns deliver accurately, inventory is priced correctly, tracking signals pass without data loss, and media spend translates into measurable business growth.",
           where: "Configured across publisher ad servers (GAM 360), buyer ad servers (CM360), tag managers (GTM), and programmatic exchanges.",
           examples: "Live production setups across Google Ad Manager, Prebid.js wrappers, Campaign Manager 360 placement tags, and CRM identity graphs.",
           jargons: [
@@ -750,187 +680,79 @@
       }
     }
 
-    function renderProgressiveClassroom(dayIdx, title) {
+    function renderClassroomContent(dayIdx, title) {
       var dayStr = String(dayIdx + 1).padStart(3, '0');
-      var concept = getConceptualFoundations(dayIdx, title);
+      var concept = getFoundationsData(dayIdx, title);
+
       var badge = document.getElementById('archetype-indicator');
+      if (dayIdx === 0) { badge.textContent = "Simulation Mode"; }
+      else if (dayIdx === 1) { badge.textContent = "Visual Canvas Mode"; }
+      else if (dayIdx === 3) { badge.textContent = "Yield Matrix Mode"; }
+      else if (dayIdx === 5) { badge.textContent = "Terminal & Sniffer"; }
+      else { badge.textContent = "Incident War Room"; }
 
-      // Set Badge based on topic
-      if (dayIdx === 0) { badge.className = "archetype-badge badge-sim"; badge.textContent = "Simulation Mode"; }
-      else if (dayIdx === 1) { badge.className = "archetype-badge badge-canvas"; badge.textContent = "Visual Canvas Mode"; }
-      else if (dayIdx === 5) { badge.className = "archetype-badge badge-terminal"; badge.textContent = "Terminal & Code Sniffer"; }
-      else if (dayIdx === 3) { badge.className = "archetype-badge badge-matrix"; badge.textContent = "Yield Matrix Mode"; }
-      else { badge.className = "archetype-badge badge-warroom"; badge.textContent = "Incident War Room"; }
+      var jargonHtml = "";
+      for (var i = 0; i < concept.jargons.length; i++) {
+        jargonHtml += "<tr><td><strong>" + concept.jargons[i].term + "</strong></td><td>" + concept.jargons[i].def + "</td></tr>";
+      }
 
-      var jargonRows = concept.jargons.map(function(j) {
-        return "<tr><td><strong>" + j.term + "</strong></td><td>" + j.def + "</td></tr>";
-      }).join("");
+      var html = '<div class="pedagogy-card">' +
+        '<div class="pedagogy-header tier-1-hdr"><span>📚 Tier 1: Core Fundamentals & Plain-English Blueprint</span></div>' +
+        '<h2>1. What Is It?</h2><p>' + concept.what + '</p>' +
+        '<h2>2. Why Does It Exist & Why Is It Useful?</h2><p>' + concept.why + '</p>' +
+        '<h2>3. Where Is It Used In The Real World?</h2><p>' + concept.where + '</p>' +
+        '<h2>4. Real-World Enterprise Examples</h2><p>' + concept.examples + '</p>' +
+        '</div>' +
+        '<div class="pedagogy-card">' +
+        '<div class="pedagogy-header tier-2-hdr"><span>📖 Tier 2: Deep Technical Dictionary, Jargons & Schemas</span></div>' +
+        '<h2>Enterprise Jargons & Operational Definitions</h2>' +
+        '<div class="data-table-wrapper"><table><thead><tr><th>Industry Jargon / Token</th><th>Precise Operational Definition</th></tr></thead><tbody>' +
+        jargonHtml +
+        '</tbody></table></div>' +
+        '<h2>Protocol Payload Architecture for Day ' + dayStr + '</h2>' +
+        '<pre>/* IAB Standard Protocol Data Payload */\n{\n  "day_index": "' + dayStr + '",\n  "operational_subject": "' + title.replace(/"/g, '') + '",\n  "standard_governance": "IAB-Tech-Lab / MRC-Compliant",\n  "data_integrity": {\n    "status": "ACTIVE_PRODUCTION",\n    "tracking_macros": ["%%CACHEBUSTER%%", "%%CLICK_URL_UNESC%%", "%%WINNING_PRICE%%"],\n    "failure_handling": "FAILOVER_TO_DIRECT_ALLOCATION"\n  }\n}</pre>' +
+        '</div>' +
+        '<div class="pedagogy-card">' +
+        '<div class="pedagogy-header tier-3-hdr"><span>🎮 Tier 3: Interactive Sandbox & Production Scenarios</span></div>' +
+        renderLabBox(dayIdx) +
+        '</div>';
 
-      return `
-        <!-- TIER 1: THE CORE FUNDAMENTALS -->
-        <div class="pedagogy-card">
-          <div class="pedagogy-header tier-1-hdr">
-            <span>📚 Tier 1: Core Fundamentals & Plain-English Blueprint</span>
-          </div>
-          
-          <h2>1. What Is It?</h2>
-          <p>${concept.what}</p>
-
-          <h2>2. Why Does It Exist & Why Is It Useful?</h2>
-          <p>${concept.why}</p>
-
-          <h2>3. Where Is It Used In The Real World?</h2>
-          <p>${concept.where}</p>
-
-          <h2>4. Real-World Enterprise Examples</h2>
-          <p>${concept.examples}</p>
-        </div>
-
-        <!-- TIER 2: DEEP TECHNICAL DICTIONARY & PROTOCOL SCHEMAS -->
-        <div class="pedagogy-card">
-          <div class="pedagogy-header tier-2-hdr">
-            <span>📖 Tier 2: Deep Technical Dictionary, Jargons & Schemas</span>
-          </div>
-
-          <h2>Enterprise Jargons & Operational Definitions</h2>
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr><th>Industry Jargon / Token</th><th>Precise Operational Definition</th></tr>
-              </thead>
-              <tbody>
-                ${jargonRows}
-              </tbody>
-            </table>
-          </div>
-
-          <h2>Protocol Payload Architecture for Day ${dayStr}</h2>
-          <pre>/* IAB Standard Protocol Data Payload */
-{
-  "day_index": "${dayStr}",
-  "operational_subject": "${title.replace(/"/g, '')}",
-  "standard_governance": "IAB-Tech-Lab / MRC-Compliant",
-  "data_integrity": {
-    "status": "ACTIVE_PRODUCTION",
-    "tracking_macros": ["%%CACHEBUSTER%%", "%%CLICK_URL_UNESC%%", "%%WINNING_PRICE%%"],
-    "failure_handling": "FAILOVER_TO_DIRECT_ALLOCATION"
-  }
-}</pre>
-        </div>
-
-        <!-- TIER 3: INTERACTIVE LABS & PRODUCTION SCENARIOS -->
-        <div class="pedagogy-card">
-          <div class="pedagogy-header tier-3-hdr">
-            <span>🎮 Tier 3: Interactive Sandbox & Production Scenarios</span>
-          </div>
-          ${renderContextualLab(dayIdx, title)}
-        </div>
-      `;
+      return html;
     }
 
-    function renderContextualLab(dayIdx, title) {
+    function renderLabBox(dayIdx) {
       if (dayIdx === 0) {
-        return `
-          <div class="lab-box">
-            <div class="lab-title">
-              <span>🎮 Live Value Chain Simulator: The Media Dollar Waterfall</span>
-              <span class="status-badge">Interactive Engine</span>
-            </div>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Adjust agency take-rates, DSP tech fees, and SSP margins to observe how much working media reaches the publisher:</p>
-            <div class="calc-grid">
-              <div class="calc-field"><label>Gross Campaign Budget ($)</label><input type="number" id="sim-gross" value="100000"></div>
-              <div class="calc-field"><label>Agency Management Fee (%)</label><input type="number" id="sim-agency" value="12"></div>
-              <div class="calc-field"><label>DSP Tech Fee (%)</label><input type="number" id="sim-dsp" value="15"></div>
-              <div class="calc-field"><label>SSP Exchange Take Rate (%)</label><input type="number" id="sim-ssp" value="12"></div>
-            </div>
-            <div class="calc-metrics">
-              <div><div class="metric-value" id="wf-working-media">$64,416.00</div><div class="metric-label">Net Working Media to Publisher</div></div>
-              <div><div class="metric-value" id="wf-adtech-tax">35.58%</div><div class="metric-label">Total Intermediary Take Rate</div></div>
-            </div>
-          </div>
-        `;
-      } else if (dayIdx === 1) {
-        return `
-          <div class="canvas-spec-board">
-            <div style="font-size:0.85rem; font-weight:700; color:var(--purple); text-transform:uppercase;">Interactive IAB Canvas Visualizer</div>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Select an industry ad unit to visualize its real-world screen footprint and aspect ratio:</p>
-            <div style="display:flex; justify-content:center; gap:8px; margin:12px 0;">
-              <button type="button" class="phase-btn active" id="btn-slot-mpu">300x250 (MPU)</button>
-              <button type="button" class="phase-btn" id="btn-slot-lead">728x90 (Leaderboard)</button>
-              <button type="button" class="phase-btn" id="btn-slot-half">300x600 (Half Page)</button>
-              <button type="button" class="phase-btn" id="btn-slot-mob">320x50 (Mobile)</button>
-            </div>
-            <div class="live-slot-preview" id="live-slot-box" style="width:300px; height:250px;">
-              300 x 250 (Medium Rectangle)
-            </div>
-          </div>
-        `;
-      } else if (dayIdx === 2) {
-        return `
-          <div class="lab-box">
-            <div class="lab-title">
-              <span>🎮 Scenario 3: Real-Time eCPM Arbitrage & Yield Engine</span>
-              <span class="status-badge">Playable Math Engine</span>
-            </div>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Compare competing bids from a pure CPM buyer and a performance CPC buyer to determine which offer produces higher publisher yield:</p>
-            <div class="calc-grid">
-              <div class="calc-field"><label>Buyer 1: Direct CPM Bid ($)</label><input type="number" id="sim-cpm-bid" value="3.50" step="0.1"></div>
-              <div class="calc-field"><label>Buyer 2: Search CPC Bid ($)</label><input type="number" id="sim-cpc-bid" value="0.75" step="0.05"></div>
-              <div class="calc-field"><label>Buyer 2: Historical CTR (%)</label><input type="number" id="sim-ctr" value="0.60" step="0.05"></div>
-              <div class="calc-field"><label>Available Slot Impressions</label><input type="number" id="sim-slot-imp" value="250000"></div>
-            </div>
-            <div class="calc-metrics">
-              <div><div class="metric-value" id="arb-winner" style="color:var(--accent);">Buyer 2 (CPC)</div><div class="metric-label">Winning Bidder Awarded</div></div>
-              <div><div class="metric-value" id="arb-effective-cpm">$4.50 eCPM</div><div class="metric-label">Clearing Effective Value</div></div>
-            </div>
-          </div>
-        `;
-      } else if (dayIdx === 5) {
-        return `
-          <div class="terminal-window">
-            <div class="terminal-bar">
-              <div class="term-dot term-red"></div>
-              <div class="term-dot term-yellow"></div>
-              <div class="term-dot term-green"></div>
-              <span style="color:#64748b; margin-left:10px;">openrtb_auction_sniffer.sh --stream=live</span>
-            </div>
-            <div><span style="color:#a855f7;">[00ms] HTTP GET /article.html</span> -> Publisher ad tag executes</div>
-            <div><span style="color:#38bdf8;">[25ms] OPEN_RTB_REQUEST_EMITTED</span> -> SSP broadcasts BidRequest to 12 DSPs</div>
-            <div style="color:#64748b; margin:6px 0;">
-              { "id": "8921a", "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "bidfloor": 1.50 }], "device": { "geo": { "city": "Chennai" } } }
-            </div>
-            <div><span style="color:#10b981;">[65ms] DSP_BID_RESPONSE_RECEIVED</span> -> DSP A: $1.80 | DSP B: $2.45 (WINNER)</div>
-            <div><span style="color:#f59e0b;">[90ms] AUCTION_CLEARED</span> -> Highest bid ($2.45) selected. Creative payload returned.</div>
-            <div><span style="color:#38bdf8;">[105ms] AD_RENDERED</span> -> 1x1 billing notification impression beacons fired.</div>
-          </div>
-        `;
+        return '<div class="lab-box">' +
+          '<div class="lab-title"><span>🎮 Live Value Chain Simulator: The Media Dollar Waterfall</span></div>' +
+          '<div class="calc-grid">' +
+          '<div class="calc-field"><label>Gross Campaign Budget ($)</label><input type="number" id="sim-gross" value="100000"></div>' +
+          '<div class="calc-field"><label>Agency Fee (%)</label><input type="number" id="sim-agency" value="12"></div>' +
+          '<div class="calc-field"><label>DSP Tech Fee (%)</label><input type="number" id="sim-dsp" value="15"></div>' +
+          '<div class="calc-field"><label>SSP Exchange Take Rate (%)</label><input type="number" id="sim-ssp" value="12"></div>' +
+          '</div>' +
+          '<div class="calc-metrics">' +
+          '<div><div class="metric-value" id="wf-working-media">$64,416.00</div><div class="metric-label">Net Working Media to Publisher</div></div>' +
+          '<div><div class="metric-value" id="wf-adtech-tax">35.58%</div><div class="metric-label">Total Intermediary Take Rate</div></div>' +
+          '</div>' +
+          '</div>';
       } else {
-        return `
-          <div class="lab-box">
-            <div class="lab-title">
-              <span>⚙️ Live Campaign Pacing & Revenue Burn-Down Terminal</span>
-              <span class="status-badge">Simulation Active</span>
-            </div>
-            <div class="calc-grid">
-              <div class="calc-field"><label>Impression Goal</label><input type="number" id="gen-imp" value="500000"></div>
-              <div class="calc-field"><label>Target Floor / CPM ($)</label><input type="number" id="gen-cpm" value="3.50" step="0.1"></div>
-              <div class="calc-field"><label>Pacing Profile</label><select id="gen-pace"><option value="1.0">Evenly Paced</option><option value="1.25">Frontloaded (+25%)</option><option value="1.5">ASAP (Flash Sale)</option></select></div>
-              <div class="calc-field"><label>Fill Rate Estimate (%)</label><input type="number" id="gen-fill" value="85"></div>
-            </div>
-            <div class="calc-metrics">
-              <div><div class="metric-value" id="gen-rev">$1,487.50</div><div class="metric-label">Projected Net Yield</div></div>
-              <div><div class="metric-value" id="gen-daily">16,666</div><div class="metric-label">Required Daily Run-Rate</div></div>
-            </div>
-          </div>
-        `;
+        return '<div class="lab-box">' +
+          '<div class="lab-title"><span>⚙️ Live Campaign Pacing & Revenue Burn-Down Terminal</span></div>' +
+          '<div class="calc-grid">' +
+          '<div class="calc-field"><label>Impression Goal</label><input type="number" id="gen-imp" value="500000"></div>' +
+          '<div class="calc-field"><label>Target Floor / CPM ($)</label><input type="number" id="gen-cpm" value="3.50" step="0.1"></div>' +
+          '<div class="calc-field"><label>Pacing Profile</label><select id="gen-pace"><option value="1.0">Evenly Paced</option><option value="1.25">Frontloaded (+25%)</option><option value="1.5">ASAP (Flash Sale)</option></select></div>' +
+          '<div class="calc-field"><label>Fill Rate Estimate (%)</label><input type="number" id="gen-fill" value="85"></div>' +
+          '</div>' +
+          '<div class="calc-metrics">' +
+          '<div><div class="metric-value" id="gen-rev">$1,487.50</div><div class="metric-label">Projected Net Yield</div></div>' +
+          '<div><div class="metric-value" id="gen-daily">16,666</div><div class="metric-label">Required Daily Run-Rate</div></div>' +
+          '</div>' +
+          '</div>';
       }
     }
 
-    /* =========================================================================
-       DYNAMIC QUESTION ENGINE & PERMUTATION PIPELINE
-       ========================================================================= */
-
-    function shuffleArray(arr) {
+    function shuffleList(arr) {
       var copy = arr.slice();
       for (var i = copy.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -957,7 +779,7 @@
 
       var rawPool = [
         {
-          q: "1. Dynamic Math Check: If an enterprise campaign incurs $" + spend.toLocaleString() + " spend and delivers " + imps.toLocaleString() + " impressions, what is the exact CPM?",
+          q: "1. Dynamic Math Check: If a campaign incurs $" + spend.toLocaleString() + " spend and delivers " + imps.toLocaleString() + " impressions, what is the exact CPM?",
           options: [
             { text: "$" + calculatedCpm, correct: true },
             { text: "$" + wrongCpm1, correct: false },
@@ -977,10 +799,10 @@
           expl: "CTR = (Clicks / Impressions) * 100 = (" + clicks + " / " + imps + ") * 100 = " + calculatedCtr + "%."
         },
         {
-          q: "3. Core Fundamentals of " + title + ": What is its primary business purpose?",
+          q: "3. Core Fundamentals of " + title + ": What is its primary operational objective?",
           options: [
-            { text: "Automate media transactions, optimize delivery yield, and enforce standard protocols", correct: true },
-            { text: "Bypass all ad server delivery priorities and force line items to House", correct: false },
+            { text: "Preserve data integrity, minimize counting discrepancies, and enforce IAB/MRC standards", correct: true },
+            { text: "Bypass all platform frequency capping limits", correct: false },
             { text: "Eliminate all cache-busting macros from third-party tag wrappers", correct: false },
             { text: "Disable HTTPS encryption to accelerate browser paint loops", correct: false }
           ],
@@ -1058,22 +880,25 @@
         }
       ];
 
-      var shuffledQuestions = shuffleArray(rawPool);
-      return shuffledQuestions.map(function(item) {
-        var shuffledOptions = shuffleArray(item.options);
-        var correctIndex = shuffledOptions.findIndex(function(o) { return o.correct; });
-        return {
-          q: item.q,
-          options: shuffledOptions.map(function(o) { return o.text; }),
-          correct: correctIndex,
-          expl: item.expl
-        };
-      });
+      var shuffled = shuffleList(rawPool);
+      var result = [];
+      for (var i = 0; i < shuffled.length; i++) {
+        var opts = shuffleList(shuffled[i].options);
+        var correctIdx = 0;
+        var textOpts = [];
+        for (var j = 0; j < opts.length; j++) {
+          textOpts.push(opts[j].text);
+          if (opts[j].correct) correctIdx = j;
+        }
+        result.push({
+          q: shuffled[i].q,
+          options: textOpts,
+          correct: correctIdx,
+          expl: shuffled[i].expl
+        });
+      }
+      return result;
     }
-
-    /* =========================================================================
-       APPLICATION CONTROLLER & ENGINE INITIALIZATION
-       ========================================================================= */
 
     var activeDayIndex = 0;
 
@@ -1110,25 +935,26 @@
       var dayNumStr = String(activeDayIndex + 1).padStart(3, '0');
       var title = SYLLABUS_TITLES[activeDayIndex] || "Enterprise Ad Tech Module";
 
-      document.getElementById('day-dropdown').value = activeDayIndex;
-      document.getElementById('day-counter-badge').textContent = "Day " + dayNumStr + " of 180";
-      document.getElementById('class-title-display').textContent = "Day " + dayNumStr + ": " + title;
+      var dropdown = document.getElementById('day-dropdown');
+      if (dropdown) dropdown.value = activeDayIndex;
+
+      var titleDisplay = document.getElementById('class-title-display');
+      if (titleDisplay) titleDisplay.textContent = "Day " + dayNumStr + ": " + title;
 
       var mount = document.getElementById('dynamic-content-mount');
-      mount.innerHTML = renderProgressiveClassroom(activeDayIndex, title);
+      if (mount) mount.innerHTML = renderClassroomContent(activeDayIndex, title);
 
-      // Contextual Listeners
-      if (activeDayIndex === 0) attachDay0Listeners();
-      else if (activeDayIndex === 1) attachDay1Listeners();
-      else if (activeDayIndex === 2) attachDay2Listeners();
-      else attachGenericLabListeners();
-
-      // Render Fresh Randomized Assessment
+      attachLabListeners();
       refreshQuiz();
 
-      document.getElementById('prev-btn').style.visibility = (activeDayIndex > 0) ? 'visible' : 'hidden';
-      document.getElementById('next-btn').textContent = (activeDayIndex < 179) ? "Next Day →" : "180-Day Graduation 🏆";
-      document.getElementById('search-results-panel').style.display = 'none';
+      var prevBtn = document.getElementById('prev-btn');
+      if (prevBtn) prevBtn.style.visibility = (activeDayIndex > 0) ? 'visible' : 'hidden';
+
+      var nextBtn = document.getElementById('next-btn');
+      if (nextBtn) nextBtn.textContent = (activeDayIndex < 179) ? "Next Day →" : "180-Day Graduation 🏆";
+
+      var searchPanel = document.getElementById('search-results-panel');
+      if (searchPanel) searchPanel.style.display = 'none';
 
       var tabs = document.querySelectorAll('.bottom-nav .tab');
       tabs.forEach(function(t) {
@@ -1143,11 +969,13 @@
       var title = SYLLABUS_TITLES[activeDayIndex] || "Enterprise Ad Tech Module";
       var dynamicQuizPool = generateDynamicQuestionPool(activeDayIndex, title);
       renderQuiz(dynamicQuizPool);
-      document.getElementById('quiz-seed-indicator').textContent = "Dynamic Seed: " + Math.random().toString(36).substring(7).toUpperCase();
+      var seedIndicator = document.getElementById('quiz-seed-indicator');
+      if (seedIndicator) seedIndicator.textContent = "Dynamic Seed: " + Math.random().toString(36).substring(7).toUpperCase();
     }
 
     function renderQuiz(quizArray) {
       var container = document.getElementById('quiz-content');
+      if (!container) return;
       container.innerHTML = '';
       if (!quizArray || quizArray.length === 0) return;
 
@@ -1203,110 +1031,76 @@
       container.appendChild(wrapper);
     }
 
-    /* Context Listeners */
-    function attachDay0Listeners() {
-      var g = document.getElementById('sim-gross');
-      var a = document.getElementById('sim-agency');
-      var d = document.getElementById('sim-dsp');
-      var s = document.getElementById('sim-ssp');
-      var run = function() {
-        var gross = parseFloat(g?.value) || 0;
-        var agency = parseFloat(a?.value) || 0;
-        var dsp = parseFloat(d?.value) || 0;
-        var ssp = parseFloat(s?.value) || 0;
-        var afterAgency = gross * (1 - (agency / 100));
-        var afterDsp = afterAgency * (1 - (dsp / 100));
-        var working = afterDsp * (1 - (ssp / 100));
-        var take = gross > 0 ? (((gross - working) / gross) * 100).toFixed(2) : "0.00";
-        var elW = document.getElementById('wf-working-media');
-        var elT = document.getElementById('wf-adtech-tax');
-        if (elW) elW.textContent = "$" + working.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (elT) elT.textContent = take + "%";
-      };
-      if (g) g.addEventListener('input', run);
-      if (a) a.addEventListener('input', run);
-      if (d) d.addEventListener('input', run);
-      if (s) s.addEventListener('input', run);
-    }
-
-    function attachDay1Listeners() {
-      var box = document.getElementById('live-slot-box');
-      var setSlot = function(w, h, name, btn) {
-        box.style.width = w + 'px';
-        box.style.height = h + 'px';
-        box.textContent = w + ' x ' + h + ' (' + name + ')';
-        document.querySelectorAll('.canvas-spec-board .phase-btn').forEach(function(b) { b.classList.remove('active'); });
-        btn.classList.add('active');
-      };
-      document.getElementById('btn-slot-mpu')?.addEventListener('click', function() { setSlot(300, 250, 'MPU', this); });
-      document.getElementById('btn-slot-lead')?.addEventListener('click', function() { setSlot(728, 90, 'Leaderboard', this); });
-      document.getElementById('btn-slot-half')?.addEventListener('click', function() { setSlot(300, 600, 'Half Page', this); });
-      document.getElementById('btn-slot-mob')?.addEventListener('click', function() { setSlot(320, 50, 'Mobile Banner', this); });
-    }
-
-    function attachDay2Listeners() {
-      var cpmIn = document.getElementById('sim-cpm-bid');
-      var cpcIn = document.getElementById('sim-cpc-bid');
-      var ctrIn = document.getElementById('sim-ctr');
-      var impIn = document.getElementById('sim-slot-imp');
-      var runArb = function() {
-        var cpmBid = parseFloat(cpmIn?.value) || 0;
-        var cpcBid = parseFloat(cpcIn?.value) || 0;
-        var ctr = parseFloat(ctrIn?.value) || 0;
-        var cpcAsEcpm = cpcBid * (ctr / 100) * 1000;
-        var isCpcWinner = cpcAsEcpm > cpmBid;
-        var winningEcpm = Math.max(cpcAsEcpm, cpmBid);
-        var winEl = document.getElementById('arb-winner');
-        var ecpmEl = document.getElementById('arb-effective-cpm');
-        if (winEl) winEl.textContent = isCpcWinner ? "Buyer 2 (CPC)" : "Buyer 1 (CPM)";
-        if (ecpmEl) ecpmEl.textContent = "$" + winningEcpm.toFixed(2) + " eCPM";
-      };
-      if (cpmIn) cpmIn.addEventListener('input', runArb);
-      if (cpcIn) cpcIn.addEventListener('input', runArb);
-      if (ctrIn) ctrIn.addEventListener('input', runArb);
-      if (impIn) impIn.addEventListener('input', runArb);
-    }
-
-    function attachGenericLabListeners() {
-      var imp = document.getElementById('gen-imp');
-      var cpm = document.getElementById('gen-cpm');
-      var pace = document.getElementById('gen-pace');
-      var fill = document.getElementById('gen-fill');
-      var run = function() {
-        var impVal = parseFloat(imp?.value) || 0;
-        var cpmVal = parseFloat(cpm?.value) || 0;
-        var paceVal = parseFloat(pace?.value) || 1.0;
-        var fillVal = parseFloat(fill?.value) || 100;
-        var delivered = impVal * (fillVal / 100);
-        var rev = (delivered / 1000) * cpmVal;
-        var daily = (delivered / 30) * paceVal;
-        var rEl = document.getElementById('gen-rev');
-        var dEl = document.getElementById('gen-daily');
-        if (rEl) rEl.textContent = "$" + rev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        if (dEl) dEl.textContent = Math.round(daily).toLocaleString('en-US');
-      };
-      if (imp) imp.addEventListener('input', run);
-      if (cpm) cpm.addEventListener('input', run);
-      if (pace) pace.addEventListener('change', run);
-      if (fill) fill.addEventListener('input', run);
+    function attachLabListeners() {
+      if (activeDayIndex === 0) {
+        var g = document.getElementById('sim-gross');
+        var a = document.getElementById('sim-agency');
+        var d = document.getElementById('sim-dsp');
+        var s = document.getElementById('sim-ssp');
+        var run = function() {
+          var gross = parseFloat(g ? g.value : 0) || 0;
+          var agency = parseFloat(a ? a.value : 0) || 0;
+          var dsp = parseFloat(d ? d.value : 0) || 0;
+          var ssp = parseFloat(s ? s.value : 0) || 0;
+          var afterAgency = gross * (1 - (agency / 100));
+          var afterDsp = afterAgency * (1 - (dsp / 100));
+          var working = afterDsp * (1 - (ssp / 100));
+          var take = gross > 0 ? (((gross - working) / gross) * 100).toFixed(2) : "0.00";
+          var elW = document.getElementById('wf-working-media');
+          var elT = document.getElementById('wf-adtech-tax');
+          if (elW) elW.textContent = "$" + working.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          if (elT) elT.textContent = take + "%";
+        };
+        if (g) g.addEventListener('input', run);
+        if (a) a.addEventListener('input', run);
+        if (d) d.addEventListener('input', run);
+        if (s) s.addEventListener('input', run);
+      } else {
+        var imp = document.getElementById('gen-imp');
+        var cpm = document.getElementById('gen-cpm');
+        var pace = document.getElementById('gen-pace');
+        var fill = document.getElementById('gen-fill');
+        var runGeneric = function() {
+          var impVal = parseFloat(imp ? imp.value : 0) || 0;
+          var cpmVal = parseFloat(cpm ? cpm.value : 0) || 0;
+          var paceVal = parseFloat(pace ? pace.value : 1.0) || 1.0;
+          var fillVal = parseFloat(fill ? fill.value : 100) || 100;
+          var delivered = impVal * (fillVal / 100);
+          var rev = (delivered / 1000) * cpmVal;
+          var daily = (delivered / 30) * paceVal;
+          var rEl = document.getElementById('gen-rev');
+          var dEl = document.getElementById('gen-daily');
+          if (rEl) rEl.textContent = "$" + rev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+          if (dEl) dEl.textContent = Math.round(daily).toLocaleString('en-US');
+        };
+        if (imp) imp.addEventListener('input', runGeneric);
+        if (cpm) cpm.addEventListener('input', runGeneric);
+        if (pace) pace.addEventListener('change', runGeneric);
+        if (fill) fill.addEventListener('input', runGeneric);
+      }
     }
 
     function setupGlobalListeners() {
-      document.getElementById('btn-permute-quiz').addEventListener('click', refreshQuiz);
+      var permuteBtn = document.getElementById('btn-permute-quiz');
+      if (permuteBtn) permuteBtn.addEventListener('click', refreshQuiz);
 
-      document.getElementById('prev-btn').addEventListener('click', function() {
+      var prevBtn = document.getElementById('prev-btn');
+      if (prevBtn) prevBtn.addEventListener('click', function() {
         if (activeDayIndex > 0) jumpToDay(activeDayIndex - 1);
       });
 
-      document.getElementById('next-btn').addEventListener('click', function() {
+      var nextBtn = document.getElementById('next-btn');
+      if (nextBtn) nextBtn.addEventListener('click', function() {
         if (activeDayIndex < 179) jumpToDay(activeDayIndex + 1);
       });
 
-      document.getElementById('day-dropdown').addEventListener('change', function(e) {
+      var dropdown = document.getElementById('day-dropdown');
+      if (dropdown) dropdown.addEventListener('change', function(e) {
         jumpToDay(e.target.value);
       });
 
-      document.getElementById('phase-chips-container').addEventListener('click', function(e) {
+      var chips = document.getElementById('phase-chips-container');
+      if (chips) chips.addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('phase-btn')) {
           document.querySelectorAll('.phase-btn').forEach(function(b) { b.classList.remove('active'); });
           e.target.classList.add('active');
@@ -1317,7 +1111,8 @@
         }
       });
 
-      document.getElementById('bottom-dock').addEventListener('click', function(e) {
+      var bottomDock = document.getElementById('bottom-dock');
+      if (bottomDock) bottomDock.addEventListener('click', function(e) {
         var tab = e.target.closest('.tab');
         if (tab && tab.hasAttribute('data-jump')) {
           var target = parseInt(tab.getAttribute('data-jump'), 10);
@@ -1325,12 +1120,16 @@
         }
       });
 
-      document.getElementById('btn-trigger-search').addEventListener('click', executeCuratedSearch);
-      document.getElementById('lexicon-query').addEventListener('keydown', function(e) {
+      var searchBtn = document.getElementById('btn-trigger-search');
+      if (searchBtn) searchBtn.addEventListener('click', executeCuratedSearch);
+
+      var searchInput = document.getElementById('lexicon-query');
+      if (searchInput) searchInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') executeCuratedSearch();
       });
 
-      document.getElementById('btn-close-search').addEventListener('click', function() {
+      var closeSearchBtn = document.getElementById('btn-close-search');
+      if (closeSearchBtn) closeSearchBtn.addEventListener('click', function() {
         document.getElementById('search-results-panel').style.display = 'none';
       });
     }
@@ -1349,26 +1148,24 @@
       body.innerHTML = "<p style='color:var(--primary);'>Searching enterprise corpus and querying live open-web databases...</p>";
 
       var matches = [];
-
       ENTERPRISE_LEXICON.forEach(function(item) {
         var matched = false;
         item.keys.forEach(function(k) {
-          if (q.includes(k) || k.includes(q)) matched = true;
+          if (q.indexOf(k) !== -1 || k.indexOf(q) !== -1) matched = true;
         });
-        if (item.term.toLowerCase().includes(q) || item.def.toLowerCase().includes(q)) matched = true;
+        if (item.term.toLowerCase().indexOf(q) !== -1 || item.def.toLowerCase().indexOf(q) !== -1) matched = true;
         if (matched) matches.push(item);
       });
 
       var matchedDays = [];
       SYLLABUS_TITLES.forEach(function(sTitle, idx) {
-        if (sTitle.toLowerCase().includes(q)) {
+        if (sTitle.toLowerCase().indexOf(q) !== -1) {
           matchedDays.push({ dayIndex: idx, title: sTitle });
         }
       });
 
       var renderOutput = function(remoteHtml) {
         var html = "";
-
         if (matches.length > 0) {
           matches.forEach(function(m) {
             html += '<div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px;">' +
@@ -1396,33 +1193,28 @@
         }
 
         body.innerHTML = html;
-
         body.querySelectorAll('.search-jump-btn').forEach(function(b) {
           b.addEventListener('click', function() {
             var target = parseInt(b.getAttribute('data-day'), 10);
             jumpToDay(target);
           });
         });
-
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       };
 
       var searchApi = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + encodeURIComponent(rawQ) + "&utf8=&format=json&origin=*";
-
       fetch(searchApi)
         .then(function(res) { return res.json(); })
         .then(function(data) {
           if (data && data.query && data.query.search && data.query.search.length > 0) {
             var top = data.query.search[0];
             var extractApi = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=1&explaintext=1&titles=" + encodeURIComponent(top.title) + "&format=json&origin=*";
-
             fetch(extractApi)
               .then(function(eRes) { return eRes.json(); })
               .then(function(eData) {
                 var pages = eData.query.pages;
                 var pageId = Object.keys(pages)[0];
                 var extract = pages[pageId].extract || top.snippet.replace(/<\/?[^>]+(>|$)/g, "");
-
                 var remoteSnippet = '<div style="background:var(--surface); border:1px solid var(--border-accent); border-radius:8px; padding:16px; margin-top:14px;">' +
                   '<h3 style="color:var(--accent); font-size:1.1rem; margin-bottom:4px;">' + top.title + '</h3>' +
                   '<p style="color:var(--text-muted); font-size:0.75rem; font-weight:700; margin-bottom:8px;">Live Global Knowledge Base Extraction</p>' +
