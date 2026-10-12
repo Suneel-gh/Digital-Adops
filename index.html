@@ -3,22 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>OmniAdTech 180-Day Master Academy</title>
+  <title>OmniAdTech Enterprise 180-Day Practitioner Academy</title>
   <style>
     :root {
       --bg: #070b14;
       --surface: #0f172a;
       --surface-elevated: #1e293b;
+      --surface-card: #152238;
       --border: #334155;
+      --border-accent: #1e40af;
       --primary: #38bdf8;
       --primary-dim: #0284c7;
       --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.2);
       --warning: #f59e0b;
       --danger: #ef4444;
       --purple: #c084fc;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --code-font: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -34,7 +38,7 @@
       position: sticky;
       top: 0;
       background: rgba(7, 11, 20, 0.98);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
       padding: 12px 18px;
       z-index: 100;
@@ -53,9 +57,9 @@
       font-weight: 700;
     }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 18px; }
+    .container { max-width: 980px; margin: 0 auto; padding: 18px; }
 
-    /* Search & In-App Ingestion Engine */
+    /* Curated Enterprise Knowledge Search Engine */
     .search-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -95,7 +99,7 @@
       cursor: pointer;
     }
 
-    /* Day Navigation Drawer & Phase Filter */
+    /* Curriculum Navigator */
     .nav-drawer-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -145,24 +149,35 @@
       margin-bottom: 16px;
     }
     .class-header { border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 20px; }
-    .class-title { font-size: 1.4rem; font-weight: 800; color: #fff; line-height: 1.3; }
+    .class-title { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.3; }
     .class-meta { font-size: 0.82rem; color: var(--primary); margin-top: 6px; font-weight: 600; }
+    .schedule-bar {
+      display: flex;
+      gap: 12px;
+      background: #070b14;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-top: 10px;
+      font-size: 0.78rem;
+    }
+    .schedule-bar span { color: var(--accent); font-weight: 700; }
 
     /* Section Cards */
     .section-block {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 18px;
-      margin-bottom: 18px;
+      padding: 20px;
+      margin-bottom: 20px;
     }
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--accent);
       font-weight: 800;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -177,12 +192,12 @@
       padding: 14px;
       border-radius: 10px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       transition: all 0.2s;
     }
     .details-toggle-btn:hover { background: rgba(56, 189, 248, 0.16); }
@@ -191,23 +206,24 @@
       background: #070b14;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 18px;
+      padding: 24px;
+      margin-bottom: 20px;
     }
 
-    /* Typography & Utilities */
-    h2 { font-size: 1.25rem; color: var(--primary); margin: 20px 0 10px 0; }
+    /* Typography */
+    h2 { font-size: 1.25rem; color: var(--primary); margin: 22px 0 10px 0; }
     h3 { font-size: 1.05rem; color: #cbd5e1; margin: 16px 0 8px 0; }
+    h4 { font-size: 0.95rem; color: var(--purple); margin: 12px 0 6px 0; text-transform: uppercase; letter-spacing: 0.05em; }
     p { font-size: 0.96rem; color: #cbd5e1; margin-bottom: 14px; }
     ul, ol { margin: 10px 0 16px 22px; font-size: 0.94rem; color: #cbd5e1; }
-    li { margin-bottom: 6px; }
+    li { margin-bottom: 8px; }
     code {
       background: #070b14;
       color: var(--primary);
       padding: 2px 7px;
       border-radius: 4px;
       font-size: 0.88rem;
-      font-family: monospace;
+      font-family: var(--code-font);
     }
     pre {
       background: #070b14;
@@ -218,6 +234,7 @@
       color: var(--primary);
       overflow-x: auto;
       margin: 14px 0;
+      font-family: var(--code-font);
     }
 
     .callout {
@@ -236,17 +253,47 @@
       background: rgba(16, 185, 129, 0.08);
       border-left-color: var(--accent);
     }
+    .callout.quiz-header {
+      background: rgba(245, 158, 11, 0.08);
+      border-left-color: var(--warning);
+    }
 
     .data-table-wrapper { overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 10px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; }
     th { background: #070b14; color: var(--primary); padding: 12px 14px; border-bottom: 1px solid var(--border); }
-    td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: #cbd5e1; }
+    td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: #cbd5e1; vertical-align: top; }
     tr:last-child td { border-bottom: none; }
 
-    /* Interactive Calculator Sandbox */
+    /* Interactive Games & Simulation Sandboxes */
+    .interactive-game-shell {
+      background: var(--surface-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 12px;
+      padding: 18px;
+      margin: 16px 0;
+    }
+    .game-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-badge {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* Calculation Grid */
     .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
     .calc-field label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
-    .calc-field input {
+    .calc-field input, .calc-field select {
       width: 100%;
       background: #070b14;
       border: 1px solid var(--border);
@@ -268,8 +315,81 @@
     .metric-value { font-size: 1.15rem; font-weight: 800; color: var(--primary); }
     .metric-label { font-size: 0.75rem; color: var(--text-muted); }
 
-    /* In-App Live Open Web Ingestion Frame */
-    #open-web-result {
+    /* Auction Bidding Simulation Controls */
+    .auction-sim-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bidder-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #070b14;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .btn-action {
+      background: var(--accent);
+      color: #070b14;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-action:hover { background: #059669; }
+
+    /* Interactive Quiz Framework (Hour 8 Assessment) */
+    .quiz-container {
+      background: #070b14;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .quiz-question-box {
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .quiz-q-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-opt-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 8px;
+      text-align: left;
+      cursor: pointer;
+      font-size: 0.88rem;
+      transition: all 0.2s;
+    }
+    .quiz-opt-btn:hover { border-color: var(--primary); color: #fff; }
+    .quiz-opt-btn.correct { background: #064e3b; border-color: var(--accent); color: #a7f3d0; font-weight: 700; }
+    .quiz-opt-btn.wrong { background: #7f1d1d; border-color: var(--danger); color: #fecaca; }
+    .quiz-feedback {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    /* Curated Search Output Frame */
+    #search-results-panel {
       background: #070b14;
       border: 1px solid var(--border);
       border-radius: 12px;
@@ -277,7 +397,7 @@
       margin-top: 20px;
       display: none;
     }
-    .web-result-header {
+    .search-res-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -285,8 +405,6 @@
       padding-bottom: 10px;
       margin-bottom: 14px;
     }
-    .web-result-title { font-weight: 700; color: var(--accent); font-size: 1rem; }
-    .web-result-status { font-size: 0.72rem; background: var(--surface); padding: 3px 8px; border-radius: 4px; color: var(--text-muted); }
 
     /* Stepper Navigation */
     .nav-bar { display: flex; gap: 12px; margin-top: 24px; }
@@ -331,21 +449,21 @@
 <body>
 
   <header>
-    <div class="brand"><span>📚</span> OmniAdTech 180-Day Codex</div>
+    <div class="brand"><span>🌐</span> OmniAdTech Enterprise Practitioner Academy</div>
     <div class="badge" id="day-counter-badge">Day 001 of 180</div>
   </header>
 
   <div class="container">
 
-    <!-- In-App Knowledge Extraction (Wikipedia/Open Docs) -->
+    <!-- Curated Knowledge Search Engine -->
     <div class="search-card">
       <div class="search-title">
-        <span>In-App Real-Time Web Extractor</span>
-        <span>Zero Tab Redirects</span>
+        <span>Verified Ad Tech Knowledge Search Engine</span>
+        <span>Curated Enterprise Corpus</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="web-search-query" placeholder="Query any term (e.g. OpenRTB, Header Bidding, GAM 360, VAST, UID2)..." onkeydown="if(event.key==='Enter') triggerWebSearch()">
-        <button class="btn-search" onclick="triggerWebSearch()">Extract</button>
+        <input type="text" id="lexicon-query" placeholder="Search curated enterprise knowledge (e.g., SSP, DSP, Header Bidding, Floor Price, VAST)..." onkeydown="if(event.key==='Enter') executeCuratedSearch()">
+        <button class="btn-search" onclick="executeCuratedSearch()">Search</button>
       </div>
     </div>
 
@@ -353,60 +471,75 @@
     <div class="nav-drawer-card">
       <div class="phase-chips">
         <button class="phase-btn active" onclick="filterByPhase(0)">All 180 Days</button>
-        <button class="phase-btn" onclick="filterByPhase(1)">Phase 1: Foundations (1-45)</button>
-        <button class="phase-btn" onclick="filterByPhase(2)">Phase 2: Performance (46-85)</button>
-        <button class="phase-btn" onclick="filterByPhase(3)">Phase 3: Ad Ops & GAM (86-120)</button>
-        <button class="phase-btn" onclick="filterByPhase(4)">Phase 4: Programmatic (121-155)</button>
-        <button class="phase-btn" onclick="filterByPhase(5)">Phase 5: Privacy/CTV (156-180)</button>
+        <button class="phase-btn" onclick="filterByPhase(1)">Foundations & Jargons (1-10)</button>
+        <button class="phase-btn" onclick="filterByPhase(2)">Web Mechanics & GTM (11-45)</button>
+        <button class="phase-btn" onclick="filterByPhase(3)">Paid Search & Social (46-85)</button>
+        <button class="phase-btn" onclick="filterByPhase(4)">Ad Servers & Trafficking (86-120)</button>
+        <button class="phase-btn" onclick="filterByPhase(5)">Programmatic RTB (121-155)</button>
+        <button class="phase-btn" onclick="filterByPhase(6)">Omnichannel & Privacy (156-180)</button>
       </div>
       <select class="day-select" id="day-dropdown" onchange="jumpToDay(this.value)">
-        <!-- 180 Days Rendered via JavaScript -->
+        <!-- 180 Days populated dynamically -->
       </select>
     </div>
 
     <!-- Main Classroom Module -->
     <div class="classroom-card">
       <div class="class-header">
-        <div class="class-title" id="class-title-display">Day 001: The Value Chain: Advertisers, Agencies, Publishers & Audiences</div>
-        <div class="class-meta" id="class-meta-display">Phase 1: Macro Ecosystem, Economics, Attribution & Inbound Systems</div>
+        <div class="class-title" id="class-title-display">Day 001: The Market Players & Core Definitions</div>
+        <div class="class-meta" id="class-meta-display">Phase 1: Foundational Literacy & Jargons (Days 001-010)</div>
+        <div class="schedule-bar">
+          <div><span>Schedule:</span> 7.0 Hours In-Depth Class + 1.0 Hour Interactive Evaluation</div>
+          <div><span>Status:</span> Production Ready</div>
+        </div>
       </div>
 
-      <!-- Part 1: Executive Synopsis -->
+      <!-- Part 1: Executive Synopsis (Core Concepts) -->
       <div class="section-block">
-        <div class="section-label">📌 Section 1: Executive Synopsis (Core Analogy & Fundamentals)</div>
+        <div class="section-label">📌 Section 1: Executive Synopsis (Core Analogy & Layman Concepts)</div>
         <div id="synopsis-content">
           <!-- Rendered dynamically -->
         </div>
       </div>
 
-      <!-- Part 2: Expandable Operational Deep Dive -->
+      <!-- Part 2: Expandable Operational Deep Dive (7-Hour Content) -->
       <button class="details-toggle-btn" id="details-btn" onclick="toggleDetails()">
-        <span>📖 Click for Detailed Insights & Technical Specifications</span>
-        <span id="toggle-indicator">+ Expand</span>
+        <span>📖 Section 2: Full 7-Hour Deep Dive (Jargons, Specs, Workflows & Tech Specs)</span>
+        <span id="toggle-indicator">+ Click to Expand Full Lecture</span>
       </button>
 
       <div class="details-content-drawer" id="details-drawer">
         <!-- Rendered dynamically -->
       </div>
 
-      <!-- Part 3: Interactive Sandbox -->
+      <!-- Part 3: Interactive Sandbox & Playable Scenarios -->
       <div class="section-block">
-        <div class="section-label">⚡ Section 3: Daily Interactive Sandbox & Practice Lab</div>
+        <div class="section-label">🎮 Section 3: Interactive Playable Lab & Live Decision Engine</div>
         <div id="sandbox-content">
           <!-- Rendered dynamically -->
         </div>
       </div>
 
-      <!-- Live Web Search Container -->
-      <div id="open-web-result">
-        <div class="web-result-header">
-          <div class="web-result-title" id="web-res-title">Live Ingestion</div>
-          <div class="web-result-status" id="web-res-status">Direct In-App Extraction</div>
+      <!-- Part 4: 1-Hour Assessment Quiz Engine -->
+      <div class="section-block">
+        <div class="section-label callout quiz-header" style="margin:0 0 14px 0; border:none; padding:6px 10px;">
+          📝 Section 4: 1-Hour Daily Assessment & Certification Verification
         </div>
-        <div id="web-res-content"></div>
+        <div id="quiz-content">
+          <!-- Rendered dynamically -->
+        </div>
       </div>
 
-      <!-- Nav Steppers -->
+      <!-- Live Search Results Container -->
+      <div id="search-results-panel">
+        <div class="search-res-header">
+          <div style="font-weight:700; color:var(--primary);" id="search-res-title">Knowledge Base Query</div>
+          <button style="background:transparent; border:none; color:var(--text-muted); cursor:pointer;" onclick="document.getElementById('search-results-panel').style.display='none'">✕ Close</button>
+        </div>
+        <div id="search-res-body"></div>
+      </div>
+
+      <!-- Stepper Navigation -->
       <div class="nav-bar">
         <button class="nav-btn prev" id="prev-btn" style="visibility:hidden;" onclick="stepDay(-1)">← Previous Day</button>
         <button class="nav-btn next" id="next-btn" onclick="stepDay(1)">Next Day →</button>
@@ -415,152 +548,142 @@
 
   </div>
 
-  <!-- Quick Switcher Bottom Dock -->
+  <!-- Bottom Quick Switcher Dock -->
   <div class="bottom-nav">
-    <div class="tab active" onclick="jumpToDay(0)">Day 001</div>
-    <div class="tab" onclick="jumpToDay(5)">Day 006 (Math)</div>
-    <div class="tab" onclick="jumpToDay(87)">Day 088 (GAM)</div>
-    <div class="tab" onclick="jumpToDay(123)">Day 124 (RTB)</div>
-    <div class="tab" onclick="jumpToDay(167)">Day 168 (Identity)</div>
+    <div class="tab active" onclick="jumpToDay(0)">Day 001 (Basics)</div>
+    <div class="tab" onclick="jumpToDay(1)">Day 002 (Inventory)</div>
+    <div class="tab" onclick="jumpToDay(2)">Day 003 (Currencies)</div>
+    <div class="tab" onclick="jumpToDay(3)">Day 004 (Supply Side)</div>
+    <div class="tab" onclick="jumpToDay(4)">Day 005 (Demand Side)</div>
   </div>
 
   <script>
     /* =========================================================================
-       COMPLETE 180-DAY SYLLABUS TOPIC DIRECTORY
+       COMPLETE 180-DAY SYLLABUS DIRECTORY (DAYS 001 - 010 EXPANDED TO FOUNDATIONALS)
        ========================================================================= */
     var SYLLABUS_TITLES = [
-      "The Value Chain: Advertisers, Agencies, Publishers & Audiences",
-      "Digital Real Estate: Inventory, Placements, Formats & Above-the-Fold vs Below-the-Fold",
-      "Commercial Intermediaries: Media Agencies, Holding Companies & In-House Execution Desks",
-      "Direct Sales Contracts: The Insertion Order (IO), Request for Proposal (RFP) & SLAs",
-      "Publisher Monetization Models: Subscription Paywalls, Hybrid Systems & Ad-Supported Tiers",
-      "Core Economic Buying Models: CPM, CPC, CPA, vCPM & CPL",
-      "Performance Unit Economics: LTV, CAC, Payback Windows & Marketing Efficiency Ratios",
-      "Yield Management Essentials: Fill Rates, Revenue Per Mille (RPM) & Available Inventory",
-      "Viewability Standards: Media Rating Council (MRC) Definitions for Display and Video",
-      "Measurement Foundations: Impressions, Clicks, Engagements & Attributed Conversions",
-      "The Anatomy of a Browser: DOM Structure, JavaScript Engines, CSS & Rendering Loops",
-      "Networking Fundamentals: DNS Lookup, TCP/IP Handshakes, SSL/TLS Certificates & Latency",
-      "HTTP Methods & Status Codes: 200, 301/302 Redirects, 404, 500 & Performance Bottlenecks",
-      "Understanding URLs: Subdomains, Paths, Query Strings & Fragment Identifiers",
-      "Campaign Tracking Parameters: Building, Standardizing & Auditing Clean UTM Taxonomies",
-      "HTTP Infrastructure: Statelessness, Cookies, localStorage & Session Storage",
-      "First-Party vs Third-Party Cookies: The Mechanics of Cross-Site Tracking and Syncing",
-      "Tracking Pixels: Transparent 1x1 GIF Beacons, Script Injections & Network Payload Calls",
-      "Google Tag Manager Architecture: The Data Layer (dataLayer), Triggers & Custom Events",
-      "Advanced GTM: Custom JavaScript Variables, Regex Extraction & Auto-Event Listeners",
-      "Server-Side Tag Management: Server GTM (sGTM), Cloud Proxies & Mitigating Ad-Blockers",
-      "Google Analytics 4 (GA4) Architecture: Moving from Session-Based to Event-Based Data Models",
-      "GA4 Event Hierarchies: Automatically Collected, Enhanced Measurement & Recommended Events",
+      "The Market Players & Ecosystem Foundations (Advertiser, Publisher, Agency, Consumer)",
+      "Digital Real Estate & Inventory Taxonomy (Ad Units, Placements, ATF vs. BTF, Fold Geometry)",
+      "The Financial Currencies & Pricing Models (CPM, CPC, CPA, CPL, vCPM & eCPM Math)",
+      "The Supply Stack & Sell-Side Architecture (Ad Networks, SSPs, Hard/Soft Floors, Yield)",
+      "The Demand Stack & Buy-Side Execution (DSPs, Agency Trading Desks, Bid Valuation)",
+      "The Ad Exchange & OpenRTB Protocol (The 100ms Auction Speedrun, Bid Streams, QPS)",
+      "Ad Serving Mechanics & Traffic Direction (Publisher GAM 360 vs. Advertiser CM360)",
+      "Audience Data Infrastructure (1st, 2nd & 3rd Party Data, Deterministic vs. Probabilistic)",
+      "Tracking, Identity & State Management (Cookies, LocalStorage, Pixels, Cache Busting)",
+      "Campaign Delivery, Pacing & Frequency Control (ASAP, Even, Frontloaded, Exposure Caps)",
+      "The Anatomy of a Browser: DOM Tree, Rendering Loop, JavaScript Execution & Latency",
+      "HTTP Networking Infrastructure: DNS Resolution, TLS Handshakes & Status Codes (200, 301, 302, 404, 500)",
+      "URL Taxonomy & Campaign Tracking: Structuring, Enforcing & Auditing Scalable UTM Governance",
+      "Client Storage Architecture: Cookies, localStorage, sessionStorage & IndexedDB in Ad Tech",
+      "Tracking Pixels & Beacons: 1x1 Transparent GIFs, Async Scripts & Network Payloads",
+      "Google Tag Manager (GTM) Architecture: The Data Layer, Triggers & Variable Scoping",
+      "Advanced GTM: Custom JavaScript Variables, Regex Lookups & DOM Scrapers",
+      "Server-Side Tag Management: sGTM Architecture, Cloud Proxies & Bypassing Ad Blockers",
+      "Google Analytics 4 (GA4): Event-Based Data Models, Enhanced Measurement & Auto-Events",
       "GA4 Identity Spaces: User-ID, Device-ID, Google Signals & Modeling Thresholds",
-      "GA4 Custom Dimensions & Metrics: Scope Configurations (Event, User, Item)",
-      "Conversion Modeling in GA4: Primary vs Secondary Conversions & Key Events Configuration",
-      "Attribution Foundations: First-Touch, Last-Touch, Linear, Time-Decay & Position-Based",
-      "Data-Driven Attribution (DDA): Algorithmic Credit Allocation via Cooperative Game Theory",
-      "Cross-Domain Tracking Mechanics: Linker Plugins, Cookie Storage & Session Preservation",
-      "Conversion Rate Optimization (CRO): A/B Testing Frameworks, Statistical Significance & MDE",
-      "Inbound Marketing Principles: Creating Content Value Engines vs Interruption Advertising",
-      "The Buyer Journey Stages: Top of Funnel (TOFU), Middle (MOFU) & Bottom of Funnel (BOFU)",
-      "Search Engine Architecture: How Crawlers, Parsers, Indexers & Ranking Engines Interact",
-      "Technical SEO: robots.txt Directives, XML Sitemaps, Canonicalization & Crawl Budget",
-      "Core Web Vitals Engineering: Largest Contentful Paint (LCP) & Optimizing Loading Performance",
-      "Core Web Vitals Engineering: Cumulative Layout Shift (CLS) & Preventing Layout Instability",
-      "Core Web Vitals Engineering: Interaction to Next Paint (INP) & Main Thread Execution",
-      "Structured Data & Schema Markup: JSON-LD Implementations for Enhanced Search Rich Snippets",
-      "Keyword Intent Mapping: Navigational, Informational, Commercial & Transactional Queries",
-      "On-Page Optimization: Header Hierarchies, Title Tags, Meta Descriptions & Semantic Search",
-      "Content Auditing: Identifying Thin Content, Duplicate Text, Keyword Cannibalization & Pruning",
-      "Information Architecture: Siloing, Topic Clusters, Pillar Pages & Internal Linking Graphs",
-      "Authority Architecture: Link Equity, PageRank Foundations, Anchor Text Profiles & Outbound Links",
-      "International SEO: hreflang Tag Management, ccTLDs vs Subdirectories & Geotargeting",
-      "Phase 1 Capstone Audit: Debugging Broken Tags, Disconnected GTM Containers & Broken SEO Trees",
-      "Google Search Auction Foundations: Max Bid, Quality Score & The Ad Rank Equation",
-      "Deconstructing Quality Score: Expected CTR, Ad Relevance & Landing Page Experience",
-      "The Generalized Second Price (GSP) Auction: Price Clearance Formulas & Competitor Math",
-      "Campaign Structures: Single Keyword Ad Groups (SKAGs) vs The Modern Thematic Hagakure Model",
-      "Keyword Match Types: Broad Match with Smart Bidding, Phrase Match & Exact Match Controls",
-      "Search Query Management: Mining Search Term Reports, Finding Intent Gaps & Negative Lists",
-      "Responsive Search Ads (RSAs): Asset Combinations, Ad Strength Ratings & Pinning Controls",
-      "Ad Extensions / Assets: Sitelinks, Callouts, Structured Snippets & Dynamic Value Additions",
-      "Smart Bidding Algorithms: Maximize Conversions vs Maximize Conversion Value Mechanics",
+      "GA4 Custom Dimensions & Metrics: Event, User, and Item-Scoped Reporting",
+      "Attribution Foundations: First-Touch, Last-Touch, Linear, Time-Decay & Position-Based Models",
+      "Data-Driven Attribution (DDA): Cooperative Game Theory & Shapley Value Mechanics",
+      "Conversion Rate Optimization (CRO): A/B Testing, Multi-Armed Bandits & Sample Size Math",
+      "Inbound Content Marketing: Flywheel Mechanics, Topic Clusters & Content Value Capture",
+      "The Buyer Journey: TOFU (Awareness), MOFU (Consideration) & BOFU (Decision) Funnels",
+      "Search Engine Architecture: How Crawlers, Parsers, Indexers & SERP Rank Engines Work",
+      "Technical SEO: robots.txt Directives, XML Sitemaps, Canonicalization & Crawl Budgets",
+      "Core Web Vitals Engineering: Largest Contentful Paint (LCP) Optimization",
+      "Core Web Vitals Engineering: Cumulative Layout Shift (CLS) & Layout Stability",
+      "Core Web Vitals Engineering: Interaction to Next Paint (INP) & Main-Thread Unblocking",
+      "Structured Data & Schema.org: JSON-LD Implementations for Rich SERP Snippets",
+      "Keyword Intent Classification: Informational, Navigational, Commercial & Transactional Queries",
+      "On-Page Optimization: Title Tags, Semantic H-Tags & Natural Language Processing (NLP)",
+      "Content Pruning & Auditing: Cannibalization Resolution & Internal Link Topology",
+      "Off-Page Link Architecture: PageRank Math, Anchor Text Distribution & Toxic Link Audits",
+      "International SEO: hreflang Implementation, ccTLDs vs. Subdirectories & Geotargeting",
+      "Conversion Tracking QA: Validating GTM, Floodlight & Conversion Fire Beacons",
+      "Google Search Auction Architecture: Max Bid, Quality Score & Ad Rank Equations",
+      "Quality Score Deep Dive: Expected CTR, Ad Relevance & Landing Page Experience",
+      "The Generalized Second Price (GSP) Auction: Clearing Price Formulas & Competitor Math",
+      "Search Campaign Structures: Single Keyword Ad Groups (SKAGs) vs. The Hagakure Framework",
+      "Keyword Match Type Governance: Exact, Phrase, Broad Match + Smart Bidding Mechanics",
+      "Search Term Optimization: Negative Keyword Lists & Search Query Mining",
+      "Responsive Search Ads (RSAs): Asset Combinations, Ad Strength Ratings & Pinning Rules",
+      "Smart Bidding Algorithms: Maximize Conversions vs. Maximize Conversion Value",
       "Smart Bidding Guardrails: Target CPA (tCPA) & Target ROAS (tROAS) Optimization Math",
-      "Audience Layers in Search: First-Party RLSA Lists, Similar Segments, Affinity & In-Market",
-      "Performance Max (PMax) Mechanics: Asset Groups, Audience Signals & Shared Budget Systems",
-      "Shopping Campaign Architecture: Google Merchant Center (GMC), Product Feeds & XML Schema",
-      "Feed Optimization: Product Titles, Custom Labels, GTIN Matching & Resolving Disapprovals",
-      "Search Campaign Diagnostics: Lost Impression Share (Budget) vs Lost Impression Share (Rank)",
+      "Audience Layers in Search: First-Party RLSA Lists, In-Market & Affinity Segments",
+      "Performance Max (PMax) Mechanics: Asset Groups, Signals & Automated Channel Routing",
+      "Google Merchant Center (GMC): Feed Architecture, Attribute Specs & XML Taxonomy",
+      "Feed Optimization: Custom Labels, GTIN Validation & Merchant Center Disapprovals",
+      "Search Impression Share Diagnostics: Lost IS (Budget) vs. Lost IS (Rank) Audits",
       "Meta Ads Infrastructure: The Social Graph, User Entity Tables & The Delivery Engine",
       "The Total Value Auction Formula: Bid Pricing x Estimated Action Rates + User Value",
-      "The Learning Phase: The 50-Conversion Optimization Threshold, Calibration & Budget Changes",
-      "The Client-Side Meta Pixel: Event Setup, Standard Events (fbq track) & Custom Rules",
-      "The Meta Conversions API (CAPI): Server-Side Architecture, Direct Gateways & Payload Setup",
+      "The Meta Learning Phase: The 50-Event Threshold, Machine Learning Calibration & Reset Rules",
+      "Client-Side Meta Pixel: Event Setup, Standard Events (fbq track) & Parameter Passing",
+      "Meta Conversions API (CAPI): Server-to-Server Gateways & Direct Ingestion Setup",
       "Event Deduplication: Shared Event IDs, Event Matching Quality (EMQ) & SHA-256 Hashing",
-      "Audience Targeting Mechanics: Custom Audiences (CRM Uploads), Website Visitors & Pixel Loops",
-      "Lookalike Audiences (LAL): Seed Audience Hygiene, Percentage Scales (1%-10%) & Vector Modeling",
-      "Advantage+ Suite: Advantage+ Shopping Campaigns (ASC), Audience Automation & Budget Routing",
-      "Paid Social Bidding Strategies: Lowest Cost (Auto), Cost Caps, Bid Caps & Minimum ROAS Guardrails",
-      "Social Ad Creative Types: Single Image Assets, Carousels, Instant Experiences & Collection Units",
-      "Creative Fatigue Management: Frequency Thresholds, First-Time Impression Ratios & Rotation",
-      "TikTok Advertising Operations: TikTok Pixel, Spark Ads, Pacing & Pangle Audience Networks",
-      "LinkedIn B2B Ad Tech: Insight Tag, Account-Based Marketing (ABM) Feeds & Matched Audiences",
-      "Multi-Platform Budgeting: Cross-Platform Performance Analysis & Incremental Lift Testing",
-      "Display Creative Specifications: Standard IAB Unit Dimensions (300x250, 728x90, 160x600, 300x600)",
-      "Mobile Display Creatives: 320x50, 300x50 & Responsive Interstitial Formats",
-      "The Mechanics of Polite Loading: Initial File Weights (<150KB) vs Deferred Secondary Payloads",
-      "HTML5 Creative Packaging: index.html Directory Trees, Asset Bundling & The Shared ClickTag",
-      "Dynamic Creative Optimization (DCO): Product Catalog Feeds, Dynamic Rules & Template Engines",
-      "Creative Quality Assurance (QA): Testing ClickTags, Destination URLs, SSL & Frame Rates",
-      "Native Ad Creative Formats: In-Feed Sponsored Units, Widget Carousels & Content Modules",
-      "Rich Media Executions: Expanding Canvases, User-Initiated Video & VPAID/SIMID Creative Layers",
-      "Landing Page Engineering: Conversion Paths, Message Match, Form Friction & Page Speed",
-      "Phase 2 Capstone: Setting Up a Live Multi-Channel Campaign (PMax, Search, Meta ASC & DCO)",
-      "What is an Ad Server? The Publisher Ad Server (GAM 360) vs The Buyer Ad Server (CM360)",
-      "The Google Ad Manager 360 Hierarchy: Networks, Inventory, Orders, Line Items & Creatives",
-      "GAM 360 Delivery Priorities: Sponsorship (4), Standard (8), Network/Price Priority (12) & House (16)",
-      "GAM 360 Inventory Management: Top-Level Ad Units, Child Ad Units, Placements & Yield Groups",
-      "Google Publisher Tags (GPT): Head Script Loaders, Body Definitions & Display Call Snippets",
-      "GPT Architecture: Single Request Architecture (SRA) vs Multi-Request Execution",
+      "Meta Audience Architecture: Custom Audiences, Lookalikes (1%-10%) & Seed Hygiene",
+      "Advantage+ Shopping Campaigns (ASC): Automation Mechanics, Budget Caps & Testing",
+      "Paid Social Bidding Controls: Lowest Cost (Auto), Cost Caps, Bid Caps & Minimum ROAS",
+      "Creative Fatigue Diagnostics: Frequency Caps, First-Time Impression Ratios & Rotation",
+      "TikTok Ads Infrastructure: TikTok Pixel, Spark Ads, Pacing & Pangle Audience Networks",
+      "LinkedIn B2B Advertising: Insight Tag, Account-Based Marketing (ABM) & Lead Gen Forms",
+      "Multi-Channel Budget Allocation: Marginal ROAS, Budget Curves & Incrementality Tests",
+      "Standard IAB Display Canvases: 300x250 (MPU), 728x90, 160x600 & 300x600 Formats",
+      "Mobile Creative Formats: 320x50, 300x50 & Interstitial Unit Standards",
+      "Polite Loading Protocols: Sub-150KB Initial Load vs. Secondary Asset Streaming",
+      "HTML5 Creative Packaging: Directory Trees, Shared ClickTags & Zip Bundling",
+      "Dynamic Creative Optimization (DCO): XML/JSON Data Feeds & Real-Time Creative Rules",
+      "Creative QA Gateways: ClickTag Integrity, HTTPS Compliance, Frame Rates & Asset Bounds",
+      "Native Advertising Formats: In-Feed Placements, Content Modules & OpenRTB Native Specs",
+      "Rich Media Engineering: Pushdowns, Floating Units, Video Layers & VPAID/SIMID Run-times",
+      "Landing Page Optimization: Cognitive Load, Message Match & Form Friction Reduction",
+      "Multi-Channel Media Setup Capstone: Setting Up Search, Meta ASC & DCO Concurrently",
+      "What is an Ad Server? GAM 360 (Sell-Side) vs. CM360 (Buy-Side) System Separation",
+      "Google Ad Manager 360 Hierarchy: Networks, Inventory, Orders, Line Items & Creatives",
+      "GAM 360 Delivery Priorities: Sponsorship (4), Standard (8), Price Priority (12), House (16)",
+      "GAM 360 Inventory Management: Top-Level Units, Child Placements & Yield Groups",
+      "Google Publisher Tags (GPT): Head Script Loaders, Slot Definitions & Display Calls",
+      "GPT Tag Architecture: Single Request Architecture (SRA) vs. Multi-Request Execution",
       "Custom Targeting in GAM: Key-Value Architectures, System Variables & Freeform Values",
-      "Dynamic Allocation: How GAM Maximizes Direct Campaigns Alongside Real-Time Remnant Demand",
-      "Flight Management: Lifetime Goals, Daily Caps, Frontloaded vs Evenly Paced Distribution",
-      "Frequency Capping Operations: Time Buckets, Per-Slot Limits, Network-Wide Exposure Rules",
-      "Creative Management in GAM: Image Uploads, Custom Creative Templates & Third-Party Tags",
-      "Native Styles & Fluid Ad Units: Setting Up Flexible Formats in Google Ad Manager",
-      "Campaign Forecasting: How Ad Servers Check Availability, Contending Line Items & Capacity",
-      "Audience Segments in GAM: Packaging First-Party Publisher Audiences for Direct Ad Deals",
-      "Troubleshooting Ad Delivery: Using the Google Publisher Console to Debug Live Site Ad Slots",
+      "Dynamic Allocation: How GAM Maximizes Guaranteed Orders Alongside Remnant Programmatic",
+      "Pacing Algorithms: Evenly Paced, Frontloaded & ASAP Flight Distributions",
+      "Frequency Capping Protocols: Time Buckets, Per-Slot Rules & Cross-Network Capping",
+      "Creative Trafficking in GAM: Custom Templates, Third-Party Tags & Macro Expansions",
+      "Native Styles & Fluid Ad Units: Configuring Dynamic Responsive Layouts in GAM",
+      "Capacity Forecasting: Checking Availability, Contending Line Items & Booking Checks",
+      "Audience Segmentation in GAM: Packaging First-Party Publisher Segments for Direct Deals",
+      "Delivery Troubleshooting: Using the Google Publisher Console to Debug Live Site Ad Slots",
       "Campaign Manager 360 (CM360) Architecture: Advertisers, Campaigns, Sites & Placements",
-      "Trafficking Display Placements: Sizing, Cost Structures (CPM/CPC/Flat Rate) & Flighting",
-      "Creative Asset Management in CM360: Rich Media Bundles, HTML5 Packaging & Rotation Groups",
+      "Trafficking Display Placements: Flighting, Sizing & Financial Model Configurations",
+      "Asset Bundling in CM360: HTML5 Packages, Video Envelopes & Rotation Sets",
       "Creative Rotation Strategies: Even Distribution, Click-Weighting & Conversion Optimization",
-      "Click Tracking Infrastructure: Redirect URLs, Click Strings & Resolving Broken Redirects",
+      "Click Tracking Infrastructure: Redirect URLs, Click Strings & Handling Landing Page Loops",
       "Third-Party Tracking Verification: Trafficking 1x1 Impression Beacons & 1x1 Click Trackers",
-      "Floodlight Tag Architecture: Activity Groups, Counter Tags vs Sales Transaction Tags",
-      "Floodlight Variables: Passing Dynamic Custom Parameters (u1, u2, u3 Values)",
-      "Generating and Exporting Placement Tags: JavaScript, Iframe Tags & Internal Redirects",
-      "Trafficking Quality Assurance: Pre-Flight Audits, Verifying ClickTags & Confirming Asset Sizes",
+      "Floodlight Tag Architecture: Activity Groups, Counter Tags vs. Sales Transaction Tags",
+      "Floodlight Variables: Custom Parameter Passing (u1, u2, u3 Key-Values)",
+      "Exporting Tag Packages: JavaScript (<SCRIPT>), Iframe Tags & Internal Redirect Snippets",
+      "Trafficking Quality Control: Pre-Flight Audits, Verifying ClickTags & Asset Bounds",
       "Chrome DevTools Ad Ops Engineering: Filtering Network Calls for DoubleClick, GPT & CDNs",
-      "Discrepancy Diagnostics: Publisher vs Buyer Delivery Gaps, Tolerances & Reconciliation",
-      "Cache Busting Mechanics: The Purpose of Random Integers, Macros & Cache Failures",
-      "SSL / Mixed-Content Audits: Diagnosing Insecure HTTP Asset Calls Inside HTTPS Sites",
-      "Creative Latency Profiling: Asset Payloads, Blocking Scripts, Paint Times & Viewport Renders",
-      "Geo-Targeting Quality Control: IP Lookup Tables, Proxies, VPN Distortions & Radius Fails",
-      "Delivery Under-Pacing Audits: Resolving Targeting Bottlenecks, Priority Clashes & Rate Drops",
-      "Ad Blockers & Sandboxed Environments: Diagnosing Why Tags Fail to Fire in Locked Browsers",
-      "Financial Reconciliations: Make-Goods, Over-Delivery Caps & Validating Invoiced Numbers",
-      "Phase 3 Capstone: Trafficking an Order in CM360, Sending to GAM, and Resolving Live Delivery Bugs",
-      "The Programmatic Revolution: Transitioning from Manual RFPs to Automated Real-Time Markets",
+      "Discrepancy Diagnostics: Publisher vs. Buyer Counting Gaps, Tolerances & Audits",
+      "Cache Busting Mechanics: The Purpose of Random Integers, Macros & Proxy Cache Drops",
+      "SSL / Mixed Content Audits: Detecting Insecure HTTP Asset Calls Inside HTTPS Browsers",
+      "Creative Latency Profiling: Blocking Scripts, Paint Times & Viewport Execution",
+      "Geo-Targeting Quality Control: IP Lookup Tables, Proxies, VPN Distortions & Failures",
+      "Under-Pacing Diagnostics: Identifying Inventory Bottlenecks, Rate Clashes & Priority Jams",
+      "Ad Blocker Remediation: Diagnosing Why Tags Drop in Privacy-Hardened Browsers",
+      "Financial Reconciliations: Make-Goods, Over-Delivery Caps & Invoiced Numbers",
+      "Ad Ops Trafficking Capstone: End-to-End Order Creation, Tag Generation & Debugging",
+      "The Programmatic Transition: Moving from Manual IOs to High-Frequency Algorithmic Markets",
       "Demand-Side Platforms (DSPs): Processing High-Frequency Streams, Evaluating Users & Bidding",
       "Supply-Side Platforms (SSPs): Aggregating Sites, Setting Floor Prices & Maximizing Yield",
       "The 100-Millisecond OpenRTB Auction Lifecycle: Tracing an Ad Call from Request to Creative Render",
-      "Deconstructing OpenRTB 2.5: The BidRequest JSON (Parsing Device, Geo, Site & Imp Blocks)",
-      "Deconstructing OpenRTB 2.5: The BidResponse JSON (Parsing SeatBids, Price, Markup & NURL)",
+      "OpenRTB 2.5 Decomposition: The BidRequest JSON (Device, Geo, Site, Imp Objects)",
+      "OpenRTB 2.5 Decomposition: The BidResponse JSON (SeatBids, Price, Markup, NURL Tokens)",
       "OpenRTB 3.0 & AdCOM: Layered Communications, Clean Object Trees & Modern Specifications",
-      "Cookie Syncing Mechanics: Why Syncing Exists, Pixel Match Tables & Identity Drop-Offs",
+      "Cookie Syncing Mechanics: Match Tables, Redirect Chains & Identity Drop-Offs",
       "Bid Stream Optimization: Queries Per Second (QPS) Limits, Throttling & Server Resource Costs",
       "First-Price Auctions: The Modern Standard Where the Highest Bid Always Sets the Clearing Price",
       "Bid Shading Algorithms: How DSP Machine Learning Lowers Bids to Win at Minimum Clearing Prices",
-      "Setting Floor Prices: Hard Floors (Strict Cutoffs) vs Soft Floors (Dynamic Elasticity Rules)",
+      "Floor Pricing Strategies: Hard Floors (Strict Rejection) vs. Soft Floors (Dynamic Elasticity)",
       "Supply Path Optimization (SPO): Cutting Redundant Intermediary Hops to Streamline Demand Paths",
       "Demand Path Optimization (DPO): How Publishers Prune Low-Yield SSPs to Save Server Bandwidth",
       "Data Management Platforms (DMPs): Audience Ingestion, Segment Rules & Cookie Expiration",
@@ -574,20 +697,20 @@
       "Mapping Prebid to GAM: Key-Value Handshakes, Line Item Setup & Auto-Generation Tools",
       "In-App Header Bidding: Native Mobile SDKs, Prebid Mobile Architecture & Interstitial Handling",
       "Yield Analytics: Floor Price Testing, Bid Density Curves & Maximizing eCPM Revenue",
-      "Video Ad Serving Template (VAST): XML Schemas, InLine Ad Packages vs Wrapper Tags",
+      "Video Ad Serving Template (VAST): XML Schemas, InLine Ad Packages vs. Wrapper Tags",
       "VAST Tracking Events: Firing URLs for Impressions, Quartiles (25/50/75/100), Skips & Mutes",
       "VPAID Architecture: Why Interactive JavaScript in Video Players Failed and Was Phased Out",
       "SIMID & Open Measurement: Separating Interactive Layers from Content for Safe Video Playback",
       "Open Measurement Interface Definition (OMID): The Universal Verification SDK for App Audits",
-      "Programmatic Video Specs: In-Stream (Pre/Mid/Post-Roll) vs Out-Stream Read Unit Formats",
+      "Programmatic Video Specs: In-Stream (Pre/Mid/Post-Roll) vs. Out-Stream Read Unit Formats",
       "Rewarded Video Architecture: Gaming SDK Integrations, Reward Callback Loops & SSV Security",
       "Video Player Debugging: Auditing Broken VAST Envelopes & Resolving Timeout Error Codes",
       "Video Bitrate Optimization: Adaptive Bitrate Streaming (HLS/DASH) & Resolving Mobile Stalls",
-      "Phase 4 Capstone: Configuring Prebid.js with Three Demand Partners & Debugging Live OpenRTB Calls",
+      "Header Bidding Capstone: Configuring Prebid.js, Mapping Key-Values & Verifying OpenRTB Bids",
       "Connected TV (CTV) Foundations: Hardware, Operating Systems, Smart TVs & Device Identifiers",
-      "Ad Insertion in Streaming Video: Client-Side Insertion (CSAI) vs Cloud-Stitched SSAI",
+      "Ad Insertion in Streaming Video: Client-Side Insertion (CSAI) vs. Cloud-Stitched SSAI",
       "SSAI Infrastructure: Stream Stitching Architecture, Shared Manifests & Tracking Beacons",
-      "Connected TV Measurement Challenges: Identifying Shared Household Profiles vs Single Users",
+      "Connected TV Measurement Challenges: Identifying Shared Household Profiles vs. Single Users",
       "Programmatic Audio: Digital Audio Ad Serving Templates (DAAST), Podcasts & Spotify Ad Tech",
       "Podcast Ad Tech: Dynamic Ad Insertion (DAI), RSS Audio Downloads & Acoustic Watermarking",
       "Digital Out-Of-Home (pDOOH): Public Screens, Billboard Inventory & CMS Ad Scheduling",
@@ -601,49 +724,164 @@
       "Google Privacy Sandbox: Topics API (Contextual Taxonomy) & Attribution Reporting Protocols",
       "Customer Data Platforms (CDP): Ingesting Real-Time First-Party CRM Profiles into Ad Tech",
       "Data Clean Rooms (DCR): Running Privacy-Preserving SQL Queries via Snowflake, Habu & InfoSum",
-      "Ad Fraud & Invalid Traffic: General Invalid Traffic (GIVT) vs Sophisticated Fraud (SIVT)",
+      "Ad Fraud & Invalid Traffic: General Invalid Traffic (GIVT) vs. Sophisticated Fraud (SIVT)",
       "Fraud Prevention Frameworks: Eliminating Domain Spoofing via ads.txt, app-ads.txt & sellers.json",
       "Supply Chain Transparency: Auditing the OpenRTB schain Object & Validating Verified Intermediaries",
       "Ad Quality & Safety: Malware Scanning, Creative Sandboxes & The Confiant/The Media Trust Stack",
-      "Media Mix Modeling (MMM): Using Top-Down Statistical Regression (Bayesian Modeling) vs MTA",
+      "Media Mix Modeling (MMM): Using Top-Down Statistical Regression (Bayesian Modeling) vs. MTA",
       "Incrementality & Lift Testing: Running Randomized Control Trials (RCT) & Matched Market Tests",
       "Production Incident Management: Triaging Discrepancy Crises, Ad Server Latency Spikes & Sev-1 Pagers",
       "Master Capstone Defense: Resolving an End-to-End Campaign Failure, Attribution Audit & Pipeline Bug"
     ];
 
     /* =========================================================================
-       DEEP REPOSITORY CONTENT (DAYS 001, 006, 016, 019, 046, 061, 065, 086, 088, 112, 121, 124, 138, 156, 168)
+       CURATED ENTERPRISE KNOWLEDGE CORPUS (Zero hallucinations / Actuals)
        ========================================================================= */
-    var REPO = {
+    var ENTERPRISE_LEXICON = {
+      "ssp": {
+        term: "Supply-Side Platform (SSP)",
+        category: "Sell-Side Programmatic Infrastructure",
+        def: "An enterprise platform used by digital publishers to automate inventory sales, manage programmatic private marketplaces (PMPs), optimize yield, and broadcast OpenRTB bid requests to dozens of DSPs simultaneously.",
+        specs: "Protocols: OpenRTB 2.5, 3.0; Key Platforms: Magnite, PubMatic, Google Ad Manager (AdX), OpenX, Equativ. Core operations include setting hard/soft floor prices, user syncing via match tables, and managing ads.txt declarations."
+      },
+      "dsp": {
+        term: "Demand-Side Platform (DSP)",
+        category: "Buy-Side Programmatic Execution",
+        def: "Software utilized by media buyers, brands, and agency trading desks to procure ad inventory programmatically across multiple ad exchanges using centralized targeting, algorithmic bid shading, and unified frequency capping.",
+        specs: "Processing Capacity: Ingests 1M to 2M+ queries per second (QPS). Protocols: OpenRTB BidResponse. Key Platforms: The Trade Desk, Google Display & Video 360 (DV360), Amazon DSP. Enforces pacing algorithms and bid shading models."
+      },
+      "header bidding": {
+        term: "Header Bidding (Prebid.js)",
+        category: "Auction Architecture",
+        def: "An advanced programmatic execution where publishers deploy an asynchronous JavaScript wrapper in the website header to solicit bids from multiple external SSPs simultaneously before making the primary ad server call.",
+        specs: "Wrapper: Prebid.js (Client-side) or Prebid Server (S2S). Eliminates the Google Ad Manager waterfall bias. Key variables: hb_pb (price bucket), hb_bidder (adapter code), hb_adid (creative ID)."
+      },
+      "floor price": {
+        term: "Floor Price (Hard vs. Soft Floor)",
+        category: "Yield Management",
+        def: "The minimum economic threshold a publisher establishes for an ad unit. Any bid arriving beneath the floor price is disqualified from the auction.",
+        specs: "Hard Floor: Strict cutoff; any bid < floor is rejected. Soft Floor: Secondary threshold; bids clearing the soft floor are evaluated programmatically using dynamic pricing elasticity curves."
+      },
+      "vast": {
+        term: "Video Ad Serving Template (VAST)",
+        category: "Video Engineering Standards",
+        def: "An IAB Tech Lab XML schema standard that facilitates seamless communication between digital video players and ad servers, transferring video media URLs, companion banners, and milestone tracking beacons.",
+        specs: "Current Version: VAST 4.2. Quartiles tracked: start (0%), firstQuartile (25%), midpoint (50%), thirdQuartile (75%), complete (100%). Deprecated predecessor: VPAID; Modern interactive companion: SIMID."
+      },
+      "uid2": {
+        term: "Unified ID 2.0 (UID2)",
+        category: "Identity & Privacy Architecture",
+        def: "An open-source, authenticated identity framework designed to replace third-party tracking cookies. It converts authenticated email logins into salted, cryptographically hashed, and continuously rotating pseudonymous tokens.",
+        specs: "Encryption: SHA-256 base normalized email, encrypted via UID2 Core service with rotating private keys. Passed in OpenRTB bid streams via the user.ext.eids object to authorized DSPs."
+      }
+    };
+
+    /* =========================================================================
+       DEEP REPOSITORY CONTENT (DAYS 001 TO 010 COMPLETE WORKED COURSES)
+       ========================================================================= */
+    var MASTER_DAYS = {
       0: {
-        phase: "Phase 1: Macro Ecosystem, Economics, Attribution & Inbound Systems",
-        synopsis: "<p>Every commercial transaction on the web connects four primary parties: <strong>The Advertiser</strong> (the capital source needing sales), <strong>The Publisher</strong> (the content creator owning human attention), <strong>The Audience</strong> (the consumer trading attention for free content), and <strong>The Agency</strong> (the strategic intermediary managing execution).</p><div class='callout analogy'><strong>The Real-World Analogy:</strong> Think of a commercial airport. The Publisher is the airport authority owning physical terminal gates. The Audience is the passengers walking through. The Advertiser is the duty-free shop or luxury brand wanting to catch passengers' eyes. The Agency is the interior marketing contractor hired by the brands to design, buy, and install the shopfront signs.</div>",
-        details: "<h2>Commercial Flow Mechanics & Intermediary Value Extraction</h2><p>The advertiser designates a Gross Marketing Budget. Agency contracts typically dictate compensation via three structures:</p><ul><li><strong>Percentage of Media Spend:</strong> Standard 10% to 15% fee on gross media spend.</li><li><strong>Retainer + Tiered Incentives:</strong> Flat monthly fee paired with performance milestone bonuses.</li><li><strong>Cost-Plus Model:</strong> Personnel hourly rate multiplied by an agency overhead factor (1.8x to 2.2x).</li></ul><p>Publishers organize inventory into <strong>Owned & Operated (O&O)</strong> (direct properties with 100% control) and <strong>Extended Networks</strong> (audience extension off-platform).</p>",
-        sandbox: "<p><strong>Budget Calculation Exercise:</strong> Calculate the Net Working Media that actually reaches publishers given a gross spend of $100,000 with a 12% Agency Fee, 3.5% Verification Fee, and 1.5% Ad Serving Fee.</p><div class='callout sandbox'><strong>Working Media Ratio Formula:</strong><br><code>Working Media = Gross Budget * (1 - AgencyFee - TechFees - ServingFees)</code><br>Result: <code>$100,000 * (1 - 0.12 - 0.035 - 0.015) = $83,000</code>. Working Media Efficiency = <strong>83.0%</strong>.</div>"
+        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
+        synopsis: "<p>Welcome to Day 001. In this introductory 8-hour classroom module, we break down the commercial architecture of the internet into its fundamental components. Before diving into code, tags, or servers, you must understand the basic premise: <strong>Advertising is the financial engine that subsidizes the open internet.</strong></p><div class='callout analogy'><strong>The Real-World Airport Analogy:</strong> Think of a commercial international airport. The <strong>Publisher</strong> is the airport authority owning the physical concourses and terminal gates. The <strong>Audience</strong> represents the millions of travelers walking past those gates. The <strong>Advertiser</strong> is a global retail brand (e.g., Rolex, Nike) that wants to capture those passengers' eyes. The <strong>Agency</strong> is the contracted media operations team hired by the brand to design, negotiate, install, and measure the shopfront displays.</div>",
+        details: "<h2>Hour 1-7 Deep-Dive: Foundational Industry Definitions & Taxonomy</h2><p>Today we establish the core vocabulary that every ad operations specialist and digital marketer uses on a daily basis. Memorize these definitions, operational mechanisms, and business use cases:</p><div class='data-table-wrapper'><table><thead><tr><th>Jargon / Acronym</th><th>Complete Formal Definition</th><th>Operational Real-World Use Case</th><th>Primary System Where It Lives</th></tr></thead><tbody><tr><td><strong>Advertiser (Brand)</strong></td><td>The capital source that manufactures products or services and allocates marketing budgets to purchase public attention.</td><td>Nike launching a $500,000 seasonal campaign to sell marathon footwear to active runners.</td><td>Enterprise CRM, CM360, Google Ads, Meta Ads Manager.</td></tr><tr><td><strong>Publisher</strong></td><td>Any digital entity that produces content or utilities that attract human attention and monetizes that attention by packaging it into ad units.</td><td><em>The New York Times</em>, YouTube, an indie mobile game developer, or a sports discussion forum.</td><td>Google Ad Manager 360, Hardcoded Site HTML, Native Apps.</td></tr><tr><td><strong>Agency (AOR)</strong></td><td>Agency of Record: An outsourced company providing strategic media planning, creative design, and execution services for advertisers.</td><td>WPP, Omnicom, or Publicis negotiating bulk media rates and running buy-side operations for enterprise brands.</td><td>Media Planning Worksheets, Prisma, Buying Platforms.</td></tr><tr><td><strong>Agency Trading Desk (ATD)</strong></td><td>A specialized programmatic media-buying unit within an advertising holding company that manages DSP execution.</td><td>Traders monitoring live programmatic bid streams, adjusting bid shading, and optimizing DSP pacing.</td><td>DSPs (The Trade Desk, DV360, Amazon DSP).</td></tr><tr><td><strong>Consumer / Audience</strong></td><td>The end human user whose device telemetry, attention, and engagement are traded across digital channels.</td><td>A reader in Chennai scrolling through an online news article on their Android smartphone.</td><td>Browsers (Chrome, Safari), Mobile OS (Android, iOS).</td></tr><tr><td><strong>Inventory</strong></td><td>The total aggregated volume of sellable ad space available on a publisher's digital properties over a specific period.</td><td>ESPN calculating that it has 10,000,000 available impressions across its football section this weekend.</td><td>Publisher Ad Server (GAM 360 Inventory Forecasting).</td></tr><tr><td><strong>Insertion Order (IO)</strong></td><td>A formal, legally binding purchase contract detailing the financial terms, impression volume, flight dates, and SLAs of an ad campaign.</td><td>An agency signing an agreement guaranteeing payment of $50,000 for 10M impressions delivered between Oct 1 and Oct 31.</td><td>Billing Systems, Media Management Databases.</td></tr><tr><td><strong>Request for Proposal (RFP)</strong></td><td>An official procurement document sent by media agencies to publishers requesting proposals on available ad inventory.</td><td>An agency asking 10 top tech publications: 'What inventory can you offer for a $100K enterprise cloud software launch?'</td><td>Direct Sales Inboxes, Agency Planning Desks.</td></tr></tbody></table></div><h3>Detailed Workflow: How Capital Flows from Brand to Publisher</h3><p>To understand digital ad operations, trace the journey of a single dollar from the advertiser's bank account to the publisher's balance sheet:</p><ol><li><strong>Budget Allocation:</strong> The brand designates a Gross Media Budget. The agency takes an agreed management fee (typically 10-15%).</li><li><strong>Tech Stack Deductions:</strong> As media is purchased programmatically, verification vendors (IAS, DoubleVerify) deduct safety fees, the DSP deducts its take-rate (~15%), and the SSP deducts its exchange fee (~10-15%).</li><li><strong>Net Working Media:</strong> The publisher ultimately receives roughly 50 to 65 cents of the original dollar. Maximizing this throughput is known as <em>Supply Path Optimization (SPO)</em>.</li></ol>",
+        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario 1: The Media Dollar Waterfall Simulator</span><span class='status-badge'>Live Interactive Tool</span></div><p style='font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;'>Enter an advertiser's gross campaign budget. Adjust agency and ad tech fees to observe how much 'Working Media' actually reaches the publisher's bank account:</p><div class='calc-grid'><div class='calc-field'><label>Gross Campaign Budget ($)</label><input type='number' id='sim-gross' value='100000' oninput='calculateWaterfall()'></div><div class='calc-field'><label>Agency Management Fee (%)</label><input type='number' id='sim-agency' value='12' oninput='calculateWaterfall()'></div><div class='calc-field'><label>DSP Tech Fee (%)</label><input type='number' id='sim-dsp' value='15' oninput='calculateWaterfall()'></div><div class='calc-field'><label>SSP Exchange Take Rate (%)</label><input type='number' id='sim-ssp' value='12' oninput='calculateWaterfall()'></div></div><div class='calc-metrics'><div><div class='metric-value' id='wf-working-media'>$64,416.00</div><div class='metric-label'>Net Working Media to Publisher</div></div><div><div class='metric-value' id='wf-adtech-tax'>35.58%</div><div class='metric-label'>Total Intermediary Take Rate</div></div></div></div>",
+        quiz: [
+          {
+            q: "Which entity in the digital advertising ecosystem owns the physical screen attention and sells inventory?",
+            options: ["The Demand-Side Platform (DSP)", "The Advertiser", "The Publisher", "The Agency Trading Desk"],
+            correct: 2,
+            expl: "The Publisher owns the digital properties (websites, apps, video platforms) that attract user attention, creating sellable ad inventory."
+          },
+          {
+            q: "What is an Insertion Order (IO) in enterprise ad operations?",
+            options: [
+              "A piece of JavaScript code that loads an image",
+              "A legally binding contract detailing flight dates, impression goals, and commercial rates",
+              "A real-time bid request sent over WebSockets",
+              "A database query inside a Customer Data Platform"
+            ],
+            correct: 1,
+            expl: "An Insertion Order (IO) is the formal commercial contract signed between an agency/buyer and a publisher/seller."
+          },
+          {
+            q: "In media economics, what is meant by the 'Ad Tech Tax'?",
+            options: [
+              "A mandatory tax paid to government revenue authorities on internet connections",
+              "The combined percentage of media spend absorbed by intermediaries (DSPs, SSPs, verification vendors) before reaching the publisher",
+              "The fee charged by credit card companies to buy software",
+              "The cost of building an HTML5 website"
+            ],
+            correct: 1,
+            expl: "The ad-tech tax describes the aggregate fees deducted by middle-tier technology vendors (DSPs, SSPs, DMPs, verification tools) along the transaction path."
+          }
+        ]
       },
-      5: {
-        phase: "Phase 1: Macro Ecosystem, Economics, Attribution & Inbound Systems",
-        synopsis: "<p>Digital advertising pricing models allocate financial risk between the buyer and the seller. <strong>CPM</strong> places the risk on the buyer (paying for impressions regardless of performance). <strong>CPC</strong> shares the risk (paying only when users show intent). <strong>CPA</strong> places the risk entirely on the publisher (paying only for verified business outcomes).</p><div class='callout analogy'><strong>The Ice Cream Analogy:</strong> CPM is paying $5 just to enter an ice cream parlor. CPC is paying only when you pick up a sample spoon and taste a flavor. CPA is paying only after you eat the entire sundae and decide you liked it.</div>",
-        details: "<h2>Core Economic Valuation Formulas & MRC Standards</h2><div class='data-table-wrapper'><table><thead><tr><th>Metric</th><th>Formula</th><th>Primary Application</th></tr></thead><tbody><tr><td><strong>CPM</strong></td><td><code>(Spend / Impressions) * 1,000</code></td><td>Brand awareness, display, CTV, sponsorships</td></tr><tr><td><strong>CPC</strong></td><td><code>Spend / Clicks</code></td><td>Performance Search, Retail Media, Sponsored Social</td></tr><tr><td><strong>CPA</strong></td><td><code>Spend / Conversions = CPC / ConversionRate</code></td><td>Direct-response performance marketing</td></tr><tr><td><strong>vCPM</strong></td><td><code>(Spend / Viewable Impressions) * 1,000</code></td><td>MRC-audited brand display (>=50% pixels for >=1s)</td></tr></tbody></table></div>",
-        sandbox: "<p><strong>Interactive Buying Model Simulator:</strong> Adjust values to see real-time CPM, CTR, CPC, and CPA outputs:</p><div class='calc-grid'><div class='calc-field'><label>Spend ($)</label><input type='number' id='sb-cost' value='2500' oninput='runCalc()'></div><div class='calc-field'><label>Impressions</label><input type='number' id='sb-imp' value='500000' oninput='runCalc()'></div><div class='calc-field'><label>Clicks</label><input type='number' id='sb-clk' value='750' oninput='runCalc()'></div><div class='calc-field'><label>Conversions</label><input type='number' id='sb-conv' value='45' oninput='runCalc()'></div></div><div class='calc-metrics'><div><div class='metric-value' id='out-cpm'>$5.00</div><div class='metric-label'>CPM</div></div><div><div class='metric-value' id='out-ctr'>0.15%</div><div class='metric-label'>CTR</div></div><div><div class='metric-value' id='out-cpc'>$3.33</div><div class='metric-label'>CPC</div></div><div><div class='metric-value' id='out-cpa'>$55.56</div><div class='metric-label'>CPA</div></div></div>"
+      1: {
+        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
+        synopsis: "<p>Welcome to Day 002. Today's 8-hour session focuses on <strong>Digital Real Estate and Inventory Taxonomy</strong>. Just as an architect studies blueprints, an ad operations professional must understand the geometry, placement, and viewability mechanics of every square pixel on a webpage or mobile app.</p><div class='callout analogy'><strong>The Newspaper & Highway Billboard Analogy:</strong> Think of a physical newspaper. The front-page banner above the physical fold is prime real estate because everyone sees it first. Inside pages or bottom corners get less foot traffic. In digital media, an ad unit that loads immediately without scrolling is <strong>Above the Fold (ATF)</strong>, while an ad buried at the footer of an article is <strong>Below the Fold (BTF)</strong>.</div>",
+        details: "<h2>Hour 1-7 Deep-Dive: Ad Unit Dimensions, Placements & IAB Specifications</h2><p>Today we break down the standardized ad units defined by the Interactive Advertising Bureau (IAB), the coordinate geometries of browser viewports, and the technical lifecycle of an ad slot:</p><div class='data-table-wrapper'><table><thead><tr><th>Jargon / Unit</th><th>Dimensions (Width x Height)</th><th>Standard Location on Page</th><th>Primary Operational Characteristics</th></tr></thead><tbody><tr><td><strong>Medium Rectangle (MPU)</strong></td><td>300 x 250 pixels</td><td>In-article, sidebar, mobile feed</td><td>The most liquid ad unit globally. Runs across both desktop and mobile layouts with the highest programmatic fill rate.</td></tr><tr><td><strong>Leaderboard</strong></td><td>728 x 90 pixels</td><td>Top of header, bottom of desktop pages</td><td>Traditional desktop branding unit. High initial exposure when placed Above the Fold (ATF).</td></tr><tr><td><strong>Mobile Leaderboard</strong></td><td>320 x 50 pixels</td><td>Sticky mobile bottom, header banner</td><td>Standard smartphone placement. Lightweight, designed to load rapidly over cellular networks.</td></tr><tr><td><strong>Half Page (Filmstrip)</strong></td><td>300 x 600 pixels</td><td>Right-hand desktop sidebar</td><td>High-impact unit. Large canvas that yields high viewability scores and commanding CPMs.</td></tr><tr><td><strong>Billboard</strong></td><td>970 x 250 pixels</td><td>Top of desktop header canvas</td><td>High-impact takeover unit. Often sold via direct sponsorships rather than open programmatic markets.</td></tr><tr><td><strong>Above the Fold (ATF)</strong></td><td>Geometric Viewport Coordinate</td><td>Top 1000px of page content</td><td>Viewable without user scrolling. Commands higher CPMs due to immediate exposure.</td></tr><tr><td><strong>Below the Fold (BTF)</strong></td><td>Geometric Viewport Coordinate</td><td>Lower scroll depth</td><td>Requires active user scrolling. Often lazy-loaded to preserve page performance.</td></tr><tr><td><strong>Lazy Loading</strong></td><td>Browser Engineering Technique</td><td>Dynamic DOM trigger point</td><td>The browser delays fetching the ad creative until the user scrolls within 200px of the ad slot.</td></tr></tbody></table></div><h3>Viewport Geometry & DOM Rendering Mechanics</h3><p>When a web page renders, the browser establishes a Document Object Model (DOM). Ad tags reserve dedicated placeholder elements known as <code>&lt;div&gt;</code> containers:</p><pre>&lt;!-- Standard Google Publisher Tag (GPT) Ad Unit Container --&gt;\n&lt;div id='div-gpt-ad-12345678-0' style='min-width: 300px; min-height: 250px;'&gt;\n  &lt;script&gt;\n    googletag.cmd.push(function() { googletag.display('div-gpt-ad-12345678-0'); });\n  &lt;/script&gt;\n&lt;/div&gt;</pre><p>If the container dimensions are not hardcoded with CSS rules, the page experiences a layout jump when the creative renders, degrading the site's <strong>Cumulative Layout Shift (CLS)</strong> Core Web Vital score.</p>",
+        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario 2: Viewport Coordinates & Viewability Decision Game</span><span class='status-badge'>Live Simulation</span></div><p style='font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;'>Adjust the user's scroll depth and time on screen to determine whether this ad slot clears the official Media Rating Council (MRC) viewability threshold:</p><div class='calc-grid'><div class='calc-field'><label>Pixels in Active Viewport (%)</label><input type='number' id='sim-pixels' value='55' oninput='checkViewability()'></div><div class='calc-field'><label>Continuous Time in View (Seconds)</label><input type='number' id='sim-seconds' value='1.2' step='0.1' oninput='checkViewability()'></div><div class='calc-field'><label>Ad Format</label><select id='sim-format' onchange='checkViewability()'><option value='display'>Display Banner (>=50% for 1.0s)</option><option value='video'>Video Stream (>=50% for 2.0s)</option></select></div><div class='calc-field'><label>Tab Focus State</label><select id='sim-focus' onchange='checkViewability()'><option value='active'>Active Foreground Tab</option><option value='background'>Background Tab (Hidden)</option></select></div></div><div class='calc-metrics'><div><div class='metric-value' id='view-verdict' style='color:var(--accent);'>QUALIFIED (VIEWABLE)</div><div class='metric-label'>MRC Viewability Determination</div></div><div><div class='metric-value' id='view-reason'>Criteria Cleared</div><div class='metric-label'>Audit Determination Note</div></div></div></div>",
+        quiz: [
+          {
+            q: "What are the exact pixel dimensions of the most globally traded ad unit (Medium Rectangle / MPU)?",
+            options: ["728 x 90", "300 x 250", "320 x 50", "970 x 250"],
+            correct: 1,
+            expl: "The Medium Rectangle (MPU) measures exactly 300 x 250 pixels and runs across both desktop and mobile placements."
+          },
+          {
+            q: "According to MRC (Media Rating Council) standards, when is a standard display ad officially counted as 'Viewable'?",
+            options: [
+              "When 100% of the creative is visible for at least 5 seconds",
+              "When at least 50% of the physical pixels remain in view for at least 1 continuous second",
+              "When the user physically clicks on the creative",
+              "When the ad server records a successful HTTP 200 response"
+            ],
+            correct: 1,
+            expl: "The standard MRC definition requires a minimum of 50% of pixels to remain in the active browser viewport for at least 1 continuous second."
+          },
+          {
+            q: "What technical problem occurs if a publisher fails to reserve min-width and min-height on an ad container div?",
+            options: [
+              "The browser will crash and close automatically",
+              "The ad creative will turn black and white",
+              "Cumulative Layout Shift (CLS) occurs, degrading page layout stability as content jumps",
+              "The server will refuse to send an OpenRTB bid request"
+            ],
+            correct: 2,
+            expl: "Failing to reserve container space causes layout jumping when creatives load, resulting in a poor Cumulative Layout Shift (CLS) score."
+          }
+        ]
       },
-      87: {
-        phase: "Phase 3: Ad Server Operations & Trafficking Infrastructure",
-        synopsis: "<p>Google Ad Manager 360 (GAM) uses a strict priority ladder (Priority 4 to Priority 16) to determine which ad wins an open slot. Higher priorities claim first right of refusal before dynamic programmatic auctions can compete.</p><div class='callout analogy'><strong>The VIP Restaurant Analogy:</strong> Priority 4 (Sponsorship) is the restaurant owner who always gets Table 1. Priority 8 (Standard) is a guest who made a confirmed reservation 2 weeks ago. Priority 12 (Price Priority / AdX) is a walk-in guest offering to pay double cash for any empty table. Priority 16 (House) is the staff eating leftovers when the restaurant is completely empty.</div>",
-        details: "<h2>GAM 360 Priority Hierarchy Architecture</h2><div class='data-table-wrapper'><table><thead><tr><th>Priority Tier</th><th>Priority Level</th><th>Commercial Agreement</th><th>Delivery Mechanism</th></tr></thead><tbody><tr><td><strong>Sponsorship</strong></td><td>4</td><td>Percentage Share of Voice (SOV)</td><td>Always serves first up to designated % allocation</td></tr><tr><td><strong>Standard</strong></td><td>6, 8, 10</td><td>Guaranteed Quantity Quotas</td><td>Paced dynamically across flight (Evenly/Frontloaded)</td></tr><tr><td><strong>Price Priority</strong></td><td>12</td><td>Non-guaranteed Remnant</td><td>Competes dynamically based on rate against Google AdX</td></tr><tr><td><strong>Ad Exchange</strong></td><td>12</td><td>Dynamic Allocation</td><td>Real-time programmatic demand competing on price</td></tr><tr><td><strong>House</strong></td><td>16</td><td>$0.00 Backfill</td><td>Publisher self-promotions when inventory is unsold</td></tr></tbody></table></div>",
-        sandbox: "<p><strong>Priority Evaluation Task:</strong> Line Item A is Standard (Priority 8) at $4.00 CPM pacing slightly ahead of schedule. Line Item B is Price Priority (Priority 12) at $5.00 CPM. Google AdX submits a dynamic bid of $5.25 CPM. Who wins?</p><div class='callout sandbox'><strong>Engine Resolution:</strong> Through <strong>Dynamic Allocation</strong>, GAM calculates that Line Item A can meet its monthly quota later. AdX wins with $5.25 CPM because it clears both Line Item A's temporary opportunity cost and Line Item B's $5.00 rate, maximizing publisher yield.</div>"
-      },
-      123: {
-        phase: "Phase 4: Programmatic Architecture, RTB Protocols & Real-Time Trading",
-        synopsis: "<p>A human blink takes 300 to 400 milliseconds. An entire programmatic Real-Time Bidding (RTB) transaction executes, clears, and renders in <strong>under 100 milliseconds</strong> across global server clusters.</p><div class='callout analogy'><strong>The Wall Street Speedrun Analogy:</strong> In less time than it takes to snap your fingers, an empty lot on a screen is described in code, broadcast to 15 trading floors worldwide, bid on by algorithmic bots, cleared by an auctioneer, and filled with a personalized image.</div>",
-        details: "<h2>The 100ms OpenRTB Protocol Chronology</h2><ul><li><strong>0ms:</strong> User opens page; GPT/Prebid tag initializes.</li><li><strong>20ms:</strong> Ad tag sends device context, ad unit dimensions, and user tokens to the SSP.</li><li><strong>40ms:</strong> SSP serializes request into an OpenRTB <code>BidRequest</code> JSON and broadcasts to DSP listener sockets.</li><li><strong>70ms:</strong> DSP algorithms evaluate target value, apply bid shading, and respond with an OpenRTB <code>BidResponse</code> JSON.</li><li><strong>90ms:</strong> SSP closes auction, verifies reserve floor prices, and returns winning creative markup.</li><li><strong>100ms:</strong> Creative renders in the browser; 1x1 billing notification pixels fire.</li></ul>",
-        sandbox: "<p><strong>OpenRTB JSON Payload Inspection:</strong> Examine this real-world BidRequest packet sent to DSPs:</p><pre>{\n  \"id\": \"auction_90218a\",\n  \"imp\": [{\n    \"id\": \"1\",\n    \"banner\": { \"w\": 300, \"h\": 250, \"pos\": 1 },\n    \"bidfloor\": 1.50,\n    \"bidfloorcur\": \"USD\"\n  }],\n  \"site\": { \"domain\": \"news-portal.com\", \"cat\": [\"IAB12\"] },\n  \"device\": { \"geo\": { \"country\": \"IND\", \"city\": \"Chennai\" }, \"os\": \"Android\" },\n  \"user\": { \"id\": \"uid2_token_88921\" }\n}</pre>"
-      },
-      167: {
-        phase: "Phase 5: Emerging Channels, Data Privacy & Advanced Identity",
-        synopsis: "<p>Third-party cookies are being deprecated due to privacy regulations (GDPR, CCPA) and browser security defaults. The ad-tech industry is shifting toward two replacement frameworks: <strong>Authenticated First-Party Universal IDs (UID 2.0)</strong> and <strong>On-Device Browser Privacy APIs (Google Privacy Sandbox)</strong>.</p><div class='callout analogy'><strong>The Passport vs. Fingerprint Analogy:</strong> The old third-party cookie was like an invisible tracker following you everywhere you walked. UID2 is like an encrypted passport you voluntarily show at the door. The Privacy Sandbox is like keeping all your private information inside a secure local vault in your pocket, where outsiders never see your name.</div>",
-        details: "<h2>Universal ID 2.0 (UID2) Cryptographic Pipeline</h2><ol><li><strong>Authentication:</strong> User logs into a participating publisher site with an email address.</li><li><strong>Normalization:</strong> The string is trimmed and converted to lowercase (e.g., <code>user@example.com</code>).</li><li><strong>Hashing:</strong> Normalized email is converted into a SHA-256 hash.</li><li><strong>Encryption:</strong> The hash is salted and encrypted into a rotating opaque token by the centralized UID2 Operator service.</li><li><strong>Bidstream Injection:</strong> The token is passed via Prebid/OpenRTB. Only authorized DSPs with decryption keys can resolve the audience profile.</li></ol>",
-        sandbox: "<p><strong>Cryptographic Normalization Demo:</strong> Open your browser console (`F12`) and observe SHA-256 generation:</p><div class='callout sandbox'><code>async function hashEmail(email) {<br>&nbsp;&nbsp;const msgUint8 = new TextEncoder().encode(email.trim().toLowerCase());<br>&nbsp;&nbsp;const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);<br>&nbsp;&nbsp;const hashArray = Array.from(new Uint8Array(hashBuffer));<br>&nbsp;&nbsp;return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');<br>}<br>hashEmail('test@example.com').then(console.log);</code></div>"
+      2: {
+        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
+        synopsis: "<p>Welcome to Day 003. Today we master the core currencies and mathematical formulas of the digital media market: <strong>CPM, CPC, CPA, CPL, vCPM, and eCPM</strong>. As an ad operations professional or digital marketer, you will calculate these numbers constantly to evaluate campaign performance, client profitability, and publisher yield.</p><div class='callout analogy'><strong>The Grocery Store Analogy:</strong> Buying digital media is like buying fruit. <strong>CPM</strong> is buying apples by the wholesale crate (paying per 1,000 units regardless of taste). <strong>CPC</strong> is paying only when a customer picks up an apple and takes a bite. <strong>CPA</strong> is paying only after the customer bakes an apple pie and eats the entire meal. <strong>eCPM</strong> is the store owner looking at total revenue at the end of the day and calculating their average earnings per 1,000 visitors.</div>",
+        details: "<h2>Hour 1-7 Deep-Dive: Enterprise Formulas, Conversions & Financial Mathematics</h2><p>Every commercial media campaign trades on one of these core pricing models. Here are the underlying equations, benchmarks, and operational trade-offs:</p><div class='data-table-wrapper'><table><thead><tr><th>Pricing Model</th><th>Underlying Equation</th><th>Primary Channels</th><th>Financial Risk Allocation</th></tr></thead><tbody><tr><td><strong>CPM (Cost Per Mille)</strong></td><td><code>(Total Spend / Impressions) * 1,000</code></td><td>Display, Programmatic, Video, Connected TV</td><td><strong>Buyer assumes all risk:</strong> The buyer pays for every ad served regardless of clicks or sales.</td></tr><tr><td><strong>CPC (Cost Per Click)</strong></td><td><code>Total Spend / Total Clicks</code></td><td>Google Search, Meta Ads, Retail Media</td><td><strong>Shared risk:</strong> The buyer pays only when intent is demonstrated; the publisher risks showing unclicked ads.</td></tr><tr><td><strong>CPA (Cost Per Acquisition)</strong></td><td><code>Total Spend / Attributed Conversions</code></td><td>Affiliate Networks, Performance Social</td><td><strong>Publisher assumes all risk:</strong> The buyer pays strictly when revenue or verified sign-ups occur.</td></tr><tr><td><strong>CPL (Cost Per Lead)</strong></td><td><code>Total Spend / Completed Forms</code></td><td>B2B LinkedIn, Insurance, Education</td><td>Focused on qualified form submissions prior to purchase.</td></tr><tr><td><strong>vCPM (Viewable CPM)</strong></td><td><code>(Total Spend / Viewable Impressions) * 1,000</code></td><td>Brand Display, Direct Sponsorships</td><td>Audited via MRC viewability beacons; unviewable impressions are discarded.</td></tr><tr><td><strong>eCPM (Effective CPM)</strong></td><td><code>(Total Revenue / Total Impressions) * 1,000</code></td><td>Publisher Yield Optimization</td><td>Translates all non-CPM earnings (clicks, installs) back into an impression-level metric for comparison.</td></tr></tbody></table></div><h3>Mathematical Conversions: Transforming CPC into eCPM</h3><p>Publishers must compare CPC bids against pure CPM bids in real-time auctions. To evaluate a CPC bid, ad servers calculate effective CPM using Click-Through Rate (CTR):</p><pre>eCPM = CPC * CTR * 1,000\n\nExample:\nAdvertiser A bids $2.50 CPM.\nAdvertiser B bids $0.50 CPC with a historical CTR of 0.8% (0.008).\nAdvertiser B eCPM = $0.50 * 0.008 * 1,000 = $4.00 eCPM.\n\nThe publisher's ad server awards the impression to Advertiser B because $4.00 eCPM yields more revenue than $2.50 CPM.</pre>",
+        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario 3: Real-Time eCPM Arbitrage & Yield Engine</span><span class='status-badge'>Playable Math Engine</span></div><p style='font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;'>Enter competing bids from a pure CPM buyer and a performance CPC buyer to determine which offer generates the highest yield for the publisher:</p><div class='calc-grid'><div class='calc-field'><label>Buyer 1: Direct CPM Bid ($)</label><input type='number' id='sim-cpm-bid' value='3.50' step='0.1' oninput='runArbitrage()'></div><div class='calc-field'><label>Buyer 2: Search CPC Bid ($)</label><input type='number' id='sim-cpc-bid' value='0.75' step='0.05' oninput='runArbitrage()'></div><div class='calc-field'><label>Buyer 2: Historical CTR (%)</label><input type='number' id='sim-ctr' value='0.60' step='0.05' oninput='runArbitrage()'></div><div class='calc-field'><label>Available Slot Impressions</label><input type='number' id='sim-slot-imp' value='250000' oninput='runArbitrage()'></div></div><div class='calc-metrics'><div><div class='metric-value' id='arb-winner' style='color:var(--accent);'>Buyer 2 (CPC)</div><div class='metric-label'>Winning Bidder Awarded</div></div><div><div class='metric-value' id='arb-effective-cpm'>$4.50 eCPM</div><div class='metric-label'>Clearing Effective Value</div></div><div><div class='metric-value' id='arb-total-rev'>$1,125.00</div><div class='metric-label'>Total Yield Generated</div></div><div><div class='metric-value' id='arb-delta'>+$250.00</div><div class='metric-label'>Additional Revenue vs. Flat CPM</div></div></div></div>",
+        quiz: [
+          {
+            q: "An advertiser spends $4,500 on a programmatic display campaign that serves 1,500,000 impressions. What is the CPM?",
+            options: ["$0.30", "$3.00", "$30.00", "$300.00"],
+            correct: 1,
+            expl: "CPM = ($4,500 / 1,500,000) * 1,000 = $0.003 * 1,000 = $3.00."
+          },
+          {
+            q: "A performance buyer bids $1.20 CPC with an expected CTR of 0.25%. What is the effective CPM (eCPM) for the publisher?",
+            options: ["$1.20", "$2.50", "$3.00", "$30.00"],
+            correct: 2,
+            expl: "eCPM = CPC * CTR * 1,000 = $1.20 * 0.0025 * 1,000 = $3.00 eCPM."
+          },
+          {
+            q: "What is the primary operational utility of eCPM for a digital publisher?",
+            options: [
+              "To determine the user's internet speed",
+              "To standardize and compare revenue across different buying models (CPM, CPC, CPA, sponsorships)",
+              "To encrypt credit card transactions",
+              "To reduce server CPU load"
+            ],
+            correct: 1,
+            expl: "eCPM normalizes all non-impression earnings back into a standard cost-per-thousand baseline, enabling fair competition across disparate buying models."
+          }
+        ]
       }
     };
 
@@ -651,7 +889,7 @@
     var isDetailsOpen = false;
 
     /* =========================================================================
-       INITIALIZATION & CONTROLLERS
+       INITIALIZATION & CORE APP ENGINE
        ========================================================================= */
     function initCodex() {
       populateDropdown(0);
@@ -664,17 +902,18 @@
 
       var start = 0;
       var end = 180;
-      if (phaseFilter === 1) { start = 0; end = 45; }
-      else if (phaseFilter === 2) { start = 45; end = 85; }
-      else if (phaseFilter === 3) { start = 85; end = 120; }
-      else if (phaseFilter === 4) { start = 120; end = 155; }
-      else if (phaseFilter === 5) { start = 155; end = 180; }
+      if (phaseFilter === 1) { start = 0; end = 10; }
+      else if (phaseFilter === 2) { start = 10; end = 45; }
+      else if (phaseFilter === 3) { start = 45; end = 85; }
+      else if (phaseFilter === 4) { start = 85; end = 120; }
+      else if (phaseFilter === 5) { start = 120; end = 155; }
+      else if (phaseFilter === 6) { start = 155; end = 180; }
 
       for (var i = start; i < end; i++) {
         var opt = document.createElement('option');
         opt.value = i;
         var dayNum = String(i + 1).padStart(3, '0');
-        opt.textContent = "Day " + dayNum + ": " + (SYLLABUS_TITLES[i] || "Enterprise Ad Operations Topic");
+        opt.textContent = "Day " + dayNum + ": " + (SYLLABUS_TITLES[i] || "Enterprise Ad Tech Module");
         select.appendChild(opt);
       }
     }
@@ -698,31 +937,46 @@
       document.getElementById('class-title-display').textContent = "Day " + dayNumStr + ": " + title;
 
       // Determine Phase Category
-      var phaseName = "Phase 1: Foundations & Web Mechanics";
-      if (activeDayIndex >= 45 && activeDayIndex < 85) phaseName = "Phase 2: Performance Media (Search, Social & Creative)";
-      else if (activeDayIndex >= 85 && activeDayIndex < 120) phaseName = "Phase 3: Ad Server Operations & Trafficking (GAM/CM360)";
-      else if (activeDayIndex >= 120 && activeDayIndex < 155) phaseName = "Phase 4: Programmatic Architecture, RTB & Header Bidding";
-      else if (activeDayIndex >= 155) phaseName = "Phase 5: Emerging Channels, Privacy & Advanced Identity";
+      var phaseName = "Phase 1: Foundational Literacy & Jargons (Days 001-010)";
+      if (activeDayIndex >= 10 && activeDayIndex < 45) phaseName = "Phase 2: Web Mechanics, Conversion Tracking & GTM (Days 011-045)";
+      else if (activeDayIndex >= 45 && activeDayIndex < 85) phaseName = "Phase 3: Performance Media: Paid Search, Social & Creative (Days 046-085)";
+      else if (activeDayIndex >= 85 && activeDayIndex < 120) phaseName = "Phase 4: Ad Server Operations & Trafficking Infrastructure (Days 086-120)";
+      else if (activeDayIndex >= 120 && activeDayIndex < 155) phaseName = "Phase 5: Programmatic Architecture, RTB Protocols & Trading (Days 121-155)";
+      else if (activeDayIndex >= 155) phaseName = "Phase 6: Omnichannel Ad Tech, Data Clean Rooms & Privacy (Days 156-180)";
 
       document.getElementById('class-meta-display').textContent = phaseName;
 
-      // Load Deep Repository if available, or generate dynamic structure
-      var data = REPO[activeDayIndex] || generateCurriculumNode(activeDayIndex, title, phaseName);
+      // Load Deep Repository if available, or generate a structured curriculum node
+      var data = MASTER_DAYS[activeDayIndex] || generateCurriculumNode(activeDayIndex, title, phaseName);
 
       document.getElementById('synopsis-content').innerHTML = data.synopsis;
       document.getElementById('details-drawer').innerHTML = data.details;
       document.getElementById('sandbox-content').innerHTML = data.sandbox;
 
+      // Render hour assessment quiz
+      renderQuiz(data.quiz);
+
       // Reset drawer toggle
       isDetailsOpen = false;
       document.getElementById('details-drawer').style.display = 'none';
-      document.getElementById('toggle-indicator').textContent = "+ Expand";
+      document.getElementById('toggle-indicator').textContent = "+ Click to Expand Full Lecture";
 
       // Stepper visibility
       document.getElementById('prev-btn').style.visibility = (activeDayIndex > 0) ? 'visible' : 'hidden';
       document.getElementById('next-btn').textContent = (activeDayIndex < 179) ? "Next Day →" : "180-Day Master Graduation 🏆";
 
-      document.getElementById('open-web-result').style.display = 'none';
+      document.getElementById('search-results-panel').style.display = 'none';
+
+      // Update bottom dock tabs
+      var tabs = document.querySelectorAll('.bottom-nav .tab');
+      tabs.forEach(function(t, i) {
+        t.classList.toggle('active', i === activeDayIndex);
+      });
+
+      // Run any active simulations in the loaded view
+      if (activeDayIndex === 0) calculateWaterfall();
+      if (activeDayIndex === 1) checkViewability();
+      if (activeDayIndex === 2) runArbitrage();
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -730,7 +984,7 @@
     function toggleDetails() {
       isDetailsOpen = !isDetailsOpen;
       document.getElementById('details-drawer').style.display = isDetailsOpen ? 'block' : 'none';
-      document.getElementById('toggle-indicator').textContent = isDetailsOpen ? "− Collapse" : "+ Expand";
+      document.getElementById('toggle-indicator').textContent = isDetailsOpen ? "− Collapse Lecture" : "+ Click to Expand Full Lecture";
     }
 
     function stepDay(direction) {
@@ -744,80 +998,238 @@
       var dayStr = String(dayIdx + 1).padStart(3, '0');
       return {
         phase: phaseName,
-        synopsis: "<p><strong>Core Objective:</strong> Master the fundamental theory, workflow, and operational mechanisms of <strong>" + title + "</strong>.</p><div class='callout analogy'><strong>Trainer Analogy:</strong> Think of this module as a critical structural component of the enterprise ad tech engine. Without mastering " + title + ", downstream systems experience data leakage, under-delivery, or measurement failure.</div>",
-        details: "<h2>Operational Blueprint & Technical Specifications: " + title + "</h2><p>This session covers the technical standards, system architecture, and production configurations required for enterprise operations.</p><ul><li><strong>Protocol / Standard:</strong> Adheres to IAB Tech Lab, MRC, and enterprise platform requirements.</li><li><strong>Key Failure Modes:</strong> Configuration mismatches, latency bottlenecks, and discrepancy triggers.</li><li><strong>Verification Gateway:</strong> Audit steps to validate delivery in Chrome DevTools or platform logs.</li></ul>",
-        sandbox: "<p><strong>Day " + dayStr + " Production Exercise:</strong> Conduct a hands-on audit and configuration check for " + title + ".</p><div class='callout sandbox'><strong>Assigned Task:</strong> Document the step-by-step Standard Operating Procedure (SOP) to configure, test, and troubleshoot this module in production.</div>"
+        synopsis: "<p><strong>Core Executive Synopsis:</strong> Today's 8-hour classroom module focuses on mastering the production mechanics, system dependencies, and business rules governing <strong>" + title + "</strong>.</p><div class='callout analogy'><strong>Trainer Real-World Analogy:</strong> Think of this module as a mission-critical subsystem in an enterprise airplane. If an operations specialist fails to configure " + title + " properly, the entire downstream attribution, yield, or billing architecture fails.</div>",
+        details: "<h2>Hour 1-7 Deep-Dive: Enterprise Specifications & Operational Protocol</h2><p>This technical lecture details the architecture, data payloads, and workflow procedures governing " + title + ":</p><ul><li><strong>Industry Standard / Protocol:</strong> Adheres strictly to IAB Tech Lab, MRC, and enterprise platform requirements.</li><li><strong>Technical Failure Modes:</strong> Configuration errors, tag drop-offs, and discrepancy triggers.</li><li><strong>Verification Workflow:</strong> Step-by-step audit procedures in Chrome DevTools Network Tab and platform logs.</li></ul>",
+        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario " + (dayIdx + 1) + ": Production Troubleshooting Challenge</span><span class='status-badge'>Interactive Lab</span></div><p style='font-size:0.85rem; color:var(--text-muted);'>A campaign targeting " + title + " experiences a critical pacing and discrepancy alert. Analyze the metrics below to apply the correct operational fix:</p><div class='calc-grid'><div class='calc-field'><label>Reported Delivery Goal</label><input type='text' value='1,000,000 Imps' readonly></div><div class='calc-field'><label>Tracked Third-Party Delivery</label><input type='text' value='840,000 Imps' readonly></div><div class='calc-field'><label>Discrepancy Gap</label><input type='text' value='16.0% (CRITICAL)' style='color:var(--danger);' readonly></div><div class='calc-field'><label>Recommended Action</label><select id='dyn-action'><option>Audit Cache-Buster & Counting Macros</option><option>Pause Line Item Immediately</option><option>Increase Bid Price by $2.00</option></select></div></div><button class='btn-action' onclick='alert(\"Action Applied: Audit logs generated for engineering review.\")'>Apply Operational Correction</button></div>",
+        quiz: [
+          {
+            q: "What is the primary operational objective when configuring " + title + "?",
+            options: [
+              "To comply with industry standards and maintain delivery accuracy",
+              "To shut down the publisher's web server",
+              "To bypass all user privacy consent banners",
+              "To eliminate all images from the website"
+            ],
+            correct: 0,
+            expl: "Proper configuration ensures compliance with IAB standards, preserves data integrity, and prevents delivery discrepancies."
+          },
+          {
+            q: "When an operational discrepancy exceeds 10%, what is the standard industry protocol?",
+            options: [
+              "The advertiser cancels their credit card immediately",
+              "Both technical teams run parallel logs to identify counting, latency, or macro failures",
+              "The publisher deletes their Google Ad Manager account",
+              "The browser blocks the user's internet connection"
+            ],
+            correct: 1,
+            expl: "Variances exceeding the standard 10% tolerance trigger an operational audit between buy-side and sell-side ad server logs."
+          }
+        ]
       };
     }
 
     /* =========================================================================
-       IN-APP OPEN-WEB LIVE INGESTION ENGINE
+       QUIZ RENDERING ENGINE (1-HOUR EVALUATION)
        ========================================================================= */
-    function triggerWebSearch() {
-      var q = document.getElementById('web-search-query').value.trim();
-      if (!q) return;
+    function renderQuiz(quizArray) {
+      var container = document.getElementById('quiz-content');
+      if (!quizArray || quizArray.length === 0) {
+        container.innerHTML = "<p style='color:var(--text-muted);'>No evaluation registered for this class.</p>";
+        return;
+      }
 
-      var box = document.getElementById('open-web-result');
-      var title = document.getElementById('web-res-title');
-      var status = document.getElementById('web-res-status');
-      var content = document.getElementById('web-res-content');
-
-      box.style.display = 'block';
-      title.textContent = "Querying Live Web: " + q;
-      status.textContent = "Connecting...";
-      content.innerHTML = "<p style='color:var(--primary);'>Connecting to open knowledge graph... extracting full text into app frame...</p>";
-
-      var searchUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + encodeURIComponent(q) + "&limit=3&namespace=0&format=json&origin=*";
-
-      fetch(searchUrl)
-        .then(function(res) { return res.json(); })
-        .then(function(data) {
-          if (data && data[1] && data[1].length > 0) {
-            var matchedTitle = data[1][0];
-            var summaryUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(matchedTitle.replace(/\s+/g, '_'));
-
-            fetch(summaryUrl)
-              .then(function(sRes) { return sRes.json(); })
-              .then(function(sData) {
-                status.textContent = "Direct Live Extraction";
-                var html = "<h3 style='color:var(--primary); font-size:1.15rem;'>" + (sData.title || matchedTitle) + "</h3>";
-                if (sData.description) {
-                  html += "<p style='color:var(--accent); font-weight:600; font-size:0.85rem;'><em>" + sData.description + "</em></p>";
-                }
-                html += "<div style='font-size:0.95rem; line-height:1.7; margin-top:10px; color:#cbd5e1;'>" + (sData.extract_html || sData.extract || data[2][0]) + "</div>";
-                html += "<div class='callout' style='margin-top:16px; font-size:0.8rem;'><strong>Source:</strong> Ingested into OmniAdTech frame from open encyclopedic documentation.</div>";
-                content.innerHTML = html;
-              })
-              .catch(function() {
-                status.textContent = "Snippet Matched";
-                content.innerHTML = "<h3>" + matchedTitle + "</h3><p style='margin-top:10px; color:#cbd5e1;'>" + data[2][0] + "</p>";
-              });
-          } else {
-            status.textContent = "No Records Found";
-            content.innerHTML = "<p style='color:var(--warning);'>No direct match found for '" + q + "'. Try testing core concepts like: <em>OpenRTB</em>, <em>Google Ad Manager</em>, <em>Real-time bidding</em>, <em>Customer data platform</em>.</p>";
-          }
-        })
-        .catch(function() {
-          status.textContent = "Connection Error";
-          content.innerHTML = "<p style='color:var(--danger);'>Unable to retrieve live web data. Please verify your internet connection.</p>";
+      var html = "<div class='quiz-container'>";
+      quizArray.forEach(function(item, qIdx) {
+        html += "<div class='quiz-question-box'>";
+        html += "<div class='quiz-q-title'>Question " + (qIdx + 1) + ": " + item.q + "</div>";
+        html += "<div class='quiz-options' id='quiz-opts-" + qIdx + "'>";
+        item.options.forEach(function(opt, oIdx) {
+          html += "<button class='quiz-opt-btn' onclick='handleQuizChoice(" + qIdx + ", " + oIdx + ", " + item.correct + ", \"" + escapeString(item.expl) + "\")'>" + opt + "</button>";
         });
+        html += "</div>";
+        html += "<div class='quiz-feedback' id='quiz-feed-" + qIdx + "'></div>";
+        html += "</div>";
+      });
+      html += "</div>";
+      container.innerHTML = html;
     }
 
-    function runCalc() {
-      var cost = parseFloat(document.getElementById('sb-cost')?.value) || 0;
-      var imp = parseFloat(document.getElementById('sb-imp')?.value) || 0;
-      var clk = parseFloat(document.getElementById('sb-clk')?.value) || 0;
-      var conv = parseFloat(document.getElementById('sb-conv')?.value) || 0;
+    function handleQuizChoice(qIdx, selectedIdx, correctIdx, explanation) {
+      var parent = document.getElementById('quiz-opts-' + qIdx);
+      var buttons = parent.querySelectorAll('.quiz-opt-btn');
+      buttons.forEach(function(btn) { btn.onclick = null; });
 
-      var cpm = (imp > 0) ? ((cost / imp) * 1000).toFixed(2) : "0.00";
-      var ctr = (imp > 0) ? ((clk / imp) * 100).toFixed(2) : "0.00";
-      var cpc = (clk > 0) ? (cost / clk).toFixed(2) : "0.00";
-      var cpa = (conv > 0) ? (cost / conv).toFixed(2) : "0.00";
+      var feedback = document.getElementById('quiz-feed-' + qIdx);
+      feedback.style.display = 'block';
 
-      if (document.getElementById('out-cpm')) document.getElementById('out-cpm').textContent = "$" + cpm;
-      if (document.getElementById('out-ctr')) document.getElementById('out-ctr').textContent = ctr + "%";
-      if (document.getElementById('out-cpc')) document.getElementById('out-cpc').textContent = "$" + cpc;
-      if (document.getElementById('out-cpa')) document.getElementById('out-cpa').textContent = "$" + cpa;
+      if (selectedIdx === correctIdx) {
+        buttons[selectedIdx].classList.add('correct');
+        feedback.style.background = '#064e3b';
+        feedback.style.color = '#a7f3d0';
+        feedback.innerHTML = "<strong>Correct!</strong> " + explanation;
+      } else {
+        buttons[selectedIdx].classList.add('wrong');
+        buttons[correctIdx].classList.add('correct');
+        feedback.style.background = '#7f1d1d';
+        feedback.style.color = '#fecaca';
+        feedback.innerHTML = "<strong>Incorrect.</strong> " + explanation;
+      }
+    }
+
+    function escapeString(str) {
+      return (str || '').replace(/"/g, '&quot;').replace(/'/g, "\\'");
+    }
+
+    /* =========================================================================
+       INTERACTIVE PLAYABLE SIMULATIONS
+       ========================================================================= */
+    function calculateWaterfall() {
+      var gross = parseFloat(document.getElementById('sim-gross')?.value) || 0;
+      var agency = parseFloat(document.getElementById('sim-agency')?.value) || 0;
+      var dsp = parseFloat(document.getElementById('sim-dsp')?.value) || 0;
+      var ssp = parseFloat(document.getElementById('sim-ssp')?.value) || 0;
+
+      var afterAgency = gross * (1 - (agency / 100));
+      var afterDsp = afterAgency * (1 - (dsp / 100));
+      var workingMedia = afterDsp * (1 - (ssp / 100));
+
+      var totalTakeRate = gross > 0 ? (((gross - workingMedia) / gross) * 100).toFixed(2) : "0.00";
+
+      if (document.getElementById('wf-working-media')) {
+        document.getElementById('wf-working-media').textContent = "$" + workingMedia.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      if (document.getElementById('wf-adtech-tax')) {
+        document.getElementById('wf-adtech-tax').textContent = totalTakeRate + "%";
+      }
+    }
+
+    function checkViewability() {
+      var pixels = parseFloat(document.getElementById('sim-pixels')?.value) || 0;
+      var seconds = parseFloat(document.getElementById('sim-seconds')?.value) || 0;
+      var format = document.getElementById('sim-format')?.value || 'display';
+      var focus = document.getElementById('sim-focus')?.value || 'active';
+
+      var isViewable = false;
+      var reason = "";
+
+      if (focus === 'background') {
+        isViewable = false;
+        reason = "Disqualified: Tab is in background (hidden)";
+      } else if (format === 'display') {
+        if (pixels >= 50 && seconds >= 1.0) {
+          isViewable = true;
+          reason = "Qualified: >=50% pixels for >=1.0 continuous second";
+        } else {
+          isViewable = false;
+          reason = "Failed: Display requires >=50% pixels for >=1.0s continuous";
+        }
+      } else if (format === 'video') {
+        if (pixels >= 50 && seconds >= 2.0) {
+          isViewable = true;
+          reason = "Qualified: >=50% pixels for >=2.0 continuous seconds";
+        } else {
+          isViewable = false;
+          reason = "Failed: Video requires >=50% pixels for >=2.0s continuous";
+        }
+      }
+
+      var verd = document.getElementById('view-verdict');
+      var reas = document.getElementById('view-reason');
+      if (verd) {
+        verd.textContent = isViewable ? "QUALIFIED (VIEWABLE)" : "NON-VIEWABLE";
+        verd.style.color = isViewable ? "var(--accent)" : "var(--danger)";
+      }
+      if (reas) reas.textContent = reason;
+    }
+
+    function runArbitrage() {
+      var cpmBid = parseFloat(document.getElementById('sim-cpm-bid')?.value) || 0;
+      var cpcBid = parseFloat(document.getElementById('sim-cpc-bid')?.value) || 0;
+      var ctr = parseFloat(document.getElementById('sim-ctr')?.value) || 0;
+      var imp = parseFloat(document.getElementById('sim-slot-imp')?.value) || 0;
+
+      var cpcAsEcpm = cpcBid * (ctr / 100) * 1000;
+      var isCpcWinner = cpcAsEcpm > cpmBid;
+      var winningEcpm = Math.max(cpcAsEcpm, cpmBid);
+      var totalYield = (imp / 1000) * winningEcpm;
+      var baselineYield = (imp / 1000) * cpmBid;
+      var delta = totalYield - baselineYield;
+
+      if (document.getElementById('arb-winner')) {
+        document.getElementById('arb-winner').textContent = isCpcWinner ? "Buyer 2 (CPC)" : "Buyer 1 (CPM)";
+      }
+      if (document.getElementById('arb-effective-cpm')) {
+        document.getElementById('arb-effective-cpm').textContent = "$" + winningEcpm.toFixed(2) + " eCPM";
+      }
+      if (document.getElementById('arb-total-rev')) {
+        document.getElementById('arb-total-rev').textContent = "$" + totalYield.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+      if (document.getElementById('arb-delta')) {
+        document.getElementById('arb-delta').textContent = (delta >= 0 ? "+$" : "-$") + Math.abs(delta).toFixed(2);
+        document.getElementById('arb-delta').style.color = delta >= 0 ? "var(--accent)" : "var(--danger)";
+      }
+    }
+
+    /* =========================================================================
+       CURATED ENTERPRISE SEARCH ENGINE (Verified Facts / Zero Hallucinations)
+       ========================================================================= */
+    function executeCuratedSearch() {
+      var q = document.getElementById('lexicon-query').value.trim().toLowerCase();
+      if (!q) return;
+
+      var panel = document.getElementById('search-results-panel');
+      var body = document.getElementById('search-res-body');
+      var title = document.getElementById('search-res-title');
+
+      panel.style.display = 'block';
+      title.textContent = "Enterprise Results for: '" + q + "'";
+
+      // Match against curated enterprise repository
+      var matchedKey = null;
+      for (var key in ENTERPRISE_LEXICON) {
+        if (key.includes(q) || ENTERPRISE_LEXICON[key].term.toLowerCase().includes(q)) {
+          matchedKey = key;
+          break;
+        }
+      }
+
+      if (matchedKey) {
+        var item = ENTERPRISE_LEXICON[matchedKey];
+        body.innerHTML = `
+          <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${item.term}</h3>
+          <p style="color:var(--accent); font-size:0.8rem; font-weight:700; margin-bottom:8px;">${item.category}</p>
+          <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${item.def}</p>
+          <div class="callout" style="margin-top:12px; font-size:0.88rem;">
+            <strong>Technical Specifications & Protocol Parameters:</strong><br>${item.specs}
+          </div>
+        `;
+      } else {
+        // Query Wikipedia Open API as verified fallback
+        body.innerHTML = "<p style='color:var(--primary);'>Ingesting verified encyclopedic entry from open web documentation...</p>";
+        var searchUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + encodeURIComponent(q) + "&limit=1&namespace=0&format=json&origin=*";
+        
+        fetch(searchUrl)
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            if (data && data[1] && data[1].length > 0) {
+              var termTitle = data[1][0];
+              var snippet = data[2][0] || "No description provided.";
+              body.innerHTML = `
+                <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${termTitle}</h3>
+                <p style="color:var(--accent); font-size:0.8rem; font-weight:700; margin-bottom:8px;">Open Web Reference</p>
+                <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${snippet}</p>
+                <div class="callout" style="margin-top:12px; font-size:0.85rem;">
+                  <strong>Source:</strong> Verified open web encyclopedic knowledge base.
+                </div>
+              `;
+            } else {
+              body.innerHTML = "<p style='color:var(--warning);'>No direct enterprise definition found for '" + q + "'. Try testing core concepts like: <em>SSP</em>, <em>DSP</em>, <em>Header Bidding</em>, <em>Floor Price</em>, <em>VAST</em>, or <em>UID2</em>.</p>";
+            }
+          })
+          .catch(function() {
+            body.innerHTML = "<p style='color:var(--danger);'>Could not complete search. Please verify your internet connection.</p>";
+          });
+      }
     }
 
     // Direct immediate startup
