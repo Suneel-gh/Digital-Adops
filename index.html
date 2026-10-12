@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>AdOps Mastery Engine | 180-Day Professional Academy</title>
+  <title>AdOps Mastery Core | 180-Day Professional Academy</title>
   <style>
     :root {
       --bg-core: #090d16;
@@ -50,7 +50,7 @@
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     }
 
-    /* Sticky App Header */
+    /* App Header */
     header {
       padding: 16px 20px;
       background: rgba(17, 24, 39, 0.96);
@@ -192,7 +192,7 @@
       cursor: pointer;
     }
 
-    /* Lesson Navigation Explorer */
+    /* Module Navigation Explorer */
     .submodule-list {
       display: flex;
       flex-direction: column;
@@ -214,7 +214,7 @@
       background: var(--bg-card-hover);
     }
 
-    /* Lesson Reader View (70/20/5/5 Content Display) */
+    /* Lesson Reader View (70/20/5/5 Content Engine) */
     .article-container {
       font-size: 0.95rem;
       color: #cbd5e1;
@@ -253,7 +253,7 @@
       margin-bottom: 8px;
     }
 
-    /* 20% Diagram Block */
+    /* 20% Diagram Panel */
     .diagram-panel {
       background: #090e17;
       border: 1px solid var(--border-line);
@@ -270,7 +270,7 @@
       font-weight: 500;
     }
 
-    /* 5% Interactive Sandbox Box */
+    /* 5% Interactive Sandbox */
     .interactive-box {
       background: #0d1527;
       border: 1px solid var(--accent-blue);
@@ -370,7 +370,7 @@
       line-height: 1.4;
     }
 
-    /* Global Search Box UI */
+    /* Global Search & In-App Wiki Container */
     .search-bar-wrap {
       display: flex;
       gap: 8px;
@@ -422,6 +422,26 @@
       font-size: 0.9rem;
       font-weight: 600;
     }
+
+    /* In-App Wiki Reader Styles */
+    .wiki-content-box {
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .wiki-content-box a {
+      color: var(--accent-cyan);
+      pointer-events: none; /* Prevent navigating away inside wiki HTML */
+      text-decoration: underline;
+    }
+
+    .wiki-content-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 12px 0;
+    }
   </style>
 </head>
 <body>
@@ -429,7 +449,7 @@
     
     <header>
       <div class="brand-title">AdOps Execution Core</div>
-      <div class="badge-status">180-Day Global LMS</div>
+      <div class="badge-status">180-Day Professional LMS</div>
     </header>
 
     <main>
@@ -512,7 +532,7 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
               </div>
               <div class="tile-title">5. Jargons</div>
-              <div class="tile-subtitle">150+ Protocols: OpenRTB, VAST, SPO, UID2 & Floors</div>
+              <div class="tile-subtitle">150+ Technical Protocols & Ecosystem Definitions</div>
             </div>
             <div class="tile-footer">
               <span style="color:var(--accent-violet);">OPEN ACCESS</span>
@@ -542,11 +562,11 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </div>
               <div class="tile-title">7. Search</div>
-              <div class="tile-subtitle">Global Open Web & Wikipedia Live Retrieval</div>
+              <div class="tile-subtitle">Global Open Web & Wikipedia In-App Reader</div>
             </div>
             <div class="tile-footer">
-              <span style="color:var(--accent-cyan);">LIVE REST</span>
-              <span>Direct Query</span>
+              <span style="color:var(--accent-cyan);">IN-APP STREAM</span>
+              <span>Live Content</span>
             </div>
           </div>
 
@@ -589,12 +609,12 @@
           <div style="font-size:0.85rem; font-weight:700; color:var(--text-sub);" id="reader-breadcrumb">Lesson Details</div>
         </div>
 
-        <div class="api-badge" id="reader-data-source">Live Knowledge Ingestion</div>
+        <div class="api-badge" id="reader-data-source">Direct Knowledge Stream</div>
         <div id="reader-stream" class="article-container"></div>
 
         <div style="margin-top:30px;">
           <button class="back-btn" style="width:100%; padding:14px; background:var(--accent-blue); border:none; color:#fff;" onclick="markLessonComplete()">
-            Mark Lesson Complete & Save Progress
+            Mark Day Complete & Save Progress
           </button>
         </div>
       </section>
@@ -612,7 +632,7 @@
       </section>
 
       <!-- ==========================================
-           TILE 6: CERTIFICATION HUB (4 Sub-Blocks)
+           TILE 6: CERTIFICATION HUB
            ========================================== -->
       <section id="cert-hub-view" class="view-screen">
         <div class="view-header">
@@ -644,7 +664,7 @@
       </section>
 
       <!-- ==========================================
-           TILE 7: GLOBAL OPEN WEB SEARCH
+           TILE 7: GLOBAL OPEN WEB SEARCH (WITH IN-APP READER)
            ========================================== -->
       <section id="search-view" class="view-screen">
         <div class="view-header">
@@ -652,11 +672,21 @@
           <div style="font-size:0.9rem; font-weight:700;">Global Open Web Search</div>
         </div>
         <div class="search-bar-wrap">
-          <input type="text" class="search-input" id="global-web-query" placeholder="Search Google / Wikipedia (e.g. Header Bidding)..." />
+          <input type="text" class="search-input" id="global-web-query" placeholder="Search Google / Wikipedia (e.g. Real-Time Bidding)..." />
           <button class="search-action-btn" onclick="executeGlobalSearch()">Search</button>
         </div>
         <div id="search-loader" class="loader">Querying Live Knowledge API...</div>
         <div id="global-search-results" style="display:flex; flex-direction:column; gap:12px;"></div>
+      </section>
+
+      <!-- IN-APP WIKIPEDIA ARTICLE READER -->
+      <section id="inapp-wiki-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('search-view')">← Search Results</button>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--text-sub);" id="wiki-reader-title">Knowledge Document</div>
+        </div>
+        <div class="api-badge">In-App Live Wikipedia Encyclopedia</div>
+        <div id="wiki-reader-body" class="wiki-content-box"></div>
       </section>
 
       <!-- ==========================================
@@ -680,30 +710,32 @@
 
   <script>
     /* =========================================================================
-       180-DAY CURRICULUM ARCHITECTURE (4 GATED BLOCKS)
+       COMPLETE 20-DAY DISCRETE BEGINNER CURRICULUM + ADVANCED TRACKS
        ========================================================================= */
 
     const CURRICULUM_CATALOG = {
       beginner: {
         title: "1. Beginner (Days 1 to 20)",
-        desc: "Marketing Foundations, Value Chains, Digital Channels & Media Math Fundamentals.",
+        desc: "20 Distinct 8-Hour Daily Operational Modules: Foundations, Channels, Media Math, and Ecosystem Map.",
         total: 20,
         completed: 0,
         unlocked: true,
         submodules: [
           {
             id: "b1",
-            title: "What is Marketing? Needs, Products, Customers & Value",
+            dayNum: "Day 1",
+            title: "What is Marketing? Needs, Products, Customers, and Value",
             wikiTopic: "Marketing",
             coreText: [
-              "At its fundamental level, marketing is the systematic process through which an organization identifies human and social needs, conceives valuable products or services to address those needs, and communicates that value proposition to target audiences to build sustainable commercial relationships. Rather than merely being a promotional mechanism, marketing governs product design, pricing elasticity, distribution logistics, and market feedback loops. Peter Drucker famously stated that business enterprise has only two fundamental functions: marketing and innovation, because marketing produces revenue while all other functions produce costs.",
+              "At its fundamental level, marketing is the systematic business discipline through which an organization identifies human and social needs, conceives valuable products or services to address those needs, and communicates that value proposition to target audiences to build sustainable commercial relationships. Rather than merely being a promotional mechanism, marketing governs product design, pricing elasticity, distribution logistics, and market feedback loops. Peter Drucker famously stated that a business enterprise has only two fundamental functions: marketing and innovation, because marketing produces revenue while all other functions produce costs.",
               "In practical business operations, the marketing discipline operates through a continuous four-stage cycle: market research (understanding customer pain points, total addressable market, and competitor positioning), strategy formulation (segmentation, targeting, and value proposition design), execution (tactical implementation across product, price, place, and promotion), and measurement (tracking customer acquisition costs, lifetime value, and market penetration). Understanding this foundational premise is critical for digital ad operations professionals, because digital advertising does not exist in a vacuum; it is the scalable execution vehicle through which marketing communicates value to receptive audiences.",
               "Value in marketing is defined as the customer's perceived benefits relative to the total financial and emotional costs of acquisition. Modern digital marketing amplifies this value exchange by drastically reducing information friction. A digital marketer must bridge customer intent with organizational supply, establishing transparent feedback channels through user interactions, behavioral event tracking, and data-driven engagement funnels."
             ]
           },
           {
             id: "b2",
-            title: "What is Advertising? Advertising vs. Marketing vs. Sales",
+            dayNum: "Day 2",
+            title: "What is Advertising? Advertising versus Marketing versus Sales",
             wikiTopic: "Advertising",
             coreText: [
               "While frequently used interchangeably by newcomers, marketing, advertising, and sales occupy distinct operational layers within an enterprise revenue organization. Marketing represents the overarching strategic architecture: researching markets, defining personas, determining brand positioning, and shaping the product offering. Advertising is a paid, non-personal tactical communication subset of marketing designed to deliver persuasive brand messaging at scale across chosen media channels. Sales, conversely, is the direct, conversational process of converting engaged prospective buyers into paying customers.",
@@ -713,22 +745,200 @@
           },
           {
             id: "b3",
-            title: "The Transition from Traditional to Digital Advertising",
-            wikiTopic: "Digital_marketing",
+            dayNum: "Day 3",
+            title: "Traditional Marketing: Newspapers, Television, Radio, Billboards, Magazines",
+            wikiTopic: "Traditional_media",
             coreText: [
-              "The history of advertising experienced its most profound disruption with the shift from analog mediums (newspapers, linear television, AM/FM radio, billboards) to networked digital environments. Traditional advertising was characterized by broad audience aggregation, static creative formats, manual insertion order negotiations, high financial barriers to entry, and notoriously opaque measurement models. Marketers relied on John Wanamaker's maxim: 'Half the money I spend on advertising is wasted; the trouble is I don't know which half.' Television ratings relied on sampled panel surveys like Nielsen, while print circulations provided estimates without actual readership verification.",
-              "The digital transition unlocked five structural advantages: unprecedented hyper-targeting capabilities, real-time campaign performance measurement, programmatic automation, bid-level pricing flexibility, and interactive creative formats. Instead of purchasing an entire magazine back cover seen by millions of uninterested consumers, a digital advertiser purchases impressions on a 1-to-1 basis, targeting specific user segments identified through search intent, browsing history, geographic coordinates, and in-market signals.",
-              "Crucially, digital transformed media buying from a slow, paper-driven process requiring weeks of advance planning into real-time programmatic auctions executed in under 100 milliseconds. This paradigm shift democratized advertising for small businesses while creating the complex ad technology ecosystem—comprising ad servers, DSPs, SSPs, and verification platforms—that ad operations professionals manage today."
+              "Traditional marketing encompasses the legacy analog channels that dominated commercial advertising throughout the twentieth century: print newspapers, broadcast television, AM/FM radio, out-of-home (OOH) billboards, and glossy magazines. These channels relied heavily on physical media distribution networks and fixed geographic reach. Media buyers engaged in manual negotiations months in advance, committing substantial capital to reserve prime time slots or full-page print spreads based on projected circulation or estimated ratings points.",
+              "The structural hallmark of traditional advertising was broad, non-personalized broadcast dissemination. When a brand purchased a television commercial during a primetime sporting event, every viewer within that regional broadcast footprint received the identical creative execution, regardless of age, household income, or personal interest. While this model generated unprecedented cultural resonance and rapid mass-market brand awareness, it resulted in massive impression waste on consumers who had zero propensity to buy.",
+              "Furthermore, measurement in traditional media was slow and probabilistic. Agencies relied on sampled panel surveys like Nielsen ratings, diary entries for radio listenership, or audited magazine circulation counts to approximate campaign exposure. The operational lag between campaign launch and delivery reporting was measured in weeks or months, completely preventing real-time tactical optimizations or automated frequency management."
             ]
           },
           {
             id: "b4",
-            title: "The Digital Triad: Advertisers, Publishers & Ad Networks",
-            wikiTopic: "Online_advertising",
+            dayNum: "Day 4",
+            title: "The Transition from Traditional to Digital Advertising",
+            wikiTopic: "Digital_marketing",
             coreText: [
-              "The digital advertising economy functions around a structural triad: the demand side (advertisers and agencies), the supply side (publishers and media owners), and the technological intermediaries connecting them. Advertisers possess capital and marketing goals (such as brand awareness, app installs, or lead generation) and seek qualified user attention. Publishers build valuable content—such as news journalism, streaming video, mobile gaming, or software utilities—to aggregate high-intent audiences and monetize ad space.",
-              "As web pages and audience traffic expanded exponentially in the early 2000s, direct sales forces could no longer sell all available inventory. Publishers faced massive remnant inventory, while media planners struggled to manually contract with thousands of individual websites. This led to the emergence of ad networks, which acted as wholesale brokers by aggregating unsold impressions from thousands of publishers and selling packaged packages to media buyers on a cost-per-click or bulk CPM basis.",
-              "This initial aggregation model formed the predecessor to modern programmatic exchanges. While ad networks solved immediate liquidity challenges, they introduced opacity regarding actual placement quality and arbitrage markups. This catalyzed the development of automated real-time bidding protocols and transparency-focused platforms like Supply-Side Platforms (SSPs) and Demand-Side Platforms (DSPs)."
+              "The transition from analog advertising to networked digital channels represents the most radical paradigm shift in modern commercial history. Catalyzed by the expansion of the World Wide Web in the late 1990s, advertising transformed from static, paper-and-broadcast formats into dynamic, interactive, and software-mediated environments. The initial digital ad formats—such as the iconic 1994 HotWired banner ad—mirrored print ads by displaying static rectangular images on web pages, but they introduced a revolutionary feature: users could click directly on the ad to navigate to the advertiser's storefront.",
+              "As internet speeds accelerated and mobile smartphones achieved global ubiquity, consumer attention shifted permanently away from print newspapers and broadcast television toward algorithmic search engines, social media platforms, and on-demand video streaming. This shift forced brands to redirect advertising budgets from offline media into digital ad tech ecosystems. Traditional publishers experienced severe circulation declines, prompting them to transition to online content models financed by digital display and video ads.",
+              "This technological evolution transformed advertising from a creative-dominated field into an engineering- and data-driven discipline. Rather than relying on guesswork, media planners gained access to granular digital tracking, automated inventory pricing, dynamic creative rendering, and programmatic auctions executed in under 100 milliseconds."
+            ]
+          },
+          {
+            id: "b5",
+            dayNum: "Day 5",
+            title: "Why Businesses Use Digital Marketing: Reach, Targeting, Measurement, Cost, Speed",
+            wikiTopic: "Performance_marketing",
+            coreText: [
+              "Modern enterprises rely on digital marketing over traditional media due to five core operational advantages: global and niche reach, deterministic audience targeting, real-time closed-loop measurement, flexible cost barriers, and rapid operational speed. In terms of reach, a brand can simultaneously scale to billions of worldwide users across search and social platforms while retaining the precision to isolate micro-segments, such as certified radiologists in Chicago looking for new diagnostic software.",
+              "Deterministic audience targeting eliminates traditional broadcast waste. Digital platforms allow advertisers to target consumers based on explicit search intent (Google Search), declared demographics and professional titles (LinkedIn), social interest graphs (Meta), and real-time geographic coordinates. Furthermore, digital advertising democratizes access to media markets; unlike linear television, which requires five- or six-figure minimum commitments, a small business can launch a programmatic campaign with a budget of just five dollars per day.",
+              "Measurement and operational agility provide the decisive advantage for digital ad operations. Every ad impression, user click, video quartile completion, and conversion event is logged with millisecond timestamps. Ad operations specialists can launch a campaign, review delivery trends within hours, and immediately adjust bids, swap underperforming creative assets, or tighten geographic parameters without canceling contracts or waiting for end-of-month reporting."
+            ]
+          },
+          {
+            id: "b6",
+            dayNum: "Day 6",
+            title: "Marketing Objectives: Awareness, Consideration, Leads, Conversions, Retention",
+            wikiTopic: "Conversion_funnel",
+            coreText: [
+              "Every commercial ad campaign must align with a specific tier of the marketing conversion funnel: Brand Awareness (Top of Funnel / ToFu), Consideration (Middle of Funnel / MoFu), or Direct Conversions and Retention (Bottom of Funnel / BoFu). Awareness campaigns introduce the brand or new product to a broad target audience, prioritizing metrics such as reach, frequency, impressions, and video completion rates (VCR) over immediate transactional sales.",
+              "Consideration campaigns target consumers who recognize their core problem and are actively researching competitive solutions. These campaigns deliver detailed educational messaging—such as product comparison guides, case studies, or interactive webinars—evaluated through engagement metrics, click-through rates (CTR), website dwell time, and soft lead form fills. At this stage, ad operations teams frequently deploy retargeting line items to keep the brand top-of-mind during lengthy evaluation cycles.",
+              "Conversion and retention campaigns focus on driving revenue and long-term customer lifetime value (LTV). Conversion objectives focus on purchases, credit card submissions, software subscriptions, or qualified inbound sales calls, measured through Cost Per Acquisition (CPA) and Return on Ad Spend (ROAS). Retention campaigns target existing customers to encourage repeat purchases, cross-sell related products, and prevent subscription churn."
+            ]
+          },
+          {
+            id: "b7",
+            dayNum: "Day 7",
+            title: "Week 1 Revision, Practical Quiz, and Traditional vs. Digital Comparative Exercise",
+            wikiTopic: "Media_planning",
+            coreText: [
+              "Week 1 synthesizes the foundational pillars of media buying. The core takeaway is that digital advertising is not merely an updated version of traditional media; it is a software-driven, auction-based, and performance-measured ecosystem. A traditional television commercial delivers broad emotional impact, but a digital campaign can identify an engaged user, serve a sequential video creative, retarget them on a mobile app, and track an e-commerce purchase on their desktop browser.",
+              "In operational environments, comparative exercises require media planners to balance offline reach against digital precision. For high-consideration enterprise software, offline billboards along commuter corridors build initial brand legitimacy, but the actual acquisition pipeline depends entirely on targeted search, programmatic display, and LinkedIn sponsored content.",
+              "As an ad operations specialist, mastering this conceptual framework helps you understand campaign briefs. When an incoming order specifies brand awareness as its primary objective, you know to optimize line items for viewable impressions and low CPMs rather than mistakenly dropping bids due to lower conversion volumes."
+            ]
+          },
+          {
+            id: "b8",
+            dayNum: "Day 8",
+            title: "Digital Marketing Ecosystem and Full Channel Overview",
+            wikiTopic: "Digital_marketing_system",
+            coreText: [
+              "The modern digital marketing ecosystem is a multifaceted matrix of paid, owned, and earned media channels. Owned media consists of channels directly controlled by the enterprise, including the corporate website, mobile applications, and customer email lists. Earned media encompasses organic public relations, word-of-mouth recommendations, social media mentions, and third-party reviews. Paid media represents all channels where the brand pays to place its message in front of an audience, forming the core operational domain of ad operations teams.",
+              "Paid media is divided into five dominant channels: Search Engine Marketing (paid search on Google and Bing), Paid Social Advertising (Meta, TikTok, LinkedIn, X), Programmatic Display and Video (banners and video served across independent publishers), Connected TV (streaming apps on Roku, Apple TV, and smart TVs), and Retail Media Networks (Amazon Ads, Walmart Connect). Each channel utilizes distinct auction dynamics, creative requirements, and targeting capabilities.",
+              "Understanding how these channels interconnect is essential for cross-channel media attribution. A customer rarely converts after seeing a single ad; they typically view a CTV video ad on their living room television, click a display retargeting banner on their tablet, and ultimately convert after executing a branded search query on their work laptop."
+            ]
+          },
+          {
+            id: "b9",
+            dayNum: "Day 9",
+            title: "Search Engine Optimization (SEO) and Organic Search Dynamics",
+            wikiTopic: "Search_engine_optimization",
+            coreText: [
+              "Search Engine Optimization (SEO) is the technical and editorial practice of optimizing websites to earn high-ranking visibility on unpaid, organic search engine results pages (SERPs). Search engines like Google utilize automated crawlers (spiders) to index billions of web pages, evaluating them using proprietary ranking algorithms that assess content relevance, website architecture, page loading speed, mobile usability, and domain authority via inbound backlinks.",
+              "SEO is categorized into on-page SEO (optimizing title tags, header hierarchy, keyword density, and schema markup), technical SEO (managing XML sitemaps, canonical tags, HTTPS security, and Core Web Vitals), and off-page SEO (earning high-quality editorial links and brand citations). Organic search captures users at the moment of intent, delivering high conversion rates without recurring media costs per click.",
+              "While SEO does not involve direct media spend, ad operations and performance teams collaborate closely with SEO specialists. Organic search performance reveals high-converting search keywords that can be immediately targeted in paid search campaigns, while paid search test results provide rapid keyword validation for long-term SEO content investments."
+            ]
+          },
+          {
+            id: "b10",
+            dayNum: "Day 10",
+            title: "Search Engine Marketing (SEM), Paid Search, Keywords, and Search Ads",
+            wikiTopic: "Search_engine_marketing",
+            coreText: [
+              "Search Engine Marketing (SEM) refers specifically to paid text advertising on search engines like Google and Microsoft Bing. When a user enters a query, the search engine holds a real-time generalized second-price auction among participating advertisers. Unlike display advertising, which relies on interruptive targeting, search advertising captures explicit user intent: the consumer directly types what they need into the search bar.",
+              "Paid search operates on an auction formula balancing Max CPC Bid with Quality Score—a composite metric assessing expected click-through rate (CTR), ad relevance to the search query, and landing page experience. An advertiser with a high Quality Score can secure top position at a lower cost than a competitor with an irrelevant ad bidding twice as much. Keyword match types (Exact Match, Phrase Match, and Broad Match) dictate how closely a user's search query must align with the advertiser's targeted keyword.",
+              "Ad operations specialists running search campaigns manage keyword negative lists (excluding irrelevant search terms that waste budget), configure ad extensions (sitelinks, callouts, structured snippets), and deploy automated smart bidding strategies (such as Target CPA and Target ROAS) driven by platform machine learning."
+            ]
+          },
+          {
+            id: "b11",
+            dayNum: "Day 11",
+            title: "Social Media Marketing and Paid Social Advertising",
+            wikiTopic: "Social_media_marketing",
+            coreText: [
+              "Paid social advertising involves placing sponsored content within social media feeds and stories across platforms like Meta (Facebook and Instagram), TikTok, LinkedIn, Pinterest, and X. While search captures explicit intent, paid social generates implicit demand, using detailed user profiles to present compelling video and carousel ads to receptive consumers during active browsing.",
+              "Social ad platforms operate closed advertising environments often referred to as 'walled gardens.' Because users log into social apps across mobile and desktop devices with verified identities, social platforms possess rich first-party demographic, interest, and behavioral data. Advertisers leverage this data to build custom audiences (matching hashed customer email lists) and lookalike audiences (using algorithmic modeling to find new prospects that resemble their highest-value existing buyers).",
+              "Creative fatigue occurs rapidly in paid social environments. Unlike search ads, which remain effective as long as users search for the keyword, social feed ads experience declining click-through rates after an audience sees the same visual asset two or three times. Ad operations teams must maintain rigorous creative refresh pipelines, rotating new aspect ratios (9:16 vertical video for Reels/Stories vs. 1:1 square for feed posts) on a weekly basis."
+            ]
+          },
+          {
+            id: "b12",
+            dayNum: "Day 12",
+            title: "Display, Native, Video, Audio, and Connected TV (CTV) Advertising",
+            wikiTopic: "Digital_display_advertising",
+            coreText: [
+              "Beyond search and social walled gardens lies the open web: the millions of independent websites, mobile apps, streaming music platforms, and smart TV apps that monetize through display, native, video, audio, and connected TV advertising. Display advertising consists of standardized IAB visual banners (e.g., 300x250, 728x90, 300x600) embedded in publisher page layouts, providing broad brand presence across desktop and mobile screens.",
+              "Native advertising matches the visual form and editorial function of the publisher's site, appearing as in-feed sponsored articles or content recommendation widgets (via networks like Taboola and Outbrain). Video advertising is bifurcated into instream video (pre-roll, mid-roll, post-roll within video players) and outstream video (autoplay video units expanding within editorial articles). Digital audio ads stream across platforms like Spotify and Pandora, reaching users in hands-free settings like driving or working out.",
+              "Connected TV (CTV) represents the fastest-growing programmatic segment, delivering full-screen, non-skippable video ads to television sets connected via smart TV operating systems or streaming devices. CTV merges the visual scale of traditional television with digital frequency capping, programmatic audience targeting, and household graph attribution."
+            ]
+          },
+          {
+            id: "b13",
+            dayNum: "Day 13",
+            title: "Email Marketing, Affiliate Marketing, Influencer Marketing, and Content Marketing",
+            wikiTopic: "Affiliate_marketing",
+            coreText: [
+              "A mature digital marketing strategy incorporates specialized performance channels that complement display and search: email marketing, affiliate marketing, influencer partnerships, and content marketing. Email marketing represents a direct owned communication channel that delivers high ROI by bypassing third-party platform algorithms to engage opted-in customer lists with automated lifecycle sequences, product updates, and personalized offers.",
+              "Affiliate marketing is a performance-based revenue-sharing channel where external publishers (affiliates, coupon aggregators, review bloggers) promote an advertiser's products and earn commissions only when a verified transaction occurs. This model operates primarily on a Cost Per Acquisition (CPA) basis, tracked via affiliate tracking links, referral cookies, and specialized affiliate networks (e.g., CJ Affiliate, Impact, Rakuten).",
+              "Influencer marketing leverages creator authority on platforms like YouTube and Instagram to deliver organic product endorsements, while content marketing builds long-term organic authority through whitepapers, research reports, and educational articles. Ad operations teams frequently support these channels by setting up tracking parameters, verifying redirect chains, and retargeting audiences exposed to influencer content."
+            ]
+          },
+          {
+            id: "b14",
+            dayNum: "Day 14",
+            title: "Channel Comparison Exercise: Selecting Channels for Diverse Business Objectives",
+            wikiTopic: "Marketing_mix",
+            coreText: [
+              "Selecting the appropriate mix of digital channels requires aligning business objectives, sales cycle length, unit economics, and target audience behavior. A direct-to-consumer fashion brand selling $40 sunglasses requires a completely different channel allocation than an enterprise cybersecurity firm selling annual software contracts worth $250,000.",
+              "For impulse, low-friction consumer purchases, paid social (Meta, TikTok) and programmatic display drive rapid visual discovery, while search captures high-intent branded queries. Conversely, enterprise B2B sales cycles require high-consideration channels: LinkedIn sponsored content targeting specific job titles, content marketing whitepapers to capture business emails, and targeted search ads capturing high-intent category terms.",
+              "In ad operations, understanding channel allocation allows you to effectively structure budgets, pacing profiles, and tracking models. If an executive allocates an entire budget to programmatic display expecting immediate direct conversions without a retargeting structure or search capture strategy, the ad ops lead must explain how display drives awareness and assist conversions rather than last-click sales."
+            ]
+          },
+          {
+            id: "b15",
+            dayNum: "Day 15",
+            title: "The Demand Side: Advertisers, Brands, Agencies, and Marketing Teams",
+            wikiTopic: "Advertising_agency",
+            coreText: [
+              "The demand side represents the source of capital in the digital advertising ecosystem. It begins with the advertiser (the brand or enterprise with a product to sell), which allocates marketing budgets to achieve commercial growth targets. Internal marketing teams define the overarching strategy, brand guidelines, and performance KPIs.",
+              "Many brands partner with full-service or specialized advertising agencies to plan and execute campaigns. Within an agency, media planners identify optimal channel mixes and build media plans; creative teams design visual banners and video assets; and media buyers interface directly with platforms and publishers. Increasingly, large brands maintain in-house ad operations and programmatic teams to maintain direct ownership of their customer data.",
+              "Ad operations specialists on the demand side are responsible for campaign trafficking, pixel implementation, tag testing, audience segment activation inside Demand-Side Platforms (DSPs), and reconciling billing numbers with third-party verification reports. They ensure every dollar of the client's budget delivers against contracted targeting and pacing specifications."
+            ]
+          },
+          {
+            id: "b16",
+            dayNum: "Day 16",
+            title: "The Supply Side: Publishers, Websites, Apps, and Media Owners",
+            wikiTopic: "Publisher_(publishing)",
+            coreText: [
+              "The supply side comprises the content creators and media owners who produce digital experiences that attract user attention: news websites (The New York Times), streaming platforms (Hulu), mobile gaming apps, search portals, and niche blogs. Publishers generate ad inventory—the physical or digital space available for commercial advertisements across their web pages and applications.",
+              "Publishers monetize inventory through direct sales (internal sales teams selling sponsorships and guaranteed campaigns to advertisers) and programmatic sales (connecting their ad servers to programmatic exchanges to auction unsold remnant space). Enterprise publishers maintain yield management and ad operations teams focused on optimizing inventory layouts, reducing page latency, and setting price floors to maximize revenue.",
+              "Supply-side ad operations specialists manage the publisher's primary ad server (such as Google Ad Manager), deploy header bidding wrappers (like Prebid.js), configure Supply-Side Platforms (SSPs), and troubleshoot issues like broken page layouts, rogue auto-redirecting ads, or tag conflicts that degrade user experience."
+            ]
+          },
+          {
+            id: "b17",
+            dayNum: "Day 17",
+            title: "End Users, Audiences, Traffic, and Inventory Units",
+            wikiTopic: "Web_traffic",
+            coreText: [
+              "The currency of the advertising ecosystem is consumer attention, represented technically as web traffic, active users, and ad inventory. An end user visiting a publisher's website or mobile app generates a session. Each time that user loads a page containing ad slots, those slots create distinct impression opportunities.",
+              "Inventory is characterized by position, format, and audience context. Above-the-fold (ATF) inventory sits within the initial viewport visible before the user scrolls, commanding premium CPMs due to high viewability. Below-the-fold (BTF) inventory requires scrolling to be seen, resulting in lower clearing prices. Video ad slots command the highest CPMs due to full sensory engagement, while standard display banners provide scale.",
+              "Audiences are categorized into first-party data (data collected directly by the publisher or brand through consented user interactions), second-party data (another company's first-party data shared through direct partnership), and third-party data (aggregated audience segments purchased from external data brokers). Ad ops teams manage audience lists inside Data Management Platforms (DMPs) or Customer Data Platforms (CDPs)."
+            ]
+          },
+          {
+            id: "b18",
+            dayNum: "Day 18",
+            title: "Operational Roles: Ad Operations, Media Planning, Campaign Management, and Analytics",
+            wikiTopic: "Advertising_operations",
+            coreText: [
+              "Flawless campaign execution relies on clear division of labor across four core operational functions: Media Planning, Campaign Management, Ad Operations (AdOps), and Analytics. Media planners analyze historical benchmarks, market research, and audience data to determine which channels, platforms, and publisher sites should be included in the media plan.",
+              "Campaign managers oversee day-to-day client communications, manage deliverables, monitor budget burn rates, and ensure the project remains aligned with the client brief. Ad operations specialists handle the technical execution: QAing creative assets, issuing and implementing tracking pixels, configuring line items in ad servers, setting targeting rules, testing redirect chains, and resolving delivery errors.",
+              "Analytics teams synthesize performance data from ad servers, DSPs, web analytics tools, and attribution platforms to uncover why campaigns performed as they did. They build executive dashboards in tools like Looker Studio or Tableau, run statistical incrementality models, and deliver data-backed recommendations for future campaign flights."
+            ]
+          },
+          {
+            id: "b19",
+            dayNum: "Day 19",
+            title: "The Programmatic Stack: Ad Network, Ad Exchange, Ad Server, SSP, and DSP",
+            wikiTopic: "Supply-side_platform",
+            coreText: [
+              "The programmatic ad tech stack consists of five interconnected systems that automate media transactions: Ad Servers, Ad Networks, Ad Exchanges, Supply-Side Platforms (SSPs), and Demand-Side Platforms (DSPs). An Ad Server (e.g., Google Ad Manager) is the central decision engine that hosts creatives, executes line-item priority rules, and tracks impression events.",
+              "A Demand-Side Platform (DSP, e.g., The Trade Desk, DV360) is the buyer's interface, allowing advertisers to purchase ad impressions across millions of sites through automated real-time auctions. A Supply-Side Platform (SSP, e.g., Magnite, PubMatic) is the publisher's monetization engine, connecting ad slots to multiple buyers and enforcing minimum CPM floor prices.",
+              "An Ad Exchange is the central digital marketplace where SSPs submit bid requests and DSPs respond with bids in an open real-time auction. While early ad networks acted as closed intermediaries that bundled inventory with manual markups, modern exchanges and SSP/DSP integrations operate automated, transparent real-time bidding (RTB) auctions governed by standardized OpenRTB protocols."
+            ]
+          },
+          {
+            id: "b20",
+            dayNum: "Day 20",
+            title: "Commercial Models: Direct Insertion Orders (IO) versus Programmatic Transactions",
+            wikiTopic: "Insertion_order",
+            coreText: [
+              "Advertisers and publishers transact business through two primary commercial models: direct sales agreements and automated programmatic transactions. Direct sales involve a formal, legally binding Insertion Order (IO) negotiated directly between an agency media planner and a publisher sales executive. An IO guarantees delivery of a fixed volume of impressions (e.g., 2,000,000 impressions) at a fixed price (e.g., $15.00 CPM) across specified dates, with dedicated line items in the publisher's ad server.",
+              "Programmatic transactions automate media buying via algorithmic auctions and software integrations. These transactions fall into four categories: Open Auction (real-time bidding where any buyer can compete for available impressions), Private Marketplace / PMP (an invitation-only auction with specialized deal IDs and floor prices), Preferred Deals (unauctioned inventory offered to a single buyer at a negotiated fixed CPM before the open auction), and Programmatic Guaranteed (automated transactions that deliver guaranteed impression volumes and budgets through DSP/SSP connections).",
+              "Direct IOs provide guaranteed inventory access and custom creative sponsorships, but they involve manual administrative overhead. Programmatic transactions provide speed, real-time bid flexibility, cross-publisher audience targeting, and automated frequency capping. Ad operations specialists must navigate both transaction models simultaneously."
             ]
           }
         ]
@@ -742,32 +952,13 @@
         submodules: [
           {
             id: "i1",
-            title: "Standard Display, Video & High-Impact Ad Formats",
-            wikiTopic: "Digital_display_advertising",
-            coreText: [
-              "Digital ad formats represent the standardized visual, interactive, or auditory vessels that deliver commercial messaging across digital environments. To ensure cross-platform compatibility across millions of websites and apps, the Interactive Advertising Bureau (IAB) standardized standard dimensions. In standard display advertising, four primary workhorse sizes dominate global programmatic inventory: the Medium Rectangle (300x250), the Leaderboard (728x90), the Half Page / Billboard (300x600), and the Mobile Banner (320x50). Ad operations teams must strictly validate that assets conform to pixel dimensions, maximum file weight (typically under 150KB for initial load), and SSL security compliance.",
-              "Video advertising is categorized into instream and outstream formats. Instream video executes within the context of video content the user is actively viewing, structured into pre-roll (playing before video content), mid-roll (interruptive breaks), and post-roll slots. Outstream video, in contrast, dynamically opens within standard editorial text blocks or social feeds, triggering playback upon achieving a specified viewability threshold (e.g., 50% in view). Instream formats achieve higher completed view rates (VCR), while outstream provides massive scale on text-heavy publisher websites.",
-              "Beyond standard display and video, high-impact and rich media formats (such as page takeovers, interscrollers, skins, and interactive expandable units) provide heightened user engagement and brand recall. However, these formats require specialized tags, heavier asset payloads, and precise ad server trafficking to avoid degrading page load speeds or triggering browser ad-blocking filters."
-            ]
-          },
-          {
-            id: "i2",
-            title: "Google Ad Manager Hierarchy: Orders, Line Items & Delivery Priorities",
+            dayNum: "Day 21",
+            title: "GAM Priority Tiers: Sponsorship, Standard & Price Priority",
             wikiTopic: "Google_Ad_Manager",
             coreText: [
-              "Google Ad Manager (GAM) serves as the primary ad-serving operating system for the vast majority of enterprise web and app publishers. At the heart of GAM's architecture is a rigid structural hierarchy: Network > Company > Order > Line Item > Creative. The Order acts as the commercial container representing an advertiser contract or campaign brief, while Line Items contain the actual operational rules: flight dates, inventory targeting, frequency caps, pricing models, and ad delivery priorities.",
-              "Delivery priorities within GAM govern how the ad server decides which line item wins an ad slot when multiple campaigns qualify. GAM uses strict numeric priority tiers: Sponsorship (Priority 4) takes absolute precedence, selling a guaranteed percentage of total impressions; Standard (Priority 6, 8, 10) serves fixed impression volumes with pacing controls; while Price Priority (Priority 12) competes directly on price against incoming programmatic bids from Ad Exchange and Header Bidding wrappers.",
-              "A deep understanding of priority tiers is critical for avoiding expensive delivery mistakes. If an ad trafficker improperly configures a direct Insertion Order as a Price Priority line item instead of a Standard line item, the ad will be bypassed by higher programmatic bids, leading to critical campaign under-delivery, contract penalties, and revenue loss."
-            ]
-          },
-          {
-            id: "i3",
-            title: "Tracking Architectures: Pixels, UTMs, 3rd-Party Tags & Discrepancies",
-            wikiTopic: "Web_beacon",
-            coreText: [
-              "The digital advertising measurement infrastructure relies on tracking mechanisms embedded within creatives, ad calls, and advertiser landing pages. The core components comprise 1x1 transparent tracking pixels, JavaScript script tags, and UTM parameter strings appended to click-through URLs. When an ad renders, an impression tracking pixel sends a GET request to the measurement server with dynamic macro values (e.g., campaign ID, creative ID, placement ID, site domain), registering an impression in reporting logs.",
-              "Conversion tracking requires placing tracking pixels or event triggers on key advertiser conversion actions, such as 'Add to Cart' or 'Thank You / Order Complete' pages. These tags match user browser cookies or device advertising IDs (IDFA/GAID) back to recent ad impressions or clicks within specified attribution lookback windows (e.g., 30-day click, 1-day view). UTM parameters provide secondary session-level attribution inside web analytics suites like Google Analytics 4.",
-              "A recurring operational hurdle in ad operations is the impression discrepancy—the mathematical variance between impressions recorded by the publisher's ad server versus those logged by the advertiser's third-party verification platform (e.g., DoubleVerify, IAS, CM360). Discrepancies below 2-5% are normal due to network latency and user page abandonments; however, discrepancies exceeding 10% indicate technical defects such as misfiring creative tags, slow loading times, or aggressive bot filtering."
+              "Google Ad Manager (GAM) uses strict numeric priority tiers: Sponsorship (Priority 4) takes absolute precedence, selling a guaranteed percentage of total impressions; Standard (Priority 6, 8, 10) serves fixed impression volumes with pacing controls; while Price Priority (Priority 12) competes directly on price against incoming programmatic bids.",
+              "If an ad trafficker improperly configures a direct Insertion Order as a Price Priority line item instead of a Standard line item, the ad will be bypassed by higher programmatic bids, leading to critical campaign under-delivery, contract penalties, and revenue loss.",
+              "Ad ops teams constantly audit priority conflicts and monitor delivery pacing to ensure guaranteed campaigns deliver on schedule without choking out profitable programmatic yield."
             ]
           }
         ]
@@ -781,32 +972,13 @@
         submodules: [
           {
             id: "a1",
+            dayNum: "Day 76",
             title: "The OpenRTB Protocol & Auction Request Lifecycle",
             wikiTopic: "Real-time_bidding",
             coreText: [
-              "The OpenRTB protocol, maintained by the IAB Tech Lab, is the foundational standard that enables automated real-time auctions across heterogeneous technology platforms. When a user requests a webpage containing ad units, the publisher's ad tag triggers a sequence that packages the impression opportunity into an OpenRTB Bid Request JSON object. This payload contains structured fields specifying device parameters (IP, user agent, viewport size), page context (URL, domain, content categorization), ad unit parameters (supported banner sizes, video playback attributes), and user identifier cookies or UID2 tokens.",
-              "This Bid Request is transmitted from the publisher's SSP to dozens of connected Demand-Side Platforms (DSPs). Upon receipt, each DSP's bidding algorithm has approximately 50 to 80 milliseconds to parse the JSON request, verify audience match tables in its data stores, check active campaign budget pacing, calculate conversion probability, determine a bid price (eCPM), and generate an OpenRTB Bid Response JSON payload containing the creative markup (adm) and price floor clearance.",
-              "The ad exchange evaluates all incoming DSP bids, declares the highest valid bid as the winner under first-price auction rules, and sends the winning creative markup back to the user's browser to render. This entire technical round trip—from initial ad request to rendered ad—completes in approximately 100 milliseconds without degrading user browsing performance."
-            ]
-          },
-          {
-            id: "a2",
-            title: "Header Bidding Architecture: Prebid.js, Latency & Wrappers",
-            wikiTopic: "Header_bidding",
-            coreText: [
-              "Before the widespread adoption of header bidding, publisher ad monetization relied on a sequential 'waterfall' model: the primary ad server checked direct sales first, then passed remnant inventory down a sequential chain of ad networks one by one based on historical average CPMs. This waterfall architecture suffered from severe latency, low yield, and inefficiency, as a downstream network willing to pay $4.00 might never see the impression if an upstream network accepted it at $1.50.",
-              "Header Bidding revolutionized publisher monetization by flattening the waterfall. Publishers insert a client-side JavaScript snippet (most commonly the open-source Prebid.js library) into the `<head>` of their web pages. When the page loads, Prebid simultaneously calls multiple SSPs and ad exchanges in parallel, soliciting real-time bids before calling the primary ad server. Prebid sets a strict timeout window (e.g., 800ms) to ensure slow partners do not hang page loading.",
-              "The winning bids from each header bidding adapter are passed into the publisher's ad server (GAM) as targeted key-values (e.g., `hb_pb=2.50&hb_bidder=appnexus`). GAM then runs a unified dynamic allocation auction, allowing the header bidding price to compete fairly against Google Ad Exchange and internal direct line items. This parallel auction setup typically improves publisher programmatic yield by 20% to 50%."
-            ]
-          },
-          {
-            id: "a3",
-            title: "Live Campaign Monitoring, Pacing Diagnostics & Over/Under Delivery",
-            wikiTopic: "Web_analytics",
-            coreText: [
-              "Trafficking a campaign is only the first phase of an Ad Operations Specialist's role; ongoing monitoring ensures campaigns deliver full budgets evenly without burning through impressions prematurely. Pacing is the rate at which impressions and spend are consumed across flight dates. In production environments, daily delivery targets are computed by dividing remaining contracted impressions by remaining flight days. An ad server uses delivery pacing algorithms—such as 'Evenly', 'As Fast As Possible', or 'Frontloaded'—to regulate ad calls throughout each 24-hour cycle.",
-              "Under-delivery occurs when an active campaign fails to hit its daily pacing targets. Operational root causes usually fall into three categories: overly restrictive targeting (layering narrow geo-fences with niche demographic segments), uncompetitive pricing (bidding below market clearing rates or setting aggressive floor prices), or inventory starvation (targeting obscure ad sizes or low-traffic page sections). Left unresolved, under-delivery forces publishers to issue costly 'make-goods' (compensatory free ad impressions) or refund unspent client funds.",
-              "Conversely, over-delivery occurs when a campaign burns through its budget too early in its flight, exhausting impressions before key commercial dates or reaching audience saturation. Ad ops specialists maintain daily monitoring dashboards, setting automated alerts to catch pacing deviations exceeding ±10% and rebalancing delivery rules before they escalate."
+              "The OpenRTB protocol, maintained by the IAB Tech Lab, is the foundational standard that enables automated real-time auctions across heterogeneous technology platforms.",
+              "The bid request payload contains structured fields specifying device parameters (IP, user agent, viewport size), page context (URL, domain, content categorization), ad unit parameters (supported banner sizes, video playback attributes), and user identifier cookies or UID2 tokens.",
+              "DSPs evaluate the bid request and return bid responses in under 80 milliseconds. The winning creative markup is sent directly to the client browser to render."
             ]
           }
         ]
@@ -820,32 +992,13 @@
         submodules: [
           {
             id: "e1",
+            dayNum: "Day 121",
             title: "Yield Architecture: Hard Floors, Soft Floors & Bid Shading",
             wikiTopic: "Yield_management",
             coreText: [
-              "In enterprise media operations, yield management is the practice of dynamically pricing and allocating publisher inventory across direct and programmatic sales channels to maximize total revenue. A key mechanism is the implementation of floor pricing within SSPs and ad exchanges. A 'hard floor' sets a strict minimum eCPM below which no bid will be accepted; bids entering at $1.99 against a $2.00 hard floor are discarded, even if it results in an unsold impression. A 'soft floor' acts as a flexible threshold that accepts bids below the floor under second-tier pricing rules or down-ranks them.",
-              "The transition of programmatic auctions from legacy second-price models (where the winner paid one cent above the second-highest bid) to first-price models (where the winner pays their exact bid) reshaped yield dynamics. To prevent buyers from drastically overpaying in first-price environments, DSPs engineered machine-learning 'bid shading' algorithms that predict the lowest possible bid required to win an auction.",
-              "Publishers responded by deploying dynamic floor pricing solutions that analyze historical buyer bids, time of day, user location, and seasonal demand in real time. Yield specialists continuously run A/B floor experiments to balance fill rate (the percentage of ad opportunities sold) against average eCPM, optimizing the total revenue yield curve."
-            ]
-          },
-          {
-            id: "e2",
-            title: "Technical Root-Cause Analysis: Tag Failures, Console Debugging & Discrepancy Audits",
-            wikiTopic: "Software_bug",
-            coreText: [
-              "When ad campaigns break in production, senior ad operations specialists use systematic technical root-cause analysis (RCA) to diagnose failures. Common failure points include blank ad spaces, creative tag errors, click-through redirect loops, and broken impression tracking. Specialists inspect browser developer tools (Network and Console tabs) to track HTTP status codes, check cross-origin resource sharing (CORS) errors, and confirm that tracking pixels return `200 OK` or `204 No Content` responses.",
-              "VAST (Video Ad Serving Template) video ad serving is particularly vulnerable to technical execution errors. Ad operations teams monitor IAB VAST error codes in reporting dashboards: Error 100 represents XML parsing failures, Error 300-303 denotes VAST wrapper redirect limit timeouts, and Error 400-405 signals media file load failures or unplayable video codecs. Identifying these specific error codes isolates whether the defect originates with the publisher's video player, the ad tag redirect chain, or the creative asset itself.",
-              "Discrepancy investigations require reconciling transaction logs across multiple platform boundaries. Ad ops specialists isolate the specific dimension where impressions drop off—such as device type, browser version, geographic region, or ad size. A sudden spike in discrepancies on Safari, for instance, frequently traces to WebKit's Intelligent Tracking Prevention (ITP) blocking third-party storage cookies rather than an issue with the ad server itself."
-            ]
-          },
-          {
-            id: "e3",
-            title: "Privacy Compliance: Cookie Deprecation, Clean Rooms & First-Party Data",
-            wikiTopic: "HTTP_cookie",
-            coreText: [
-              "The regulatory and technical landscape of digital advertising has shifted toward privacy-preserving architectures, driven by laws such as the European Union's GDPR and California's CCPA, alongside platform interventions like Apple's App Tracking Transparency (ATT) and browser restrictions on third-party tracking cookies. Ad operations teams must understand how these privacy constraints affect campaign targeting, frequency capping, and cross-site attribution.",
-              "In response, the industry is transitioning toward alternative identity and measurement frameworks. Authenticated identity solutions, such as Unified ID 2.0 (UID2), replace anonymous browser cookies with privacy-conscious, encrypted email hashes created with explicit user consent. Concurrently, data clean rooms (e.g., Snowflake, InfoSum, AWS Clean Rooms) allow publishers and advertisers to collaborate and match first-party customer datasets without exposing raw personally identifiable information (PII) to external parties.",
-              "From an operational perspective, ad traffickers must maintain rigorous consent management platform (CMP) configurations on publisher properties, ensuring that IAB Transparency and Consent Framework (TCF) strings pass correctly through all downstream ad requests. If a consent string is missing or malformed, compliant SSPs and DSPs will automatically drop the bid request, causing immediate revenue loss."
+              "In enterprise media operations, yield management is the practice of dynamically pricing and allocating publisher inventory across direct and programmatic sales channels to maximize total revenue.",
+              "Hard floors reject bids strictly below a dollar threshold, while soft floors allow dynamic second-tier acceptance. Machine learning bid shading models deployed by DSPs analyze historical clearing prices to prevent overpayment.",
+              "Yield specialists continuously run A/B floor experiments to balance fill rate against average eCPM, optimizing the total revenue yield curve."
             ]
           }
         ]
@@ -870,11 +1023,11 @@
     let activeSubmoduleId = null;
 
     /* =========================================================================
-       STATE MANAGEMENT & LOCAL STORAGE
+       PERSISTENCE ENGINE
        ========================================================================= */
 
     function loadState() {
-      const saved = localStorage.getItem("adops_mastery_state_v3");
+      const saved = localStorage.getItem("adops_mastery_state_v4");
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
@@ -901,11 +1054,11 @@
         expert_unlocked: CURRICULUM_CATALOG.expert.unlocked,
         expert_completed: CURRICULUM_CATALOG.expert.completed
       };
-      localStorage.setItem("adops_mastery_state_v3", JSON.stringify(state));
+      localStorage.setItem("adops_mastery_state_v4", JSON.stringify(state));
     }
 
     /* =========================================================================
-       VIEW ROUTER & NAVIGATION
+       VIEW ROUTER
        ========================================================================= */
 
     function openView(viewId) {
@@ -920,11 +1073,9 @@
     }
 
     function refreshLandingTiles() {
-      // Beginner Tile
       const bPct = Math.round((CURRICULUM_CATALOG.beginner.completed / CURRICULUM_CATALOG.beginner.total) * 100);
       document.getElementById("prog-beginner").innerText = `${bPct}% Complete`;
 
-      // Intermittent Tile
       const intTile = document.getElementById("tile-intermediate");
       if (CURRICULUM_CATALOG.intermediate.unlocked) {
         intTile.classList.remove("locked");
@@ -934,7 +1085,6 @@
         document.getElementById("prog-intermediate").innerText = `${iPct}% Complete`;
       }
 
-      // Advanced Tile
       const advTile = document.getElementById("tile-advanced");
       if (CURRICULUM_CATALOG.advanced.unlocked) {
         advTile.classList.remove("locked");
@@ -944,7 +1094,6 @@
         document.getElementById("prog-advanced").innerText = `${aPct}% Complete`;
       }
 
-      // Expert Tile
       const expTile = document.getElementById("tile-expert");
       if (CURRICULUM_CATALOG.expert.unlocked) {
         expTile.classList.remove("locked");
@@ -954,7 +1103,6 @@
         document.getElementById("prog-expert").innerText = `${ePct}% Complete`;
       }
 
-      // Total Completion Calculation
       const totalUnits = CURRICULUM_CATALOG.beginner.total + CURRICULUM_CATALOG.intermediate.total + CURRICULUM_CATALOG.advanced.total + CURRICULUM_CATALOG.expert.total;
       const totalDone = CURRICULUM_CATALOG.beginner.completed + CURRICULUM_CATALOG.intermediate.completed + CURRICULUM_CATALOG.advanced.completed + CURRICULUM_CATALOG.expert.completed;
       const grandPct = Math.round((totalDone / totalUnits) * 100);
@@ -980,7 +1128,7 @@
         item.onclick = () => loadFullLesson(trackId, sub);
         item.innerHTML = `
           <div>
-            <div style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">MODULE ${idx + 1}</div>
+            <div style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">${sub.dayNum || "DAY " + (idx + 1)}</div>
             <div style="font-size:0.92rem; font-weight:700; color:var(--text-main);">${sub.title}</div>
           </div>
           <span style="font-size:1.1rem; color:var(--text-sub);">→</span>
@@ -992,13 +1140,13 @@
     }
 
     /* =========================================================================
-       DYNAMIC LESSON ENGINE (70% TEXT / 20% DIAGRAM / 5% SANDBOX / 5% QUIZ)
+       70/20/5/5 DETAILED LESSON ENGINE
        ========================================================================= */
 
     async function loadFullLesson(trackId, submodule) {
       activeSubmoduleId = submodule.id;
-      document.getElementById("reader-breadcrumb").innerText = submodule.title;
-      document.getElementById("reader-stream").innerHTML = "<div class='loader' style='display:block;'>Loading lesson content and streaming live reference manuals...</div>";
+      document.getElementById("reader-breadcrumb").innerText = `${submodule.dayNum}: ${submodule.title}`;
+      document.getElementById("reader-stream").innerHTML = "<div class='loader' style='display:block;'>Loading operational curriculum...</div>";
       openView("reader-view");
 
       let onlineExcerpt = "";
@@ -1008,8 +1156,9 @@
           const data = await res.json();
           onlineExcerpt = `
             <div style="background:rgba(6,182,212,0.08); border-left:3px solid var(--accent-cyan); padding:12px; margin-bottom:18px; border-radius:0 8px 8px 0;">
-              <strong style="color:var(--accent-cyan);">Industry Reference Feed (${data.title}):</strong>
+              <strong style="color:var(--accent-cyan);">Encyclopedia Concept Feed (${data.title}):</strong>
               <p style="font-size:0.85rem; margin-top:6px; color:#cbd5e1;">${data.extract}</p>
+              <button onclick="readWikiInApp('${encodeURIComponent(submodule.wikiTopic)}')" class="back-btn" style="padding:4px 10px; font-size:0.75rem; margin-top:8px;">Read Full Encyclopedia Entry In-App ↗</button>
             </div>
           `;
         }
@@ -1017,12 +1166,10 @@
         console.warn("Live API connection fallback activated", err);
       }
 
-      // Build 70% deep operational narrative paragraphs
       const narrativeHtml = submodule.coreText.map(para => `<p>${para}</p>`).join("");
 
-      // Render the complete 70/20/5/5 interactive lesson view
       const contentHtml = `
-        <h2>${submodule.title}</h2>
+        <h2>${submodule.dayNum}: ${submodule.title}</h2>
         ${onlineExcerpt}
         
         <!-- 70% Core Operational Text (200+ words per block) -->
@@ -1078,21 +1225,21 @@
 
         <!-- 5% Multi-Question Verification Quizzes -->
         <div class="quiz-container">
-          <div class="quiz-q">Check 1: What is the primary reason an ad server prioritizes Sponsorship line items over Price Priority line items?</div>
+          <div class="quiz-q">Check 1: What is the primary operational distinction between traditional TV advertising and programmatic display advertising?</div>
           <div class="quiz-options-group">
-            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! Sponsorship lines reflect direct percentage-of-inventory legal commitments that must deliver ahead of price-based remnant demand.')">A. Sponsorship lines fulfill contractual percentage commitments that supersede auction pricing.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Price Priority lines are evaluated by CPM, not Sponsorship lines.')">B. Sponsorship lines always submit higher dynamic eCPM bids.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Ad servers always run programmatic auctions, but Sponsorship line items reserve first right of refusal.')">C. Programmatic auctions cannot run on websites using sponsorship formats.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! Traditional TV uses broadcast dissemination to all viewers, whereas programmatic display executes impression-by-impression targeting in real time.')">A. Programmatic display executes impression-by-impression auctions using real-time targeting data.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Programmatic display is fully digital and does not rely on analog broadcast networks.')">B. Programmatic display relies exclusively on manual insertion order paper contracts.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Programmatic ads are priced primarily on dynamic CPMs, not fixed broadcast rates.')">C. Traditional TV campaigns can be optimized in real time every 100 milliseconds.</button>
           </div>
           <div class="quiz-expl"></div>
         </div>
 
         <div class="quiz-container">
-          <div class="quiz-q">Check 2: If an advertiser experiences a 15% discrepancy between GAM impressions and third-party DSP impressions, what is the most likely technical cause?</div>
+          <div class="quiz-q">Check 2: What is the purpose of an impression tracking pixel in third-party creative tags?</div>
           <div class="quiz-options-group">
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Discrepancies do not directly reset floor prices.')">A. The publisher floor price dropped below zero.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! High latency, dropped impression tracking pixels, or bot-filtering drops before the creative renders cause double-digit discrepancies.')">B. Network latency or dropped tracking pixels caused users to leave before the creative rendered.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Conversion pixels track post-click actions, not initial ad delivery impressions.')">C. The advertiser conversion pixel fired on the wrong landing page.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Impression pixels verify ad rendering, not user click actions.')">A. It forces the user browser to immediately open the landing page.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! The 1x1 transparent pixel sends a GET request to the measurement server with macro values to confirm rendering.')">B. It registers a GET request with tracking macros to verify that the ad creative rendered.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Tracking pixels do not alter publisher floor prices.')">C. It automatically resets the publisher SSP floor price to zero.</button>
           </div>
           <div class="quiz-expl"></div>
         </div>
@@ -1108,18 +1255,17 @@
         track.completed += 1;
       }
 
-      // Progression gating rules
-      if (activeTrackId === "beginner" && track.completed >= 1) {
+      if (activeTrackId === "beginner" && track.completed >= track.total) {
         CURRICULUM_CATALOG.intermediate.unlocked = true;
-      } else if (activeTrackId === "intermediate" && track.completed >= 1) {
+      } else if (activeTrackId === "intermediate" && track.completed >= track.total) {
         CURRICULUM_CATALOG.advanced.unlocked = true;
-      } else if (activeTrackId === "advanced" && track.completed >= 1) {
+      } else if (activeTrackId === "advanced" && track.completed >= track.total) {
         CURRICULUM_CATALOG.expert.unlocked = true;
       }
 
       saveState();
       refreshLandingTiles();
-      alert(`Lesson completed! Progress saved to memory.`);
+      alert(`Progress logged! Completed ${track.completed} of ${track.total} days in this module.`);
       openView("track-explorer-view");
     }
 
@@ -1175,7 +1321,7 @@
     }
 
     /* =========================================================================
-       GLOBAL OPEN WEB LIVE SEARCH (TILE 7)
+       GLOBAL SEARCH & IN-APP WIKIPEDIA RENDERING (ZERO OUTBOUND REDIRECTS)
        ========================================================================= */
 
     async function executeGlobalSearch() {
@@ -1195,10 +1341,9 @@
 
         const titles = data[1] || [];
         const descriptions = data[2] || [];
-        const urls = data[3] || [];
 
         if (titles.length === 0) {
-          resultsContainer.innerHTML = "<div style='color:var(--text-sub); font-size:0.85rem;'>No web records found. Try searching for 'Header Bidding', 'Prebid', or 'Google Ad Manager'.</div>";
+          resultsContainer.innerHTML = "<div style='color:var(--text-sub); font-size:0.85rem;'>No web records found. Try searching for 'Header Bidding', 'Demand-Side Platform', or 'Google Ad Manager'.</div>";
           return;
         }
 
@@ -1207,10 +1352,10 @@
           item.className = "tile";
           item.style.minHeight = "auto";
           item.innerHTML = `
-            <div class="api-badge">Live Knowledge Entry</div>
+            <div class="api-badge">In-App Knowledge Entry</div>
             <div class="tile-title" style="color:var(--accent-cyan);">${title}</div>
-            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Technical industry documentation available on the web registry."}</div>
-            <a href="${urls[i]}" target="_blank" style="color:var(--accent-blue); font-size:0.75rem; text-decoration:none; font-weight:700;">Open Reference Manual ↗</a>
+            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Verified encyclopedia documentation available."}</div>
+            <button onclick="readWikiInApp('${encodeURIComponent(title)}')" class="back-btn" style="padding:6px 12px; font-size:0.8rem; background:var(--accent-blue); border:none; color:#fff; width:max-content;">Read In-App Article ↓</button>
           `;
           resultsContainer.appendChild(item);
         });
@@ -1218,6 +1363,36 @@
       } catch (err) {
         loader.style.display = "none";
         resultsContainer.innerHTML = `<div style="color:var(--accent-rose); font-size:0.85rem;">Failed to fetch live search results: ${err.message}</div>`;
+      }
+    }
+
+    async function readWikiInApp(encodedTitle) {
+      openView("inapp-wiki-view");
+      const titleDisplay = decodeURIComponent(encodedTitle);
+      document.getElementById("wiki-reader-title").innerText = titleDisplay;
+      const bodyContainer = document.getElementById("wiki-reader-body");
+      bodyContainer.innerHTML = "<div class='loader' style='display:block;'>Loading verified encyclopedia article...</div>";
+
+      try {
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${encodedTitle}`);
+        if (res.ok) {
+          const htmlText = await res.text();
+          // Sanitize base links so internal anchors don't leave the app
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlText, "text/html");
+          
+          // Remove scripts and link tags from external Wikipedia document
+          doc.querySelectorAll("script, link, style").forEach(el => el.remove());
+          
+          bodyContainer.innerHTML = doc.body.innerHTML;
+        } else {
+          // Fallback to summary extract if full HTML is restricted
+          const sumRes = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodedTitle}`);
+          const sumData = await sumRes.json();
+          bodyContainer.innerHTML = `<h2>${sumData.title}</h2><p style='margin-top:14px; font-size:1rem; line-height:1.8;'>${sumData.extract}</p>`;
+        }
+      } catch (err) {
+        bodyContainer.innerHTML = `<div style="color:var(--accent-rose);">Could not render article inside app: ${err.message}</div>`;
       }
     }
 
@@ -1260,19 +1435,19 @@
       breakdown.innerHTML = `
         <div class="tile" style="min-height:auto;">
           <div class="tile-title">1. Beginner (Days 1 to 20)</div>
-          <div class="tile-subtitle">Completed: ${CURRICULUM_CATALOG.beginner.completed} / ${CURRICULUM_CATALOG.beginner.total} Modules</div>
+          <div class="tile-subtitle">Completed: ${CURRICULUM_CATALOG.beginner.completed} / ${CURRICULUM_CATALOG.beginner.total} Days</div>
         </div>
         <div class="tile" style="min-height:auto;">
           <div class="tile-title">2. Intermittent (Days 21 to 75)</div>
-          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.intermediate.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.intermediate.completed} / ${CURRICULUM_CATALOG.intermediate.total} Modules</div>
+          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.intermediate.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.intermediate.completed} / ${CURRICULUM_CATALOG.intermediate.total} Days</div>
         </div>
         <div class="tile" style="min-height:auto;">
           <div class="tile-title">3. Advanced (Days 76 to 120)</div>
-          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.advanced.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.advanced.completed} / ${CURRICULUM_CATALOG.advanced.total} Modules</div>
+          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.advanced.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.advanced.completed} / ${CURRICULUM_CATALOG.advanced.total} Days</div>
         </div>
         <div class="tile" style="min-height:auto;">
           <div class="tile-title">4. Expert (Days 121 to 180)</div>
-          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.expert.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.expert.completed} / ${CURRICULUM_CATALOG.expert.total} Modules</div>
+          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.expert.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.expert.completed} / ${CURRICULUM_CATALOG.expert.total} Days</div>
         </div>
       `;
     }
@@ -1281,7 +1456,7 @@
       alert(`Launching timed assessment for [${blockName} Certification]. 30 Scenario-based AdOps questions loaded. Passing score is 80%.`);
     }
 
-    // Initialize application on boot
+    // App Initialization
     window.addEventListener("DOMContentLoaded", () => {
       loadState();
       refreshLandingTiles();
