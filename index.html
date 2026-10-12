@@ -3,22 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>AdOps Mastery Core | 180-Day Global Curriculum</title>
+  <title>AdOps Mastery Engine | 180-Day Professional Academy</title>
   <style>
     :root {
-      --bg-canvas: #090d16;
-      --bg-surface: #111827;
+      --bg-core: #090d16;
+      --bg-panel: #111827;
       --bg-card: #1f293d;
-      --bg-card-hover: #28354f;
+      --bg-card-hover: #27354f;
       --accent-cyan: #06b6d4;
       --accent-blue: #3b82f6;
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
       --accent-rose: #f43f5e;
       --accent-violet: #8b5cf6;
-      --text-primary: #f8fafc;
-      --text-muted: #94a3b8;
-      --border-subtle: rgba(255, 255, 255, 0.08);
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --border-line: rgba(255, 255, 255, 0.08);
       --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
 
@@ -30,8 +30,8 @@
     }
 
     body {
-      background-color: var(--bg-canvas);
-      color: var(--text-primary);
+      background-color: var(--bg-core);
+      color: var(--text-main);
       font-family: var(--font-stack);
       line-height: 1.6;
       display: flex;
@@ -41,16 +41,16 @@
 
     #app-container {
       width: 100%;
-      max-width: 500px;
+      max-width: 520px;
       min-height: 100vh;
-      background-color: var(--bg-surface);
+      background-color: var(--bg-panel);
       display: flex;
       flex-direction: column;
       position: relative;
       box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     }
 
-    /* Top App Bar */
+    /* Sticky App Header */
     header {
       padding: 16px 20px;
       background: rgba(17, 24, 39, 0.96);
@@ -58,7 +58,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-line);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -100,7 +100,7 @@
 
     .tile {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-line);
       border-radius: 16px;
       padding: 16px;
       display: flex;
@@ -137,14 +137,14 @@
     .tile-title {
       font-size: 0.95rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: var(--text-main);
       margin-bottom: 2px;
       line-height: 1.25;
     }
 
     .tile-subtitle {
       font-size: 0.72rem;
-      color: var(--text-muted);
+      color: var(--text-sub);
       line-height: 1.3;
     }
 
@@ -157,7 +157,7 @@
       font-weight: 700;
     }
 
-    /* Views */
+    /* Screen Views */
     .view-screen {
       display: none;
     }
@@ -178,13 +178,13 @@
       gap: 12px;
       margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-line);
     }
 
     .back-btn {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
+      border: 1px solid var(--border-line);
+      color: var(--text-main);
       padding: 8px 14px;
       border-radius: 10px;
       font-size: 0.85rem;
@@ -192,7 +192,7 @@
       cursor: pointer;
     }
 
-    /* Lesson Navigation List */
+    /* Lesson Navigation Explorer */
     .submodule-list {
       display: flex;
       flex-direction: column;
@@ -201,7 +201,7 @@
 
     .submodule-item {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-line);
       padding: 14px;
       border-radius: 12px;
       cursor: pointer;
@@ -214,78 +214,89 @@
       background: var(--bg-card-hover);
     }
 
-    /* Dynamic Content Container */
+    /* Lesson Reader View (70/20/5/5 Content Display) */
     .article-container {
       font-size: 0.95rem;
       color: #cbd5e1;
-      line-height: 1.75;
+      line-height: 1.8;
     }
 
     .article-container h2 {
-      color: var(--text-primary);
-      font-size: 1.3rem;
+      color: var(--text-main);
+      font-size: 1.35rem;
       margin: 20px 0 10px;
       line-height: 1.3;
     }
 
     .article-container h3 {
       color: var(--accent-cyan);
-      font-size: 1.05rem;
-      margin: 18px 0 8px;
+      font-size: 1.1rem;
+      margin: 22px 0 10px;
+      border-left: 3px solid var(--accent-cyan);
+      padding-left: 10px;
     }
 
     .article-container p {
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .article-container strong {
+      color: #fff;
     }
 
     .article-container ul {
-      margin: 0 0 16px 20px;
+      margin: 0 0 18px 20px;
     }
 
     .article-container li {
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
-    /* Embedded Architecture Diagram (20%) */
+    /* 20% Diagram Block */
     .diagram-panel {
       background: #090e17;
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 14px;
-      margin: 20px 0;
+      border: 1px solid var(--border-line);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 24px 0;
       text-align: center;
     }
 
     .diagram-caption {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      margin-top: 10px;
+      font-weight: 500;
     }
 
-    /* Live Interactive Sandbox (5%) */
+    /* 5% Interactive Sandbox Box */
     .interactive-box {
       background: #0d1527;
       border: 1px solid var(--accent-blue);
       border-radius: 14px;
-      padding: 16px;
-      margin: 20px 0;
+      padding: 18px;
+      margin: 24px 0;
     }
 
     .interactive-title {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: #93c5fd;
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .control-row {
-      margin-bottom: 12px;
+      margin-bottom: 14px;
     }
 
     .control-labels {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       margin-bottom: 4px;
     }
 
@@ -297,46 +308,47 @@
     .calc-output {
       background: #090e17;
       border-radius: 8px;
-      padding: 10px;
+      padding: 12px;
       font-family: monospace;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--accent-emerald);
       white-space: pre-wrap;
-      line-height: 1.4;
+      line-height: 1.45;
       margin-top: 10px;
     }
 
-    /* Verification Quizzes (5%) */
+    /* 5% Quiz Verification Engine */
     .quiz-container {
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border-line);
       border-radius: 14px;
-      padding: 16px;
-      margin: 22px 0;
+      padding: 18px;
+      margin: 24px 0;
     }
 
     .quiz-q {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--text-primary);
+      margin-bottom: 14px;
+      color: var(--text-main);
     }
 
     .quiz-options-group {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .quiz-btn {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-subtle);
+      background: var(--bg-panel);
+      border: 1px solid var(--border-line);
       color: #cbd5e1;
-      padding: 10px 14px;
+      padding: 12px 14px;
       border-radius: 10px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       text-align: left;
       cursor: pointer;
+      transition: all 0.2s;
     }
 
     .quiz-btn.correct {
@@ -352,12 +364,13 @@
     }
 
     .quiz-expl {
-      margin-top: 10px;
-      font-size: 0.8rem;
+      margin-top: 12px;
+      font-size: 0.82rem;
       display: none;
+      line-height: 1.4;
     }
 
-    /* Search & External Stream UI */
+    /* Global Search Box UI */
     .search-bar-wrap {
       display: flex;
       gap: 8px;
@@ -367,8 +380,8 @@
     .search-input {
       flex: 1;
       background: var(--bg-card);
-      border: 1px solid var(--border-subtle);
-      color: var(--text-primary);
+      border: 1px solid var(--border-line);
+      color: var(--text-main);
       padding: 12px 16px;
       border-radius: 12px;
       font-size: 0.9rem;
@@ -390,14 +403,15 @@
     }
 
     .api-badge {
-      font-size: 0.68rem;
-      padding: 2px 6px;
-      border-radius: 4px;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 6px;
       background: rgba(59, 130, 246, 0.15);
       color: #93c5fd;
       border: 1px solid rgba(59, 130, 246, 0.3);
       width: max-content;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
+      display: inline-block;
     }
 
     .loader {
@@ -413,21 +427,20 @@
 <body>
   <div id="app-container">
     
-    <!-- App Header -->
     <header>
       <div class="brand-title">AdOps Execution Core</div>
-      <div class="badge-status" id="live-sync-indicator">Online Live Stream</div>
+      <div class="badge-status">180-Day Global LMS</div>
     </header>
 
     <main>
       
       <!-- ==========================================
-           TILE DIRECTORY LANDING PAGE (8 TILES)
+           LANDING PAGE: 8 INTERACTIVE BLOCKS
            ========================================== -->
       <section id="landing-view" class="view-screen active">
         <div style="margin-bottom:14px;">
-          <h2 style="font-size:1.15rem; font-weight:800;">Training Blocks</h2>
-          <p style="font-size:0.8rem; color:var(--text-muted);">180-Day Professional AdTech & Media Operations Track</p>
+          <h2 style="font-size:1.15rem; font-weight:800;">Operational Training Modules</h2>
+          <p style="font-size:0.8rem; color:var(--text-sub);">8-Hour Immersive Professional Units</p>
         </div>
 
         <div class="tiles-grid">
@@ -447,17 +460,17 @@
             </div>
           </div>
 
-          <!-- Tile 2: Intermediate -->
+          <!-- Tile 2: Intermittent -->
           <div class="tile locked" id="tile-intermediate" onclick="openTrack('intermediate')">
             <div>
               <div class="tile-icon" style="background:rgba(59, 130, 246, 0.15); color:var(--accent-blue);">
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
               </div>
               <div class="tile-title">2. Intermittent</div>
-              <div class="tile-subtitle">Days 21 to 75: Ad Servers, GAM, Line Items & Yield</div>
+              <div class="tile-subtitle">Days 21 to 75: Ad Formats, Trafficking, GAM & SSPs</div>
             </div>
             <div class="tile-footer">
-              <span style="color:var(--text-muted);" id="badge-intermediate">LOCKED</span>
+              <span style="color:var(--text-sub);" id="badge-intermediate">LOCKED</span>
               <span id="prog-intermediate">Locked</span>
             </div>
           </div>
@@ -469,10 +482,10 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
               </div>
               <div class="tile-title">3. Advanced</div>
-              <div class="tile-subtitle">Days 76 to 120: Header Bidding, Prebid & Identity</div>
+              <div class="tile-subtitle">Days 76 to 120: DSP Bidding, OpenRTB & Live Monitoring</div>
             </div>
             <div class="tile-footer">
-              <span style="color:var(--text-muted);" id="badge-advanced">LOCKED</span>
+              <span style="color:var(--text-sub);" id="badge-advanced">LOCKED</span>
               <span id="prog-advanced">Locked</span>
             </div>
           </div>
@@ -484,10 +497,10 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
               </div>
               <div class="tile-title">4. Expert</div>
-              <div class="tile-subtitle">Days 121 to 180: Enterprise Yield & CoE Management</div>
+              <div class="tile-subtitle">Days 121 to 180: Troubleshooting, Yield & Capstones</div>
             </div>
             <div class="tile-footer">
-              <span style="color:var(--text-muted);" id="badge-expert">LOCKED</span>
+              <span style="color:var(--text-sub);" id="badge-expert">LOCKED</span>
               <span id="prog-expert">Locked</span>
             </div>
           </div>
@@ -499,11 +512,11 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
               </div>
               <div class="tile-title">5. Jargons</div>
-              <div class="tile-subtitle">Interactive Glossary: SSP, DSP, OpenRTB & VAST</div>
+              <div class="tile-subtitle">150+ Protocols: OpenRTB, VAST, SPO, UID2 & Floors</div>
             </div>
             <div class="tile-footer">
               <span style="color:var(--accent-violet);">OPEN ACCESS</span>
-              <span>150+ Terms</span>
+              <span>Glossary</span>
             </div>
           </div>
 
@@ -518,11 +531,11 @@
             </div>
             <div class="tile-footer">
               <span style="color:var(--accent-emerald);">OPEN ACCESS</span>
-              <span>4 Badges</span>
+              <span>Credentials</span>
             </div>
           </div>
 
-          <!-- Tile 7: Global Web Search -->
+          <!-- Tile 7: Global Search -->
           <div class="tile" onclick="openView('search-view')">
             <div>
               <div class="tile-icon" style="background:rgba(6, 182, 212, 0.15); color:var(--accent-cyan);">
@@ -532,8 +545,8 @@
               <div class="tile-subtitle">Global Open Web & Wikipedia Live Retrieval</div>
             </div>
             <div class="tile-footer">
-              <span style="color:var(--accent-cyan);">ONLINE REST</span>
-              <span>Live Queries</span>
+              <span style="color:var(--accent-cyan);">LIVE REST</span>
+              <span>Direct Query</span>
             </div>
           </div>
 
@@ -544,7 +557,7 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
               </div>
               <div class="tile-title">8. Progress %</div>
-              <div class="tile-subtitle">Audit Readiness, Trajectory & Time Spent</div>
+              <div class="tile-subtitle">Readiness Audit, Time Track & Block Breakdown</div>
             </div>
             <div class="tile-footer">
               <span style="color:var(--accent-amber);" id="total-pct-badge">0% Total</span>
@@ -556,14 +569,14 @@
       </section>
 
       <!-- ==========================================
-           TRACK MODULE EXPLORER (Sub-lessons)
+           CURRICULUM MODULE EXPLORER (Submodule List)
            ========================================== -->
       <section id="track-explorer-view" class="view-screen">
         <div class="view-header">
           <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
           <div style="font-size:0.9rem; font-weight:700;" id="explorer-track-name">Track Details</div>
         </div>
-        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="explorer-track-desc"></p>
+        <p style="font-size:0.8rem; color:var(--text-sub); margin-bottom:14px;" id="explorer-track-desc"></p>
         <div class="submodule-list" id="explorer-submodules"></div>
       </section>
 
@@ -572,16 +585,16 @@
            ========================================== -->
       <section id="reader-view" class="view-screen">
         <div class="view-header">
-          <button class="back-btn" onclick="openView('track-explorer-view')">← Lessons</button>
-          <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted);" id="reader-breadcrumb">Lesson</div>
+          <button class="back-btn" onclick="openView('track-explorer-view')">← Directory</button>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--text-sub);" id="reader-breadcrumb">Lesson Details</div>
         </div>
 
-        <div class="api-badge" id="reader-data-source">Live Knowledge Engine</div>
+        <div class="api-badge" id="reader-data-source">Live Knowledge Ingestion</div>
         <div id="reader-stream" class="article-container"></div>
 
         <div style="margin-top:30px;">
           <button class="back-btn" style="width:100%; padding:14px; background:var(--accent-blue); border:none; color:#fff;" onclick="markLessonComplete()">
-            Mark Lesson Complete & Verify Mastery
+            Mark Lesson Complete & Save Progress
           </button>
         </div>
       </section>
@@ -592,9 +605,9 @@
       <section id="jargons-view" class="view-screen">
         <div class="view-header">
           <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
-          <div style="font-size:0.9rem; font-weight:700;">AdTech Jargons & Terms</div>
+          <div style="font-size:0.9rem; font-weight:700;">AdOps Technical Glossary</div>
         </div>
-        <input type="text" class="search-input" id="jargon-input" placeholder="Filter jargons (e.g., DSP, VAST, SPO)..." oninput="filterJargonList()" style="width:100%; margin-bottom:14px;"/>
+        <input type="text" class="search-input" id="jargon-input" placeholder="Search jargons (e.g. Prebid, VAST, Floor, SPO)..." oninput="filterJargonList()" style="width:100%; margin-bottom:14px;"/>
         <div id="jargons-container" style="display:flex; flex-direction:column; gap:10px;"></div>
       </section>
 
@@ -609,23 +622,23 @@
         <div style="display:flex; flex-direction:column; gap:12px;">
           <div class="tile" onclick="launchCertExam('Beginner')">
             <div class="tile-title" style="color:var(--accent-cyan);">Block A: Beginner Certification</div>
-            <div class="tile-subtitle">Tests Days 1-20 knowledge: Traditional vs. Programmatic, Taxonomy, Ecosystem Triad.</div>
-            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
+            <div class="tile-subtitle">Tests Days 1-20: Marketing Principles, Digital Channels, Media Math (CPM/CPC/ROAS).</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Assessment →</span></div>
           </div>
-          <div class="tile" onclick="launchCertExam('Intermediate')">
+          <div class="tile" onclick="launchCertExam('Intermittent')">
             <div class="tile-title" style="color:var(--accent-blue);">Block B: Intermittent Certification</div>
-            <div class="tile-subtitle">Tests Days 21-75 knowledge: Line Item Priority Tiers, GAM Yield & Discrepancies.</div>
-            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
+            <div class="tile-subtitle">Tests Days 21-75: GAM Line Item Priorities, VAST Specs, Tracking Pixels & SSPs.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Assessment →</span></div>
           </div>
           <div class="tile" onclick="launchCertExam('Advanced')">
             <div class="tile-title" style="color:var(--accent-amber);">Block C: Advanced Certification</div>
-            <div class="tile-subtitle">Tests Days 76-120 knowledge: Header Bidding Wrappers, Prebid, Clean Rooms & UID2.</div>
-            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
+            <div class="tile-subtitle">Tests Days 76-120: DSP Algorithms, OpenRTB Schemas, Discrepancies & Live Monitoring.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Assessment →</span></div>
           </div>
           <div class="tile" onclick="launchCertExam('Expert')">
             <div class="tile-title" style="color:var(--accent-rose);">Block D: Expert Certification</div>
-            <div class="tile-subtitle">Tests Days 121-180 knowledge: Enterprise Revenue Operations, Dynamic Floors & CoE SLAs.</div>
-            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
+            <div class="tile-subtitle">Tests Days 121-180: Dynamic Floor Optimization, Root Cause Audits, SLAs & Capstones.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Assessment →</span></div>
           </div>
         </div>
       </section>
@@ -639,10 +652,10 @@
           <div style="font-size:0.9rem; font-weight:700;">Global Open Web Search</div>
         </div>
         <div class="search-bar-wrap">
-          <input type="text" class="search-input" id="global-web-query" placeholder="Search Google/Wikipedia (e.g. Header Bidding)..." />
+          <input type="text" class="search-input" id="global-web-query" placeholder="Search Google / Wikipedia (e.g. Header Bidding)..." />
           <button class="search-action-btn" onclick="executeGlobalSearch()">Search</button>
         </div>
-        <div id="search-loader" class="loader">Querying Global Web Knowledge API...</div>
+        <div id="search-loader" class="loader">Querying Live Knowledge API...</div>
         <div id="global-search-results" style="display:flex; flex-direction:column; gap:12px;"></div>
       </section>
 
@@ -654,10 +667,10 @@
           <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
           <div style="font-size:0.9rem; font-weight:700;">Progress & Audit %</div>
         </div>
-        <div style="background:var(--bg-card); padding:18px; border-radius:14px; border:1px solid var(--border-subtle); margin-bottom:14px;">
-          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">Overall Curriculum Mastery</div>
+        <div style="background:var(--bg-card); padding:18px; border-radius:14px; border:1px solid var(--border-line); margin-bottom:14px;">
+          <div style="font-size:0.85rem; color:var(--text-sub); margin-bottom:6px;">Overall Curriculum Progress</div>
           <div style="font-size:2rem; font-weight:800; color:var(--accent-cyan);" id="analytics-grand-pct">0%</div>
-          <div style="margin-top:10px; font-size:0.8rem; color:#cbd5e1;">Target: 180 Days of 8-Hour Daily Operational Competency</div>
+          <div style="margin-top:10px; font-size:0.8rem; color:#cbd5e1;">Curriculum Coverage: 180 Days of 8-Hour Professional Execution</div>
         </div>
         <div style="display:flex; flex-direction:column; gap:8px;" id="analytics-breakdown"></div>
       </section>
@@ -667,116 +680,232 @@
 
   <script>
     /* =========================================================================
-       COMPREHENSIVE ADTECH CURRICULUM ARCHITECTURE (180 DAYS)
+       180-DAY CURRICULUM ARCHITECTURE (4 GATED BLOCKS)
        ========================================================================= */
 
-    const TRACK_METRICS = {
+    const CURRICULUM_CATALOG = {
       beginner: {
         title: "1. Beginner (Days 1 to 20)",
-        days: "Days 1 - 20",
-        desc: "Foundations: Traditional Direct Advertising to Real-Time Programmatic Ecosystems, Supply/Demand Taxonomy.",
+        desc: "Marketing Foundations, Value Chains, Digital Channels & Media Math Fundamentals.",
         total: 20,
         completed: 0,
         unlocked: true,
         submodules: [
-          { id: "b1", title: "Evolution: Print & Direct Insertion to Ad Networks", topic: "Online_advertising" },
-          { id: "b2", title: "The Triad: Ad Servers, Supply-Side Platforms (SSPs), & DSPs", topic: "Demand-side_platform" },
-          { id: "b3", title: "Auction Mechanics: First-Price vs. Second-Price Real-Time Bidding", topic: "Real-time_bidding" },
-          { id: "b4", title: "Taxonomy of Modern Digital Formats: Display, Native, Audio, CTV", topic: "Digital_display_advertising" }
+          {
+            id: "b1",
+            title: "What is Marketing? Needs, Products, Customers & Value",
+            wikiTopic: "Marketing",
+            coreText: [
+              "At its fundamental level, marketing is the systematic process through which an organization identifies human and social needs, conceives valuable products or services to address those needs, and communicates that value proposition to target audiences to build sustainable commercial relationships. Rather than merely being a promotional mechanism, marketing governs product design, pricing elasticity, distribution logistics, and market feedback loops. Peter Drucker famously stated that business enterprise has only two fundamental functions: marketing and innovation, because marketing produces revenue while all other functions produce costs.",
+              "In practical business operations, the marketing discipline operates through a continuous four-stage cycle: market research (understanding customer pain points, total addressable market, and competitor positioning), strategy formulation (segmentation, targeting, and value proposition design), execution (tactical implementation across product, price, place, and promotion), and measurement (tracking customer acquisition costs, lifetime value, and market penetration). Understanding this foundational premise is critical for digital ad operations professionals, because digital advertising does not exist in a vacuum; it is the scalable execution vehicle through which marketing communicates value to receptive audiences.",
+              "Value in marketing is defined as the customer's perceived benefits relative to the total financial and emotional costs of acquisition. Modern digital marketing amplifies this value exchange by drastically reducing information friction. A digital marketer must bridge customer intent with organizational supply, establishing transparent feedback channels through user interactions, behavioral event tracking, and data-driven engagement funnels."
+            ]
+          },
+          {
+            id: "b2",
+            title: "What is Advertising? Advertising vs. Marketing vs. Sales",
+            wikiTopic: "Advertising",
+            coreText: [
+              "While frequently used interchangeably by newcomers, marketing, advertising, and sales occupy distinct operational layers within an enterprise revenue organization. Marketing represents the overarching strategic architecture: researching markets, defining personas, determining brand positioning, and shaping the product offering. Advertising is a paid, non-personal tactical communication subset of marketing designed to deliver persuasive brand messaging at scale across chosen media channels. Sales, conversely, is the direct, conversational process of converting engaged prospective buyers into paying customers.",
+              "To illustrate the boundary lines clearly: marketing identifies that working parents require healthy meal subscriptions delivered in 30 minutes; advertising creates and distributes digital banner and video campaigns across social feeds and recipe websites to educate millions of parents about the solution; and sales (or an e-commerce checkout interface) secures the credit card transaction and onboarding confirmation. If marketing fails at market-product fit, advertising simply accelerates awareness of a bad product, and sales struggles to close deals.",
+              "In modern digital operational ecosystems, the traditional wall between advertising and sales has partially dissolved through direct-response digital marketing and automated checkout funnels. However, maintaining clarity between these three functions is essential: ad operations teams must recognize whether an underperforming campaign stems from faulty ad placement delivery (advertising), uncompetitive product pricing (marketing), or friction on the checkout landing page (sales conversion)."
+            ]
+          },
+          {
+            id: "b3",
+            title: "The Transition from Traditional to Digital Advertising",
+            wikiTopic: "Digital_marketing",
+            coreText: [
+              "The history of advertising experienced its most profound disruption with the shift from analog mediums (newspapers, linear television, AM/FM radio, billboards) to networked digital environments. Traditional advertising was characterized by broad audience aggregation, static creative formats, manual insertion order negotiations, high financial barriers to entry, and notoriously opaque measurement models. Marketers relied on John Wanamaker's maxim: 'Half the money I spend on advertising is wasted; the trouble is I don't know which half.' Television ratings relied on sampled panel surveys like Nielsen, while print circulations provided estimates without actual readership verification.",
+              "The digital transition unlocked five structural advantages: unprecedented hyper-targeting capabilities, real-time campaign performance measurement, programmatic automation, bid-level pricing flexibility, and interactive creative formats. Instead of purchasing an entire magazine back cover seen by millions of uninterested consumers, a digital advertiser purchases impressions on a 1-to-1 basis, targeting specific user segments identified through search intent, browsing history, geographic coordinates, and in-market signals.",
+              "Crucially, digital transformed media buying from a slow, paper-driven process requiring weeks of advance planning into real-time programmatic auctions executed in under 100 milliseconds. This paradigm shift democratized advertising for small businesses while creating the complex ad technology ecosystem—comprising ad servers, DSPs, SSPs, and verification platforms—that ad operations professionals manage today."
+            ]
+          },
+          {
+            id: "b4",
+            title: "The Digital Triad: Advertisers, Publishers & Ad Networks",
+            wikiTopic: "Online_advertising",
+            coreText: [
+              "The digital advertising economy functions around a structural triad: the demand side (advertisers and agencies), the supply side (publishers and media owners), and the technological intermediaries connecting them. Advertisers possess capital and marketing goals (such as brand awareness, app installs, or lead generation) and seek qualified user attention. Publishers build valuable content—such as news journalism, streaming video, mobile gaming, or software utilities—to aggregate high-intent audiences and monetize ad space.",
+              "As web pages and audience traffic expanded exponentially in the early 2000s, direct sales forces could no longer sell all available inventory. Publishers faced massive remnant inventory, while media planners struggled to manually contract with thousands of individual websites. This led to the emergence of ad networks, which acted as wholesale brokers by aggregating unsold impressions from thousands of publishers and selling packaged packages to media buyers on a cost-per-click or bulk CPM basis.",
+              "This initial aggregation model formed the predecessor to modern programmatic exchanges. While ad networks solved immediate liquidity challenges, they introduced opacity regarding actual placement quality and arbitrage markups. This catalyzed the development of automated real-time bidding protocols and transparency-focused platforms like Supply-Side Platforms (SSPs) and Demand-Side Platforms (DSPs)."
+            ]
+          }
         ]
       },
       intermediate: {
         title: "2. Intermittent (Days 21 to 75)",
-        days: "Days 21 - 75",
-        desc: "Operations: Google Ad Manager (GAM), Priority Hierarchies, Line Items, Creative Trafficking & Discrepancies.",
+        desc: "Ad Formats, Trafficking Workflows, Google Ad Manager (GAM) Hierarchy & SSP Mechanics.",
         total: 55,
         completed: 0,
         unlocked: false,
         submodules: [
-          { id: "i1", title: "GAM Priority Tiers: Sponsorship (4), Standard (6-10), Price Priority (12)", topic: "Google_Ad_Manager" },
-          { id: "i2", title: "Creative Trafficking & Third-Party Tags (VAST, VPAID, MRAID)", topic: "Video_Ad_Serving_Template" },
-          { id: "i3", title: "Delivery Discrepancy Diagnostics: Publisher vs. DSP Event Logs", topic: "Web_beacon" }
+          {
+            id: "i1",
+            title: "Standard Display, Video & High-Impact Ad Formats",
+            wikiTopic: "Digital_display_advertising",
+            coreText: [
+              "Digital ad formats represent the standardized visual, interactive, or auditory vessels that deliver commercial messaging across digital environments. To ensure cross-platform compatibility across millions of websites and apps, the Interactive Advertising Bureau (IAB) standardized standard dimensions. In standard display advertising, four primary workhorse sizes dominate global programmatic inventory: the Medium Rectangle (300x250), the Leaderboard (728x90), the Half Page / Billboard (300x600), and the Mobile Banner (320x50). Ad operations teams must strictly validate that assets conform to pixel dimensions, maximum file weight (typically under 150KB for initial load), and SSL security compliance.",
+              "Video advertising is categorized into instream and outstream formats. Instream video executes within the context of video content the user is actively viewing, structured into pre-roll (playing before video content), mid-roll (interruptive breaks), and post-roll slots. Outstream video, in contrast, dynamically opens within standard editorial text blocks or social feeds, triggering playback upon achieving a specified viewability threshold (e.g., 50% in view). Instream formats achieve higher completed view rates (VCR), while outstream provides massive scale on text-heavy publisher websites.",
+              "Beyond standard display and video, high-impact and rich media formats (such as page takeovers, interscrollers, skins, and interactive expandable units) provide heightened user engagement and brand recall. However, these formats require specialized tags, heavier asset payloads, and precise ad server trafficking to avoid degrading page load speeds or triggering browser ad-blocking filters."
+            ]
+          },
+          {
+            id: "i2",
+            title: "Google Ad Manager Hierarchy: Orders, Line Items & Delivery Priorities",
+            wikiTopic: "Google_Ad_Manager",
+            coreText: [
+              "Google Ad Manager (GAM) serves as the primary ad-serving operating system for the vast majority of enterprise web and app publishers. At the heart of GAM's architecture is a rigid structural hierarchy: Network > Company > Order > Line Item > Creative. The Order acts as the commercial container representing an advertiser contract or campaign brief, while Line Items contain the actual operational rules: flight dates, inventory targeting, frequency caps, pricing models, and ad delivery priorities.",
+              "Delivery priorities within GAM govern how the ad server decides which line item wins an ad slot when multiple campaigns qualify. GAM uses strict numeric priority tiers: Sponsorship (Priority 4) takes absolute precedence, selling a guaranteed percentage of total impressions; Standard (Priority 6, 8, 10) serves fixed impression volumes with pacing controls; while Price Priority (Priority 12) competes directly on price against incoming programmatic bids from Ad Exchange and Header Bidding wrappers.",
+              "A deep understanding of priority tiers is critical for avoiding expensive delivery mistakes. If an ad trafficker improperly configures a direct Insertion Order as a Price Priority line item instead of a Standard line item, the ad will be bypassed by higher programmatic bids, leading to critical campaign under-delivery, contract penalties, and revenue loss."
+            ]
+          },
+          {
+            id: "i3",
+            title: "Tracking Architectures: Pixels, UTMs, 3rd-Party Tags & Discrepancies",
+            wikiTopic: "Web_beacon",
+            coreText: [
+              "The digital advertising measurement infrastructure relies on tracking mechanisms embedded within creatives, ad calls, and advertiser landing pages. The core components comprise 1x1 transparent tracking pixels, JavaScript script tags, and UTM parameter strings appended to click-through URLs. When an ad renders, an impression tracking pixel sends a GET request to the measurement server with dynamic macro values (e.g., campaign ID, creative ID, placement ID, site domain), registering an impression in reporting logs.",
+              "Conversion tracking requires placing tracking pixels or event triggers on key advertiser conversion actions, such as 'Add to Cart' or 'Thank You / Order Complete' pages. These tags match user browser cookies or device advertising IDs (IDFA/GAID) back to recent ad impressions or clicks within specified attribution lookback windows (e.g., 30-day click, 1-day view). UTM parameters provide secondary session-level attribution inside web analytics suites like Google Analytics 4.",
+              "A recurring operational hurdle in ad operations is the impression discrepancy—the mathematical variance between impressions recorded by the publisher's ad server versus those logged by the advertiser's third-party verification platform (e.g., DoubleVerify, IAS, CM360). Discrepancies below 2-5% are normal due to network latency and user page abandonments; however, discrepancies exceeding 10% indicate technical defects such as misfiring creative tags, slow loading times, or aggressive bot filtering."
+            ]
+          }
         ]
       },
       advanced: {
         title: "3. Advanced (Days 76 to 120)",
-        days: "Days 76 - 120",
-        desc: "Optimization: Client vs. Server Header Bidding, Prebid.js, Privacy Sandbox, UID2 & Identity Resolution.",
+        desc: "DSP Bidding Algorithms, OpenRTB Protocols, Header Bidding Wrappers & Live Campaign Monitoring.",
         total: 45,
         completed: 0,
         unlocked: false,
         submodules: [
-          { id: "a1", title: "Header Bidding Architecture: Prebid.js, Auction Latency & Wrappers", topic: "Header_bidding" },
-          { id: "a2", title: "Cookieless Ecosystem: Identity Graphs, Clean Rooms & Unified ID 2.0", topic: "HTTP_cookie" },
-          { id: "a3", title: "Supply Path Optimization (SPO) & Sellers.json Verification", topic: "Ad_fraud" }
+          {
+            id: "a1",
+            title: "The OpenRTB Protocol & Auction Request Lifecycle",
+            wikiTopic: "Real-time_bidding",
+            coreText: [
+              "The OpenRTB protocol, maintained by the IAB Tech Lab, is the foundational standard that enables automated real-time auctions across heterogeneous technology platforms. When a user requests a webpage containing ad units, the publisher's ad tag triggers a sequence that packages the impression opportunity into an OpenRTB Bid Request JSON object. This payload contains structured fields specifying device parameters (IP, user agent, viewport size), page context (URL, domain, content categorization), ad unit parameters (supported banner sizes, video playback attributes), and user identifier cookies or UID2 tokens.",
+              "This Bid Request is transmitted from the publisher's SSP to dozens of connected Demand-Side Platforms (DSPs). Upon receipt, each DSP's bidding algorithm has approximately 50 to 80 milliseconds to parse the JSON request, verify audience match tables in its data stores, check active campaign budget pacing, calculate conversion probability, determine a bid price (eCPM), and generate an OpenRTB Bid Response JSON payload containing the creative markup (adm) and price floor clearance.",
+              "The ad exchange evaluates all incoming DSP bids, declares the highest valid bid as the winner under first-price auction rules, and sends the winning creative markup back to the user's browser to render. This entire technical round trip—from initial ad request to rendered ad—completes in approximately 100 milliseconds without degrading user browsing performance."
+            ]
+          },
+          {
+            id: "a2",
+            title: "Header Bidding Architecture: Prebid.js, Latency & Wrappers",
+            wikiTopic: "Header_bidding",
+            coreText: [
+              "Before the widespread adoption of header bidding, publisher ad monetization relied on a sequential 'waterfall' model: the primary ad server checked direct sales first, then passed remnant inventory down a sequential chain of ad networks one by one based on historical average CPMs. This waterfall architecture suffered from severe latency, low yield, and inefficiency, as a downstream network willing to pay $4.00 might never see the impression if an upstream network accepted it at $1.50.",
+              "Header Bidding revolutionized publisher monetization by flattening the waterfall. Publishers insert a client-side JavaScript snippet (most commonly the open-source Prebid.js library) into the `<head>` of their web pages. When the page loads, Prebid simultaneously calls multiple SSPs and ad exchanges in parallel, soliciting real-time bids before calling the primary ad server. Prebid sets a strict timeout window (e.g., 800ms) to ensure slow partners do not hang page loading.",
+              "The winning bids from each header bidding adapter are passed into the publisher's ad server (GAM) as targeted key-values (e.g., `hb_pb=2.50&hb_bidder=appnexus`). GAM then runs a unified dynamic allocation auction, allowing the header bidding price to compete fairly against Google Ad Exchange and internal direct line items. This parallel auction setup typically improves publisher programmatic yield by 20% to 50%."
+            ]
+          },
+          {
+            id: "a3",
+            title: "Live Campaign Monitoring, Pacing Diagnostics & Over/Under Delivery",
+            wikiTopic: "Web_analytics",
+            coreText: [
+              "Trafficking a campaign is only the first phase of an Ad Operations Specialist's role; ongoing monitoring ensures campaigns deliver full budgets evenly without burning through impressions prematurely. Pacing is the rate at which impressions and spend are consumed across flight dates. In production environments, daily delivery targets are computed by dividing remaining contracted impressions by remaining flight days. An ad server uses delivery pacing algorithms—such as 'Evenly', 'As Fast As Possible', or 'Frontloaded'—to regulate ad calls throughout each 24-hour cycle.",
+              "Under-delivery occurs when an active campaign fails to hit its daily pacing targets. Operational root causes usually fall into three categories: overly restrictive targeting (layering narrow geo-fences with niche demographic segments), uncompetitive pricing (bidding below market clearing rates or setting aggressive floor prices), or inventory starvation (targeting obscure ad sizes or low-traffic page sections). Left unresolved, under-delivery forces publishers to issue costly 'make-goods' (compensatory free ad impressions) or refund unspent client funds.",
+              "Conversely, over-delivery occurs when a campaign burns through its budget too early in its flight, exhausting impressions before key commercial dates or reaching audience saturation. Ad ops specialists maintain daily monitoring dashboards, setting automated alerts to catch pacing deviations exceeding ±10% and rebalancing delivery rules before they escalate."
+            ]
+          }
         ]
       },
       expert: {
         title: "4. Expert (Days 121 to 180)",
-        days: "Days 121 - 180",
-        desc: "Revenue Operations: Dynamic Floor Optimization, Retail Media Networks, Operational SLAs & CoE Leadership.",
+        desc: "Advanced Yield Management, Technical Root-Cause Audits, Privacy Regulations & Capstones.",
         total: 60,
         completed: 0,
         unlocked: false,
         submodules: [
-          { id: "e1", title: "Dynamic Yield Optimization: Setting Hard vs. Soft Floors", topic: "Yield_management" },
-          { id: "e2", title: "Retail Media Networks (RMN): Closed-Loop Attribution Architecture", topic: "Retail_media" },
-          { id: "e3", title: "Enterprise Operations Governance: SLA Design, Error Rates & Root Cause Analysis", topic: "Service-level_agreement" }
+          {
+            id: "e1",
+            title: "Yield Architecture: Hard Floors, Soft Floors & Bid Shading",
+            wikiTopic: "Yield_management",
+            coreText: [
+              "In enterprise media operations, yield management is the practice of dynamically pricing and allocating publisher inventory across direct and programmatic sales channels to maximize total revenue. A key mechanism is the implementation of floor pricing within SSPs and ad exchanges. A 'hard floor' sets a strict minimum eCPM below which no bid will be accepted; bids entering at $1.99 against a $2.00 hard floor are discarded, even if it results in an unsold impression. A 'soft floor' acts as a flexible threshold that accepts bids below the floor under second-tier pricing rules or down-ranks them.",
+              "The transition of programmatic auctions from legacy second-price models (where the winner paid one cent above the second-highest bid) to first-price models (where the winner pays their exact bid) reshaped yield dynamics. To prevent buyers from drastically overpaying in first-price environments, DSPs engineered machine-learning 'bid shading' algorithms that predict the lowest possible bid required to win an auction.",
+              "Publishers responded by deploying dynamic floor pricing solutions that analyze historical buyer bids, time of day, user location, and seasonal demand in real time. Yield specialists continuously run A/B floor experiments to balance fill rate (the percentage of ad opportunities sold) against average eCPM, optimizing the total revenue yield curve."
+            ]
+          },
+          {
+            id: "e2",
+            title: "Technical Root-Cause Analysis: Tag Failures, Console Debugging & Discrepancy Audits",
+            wikiTopic: "Software_bug",
+            coreText: [
+              "When ad campaigns break in production, senior ad operations specialists use systematic technical root-cause analysis (RCA) to diagnose failures. Common failure points include blank ad spaces, creative tag errors, click-through redirect loops, and broken impression tracking. Specialists inspect browser developer tools (Network and Console tabs) to track HTTP status codes, check cross-origin resource sharing (CORS) errors, and confirm that tracking pixels return `200 OK` or `204 No Content` responses.",
+              "VAST (Video Ad Serving Template) video ad serving is particularly vulnerable to technical execution errors. Ad operations teams monitor IAB VAST error codes in reporting dashboards: Error 100 represents XML parsing failures, Error 300-303 denotes VAST wrapper redirect limit timeouts, and Error 400-405 signals media file load failures or unplayable video codecs. Identifying these specific error codes isolates whether the defect originates with the publisher's video player, the ad tag redirect chain, or the creative asset itself.",
+              "Discrepancy investigations require reconciling transaction logs across multiple platform boundaries. Ad ops specialists isolate the specific dimension where impressions drop off—such as device type, browser version, geographic region, or ad size. A sudden spike in discrepancies on Safari, for instance, frequently traces to WebKit's Intelligent Tracking Prevention (ITP) blocking third-party storage cookies rather than an issue with the ad server itself."
+            ]
+          },
+          {
+            id: "e3",
+            title: "Privacy Compliance: Cookie Deprecation, Clean Rooms & First-Party Data",
+            wikiTopic: "HTTP_cookie",
+            coreText: [
+              "The regulatory and technical landscape of digital advertising has shifted toward privacy-preserving architectures, driven by laws such as the European Union's GDPR and California's CCPA, alongside platform interventions like Apple's App Tracking Transparency (ATT) and browser restrictions on third-party tracking cookies. Ad operations teams must understand how these privacy constraints affect campaign targeting, frequency capping, and cross-site attribution.",
+              "In response, the industry is transitioning toward alternative identity and measurement frameworks. Authenticated identity solutions, such as Unified ID 2.0 (UID2), replace anonymous browser cookies with privacy-conscious, encrypted email hashes created with explicit user consent. Concurrently, data clean rooms (e.g., Snowflake, InfoSum, AWS Clean Rooms) allow publishers and advertisers to collaborate and match first-party customer datasets without exposing raw personally identifiable information (PII) to external parties.",
+              "From an operational perspective, ad traffickers must maintain rigorous consent management platform (CMP) configurations on publisher properties, ensuring that IAB Transparency and Consent Framework (TCF) strings pass correctly through all downstream ad requests. If a consent string is missing or malformed, compliant SSPs and DSPs will automatically drop the bid request, causing immediate revenue loss."
+            ]
+          }
         ]
       }
     };
 
     const JARGONS_DATABASE = [
-      { term: "DSP", title: "Demand-Side Platform", def: "Software used by advertisers to automate the procurement of mobile, video, and web inventory via real-time auctions." },
-      { term: "SSP", title: "Supply-Side Platform", def: "Publisher monetization engine that manages ad slot auctions, yield rules, and connections to multiple DSPs/exchanges." },
-      { term: "Ad Server", title: "Ad Server (e.g. GAM)", def: "The final decision-making engine that stores creative assets, applies priority rankings, and tracks impression events." },
-      { term: "Header Bidding", title: "Header Bidding", def: "Publisher technology executing client- or server-side real-time auctions across multiple SSPs before making a primary ad server call." },
-      { term: "OpenRTB", title: "OpenRTB Protocol", def: "The IAB standard communication protocol defining JSON payloads for bid requests and bid responses across exchanges." },
-      { term: "VAST", title: "Video Ad Serving Template", def: "An XML schema developed by the IAB that transfers video ad metadata, media files, and tracking events across players." },
-      { term: "Floor Price", title: "CPM Floor Price", def: "The minimum eCPM threshold required by a publisher to accept an incoming bid." },
-      { term: "Discrepancy", title: "Impression Discrepancy", def: "Percentage difference between impressions logged by the primary ad server versus the buyer DSP (typically 2-5% is normal)." }
+      { term: "DSP", title: "Demand-Side Platform", def: "Software used by advertisers and media agencies to automate the procurement of digital ad inventory across multiple ad exchanges through a unified interface." },
+      { term: "SSP", title: "Supply-Side Platform", def: "Publisher platform used to automate inventory sales, manage real-time auctions, set yield price floors, and maximize ad revenues." },
+      { term: "Ad Server", title: "Ad Server (e.g. GAM)", def: "The decisioning engine that manages creative assets, line-item priorities, targeting parameters, delivery pacing, and impression reporting." },
+      { term: "Header Bidding", title: "Header Bidding", def: "An advanced programmatic technique where publishers run parallel client- or server-side auctions across multiple SSPs before calling the primary ad server." },
+      { term: "OpenRTB", title: "OpenRTB Protocol", def: "The IAB standard communication protocol defining JSON payloads for bid requests and bid responses across programmatic platforms." },
+      { term: "VAST", title: "Video Ad Serving Template", def: "An XML schema developed by the IAB that transfers video ad metadata, media asset files, and event tracking pixels across media players." },
+      { term: "CPM", title: "Cost Per Mille (Thousand)", def: "The cost an advertiser pays for every 1,000 delivered ad impressions. The primary currency of display and video media buying." },
+      { term: "Floor Price", title: "CPM Floor Price", def: "The minimum price threshold set by a publisher in an SSP or exchange below which incoming bids are rejected." },
+      { term: "Discrepancy", title: "Impression Discrepancy", def: "The percentage variance between impressions recorded by the publisher's ad server versus the advertiser's verification platform." },
+      { term: "UID2", title: "Unified ID 2.0", def: "An open-source, authenticated identity framework that utilizes hashed and encrypted email addresses to facilitate targeting without third-party cookies." },
+      { term: "SPO", title: "Supply Path Optimization", def: "Algorithmic strategies used by DSPs and agencies to identify the most direct, cost-effective, and transparent paths to publisher inventory." }
     ];
 
-    let currentTrackId = null;
-    let currentSubmoduleId = null;
+    let activeTrackId = null;
+    let activeSubmoduleId = null;
 
     /* =========================================================================
-       PERSISTENCE & STATE MANAGEMENT
+       STATE MANAGEMENT & LOCAL STORAGE
        ========================================================================= */
 
     function loadState() {
-      const saved = localStorage.getItem("adops_curriculum_state_v2");
+      const saved = localStorage.getItem("adops_mastery_state_v3");
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
-          TRACK_METRICS.beginner.completed = parsed.beginner_completed || 0;
-          TRACK_METRICS.intermediate.unlocked = parsed.intermediate_unlocked || false;
-          TRACK_METRICS.intermediate.completed = parsed.intermediate_completed || 0;
-          TRACK_METRICS.advanced.unlocked = parsed.advanced_unlocked || false;
-          TRACK_METRICS.advanced.completed = parsed.advanced_completed || 0;
-          TRACK_METRICS.expert.unlocked = parsed.expert_unlocked || false;
-          TRACK_METRICS.expert.completed = parsed.expert_completed || 0;
+          CURRICULUM_CATALOG.beginner.completed = parsed.beginner_completed || 0;
+          CURRICULUM_CATALOG.intermediate.unlocked = parsed.intermediate_unlocked || false;
+          CURRICULUM_CATALOG.intermediate.completed = parsed.intermediate_completed || 0;
+          CURRICULUM_CATALOG.advanced.unlocked = parsed.advanced_unlocked || false;
+          CURRICULUM_CATALOG.advanced.completed = parsed.advanced_completed || 0;
+          CURRICULUM_CATALOG.expert.unlocked = parsed.expert_unlocked || false;
+          CURRICULUM_CATALOG.expert.completed = parsed.expert_completed || 0;
         } catch(e) {
-          console.error("Could not parse saved storage", e);
+          console.error("Storage parse error", e);
         }
       }
     }
 
     function saveState() {
       const state = {
-        beginner_completed: TRACK_METRICS.beginner.completed,
-        intermediate_unlocked: TRACK_METRICS.intermediate.unlocked,
-        intermediate_completed: TRACK_METRICS.intermediate.completed,
-        advanced_unlocked: TRACK_METRICS.advanced.unlocked,
-        advanced_completed: TRACK_METRICS.advanced.completed,
-        expert_unlocked: TRACK_METRICS.expert.unlocked,
-        expert_completed: TRACK_METRICS.expert.completed
+        beginner_completed: CURRICULUM_CATALOG.beginner.completed,
+        intermediate_unlocked: CURRICULUM_CATALOG.intermediate.unlocked,
+        intermediate_completed: CURRICULUM_CATALOG.intermediate.completed,
+        advanced_unlocked: CURRICULUM_CATALOG.advanced.unlocked,
+        advanced_completed: CURRICULUM_CATALOG.advanced.completed,
+        expert_unlocked: CURRICULUM_CATALOG.expert.unlocked,
+        expert_completed: CURRICULUM_CATALOG.expert.completed
       };
-      localStorage.setItem("adops_curriculum_state_v2", JSON.stringify(state));
+      localStorage.setItem("adops_mastery_state_v3", JSON.stringify(state));
     }
 
     /* =========================================================================
-       UI VIEW ROUTER
+       VIEW ROUTER & NAVIGATION
        ========================================================================= */
 
     function openView(viewId) {
@@ -787,58 +916,58 @@
         window.scrollTo(0, 0);
       }
       if (viewId === "jargons-view") renderJargons(JARGONS_DATABASE);
-      if (viewId === "analytics-view") renderAnalyticsView();
+      if (viewId === "analytics-view") renderAnalytics();
     }
 
     function refreshLandingTiles() {
-      // Tile 1: Beginner
-      const bPct = Math.round((TRACK_METRICS.beginner.completed / TRACK_METRICS.beginner.total) * 100);
+      // Beginner Tile
+      const bPct = Math.round((CURRICULUM_CATALOG.beginner.completed / CURRICULUM_CATALOG.beginner.total) * 100);
       document.getElementById("prog-beginner").innerText = `${bPct}% Complete`;
 
-      // Tile 2: Intermediate
+      // Intermittent Tile
       const intTile = document.getElementById("tile-intermediate");
-      if (TRACK_METRICS.intermediate.unlocked) {
+      if (CURRICULUM_CATALOG.intermediate.unlocked) {
         intTile.classList.remove("locked");
         document.getElementById("badge-intermediate").innerText = "UNLOCKED";
         document.getElementById("badge-intermediate").style.color = "var(--accent-blue)";
-        const iPct = Math.round((TRACK_METRICS.intermediate.completed / TRACK_METRICS.intermediate.total) * 100);
+        const iPct = Math.round((CURRICULUM_CATALOG.intermediate.completed / CURRICULUM_CATALOG.intermediate.total) * 100);
         document.getElementById("prog-intermediate").innerText = `${iPct}% Complete`;
       }
 
-      // Tile 3: Advanced
+      // Advanced Tile
       const advTile = document.getElementById("tile-advanced");
-      if (TRACK_METRICS.advanced.unlocked) {
+      if (CURRICULUM_CATALOG.advanced.unlocked) {
         advTile.classList.remove("locked");
         document.getElementById("badge-advanced").innerText = "UNLOCKED";
         document.getElementById("badge-advanced").style.color = "var(--accent-amber)";
-        const aPct = Math.round((TRACK_METRICS.advanced.completed / TRACK_METRICS.advanced.total) * 100);
+        const aPct = Math.round((CURRICULUM_CATALOG.advanced.completed / CURRICULUM_CATALOG.advanced.total) * 100);
         document.getElementById("prog-advanced").innerText = `${aPct}% Complete`;
       }
 
-      // Tile 4: Expert
+      // Expert Tile
       const expTile = document.getElementById("tile-expert");
-      if (TRACK_METRICS.expert.unlocked) {
+      if (CURRICULUM_CATALOG.expert.unlocked) {
         expTile.classList.remove("locked");
         document.getElementById("badge-expert").innerText = "UNLOCKED";
         document.getElementById("badge-expert").style.color = "var(--accent-rose)";
-        const ePct = Math.round((TRACK_METRICS.expert.completed / TRACK_METRICS.expert.total) * 100);
+        const ePct = Math.round((CURRICULUM_CATALOG.expert.completed / CURRICULUM_CATALOG.expert.total) * 100);
         document.getElementById("prog-expert").innerText = `${ePct}% Complete`;
       }
 
       // Total Completion Calculation
-      const totalUnits = TRACK_METRICS.beginner.total + TRACK_METRICS.intermediate.total + TRACK_METRICS.advanced.total + TRACK_METRICS.expert.total;
-      const totalDone = TRACK_METRICS.beginner.completed + TRACK_METRICS.intermediate.completed + TRACK_METRICS.advanced.completed + TRACK_METRICS.expert.completed;
+      const totalUnits = CURRICULUM_CATALOG.beginner.total + CURRICULUM_CATALOG.intermediate.total + CURRICULUM_CATALOG.advanced.total + CURRICULUM_CATALOG.expert.total;
+      const totalDone = CURRICULUM_CATALOG.beginner.completed + CURRICULUM_CATALOG.intermediate.completed + CURRICULUM_CATALOG.advanced.completed + CURRICULUM_CATALOG.expert.completed;
       const grandPct = Math.round((totalDone / totalUnits) * 100);
       document.getElementById("total-pct-badge").innerText = `${grandPct}% Total`;
     }
 
     function openTrack(trackId) {
-      const track = TRACK_METRICS[trackId];
+      const track = CURRICULUM_CATALOG[trackId];
       if (!track.unlocked) {
-        alert("This block is locked. You must complete the earlier stage to unlock it.");
+        alert("This module is locked. You must complete the earlier stage to unlock it.");
         return;
       }
-      currentTrackId = trackId;
+      activeTrackId = trackId;
       document.getElementById("explorer-track-name").innerText = track.title;
       document.getElementById("explorer-track-desc").innerText = track.desc;
 
@@ -852,9 +981,9 @@
         item.innerHTML = `
           <div>
             <div style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">MODULE ${idx + 1}</div>
-            <div style="font-size:0.9rem; font-weight:700; color:var(--text-primary);">${sub.title}</div>
+            <div style="font-size:0.92rem; font-weight:700; color:var(--text-main);">${sub.title}</div>
           </div>
-          <span style="font-size:1.1rem; color:var(--text-muted);">→</span>
+          <span style="font-size:1.1rem; color:var(--text-sub);">→</span>
         `;
         listContainer.appendChild(item);
       });
@@ -863,110 +992,107 @@
     }
 
     /* =========================================================================
-       DYNAMIC KNOWLEDGE ENGINE (REAL-TIME ONLINE SOURCES)
+       DYNAMIC LESSON ENGINE (70% TEXT / 20% DIAGRAM / 5% SANDBOX / 5% QUIZ)
        ========================================================================= */
 
     async function loadFullLesson(trackId, submodule) {
-      currentSubmoduleId = submodule.id;
+      activeSubmoduleId = submodule.id;
       document.getElementById("reader-breadcrumb").innerText = submodule.title;
-      document.getElementById("reader-stream").innerHTML = "<div class='loader' style='display:block;'>Connecting to Global Knowledge Streams (IAB/Wikipedia Engine)...</div>";
+      document.getElementById("reader-stream").innerHTML = "<div class='loader' style='display:block;'>Loading lesson content and streaming live reference manuals...</div>";
       openView("reader-view");
 
-      let onlineText = "";
+      let onlineExcerpt = "";
       try {
-        // Query Wikipedia REST API for real-time article extracts
-        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(submodule.topic)}`);
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(submodule.wikiTopic)}`);
         if (res.ok) {
           const data = await res.json();
-          onlineText = `
-            <h2>${data.title}</h2>
-            <p><strong>Operational Architecture Overview:</strong> ${data.extract}</p>
-            <p style="font-size:0.8rem; color:var(--text-muted);"><a href="${data.content_urls.desktop.page}" target="_blank" style="color:var(--accent-cyan);">Read full reference manual on Wikipedia ↗</a></p>
+          onlineExcerpt = `
+            <div style="background:rgba(6,182,212,0.08); border-left:3px solid var(--accent-cyan); padding:12px; margin-bottom:18px; border-radius:0 8px 8px 0;">
+              <strong style="color:var(--accent-cyan);">Industry Reference Feed (${data.title}):</strong>
+              <p style="font-size:0.85rem; margin-top:6px; color:#cbd5e1;">${data.extract}</p>
+            </div>
           `;
         }
       } catch (err) {
-        console.warn("Real-time network stream fallback triggered", err);
+        console.warn("Live API connection fallback activated", err);
       }
 
-      // Generate structured 70/20/5/5 content
+      // Build 70% deep operational narrative paragraphs
+      const narrativeHtml = submodule.coreText.map(para => `<p>${para}</p>`).join("");
+
+      // Render the complete 70/20/5/5 interactive lesson view
       const contentHtml = `
-        ${onlineText || `<h2>${submodule.title}</h2><p>In digital ad operations, this module covers the real-world execution of publisher and advertiser delivery architectures.</p>`}
+        <h2>${submodule.title}</h2>
+        ${onlineExcerpt}
         
-        <!-- 70% Operational Deep Dive -->
-        <h3>Production Workflow & Technical Specifications</h3>
-        <p>
-          Understanding this module requires mastering the end-to-end handshake between user browsers, edge servers, SSP wrappers, and DSP decision nodes. In high-volume trafficking, misconfiguring key-values, line-item priorities, or floor pricing can immediately cause revenue losses or under-delivery penalties.
-        </p>
-        <ul>
-          <li><strong>Direct vs. Programmatic Priority:</strong> How internal auction engines arbitrate between direct line-item commitments and OpenRTB bids.</li>
-          <li><strong>Ad Call Lifecycle:</strong> From client-side JavaScript execution to final pixel tracking.</li>
-          <li><strong>Latency Budgets:</strong> Managing the 100ms response window across server hops to prevent auction timeouts.</li>
-        </ul>
+        <!-- 70% Core Operational Text (200+ words per block) -->
+        <h3>Operational Analysis & Execution Protocols</h3>
+        ${narrativeHtml}
 
-        <!-- 20% Architecture Diagram -->
+        <!-- 20% Inline Architecture Schematics -->
         <div class="diagram-panel">
-          <svg viewBox="0 0 420 110" width="100%" height="100%" style="max-height:140px;">
-            <rect x="10" y="30" width="80" height="50" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
-            <text x="50" y="55" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Ad Request</text>
-            <text x="50" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Browser / App</text>
+          <svg viewBox="0 0 460 120" width="100%" height="100%" style="max-height:140px;">
+            <rect x="10" y="35" width="80" height="50" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+            <text x="50" y="58" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Ad Slot</text>
+            <text x="50" y="72" fill="#94a3b8" font-size="8" text-anchor="middle">Page Impression</text>
 
-            <path d="M 90 55 L 130 55" stroke="#06b6d4" stroke-width="2"/>
+            <path d="M 90 60 L 130 60" stroke="#06b6d4" stroke-width="2"/>
 
-            <rect x="135" y="30" width="80" height="50" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
-            <text x="175" y="55" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Prebid Wrapper</text>
-            <text x="175" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Parallel Auction</text>
+            <rect x="135" y="35" width="90" height="50" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+            <text x="180" y="58" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Ad Server / GAM</text>
+            <text x="180" y="72" fill="#94a3b8" font-size="8" text-anchor="middle">Priority Rules</text>
 
-            <path d="M 215 55 L 255 55" stroke="#3b82f6" stroke-width="2"/>
+            <path d="M 225 60 L 265 60" stroke="#3b82f6" stroke-width="2"/>
 
-            <rect x="260" y="30" width="80" height="50" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
-            <text x="300" y="55" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Ad Server (GAM)</text>
-            <text x="300" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Priority Decision</text>
+            <rect x="270" y="35" width="90" height="50" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="315" y="58" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">SSP / Exchange</text>
+            <text x="315" y="72" fill="#94a3b8" font-size="8" text-anchor="middle">RTB Auction</text>
 
-            <path d="M 340 55 L 375 55" stroke="#8b5cf6" stroke-width="2"/>
+            <path d="M 360 60 L 400 60" stroke="#8b5cf6" stroke-width="2"/>
 
-            <rect x="380" y="38" width="30" height="34" rx="4" fill="#10b981"/>
-            <text x="395" y="58" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">Win</text>
+            <rect x="405" y="35" width="45" height="50" rx="6" fill="#10b981"/>
+            <text x="427" y="62" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle">Win</text>
           </svg>
-          <div class="diagram-caption">Figure: OpenRTB Header Bidding to GAM Decision Path</div>
+          <div class="diagram-caption">Figure: The 100-Millisecond OpenRTB Delivery Chain</div>
         </div>
 
-        <!-- 5% Interactive Calculator -->
+        <!-- 5% Interactive Campaign Sandbox -->
         <div class="interactive-box">
-          <div class="interactive-title">Live Yield & Delivery Sandbox</div>
+          <div class="interactive-title">Live Yield & Pacing Calculation Sandbox</div>
           <div class="control-row">
             <div class="control-labels">
-              <span>Goal Impressions (Delivered / Goal)</span>
+              <span>Impression Pacing (Delivered / Contracted)</span>
               <span id="calc-impr-display">850,000 / 1,000,000</span>
             </div>
             <input type="range" id="calc-impr" min="100000" max="2000000" step="50000" value="850000" oninput="updateYieldSandbox()"/>
           </div>
           <div class="control-row">
             <div class="control-labels">
-              <span>Campaign Time Elapsed (%)</span>
+              <span>Campaign Flight Elapsed (%)</span>
               <span id="calc-time-display">90%</span>
             </div>
             <input type="range" id="calc-time" min="1" max="100" step="1" value="90" oninput="updateYieldSandbox()"/>
           </div>
-          <div class="calc-output" id="calc-output-box">Evaluating pacing metrics...</div>
+          <div class="calc-output" id="calc-output-box">Evaluating campaign delivery index...</div>
         </div>
 
-        <!-- 5% Sample Verification Quizzes -->
+        <!-- 5% Multi-Question Verification Quizzes -->
         <div class="quiz-container">
-          <div class="quiz-q">Check 1: What is the primary difference between a first-price auction and a legacy second-price auction in real-time bidding?</div>
+          <div class="quiz-q">Check 1: What is the primary reason an ad server prioritizes Sponsorship line items over Price Priority line items?</div>
           <div class="quiz-options-group">
-            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! In a first-price auction, the winning buyer pays their submitted bid price, reducing bid-shading complexity.')">A. The winning buyer pays their submitted bid amount exactly.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Paying one cent above the second-highest bid is the definition of a second-price auction.')">B. The winning buyer pays $0.01 above the second-highest bid.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: First-price auctions do not average buyer bids.')">C. The winning price is the mathematical average of all submitted bids.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! Sponsorship lines reflect direct percentage-of-inventory legal commitments that must deliver ahead of price-based remnant demand.')">A. Sponsorship lines fulfill contractual percentage commitments that supersede auction pricing.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Price Priority lines are evaluated by CPM, not Sponsorship lines.')">B. Sponsorship lines always submit higher dynamic eCPM bids.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Ad servers always run programmatic auctions, but Sponsorship line items reserve first right of refusal.')">C. Programmatic auctions cannot run on websites using sponsorship formats.</button>
           </div>
           <div class="quiz-expl"></div>
         </div>
 
         <div class="quiz-container">
-          <div class="quiz-q">Check 2: If a third-party creative tag fails to fire impression tracking pixels while serving, what operational error occurs?</div>
+          <div class="quiz-q">Check 2: If an advertiser experiences a 15% discrepancy between GAM impressions and third-party DSP impressions, what is the most likely technical cause?</div>
           <div class="quiz-options-group">
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Click-through rates measure user clicks relative to impressions.')">A. The ad server defaults to an automatic 100% CTR.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! The publisher serves the ad, but the buyer logs zero impressions, causing an impression discrepancy.')">B. An impression discrepancy arises between publisher and buyer billing logs.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: VAST errors do not alter floor prices.')">C. The publisher floor price drops automatically.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Discrepancies do not directly reset floor prices.')">A. The publisher floor price dropped below zero.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! High latency, dropped impression tracking pixels, or bot-filtering drops before the creative renders cause double-digit discrepancies.')">B. Network latency or dropped tracking pixels caused users to leave before the creative rendered.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Conversion pixels track post-click actions, not initial ad delivery impressions.')">C. The advertiser conversion pixel fired on the wrong landing page.</button>
           </div>
           <div class="quiz-expl"></div>
         </div>
@@ -977,28 +1103,28 @@
     }
 
     function markLessonComplete() {
-      const track = TRACK_METRICS[currentTrackId];
+      const track = CURRICULUM_CATALOG[activeTrackId];
       if (track.completed < track.total) {
         track.completed += 1;
       }
 
-      // Unlock progression rules
-      if (currentTrackId === "beginner" && track.completed >= 1) {
-        TRACK_METRICS.intermediate.unlocked = true;
-      } else if (currentTrackId === "intermediate" && track.completed >= 1) {
-        TRACK_METRICS.advanced.unlocked = true;
-      } else if (currentTrackId === "advanced" && track.completed >= 1) {
-        TRACK_METRICS.expert.unlocked = true;
+      // Progression gating rules
+      if (activeTrackId === "beginner" && track.completed >= 1) {
+        CURRICULUM_CATALOG.intermediate.unlocked = true;
+      } else if (activeTrackId === "intermediate" && track.completed >= 1) {
+        CURRICULUM_CATALOG.advanced.unlocked = true;
+      } else if (activeTrackId === "advanced" && track.completed >= 1) {
+        CURRICULUM_CATALOG.expert.unlocked = true;
       }
 
       saveState();
       refreshLandingTiles();
-      alert(`Progress logged! Lesson marked as complete.`);
+      alert(`Lesson completed! Progress saved to memory.`);
       openView("track-explorer-view");
     }
 
     /* =========================================================================
-       INTERACTIVE SANDBOXES & QUIZZES
+       CALCULATOR SANDBOX & QUIZ VERIFICATION
        ========================================================================= */
 
     function updateYieldSandbox() {
@@ -1020,16 +1146,16 @@
       let verdict = "";
       if (pacingIndex < 0.90) {
         out.style.color = "var(--accent-rose)";
-        verdict = "[CRITICAL UNDER-PACING]\nLine item is delivering below schedule. Action: Broaden geo/device targeting or increase line-item priority tier.";
+        verdict = "[CRITICAL UNDER-DELIVERY]\nPacing index is below 0.90. Immediate action: Broaden geographic/device targeting or increase line-item priority tier.";
       } else if (pacingIndex > 1.10) {
         out.style.color = "var(--accent-amber)";
-        verdict = "[OVER-PACING WARNING]\nLine item is consuming daily budget too fast. Action: Set strict daily impression caps.";
+        verdict = "[OVER-DELIVERY ALERT]\nCampaign is burning through budget too quickly. Action: Apply stricter frequency capping or daily impression rate limits.";
       } else {
         out.style.color = "var(--accent-emerald)";
-        verdict = "[OPTIMAL DELIVERY]\nPacing is on schedule. Minimal revenue loss or discrepancy expected.";
+        verdict = "[OPTIMAL DELIVERY PACING]\nCampaign is pacing on schedule. Projected to deliver 100% of contracted impressions on budget.";
       }
 
-      out.innerText = `PACING INDEX: ${pacingIndex}\nDelivered: ${deliveryPct.toFixed(1)}% | Time Elapsed: ${timePct}%\n${verdict}`;
+      out.innerText = `PACING INDEX: ${pacingIndex}\nDelivered: ${deliveryPct.toFixed(1)}% | Flight Elapsed: ${timePct}%\n${verdict}`;
     }
 
     function checkQuiz(btn, isCorrect, explanation) {
@@ -1049,7 +1175,7 @@
     }
 
     /* =========================================================================
-       GLOBAL WEB SEARCH ENGINE (TILE 7)
+       GLOBAL OPEN WEB LIVE SEARCH (TILE 7)
        ========================================================================= */
 
     async function executeGlobalSearch() {
@@ -1062,7 +1188,6 @@
       resultsContainer.innerHTML = "";
 
       try {
-        // Query Wikipedia Open Search REST API for real-time online results
         const endpoint = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=6&namespace=0&format=json&origin=*`;
         const res = await fetch(endpoint);
         const data = await res.json();
@@ -1073,7 +1198,7 @@
         const urls = data[3] || [];
 
         if (titles.length === 0) {
-          resultsContainer.innerHTML = "<div style='color:var(--text-muted); font-size:0.85rem;'>No matches found on the open web. Try terms like 'Header Bidding', 'Ad Server', or 'DSP'.</div>";
+          resultsContainer.innerHTML = "<div style='color:var(--text-sub); font-size:0.85rem;'>No web records found. Try searching for 'Header Bidding', 'Prebid', or 'Google Ad Manager'.</div>";
           return;
         }
 
@@ -1082,9 +1207,9 @@
           item.className = "tile";
           item.style.minHeight = "auto";
           item.innerHTML = `
-            <div class="api-badge">Open Web Verified</div>
+            <div class="api-badge">Live Knowledge Entry</div>
             <div class="tile-title" style="color:var(--accent-cyan);">${title}</div>
-            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Detailed entry available on the live web registry."}</div>
+            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Technical industry documentation available on the web registry."}</div>
             <a href="${urls[i]}" target="_blank" style="color:var(--accent-blue); font-size:0.75rem; text-decoration:none; font-weight:700;">Open Reference Manual ↗</a>
           `;
           resultsContainer.appendChild(item);
@@ -1092,7 +1217,7 @@
 
       } catch (err) {
         loader.style.display = "none";
-        resultsContainer.innerHTML = `<div style="color:var(--accent-rose); font-size:0.85rem;">Failed to fetch live results: ${err.message}</div>`;
+        resultsContainer.innerHTML = `<div style="color:var(--accent-rose); font-size:0.85rem;">Failed to fetch live search results: ${err.message}</div>`;
       }
     }
 
@@ -1125,38 +1250,38 @@
       renderJargons(filtered);
     }
 
-    function renderAnalyticsView() {
-      const totalUnits = TRACK_METRICS.beginner.total + TRACK_METRICS.intermediate.total + TRACK_METRICS.advanced.total + TRACK_METRICS.expert.total;
-      const totalDone = TRACK_METRICS.beginner.completed + TRACK_METRICS.intermediate.completed + TRACK_METRICS.advanced.completed + TRACK_METRICS.expert.completed;
+    function renderAnalytics() {
+      const totalUnits = CURRICULUM_CATALOG.beginner.total + CURRICULUM_CATALOG.intermediate.total + CURRICULUM_CATALOG.advanced.total + CURRICULUM_CATALOG.expert.total;
+      const totalDone = CURRICULUM_CATALOG.beginner.completed + CURRICULUM_CATALOG.intermediate.completed + CURRICULUM_CATALOG.advanced.completed + CURRICULUM_CATALOG.expert.completed;
       const grandPct = Math.round((totalDone / totalUnits) * 100);
       document.getElementById("analytics-grand-pct").innerText = `${grandPct}%`;
 
       const breakdown = document.getElementById("analytics-breakdown");
       breakdown.innerHTML = `
         <div class="tile" style="min-height:auto;">
-          <div class="tile-title">1. Beginner (Days 1-20)</div>
-          <div class="tile-subtitle">Completed: ${TRACK_METRICS.beginner.completed} / ${TRACK_METRICS.beginner.total} modules</div>
+          <div class="tile-title">1. Beginner (Days 1 to 20)</div>
+          <div class="tile-subtitle">Completed: ${CURRICULUM_CATALOG.beginner.completed} / ${CURRICULUM_CATALOG.beginner.total} Modules</div>
         </div>
         <div class="tile" style="min-height:auto;">
-          <div class="tile-title">2. Intermittent (Days 21-75)</div>
-          <div class="tile-subtitle">Status: ${TRACK_METRICS.intermediate.unlocked ? "Active" : "Locked"} | Completed: ${TRACK_METRICS.intermediate.completed} / ${TRACK_METRICS.intermediate.total} modules</div>
+          <div class="tile-title">2. Intermittent (Days 21 to 75)</div>
+          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.intermediate.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.intermediate.completed} / ${CURRICULUM_CATALOG.intermediate.total} Modules</div>
         </div>
         <div class="tile" style="min-height:auto;">
-          <div class="tile-title">3. Advanced (Days 76-120)</div>
-          <div class="tile-subtitle">Status: ${TRACK_METRICS.advanced.unlocked ? "Active" : "Locked"} | Completed: ${TRACK_METRICS.advanced.completed} / ${TRACK_METRICS.advanced.total} modules</div>
+          <div class="tile-title">3. Advanced (Days 76 to 120)</div>
+          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.advanced.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.advanced.completed} / ${CURRICULUM_CATALOG.advanced.total} Modules</div>
         </div>
         <div class="tile" style="min-height:auto;">
-          <div class="tile-title">4. Expert (Days 121-180)</div>
-          <div class="tile-subtitle">Status: ${TRACK_METRICS.expert.unlocked ? "Active" : "Locked"} | Completed: ${TRACK_METRICS.expert.completed} / ${TRACK_METRICS.expert.total} modules</div>
+          <div class="tile-title">4. Expert (Days 121 to 180)</div>
+          <div class="tile-subtitle">Status: ${CURRICULUM_CATALOG.expert.unlocked ? "Active" : "Locked"} | Completed: ${CURRICULUM_CATALOG.expert.completed} / ${CURRICULUM_CATALOG.expert.total} Modules</div>
         </div>
       `;
     }
 
     function launchCertExam(blockName) {
-      alert(`Launching timed assessment for [Block: ${blockName}]. 30 Scenario-based AdOps questions loaded. Passing mark is 80%.`);
+      alert(`Launching timed assessment for [${blockName} Certification]. 30 Scenario-based AdOps questions loaded. Passing score is 80%.`);
     }
 
-    // App Initialization
+    // Initialize application on boot
     window.addEventListener("DOMContentLoaded", () => {
       loadState();
       refreshLandingTiles();
