@@ -30,7 +30,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--font);
-      line-height: 1.7;
+      line-height: 1.75;
       padding-bottom: 90px;
     }
 
@@ -171,19 +171,30 @@
       background: var(--surface-elevated);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 22px;
+      padding: 24px;
       margin-bottom: 20px;
     }
     .section-tag {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       gap: 8px;
       color: var(--primary);
+    }
+
+    /* Interactive Hyperlinks */
+    .ad-link {
+      color: var(--primary);
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .ad-link:hover {
+      color: var(--accent);
     }
 
     /* Interactive Archetype Blocks */
@@ -232,24 +243,6 @@
       transition: all 0.3s;
     }
 
-    .matrix-decision-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin: 18px 0;
-    }
-    .matrix-card {
-      background: var(--surface-elevated);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .matrix-card:hover { border-color: var(--warning); transform: translateY(-2px); }
-    .matrix-card.active { border-color: var(--warning); background: rgba(245, 158, 11, 0.08); }
-    .matrix-card strong { display: block; color: var(--warning); margin-bottom: 4px; }
-
     .lab-box {
       background: var(--surface-card);
       border: 1px solid var(--border);
@@ -292,6 +285,7 @@
 
     /* Typography & Tables */
     h2 { font-size: 1.25rem; color: var(--primary); margin: 24px 0 10px 0; border-left: 4px solid var(--primary); padding-left: 10px; }
+    h3 { font-size: 1.05rem; color: #cbd5e1; margin: 18px 0 8px 0; }
     p { font-size: 0.96rem; color: #cbd5e1; margin-bottom: 14px; }
     ul, ol { margin: 10px 0 16px 22px; font-size: 0.94rem; color: #cbd5e1; }
     li { margin-bottom: 8px; }
@@ -363,10 +357,10 @@
     <div class="search-card">
       <div class="search-title">
         <span>Verified Ad Tech Knowledge Search Engine</span>
-        <span>Curated Enterprise Corpus + Live Wiki API</span>
+        <span>Curated Enterprise Corpus + Live Wiki Ingestion</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. SSP, DSP, Header Bidding, Floor Price, Ad Refresh, VAST)...">
+        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. Programmatic Display, SSP, DSP, Header Bidding, Floor Price, GDN vs Programmatic)...">
         <button type="button" class="btn-search" id="btn-trigger-search">Search</button>
       </div>
     </div>
@@ -424,11 +418,11 @@
   </div>
 
   <div class="bottom-nav" id="bottom-dock">
-    <div class="tab active" data-jump="0">Day 001 (Basics)</div>
-    <div class="tab" data-jump="1">Day 002 (Real Estate)</div>
-    <div class="tab" data-jump="2">Day 003 (Currencies)</div>
-    <div class="tab" data-jump="3">Day 004 (Supply/SSP)</div>
-    <div class="tab" data-jump="4">Day 005 (Demand/DSP)</div>
+    <div class="tab active" data-jump="0">Day 001</div>
+    <div class="tab" data-jump="1">Day 002</div>
+    <div class="tab" data-jump="2">Day 003</div>
+    <div class="tab" data-jump="3">Day 004</div>
+    <div class="tab" data-jump="4">Day 005</div>
   </div>
 
   <script>
@@ -607,267 +601,245 @@
 
     var ENTERPRISE_LEXICON = [
       {
-        keys: ["display ads", "display advertising", "banner ads", "digital display", "web banners", "mpu", "leaderboard"],
-        term: "Digital Display Advertising & Banner Canvases",
-        category: "Visual Media Architecture",
-        def: "Visual, graphic, or interactive advertising banners served on third-party publisher websites, apps, and platforms. Display advertising ranges from static IAB banners (300x250, 728x90) to rich media overlays, video units, and dynamic creative feeds.",
-        specs: "IAB Standard Sizes: 300x250 (Medium Rectangle), 728x90 (Leaderboard), 300x600 (Half Page), 320x50 (Mobile Banner). File weight limit: Standard <= 150KB polite load; frame rate capped at 60fps; ClickTag required for dynamic redirects."
+        keys: ["programmatic display", "pda", "display ads", "banner ads", "mpu", "leaderboard"],
+        term: "Programmatic Display Advertising (PDA)",
+        category: "Visual Media & Automated Execution",
+        def: "The automated buying and selling of digital display ad inventory (banners, rich media) across websites and apps using algorithmic platforms, AI, and real-time bidding rather than manual insertion orders.",
+        specs: "Formats: 300x250, 728x90, 300x600, 320x50, 970x250. Protocols: OpenRTB 2.5/3.0. Execution types: Programmatic Direct, Header Bidding, Waterfall, Private Marketplace (PMP). Major platforms: Google AdX, Magnite, PubMatic, DV360, The Trade Desk."
       },
       {
-        keys: ["ip targeting", "ip address targeting", "reverse ip", "reverse ip lookup", "ip routing"],
-        term: "IP Targeting & Reverse IP Geolocation",
-        category: "Audience Targeting & B2B Telemetry",
-        def: "A targeting methodology that maps a user's Internet Protocol (IP) address to physical geographic locations or corporate autonomous system numbers (ASNs). In B2B marketing, Reverse IP Lookup identifies corporate domains visiting a website by matching public IPv4/IPv6 blocks to corporate registry databases.",
-        specs: "OpenRTB Mapping: device.ip (IPv4) or device.ipv6. In programmatic bid streams, user privacy standards truncate or mask the last octet (subnet masking, e.g., 192.168.1.xxx) to prevent personal fingerprinting. Key B2B vendors: Demandbase, 6sense, KickFire, MaxMind."
+        keys: ["gdn vs programmatic", "gdn", "google display network"],
+        term: "Google Display Network (GDN) vs. Programmatic Display",
+        category: "Network Comparison",
+        def: "GDN is Google's closed ad network where buyers purchase space on AdSense/Ad Manager publishers. Programmatic Display is an open multi-exchange ecosystem spanning 20+ ad exchanges and SSPs (Magnite, OpenX, PubMatic) with advanced bid shading, third-party data overlays, and DMP/CDP integrations.",
+        specs: "GDN Reach: ~2M sites (Google only). Programmatic Reach: Unlimited open-web inventory. Pricing: Fixed/Auction within Google vs. Unified OpenRTB first-price dynamic auctions."
       },
       {
-        keys: ["account based marketing", "abm", "b2b abm", "account targeting", "named accounts"],
-        term: "Account-Based Marketing (ABM)",
-        category: "B2B Strategic Media Architecture",
-        def: "A strategic B2B go-to-market approach where sales and marketing teams focus resources on a specific set of target accounts. Programmatic ABM leverages company-level IP matching, firmographic data, and professional identity graphs (e.g., LinkedIn) to serve customized messaging exclusively to employees of designated enterprise accounts.",
-        specs: "Execution: Involves uploading target account lists (TAL) or domain lists into DSPs/LinkedIn Campaign Manager. Ads are matched using Reverse IP lookups, corporate CRM IDs, or email-hashed B2B identity graphs. Core KPI: Account engagement rate, pipeline velocity, target account reach."
+        keys: ["ad refresh", "refresh rate", "viewability refresh"],
+        term: "Ad Refresh Optimization (AdPushup Standard)",
+        category: "Publisher Yield Architecture",
+        def: "A publisher technique where an ad slot reloads with a new creative after a specific time interval (typically 30 to 60 seconds). Under IAB and Google Ad Manager policy, ad refresh should be tied to viewability: refreshing only when >=50% of the slot remains in the active viewport.",
+        specs: "Triggers: Time-based (e.g. 30s timer) vs. Viewability-based (active viewport detection). Metric Impact: Significantly increases publisher impression volume and total page RPM while preserving advertiser viewability scores."
       },
       {
-        keys: ["ssp", "supply side platform", "sell side platform"],
-        term: "Supply-Side Platform (SSP)",
-        category: "Sell-Side Programmatic Infrastructure",
-        def: "An enterprise ad tech platform that automates inventory monetization for digital publishers. SSPs aggregate ad inventory, set reserve floor prices (hard/soft), evaluate buyer eligibility, and broadcast OpenRTB bid requests to dozens of DSPs and Ad Exchanges simultaneously.",
-        specs: "Protocols: OpenRTB 2.5 / 3.0, Prebid.js adapters. Core features: Yield optimization algorithms, match table cookie syncing, Deal ID packaging, ads.txt enforcement. Major platforms: Magnite, PubMatic, Google Ad Manager (AdX), Equativ, OpenX."
+        keys: ["header bidding", "prebid", "prebid.js", "client vs server"],
+        term: "Header Bidding & Prebid Wrapper Architecture",
+        category: "Auction Technology",
+        def: "An advanced programmatic integration where an asynchronous JavaScript wrapper executes in the website header, soliciting simultaneous bids from multiple SSPs before calling the publisher ad server (GAM 360), eliminating the waterfall delay.",
+        specs: "Client-side (Prebid.js): Browser calls adapters in parallel; max cookie sync; ~800ms timeout. Server-to-Server (Prebid Server / Open Bidding): Single browser call to a cloud cluster that runs auctions remotely, eliminating mobile browser latency."
       },
       {
-        keys: ["dsp", "demand side platform", "buy side platform"],
-        term: "Demand-Side Platform (DSP)",
-        category: "Buy-Side Programmatic Infrastructure",
-        def: "Enterprise media-buying software that enables agencies and advertisers to bid on and purchase digital ad inventory programmatically across multiple ad exchanges through a centralized interface.",
-        specs: "Processing Capacity: Evaluates 1M+ to 2M+ queries per second (QPS). Key functions: Algorithmic bid shading, unified frequency capping, pacing distribution (ASAP vs. Evenly), third-party audience data overlays. Major platforms: The Trade Desk, Google DV360, Amazon DSP."
-      },
-      {
-        keys: ["header bidding", "prebid", "prebid.js", "wrapper"],
-        term: "Header Bidding & Prebid Architecture",
-        category: "Programmatic Auction Mechanics",
-        def: "An advanced programmatic integration where an asynchronous JavaScript wrapper executes in the website header, soliciting simultaneous bids from multiple SSPs before making the primary ad server call, bypassing traditional waterfall latency and priority bias.",
-        specs: "Core Frameworks: Prebid.js (Client-side), Prebid Server (Server-to-Server). Key variables passed to ad server: hb_pb (price bucket), hb_bidder (winning adapter), hb_adid (creative token)."
-      },
-      {
-        keys: ["floor price", "hard floor", "soft floor", "price floor"],
-        term: "Floor Price (Hard vs. Soft Floor)",
+        keys: ["floor price", "hard floor", "soft floor"],
+        term: "Floor Price Optimization (Hard vs. Soft Floors)",
         category: "Yield Management & Monetization",
-        def: "The minimum price threshold a publisher establishes for an ad unit. Hard floors reject any incoming bid below the stated CPM. Soft floors act as an algorithmic baseline where bids below the target are dynamically evaluated against historical elasticity curves.",
-        specs: "OpenRTB Mapping: imp[].bidfloor and imp[].bidfloorcur (currency code, e.g., USD). Enforced directly in SSP auction logic or Google Ad Manager Unified Pricing Rules (UPR)."
+        def: "The reserve price threshold set by a publisher. A Hard Floor strictly rejects bids beneath the CPM limit. A Soft Floor allows bids beneath the target to be accepted if historical demand elasticity indicates the impression would otherwise go unfilled.",
+        specs: "OpenRTB Mapping: imp[].bidfloor (USD). Implemented in SSP dashboards or Google Ad Manager Unified Pricing Rules (UPR)."
       },
       {
-        keys: ["vast", "vpaid", "simid", "omid", "video ad serving template"],
-        term: "Video Ad Serving Template (VAST)",
-        category: "Digital Video Standards",
-        def: "An IAB Tech Lab XML standard that enables video players to ingest, display, and track digital video advertising across desktop, mobile, and Connected TV environments.",
-        specs: "Current Standard: VAST 4.2. Quartiles tracked: start (0%), firstQuartile (25%), midpoint (50%), thirdQuartile (75%), complete (100%). Accompanied by OMID (Open Measurement Interface Definition) for independent verification."
+        keys: ["ssp", "supply side platform"],
+        term: "Supply-Side Platform (SSP)",
+        category: "Sell-Side Infrastructure",
+        def: "Software publishers use to manage, package, and sell their ad inventory to multiple ad exchanges and DSPs in real time without human intervention.",
+        specs: "Key Vendors: Magnite, PubMatic, Google Ad Manager (AdX), Equativ, OpenX. Core tasks: Floor pricing, user match-table syncing, Deal ID routing, ads.txt validation."
       },
       {
-        keys: ["uid2", "unified id 2.0", "universal id", "identity graph"],
-        term: "Unified ID 2.0 (UID2)",
-        category: "Identity & Privacy Architecture",
-        def: "An open-source identity framework developed to replace third-party tracking cookies. It normalizes and hashes authenticated user email addresses into salted, continuously rotating pseudonymous tokens.",
-        specs: "Encryption: SHA-256 normalized email passed through the UID2 Core service with rotating private keys. Emitted in OpenRTB bid streams inside user.ext.eids for authenticated DSP targeting."
+        keys: ["dsp", "demand side platform"],
+        term: "Demand-Side Platform (DSP)",
+        category: "Buy-Side Infrastructure",
+        def: "Software advertisers and agencies use to buy ad space programmatically across multiple ad exchanges through a single interface with centralized frequency capping and audience targeting.",
+        specs: "Key Vendors: The Trade Desk, Google DV360, Amazon DSP. Evaluates 1M+ to 2M+ QPS (queries per second) with algorithmic bid shading in first-price auctions."
+      },
+      {
+        keys: ["ip targeting", "reverse ip", "abm"],
+        term: "IP Targeting & Account-Based Marketing (ABM)",
+        category: "Audience Telemetry",
+        def: "Targeting specific geographic regions or corporate domains by mapping user IP addresses against company registration databases (Reverse IP Lookup).",
+        specs: "OpenRTB Mapping: device.ip (subnet-masked for privacy). Key Platforms: Demandbase, 6sense, KickFire."
       }
     ];
 
-    function getFoundationsData(dayIdx, title) {
-      if (title.indexOf("SSP") !== -1 || title.indexOf("Supply Stack") !== -1) {
-        return {
-          archetype: "Yield Matrix & AdPushup Architecture",
-          what: "A <strong>Supply-Side Platform (SSP)</strong> is an enterprise software platform engineered for digital publishers to manage, automate, package, and monetize their advertising real estate.",
-          why: "Manual insertion orders and static ad networks leave publishers vulnerable to unsold inventory, low fill rates, and price discrimination. An SSP automates this by simultaneously soliciting bids from dozens of programmatic ad exchanges and DSPs within 100 milliseconds, maximizing yield across every impression.",
-          where: "Installed on the publisher's digital real estate stack, bridging the publisher's ad server (GAM 360) and header bidding wrappers to demand platforms.",
-          examples: "<strong>Magnite</strong> (CTV & rich video leader), <strong>PubMatic</strong> (mobile and open-web wrapper specialist), <strong>Google AdX</strong>, and <strong>Equativ</strong>.",
-          jargons: [
-            { term: "Hard Floor", def: "A strict pricing threshold. Any incoming programmatic bid submitted below this exact CPM is immediately disqualified." },
-            { term: "Soft Floor", def: "A dynamic baseline price where bids under the benchmark can still clear if historical demand models predict no higher bids." },
-            { term: "Fill Rate", def: "The percentage of served impressions relative to total ad requests: (Impressions Delivered / Ad Requests) * 100." },
-            { term: "Ad Refresh", def: "An automated trigger reloading an ad slot after 30-60 seconds, permitted only when the unit maintains >=50% active MRC viewability." }
-          ]
-        };
-      } else if (title.indexOf("DSP") !== -1 || title.indexOf("Demand Stack") !== -1) {
-        return {
-          archetype: "Terminal & QPS Bid Controller",
-          what: "A <strong>Demand-Side Platform (DSP)</strong> is media-buying software that allows advertisers, agencies, and brands to buy digital advertising across thousands of websites and apps through a single centralized interface.",
-          why: "Instead of calling ESPN, CNN, and Forbes separately to buy banners, a media buyer uses one DSP to target their audience across the entire internet simultaneously with centralized frequency capping and algorithmic bid optimization.",
-          where: "Operated by agency trading desks (ATDs), media planners, and programmatic specialists.",
-          examples: "<strong>The Trade Desk (TTD)</strong> (the leading independent DSP for open web and CTV), <strong>Google Display & Video 360 (DV360)</strong>, and <strong>Amazon DSP</strong>.",
-          jargons: [
-            { term: "QPS (Queries Per Second)", def: "The frequency of bid requests processed by a DSP cluster (often exceeding 1.5 million QPS globally)." },
-            { term: "Bid Shading", def: "A machine-learning algorithm that lowers a buyer's bid to win a First-Price auction at the lowest clearing price." },
-            { term: "Frequency Capping", def: "A governance rule restricting exposure to prevent ad fatigue (e.g., maximum 3 impressions per unique user every 24 hours)." },
-            { term: "Seat ID", def: "The unique account number identifying an agency or brand buyer on an ad exchange." }
-          ]
-        };
-      } else if (title.indexOf("Currencies") !== -1 || title.indexOf("Pricing Models") !== -1) {
-        return {
-          archetype: "Interactive Math Arbitrage",
-          what: "<strong>Pricing Models (CPM, CPC, CPA, vCPM)</strong> are the commercial financial contracts that define how attention, traffic, and conversions are valued and billed in digital advertising.",
-          why: "Different advertisers have different business goals. A brand launching a new car wants mass visibility (CPM), an e-commerce store wants site visits (CPC), and a subscription software app wants paying customers (CPA). Currencies balance financial risk between buyers and publishers.",
-          where: "Negotiated inside insertion orders, programmatic line items, and publisher billing reconciliations.",
-          examples: "Nike executing brand awareness at <strong>$4.00 CPM</strong>; a dental practice running Google Search ads at <strong>$8.50 CPC</strong>; a mobile app user acquisition campaign at <strong>$3.50 CPA</strong>.",
-          jargons: [
-            { term: "CPM (Cost Per Mille)", def: "Cost per 1,000 ad impressions. The universal baseline currency of display, video, and programmatic media." },
-            { term: "eCPM (Effective CPM)", def: "A formula normalizing non-CPM revenue (clicks, leads) back into an impression-level metric for yield comparison." },
-            { term: "vCPM (Viewable CPM)", def: "Cost per 1,000 impressions audited as in-view under Media Rating Council (MRC) guidelines." },
-            { term: "CTR (Click-Through Rate)", def: "The percentage of users who clicked an ad: (Clicks / Impressions) * 100." }
-          ]
-        };
-      } else if (title.indexOf("Real Estate") !== -1 || title.indexOf("Inventory Taxonomy") !== -1) {
-        return {
-          archetype: "Visual Spec Canvas & CLS Physics",
-          what: "<strong>Digital Real Estate & Inventory Taxonomy</strong> refers to the dimensions, coordinates, and positions of ad spaces on web pages, mobile apps, and video players.",
-          why: "Standardizing ad sizes allows advertisers to build one creative asset that runs on millions of websites, while position hierarchy (Above vs. Below the Fold) governs visibility and pricing.",
-          where: "Defined directly in publisher page templates, responsive layout grids, and Google Publisher Tag (GPT) containers.",
-          examples: "300x250 Medium Rectangle (MPU) in sidebar modules; 728x90 Leaderboard in site headers; 320x50 Mobile Anchor stuck to the smartphone viewport footer.",
-          jargons: [
-            { term: "Above the Fold (ATF)", def: "Inventory visible immediately on the screen without scrolling. High visibility and premium pricing." },
-            { term: "Below the Fold (BTF)", def: "Inventory located lower on the page, requiring active user scrolling to be seen." },
-            { term: "Cumulative Layout Shift (CLS)", def: "A Core Web Vital tracking layout jumps caused when unreserved ad containers load asynchronously." },
-            { term: "Lazy Loading", def: "Postponing ad asset loading until the user scrolls within proximity of the placement." }
-          ]
-        };
-      } else if (title.indexOf("OpenRTB") !== -1 || title.indexOf("Auction Speedrun") !== -1) {
-        return {
-          archetype: "Code Sniffer & Terminal",
-          what: "The <strong>OpenRTB Protocol</strong> is an open industry communication standard developed by the IAB Tech Lab that enables automated programmatic bidding across ad tech systems.",
-          why: "Allows computers owned by publishers, exchanges, and buyers to negotiate, evaluate, and clear billions of auction bids in under 100 milliseconds without proprietary lock-in.",
-          where: "Exchanged across server-side WebSocket, HTTP/2, and REST sockets between SSP listener nodes and DSP bidder clusters.",
-          examples: "OpenRTB 2.5 JSON payloads passing device IP, site URL, ad slot sizing, and floor rates to The Trade Desk, DV360, and Amazon DSP.",
-          jargons: [
-            { term: "BidRequest", def: "The structured JSON payload emitted by the SSP describing the impression context to potential buyers." },
-            { term: "BidResponse", def: "The reply emitted by the DSP containing the bid price, creative markup (adm), and notification win URL (nurl)." },
-            { term: "First-Price Auction", def: "The standard auction model where the highest bidder wins and pays exactly the amount they submitted." },
-            { term: "Match Rate", def: "The percentage of user IDs an SSP can successfully identify and sync with a DSP's internal user identity table." }
-          ]
-        };
-      } else {
-        return {
-          archetype: "Operations Incident War Room",
-          what: "<strong>" + title + "</strong> is a mission-critical operating component of digital marketing and ad operations.",
-          why: "Maintains platform scalability, preserves revenue yield, verifies data integrity, and safeguards campaigns against discrepancies.",
-          where: "Trafficked in ad servers (GAM 360, CM360), validated in browser DevTools, and reconciled in financial billing systems.",
-          examples: "Enterprise workflows across Google Ad Manager line items, Prebid.js wrappers, Floodlight pixels, and CDP identity graphs.",
-          jargons: [
-            { term: "Discrepancy", def: "The percentage variance between publisher-reported impressions and buyer-reported impressions (industry SLA is <= 10%)." },
-            { term: "Cache-Buster", def: "A dynamic random integer macro injected into tags to ensure every impression ping executes a live server call." },
-            { term: "Line Item", def: "The execution container in an ad server defining flight dates, impressions, priority, and targeting." },
-            { term: "Passback", def: "A fallback tag executed when an initial demand source fails to fill an ad impression." }
-          ]
-        };
-      }
-    }
-
-    function renderClassroomContent(dayIdx, title) {
+    function renderDynamicLesson(dayIdx, title) {
       var dayStr = String(dayIdx + 1).padStart(3, '0');
-      var concept = getFoundationsData(dayIdx, title);
 
-      var badge = document.getElementById('archetype-indicator');
-      if (badge) badge.textContent = concept.archetype;
+      if (dayIdx === 0 || title.indexOf("Market Players") !== -1 || title.indexOf("Ecosystem") !== -1) {
+        return `
+          <div class="lesson-section">
+            <div class="section-tag">📘 Day 001 Foundation Brief: Programmatic Display & Ecosystem Value Chain</div>
+            
+            <h2>1. What Is It?</h2>
+            <p><strong>Programmatic Display Advertising (PDA)</strong> is the buying and selling of ad space for visual display banners (images, videos, rich media) across websites using automated technology, algorithms, and AI instead of slow human negotiations and paper Insertion Orders (IOs).</p>
+            <p>Whenever you visit an online publication, you encounter banners at the top (Leaderboard), in the right sidebar (MPU), or between content paragraphs. When those slots are auctioned and filled by algorithms in milliseconds, it is called programmatic display advertising.</p>
 
-      var jargonHtml = "";
-      for (var i = 0; i < concept.jargons.length; i++) {
-        jargonHtml += "<tr><td><strong>" + concept.jargons[i].term + "</strong></td><td>" + concept.jargons[i].def + "</td></tr>";
-      }
+            <h2>2. Why Does It Exist & Why Is It Useful?</h2>
+            <div class="callout analogy">
+              <strong>The Traditional Negotiation Breakdown:</strong><br>
+              In traditional digital advertising, an advertiser had to call or email dozens of website sales reps, negotiate fixed rates, sign paper IO contracts, and email static image files. This was slow, expensive, and left over 50% of the publisher's ad inventory unsold.<br><br>
+              Programmatic display changed this completely: <strong>Bids close in under 100 milliseconds</strong>. Advertisers reach their exact target audience wherever they browse, while publishers maximize their revenue by exposing every impression to thousands of global buyers at once.
+            </div>
 
-      var html = '<div class="lesson-section">' +
-        '<div class="section-tag">📘 Foundation Brief: What, Why, Where & Examples</div>' +
-        '<h2>1. What Is It?</h2><p>' + concept.what + '</p>' +
-        '<h2>2. Why Does It Exist & Why Is It Useful?</h2><p>' + concept.why + '</p>' +
-        '<h2>3. Where Is It Used In The Real World?</h2><p>' + concept.where + '</p>' +
-        '<h2>4. Real-World Enterprise Examples</h2><p>' + concept.examples + '</p>' +
-        '</div>' +
-        '<div class="lesson-section">' +
-        '<div class="section-tag">📖 Deep Technical Dictionary & Protocol Schemas</div>' +
-        '<h2>Enterprise Jargons & Operational Definitions</h2>' +
-        '<div class="data-table-wrapper"><table><thead><tr><th>Industry Jargon / Token</th><th>Precise Operational Definition</th></tr></thead><tbody>' +
-        jargonHtml +
-        '</tbody></table></div>' +
-        '<h2>Protocol Payload Architecture for Day ' + dayStr + '</h2>' +
-        '<pre>/* Standard Production Payload Architecture */\n{\n  "day_index": "' + dayStr + '",\n  "operational_subject": "' + title.replace(/"/g, '') + '",\n  "standard_governance": "IAB-Tech-Lab / AdPushup-Compliant",\n  "telemetry": {\n    "validation_state": "ACTIVE_PRODUCTION",\n    "tracking_macros": ["%%CACHEBUSTER%%", "%%CLICK_URL_UNESC%%", "%%WINNING_PRICE%%"],\n    "error_handling": "FAILOVER_TO_PASSBACK_LINE_ITEM"\n  }\n}</pre>' +
-        '</div>' +
-        '<div class="lesson-section">' +
-        '<div class="section-tag">🎮 Interactive Production Sandbox & Case Study</div>' +
-        renderInteractiveSandbox(dayIdx, title) +
-        '</div>';
+            <h2>3. Where Is It Used in the Real World?</h2>
+            <p>PDA runs across the open web. Key operational hubs include:</p>
+            <ul>
+              <li><strong>Publishers</strong>: News sites, utility apps, streaming blogs that install ad tags to sell space.</li>
+              <li><strong>SSPs (Supply-Side Platforms)</strong>: Platforms like <span class="ad-link" onclick="quickQuery('SSP')">Magnite</span> and <span class="ad-link" onclick="quickQuery('SSP')">PubMatic</span> that aggregate inventory and enforce <span class="ad-link" onclick="quickQuery('Floor Price')">Floor Prices</span>.</li>
+              <li><strong>Ad Exchanges</strong>: Live auction marketplaces like Google AdX and OpenX.</li>
+              <li><strong>DSPs (Demand-Side Platforms)</strong>: Software like <span class="ad-link" onclick="quickQuery('DSP')">The Trade Desk</span> and DV360 where advertisers configure audience targeting, budgets, and bid shading.</li>
+            </ul>
 
-      return html;
-    }
+            <h2>4. Real-World Enterprise Example</h2>
+            <p>Nike wants to promote marathon shoes to running enthusiasts. Rather than buying fixed banners solely on a sports blog, Nike's agency configures a campaign in a DSP. When a runner in Chennai opens an article on <em>The Hindu</em> or a tech blog, the publisher's SSP alerts the ad exchange, Nike's DSP submits a real-time bid, wins the auction, and renders the personalized shoe banner—all in <strong>under 80 milliseconds</strong>.</p>
+          </div>
 
-    function renderInteractiveSandbox(dayIdx, title) {
-      if (dayIdx === 0) {
-        return '<div class="lab-box">' +
-          '<div class="lab-title"><span>🎮 Value Chain Simulator: The Media Dollar Waterfall</span></div>' +
-          '<p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Adjust agency take-rates, DSP tech fees, and SSP margins to observe how much working media reaches the publisher:</p>' +
-          '<div class="calc-grid">' +
-          '<div class="calc-field"><label>Gross Campaign Budget ($)</label><input type="number" id="sim-gross" value="100000"></div>' +
-          '<div class="calc-field"><label>Agency Fee (%)</label><input type="number" id="sim-agency" value="12"></div>' +
-          '<div class="calc-field"><label>DSP Tech Fee (%)</label><input type="number" id="sim-dsp" value="15"></div>' +
-          '<div class="calc-field"><label>SSP Exchange Take Rate (%)</label><input type="number" id="sim-ssp" value="12"></div>' +
-          '</div>' +
-          '<div class="calc-metrics">' +
-          '<div><div class="metric-value" id="wf-working-media">$64,416.00</div><div class="metric-label">Net Working Media to Publisher</div></div>' +
-          '<div><div class="metric-value" id="wf-adtech-tax">35.58%</div><div class="metric-label">Total Intermediary Take Rate</div></div>' +
-          '</div>' +
-          '</div>';
-      } else if (dayIdx === 1) {
-        return '<div class="canvas-spec-board">' +
-          '<div style="font-size:0.85rem; font-weight:700; color:var(--purple); text-transform:uppercase;">Interactive IAB Canvas Visualizer</div>' +
-          '<p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Tap a button to inspect real-world pixel dimensions and aspect ratios:</p>' +
-          '<div style="display:flex; justify-content:center; gap:8px; margin:14px 0; flex-wrap:wrap;">' +
-          '<button type="button" class="phase-btn active" id="btn-slot-mpu">300x250 (MPU)</button>' +
-          '<button type="button" class="phase-btn" id="btn-slot-lead">728x90 (Leaderboard)</button>' +
-          '<button type="button" class="phase-btn" id="btn-slot-half">300x600 (Half Page)</button>' +
-          '<button type="button" class="phase-btn" id="btn-slot-mob">320x50 (Mobile)</button>' +
-          '</div>' +
-          '<div class="live-slot-preview" id="live-slot-box" style="width:300px; height:250px;">300 x 250 (Medium Rectangle)</div>' +
-          '</div>';
-      } else if (dayIdx === 2) {
-        return '<div class="lab-box">' +
-          '<div class="lab-title"><span>🎮 Scenario 3: Real-Time eCPM Arbitrage & Yield Engine</span></div>' +
-          '<p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Compare competing bids from a pure CPM buyer and a performance CPC buyer to determine which offer produces higher publisher yield:</p>' +
-          '<div class="calc-grid">' +
-          '<div class="calc-field"><label>Buyer 1: Direct CPM Bid ($)</label><input type="number" id="sim-cpm-bid" value="3.50" step="0.1"></div>' +
-          '<div class="calc-field"><label>Buyer 2: Search CPC Bid ($)</label><input type="number" id="sim-cpc-bid" value="0.75" step="0.05"></div>' +
-          '<div class="calc-field"><label>Buyer 2: Historical CTR (%)</label><input type="number" id="sim-ctr" value="0.60" step="0.05"></div>' +
-          '<div class="calc-field"><label>Available Slot Impressions</label><input type="number" id="sim-slot-imp" value="250000"></div>' +
-          '</div>' +
-          '<div class="calc-metrics">' +
-          '<div><div class="metric-value" id="arb-winner" style="color:var(--accent);">Buyer 2 (CPC)</div><div class="metric-label">Winning Bidder Awarded</div></div>' +
-          '<div><div class="metric-value" id="arb-effective-cpm">$4.50 eCPM</div><div class="metric-label">Clearing Effective Value</div></div>' +
-          '</div>' +
-          '</div>';
-      } else if (dayIdx === 5) {
-        return '<div class="terminal-window">' +
-          '<div class="terminal-bar">' +
-          '<div class="term-dot term-red"></div>' +
-          '<div class="term-dot term-yellow"></div>' +
-          '<div class="term-dot term-green"></div>' +
-          '<span style="color:#64748b; margin-left:10px;">openrtb_auction_sniffer.sh --stream=live</span>' +
-          '</div>' +
-          '<div><span style="color:#a855f7;">[00ms] HTTP GET /article.html</span> -> Publisher ad tag executes in client DOM</div>' +
-          '<div><span style="color:#38bdf8;">[25ms] OPEN_RTB_REQUEST_EMITTED</span> -> Prebid wrapper serializes slot dimensions to 12 DSPs</div>' +
-          '<div style="color:#64748b; margin:6px 0;">{ "id": "8921a", "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 }, "bidfloor": 1.50 }], "device": { "geo": { "city": "Chennai" } } }</div>' +
-          '<div><span style="color:#10b981;">[65ms] DSP_BID_RESPONSE_RECEIVED</span> -> DSP 1 bids $1.80 | DSP 2 bids $2.45 (WINNER)</div>' +
-          '<div><span style="color:#f59e0b;">[90ms] AUCTION_CLEARED</span> -> Highest clearing price passes into GAM line item targeting</div>' +
-          '<div><span style="color:#38bdf8;">[105ms] AD_RENDERED</span> -> Creative rendered inside sandboxed iframe; 1x1 billing pixels ping server</div>' +
-          '</div>';
+          <div class="lesson-section">
+            <div class="section-tag">📊 Comparative Blueprint: Programmatic vs. Traditional Advertising</div>
+            <div class="data-table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Aspect</th><th>Programmatic Display Advertising</th><th>Traditional / Non-Programmatic Display</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Buying Process</strong></td><td>Automated real-time auctions (RTB) using algorithms.</td><td>Manual phone/email negotiations and signed Insertion Orders (IOs).</td></tr>
+                  <tr><td><strong>Pricing Model</strong></td><td>Dynamic pricing via bidding; no fixed prices (CPM/eCPM).</td><td>Fixed flat-rate prices negotiated directly with each publisher.</td></tr>
+                  <tr><td><strong>Auction Speed</strong></td><td>Bids clear in <strong>under 100 milliseconds</strong>.</td><td>Takes days or weeks to finalize insertion orders.</td></tr>
+                  <tr><td><strong>Targeting Precision</strong></td><td>Granular targeting: behavior, device telemetry, first-party data, geolocation.</td><td>Broad, site-wide contextual placement with limited targeting.</td></tr>
+                  <tr><td><strong>Optimization</strong></td><td>Real-time programmatic bid adjustments and dynamic creative swapping.</td><td>Static; changes require advance notification and manual trafficking.</td></tr>
+                  <tr><td><strong>Fill Rate & Inventory</strong></td><td>Minimizes unsold remnant inventory via global demand pools.</td><td>High volume of unsold inventory left unmonetized.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>The 8-Step Transaction Flow</h2>
+            <ol>
+              <li>The user lands on a publisher's webpage. The ad unit container initializes in the browser DOM.</li>
+              <li>The publisher's <span class="ad-link" onclick="quickQuery('SSP')">Supply-Side Platform (SSP)</span> generates a bid request detailing the user's device, geolocation, and slot size.</li>
+              <li>The SSP sends the bid request to multiple ad exchanges and header bidding partners.</li>
+              <li>The ad exchange broadcasts the request simultaneously to connected <span class="ad-link" onclick="quickQuery('DSP')">Demand-Side Platforms (DSPs)</span>.</li>
+              <li>Each DSP checks its advertiser campaign criteria (budget, frequency caps, audience targeting).</li>
+              <li>DSPs run bid shading algorithms and return their clearing bid price with creative markup.</li>
+              <li>The exchange clears the auction (highest bid wins in a First-Price Auction).</li>
+              <li>The winning creative asset renders in the user's browser, and 1x1 billing notification pixels fire.</li>
+            </ol>
+          </div>
+
+          <div class="lesson-section">
+            <div class="section-tag">🎮 Interactive Production Sandbox: The Media Dollar Waterfall</div>
+            <div class="lab-box">
+              <div class="lab-title"><span>Value Chain Simulator: Calculate Net Working Media</span></div>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Trace how agency management fees, DSP tech fees, and SSP take rates reduce working media dollars:</p>
+              <div class="calc-grid">
+                <div class="calc-field"><label>Gross Campaign Spend ($)</label><input type="number" id="sim-gross" value="100000"></div>
+                <div class="calc-field"><label>Agency Management Fee (%)</label><input type="number" id="sim-agency" value="12"></div>
+                <div class="calc-field"><label>DSP Tech Fee (%)</label><input type="number" id="sim-dsp" value="15"></div>
+                <div class="calc-field"><label>SSP Exchange Take Rate (%)</label><input type="number" id="sim-ssp" value="12"></div>
+              </div>
+              <div class="calc-metrics">
+                <div><div class="metric-value" id="wf-working-media">$64,416.00</div><div class="metric-label">Net Working Media to Publisher</div></div>
+                <div><div class="metric-value" id="wf-adtech-tax">35.58%</div><div class="metric-label">Total Intermediary Take Rate</div></div>
+              </div>
+            </div>
+          </div>
+        `;
+      } else if (dayIdx === 1 || title.indexOf("Real Estate") !== -1) {
+        return `
+          <div class="lesson-section">
+            <div class="section-tag">📘 Day 002: Digital Real Estate, Ad Units & Layout Optimization</div>
+            
+            <h2>1. What Is Digital Real Estate?</h2>
+            <p>Digital real estate refers to the physical pixel dimensions, viewport coordinates, and layout placements reserved for advertising on web pages, mobile apps, and video players.</p>
+
+            <h2>2. Standard IAB Ad Canvas Sizes</h2>
+            <p>The Interactive Advertising Bureau (IAB) standardized dimensions to allow advertisers to run a single creative across millions of websites:</p>
+            <div class="data-table-wrapper">
+              <table>
+                <thead>
+                  <tr><th>Ad Unit Name</th><th>Dimensions (W x H)</th><th>Primary Location</th><th>Operational Liquidity</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Medium Rectangle (MPU)</strong></td><td>300 x 250 px</td><td>Sidebar, in-content paragraphs</td><td>Highest liquidity globally. Supported by 99% of SSPs and DSPs.</td></tr>
+                  <tr><td><strong>Leaderboard</strong></td><td>728 x 90 px</td><td>Desktop site header / top fold</td><td>High viewability when positioned Above the Fold (ATF).</td></tr>
+                  <tr><td><strong>Mobile Leaderboard</strong></td><td>320 x 50 px</td><td>Mobile sticky header or footer</td><td>Lightweight banner designed for cellular connections.</td></tr>
+                  <tr><td><strong>Half Page (Filmstrip)</strong></td><td>300 x 600 px</td><td>Right-hand desktop sidebar</td><td>High-impact placement commanding 2x-3x higher CPMs.</td></tr>
+                  <tr><td><strong>Billboard</strong></td><td>970 x 250 px</td><td>Desktop masterhead canvas</td><td>High-impact takeover unit; typically sold directly.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h2>3. AdPushup Yield Principle: Layout Optimization & Viewability</h2>
+            <p>According to publisher engineering standards, simply placing an ad on a page is not enough. You must optimize for <strong>MRC Viewability</strong>: an ad must have >=50% of its pixels in view for at least 1.0 continuous second for display, or 2.0 seconds for video. Placements positioned Above the Fold (ATF) command significantly higher CPMs.</p>
+          </div>
+
+          <div class="lesson-section">
+            <div class="section-tag">🎮 Interactive Canvas Studio: Live IAB Dimensions Visualizer</div>
+            <div class="canvas-spec-board">
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:14px;">Tap a button to inspect real-world pixel dimensions and aspect ratios:</p>
+              <div style="display:flex; justify-content:center; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+                <button type="button" class="phase-btn active" id="btn-slot-mpu">300x250 (MPU)</button>
+                <button type="button" class="phase-btn" id="btn-slot-lead">728x90 (Leaderboard)</button>
+                <button type="button" class="phase-btn" id="btn-slot-half">300x600 (Half Page)</button>
+                <button type="button" class="phase-btn" id="btn-slot-mob">320x50 (Mobile)</button>
+              </div>
+              <div class="live-slot-preview" id="live-slot-box" style="width:300px; height:250px;">300 x 250 (Medium Rectangle)</div>
+            </div>
+          </div>
+        `;
       } else {
-        return '<div class="lab-box">' +
-          '<div class="lab-title"><span>⚙️ Campaign Pacing & Revenue Burn-Down Terminal</span></div>' +
-          '<p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Audit live delivery pacing and daily run-rate for <strong>' + title + '</strong>:</p>' +
-          '<div class="calc-grid">' +
-          '<div class="calc-field"><label>Impression Goal</label><input type="number" id="gen-imp" value="500000"></div>' +
-          '<div class="calc-field"><label>Target Floor / CPM ($)</label><input type="number" id="gen-cpm" value="3.50" step="0.1"></div>' +
-          '<div class="calc-field"><label>Pacing Profile</label><select id="gen-pace"><option value="1.0">Evenly Paced</option><option value="1.25">Frontloaded (+25%)</option><option value="1.5">ASAP (Flash Sale)</option></select></div>' +
-          '<div class="calc-field"><label>Fill Rate Estimate (%)</label><input type="number" id="gen-fill" value="85"></div>' +
-          '</div>' +
-          '<div class="calc-metrics">' +
-          '<div><div class="metric-value" id="gen-rev">$1,487.50</div><div class="metric-label">Projected Net Yield</div></div>' +
-          '<div><div class="metric-value" id="gen-daily">16,666</div><div class="metric-label">Required Daily Run-Rate</div></div>' +
-          '</div>' +
-          '</div>';
+        return `
+          <div class="lesson-section">
+            <div class="section-tag">📘 Day ${dayStr}: ${title} - In-Depth Practitioner Blueprint</div>
+            
+            <h2>1. What Is It?</h2>
+            <p><strong>${title}</strong> is a critical operational component of digital advertising and ad operations, governing how campaigns are bought, served, audited, or monetized.</p>
+
+            <h2>2. Why Does It Exist & Why Is It Useful?</h2>
+            <p>In modern digital advertising, scale requires automation. Without standardized specifications for ${title}, transactions between buy-side systems (DSPs, advertisers) and sell-side systems (SSPs, publishers) would experience technical failures, data loss, and revenue discrepancies.</p>
+
+            <h2>3. Where Is It Used in the Real World?</h2>
+            <p>Implemented across publisher ad servers (Google Ad Manager 360), header bidding wrappers (<span class="ad-link" onclick="quickQuery('Header Bidding')">Prebid.js</span>), supply platforms (<span class="ad-link" onclick="quickQuery('SSP')">Magnite, PubMatic</span>), and demand engines (<span class="ad-link" onclick="quickQuery('DSP')">The Trade Desk, DV360</span>).</p>
+
+            <h2>4. Real-World Enterprise Examples</h2>
+            <p>Publishers using <span class="ad-link" onclick="quickQuery('Floor Price')">Floor Price Optimization</span> to protect inventory value; ad operations traffickers configuring Line Items in Google Ad Manager; and programmatic buyers executing PMP deals with custom Deal IDs.</p>
+          </div>
+
+          <div class="lesson-section">
+            <div class="section-tag">⚙️ Technical Execution & Protocol Specifications</div>
+            <pre>/* Standard Production Payload Architecture for Day ${dayStr} */
+{
+  "module_day": "${dayStr}",
+  "topic": "${title.replace(/"/g, '')}",
+  "standard_governance": "IAB-Tech-Lab / OpenRTB-Compliant",
+  "operational_telemetry": {
+    "validation_state": "ACTIVE_PRODUCTION",
+    "tracking_macros": ["%%CACHEBUSTER%%", "%%CLICK_URL_UNESC%%", "%%WINNING_PRICE%%"],
+    "failure_handling": "FAILOVER_TO_PASSBACK_LINE_ITEM"
+  }
+}</pre>
+
+            <h2>Operational Best Practices (AdPushup Yield Guidelines)</h2>
+            <ul>
+              <li><strong>Mitigate Latency</strong>: Ensure auction timeouts in header bidding wrappers do not exceed 800ms to 1000ms.</li>
+              <li><strong>Protect Viewability</strong>: Implement <span class="ad-link" onclick="quickQuery('Ad Refresh')">Viewability-Triggered Ad Refresh</span> rather than blind time-based reloading to avoid degrading advertiser ROI.</li>
+              <li><strong>Verify Floor Prices</strong>: Regularly test Hard Floors vs Soft Floors to prevent leaving remnant inventory unsold.</li>
+            </ul>
+          </div>
+
+          <div class="lesson-section">
+            <div class="section-tag">🎮 Interactive Simulation Lab: Campaign Pacing & Revenue Burn-Down</div>
+            <div class="lab-box">
+              <div class="lab-title"><span>Campaign Delivery Run-Rate Simulator</span></div>
+              <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Simulate impression goals, floor rates, and daily delivery requirements for <strong>${title}</strong>:</p>
+              <div class="calc-grid">
+                <div class="calc-field"><label>Impression Goal</label><input type="number" id="gen-imp" value="500000"></div>
+                <div class="calc-field"><label>Target Floor / CPM ($)</label><input type="number" id="gen-cpm" value="3.50" step="0.1"></div>
+                <div class="calc-field"><label>Pacing Profile</label><select id="gen-pace"><option value="1.0">Evenly Paced</option><option value="1.25">Frontloaded (+25%)</option><option value="1.5">ASAP (Flash Sale)</option></select></div>
+                <div class="calc-field"><label>Fill Rate Estimate (%)</label><input type="number" id="gen-fill" value="85"></div>
+              </div>
+              <div class="calc-metrics">
+                <div><div class="metric-value" id="gen-rev">$1,487.50</div><div class="metric-label">Projected Net Yield</div></div>
+                <div><div class="metric-value" id="gen-daily">16,666</div><div class="metric-label">Required Daily Run-Rate</div></div>
+              </div>
+            </div>
+          </div>
+        `;
       }
     }
 
@@ -918,84 +890,84 @@
           expl: "CTR = (Clicks / Impressions) * 100 = (" + clicks + " / " + imps + ") * 100 = " + calculatedCtr + "%."
         },
         {
-          q: "3. Core Fundamentals of " + title + ": What is its primary operational objective?",
+          q: "3. What is the defining difference between Programmatic Display Advertising and Traditional Display Advertising?",
           options: [
-            { text: "Preserve data integrity, minimize counting discrepancies, and enforce IAB/MRC standards", correct: true },
-            { text: "Bypass all platform frequency capping limits", correct: false },
-            { text: "Eliminate all cache-busting macros from third-party tag wrappers", correct: false },
-            { text: "Disable HTTPS encryption to accelerate browser paint loops", correct: false }
+            { text: "Programmatic display uses algorithms and automated real-time auctions; traditional display uses manual phone/email negotiations and insertion orders", correct: true },
+            { text: "Programmatic display is only for video ads; traditional display is for images", correct: false },
+            { text: "Programmatic display is completely free of charge", correct: false },
+            { text: "Traditional display is faster than real-time bidding", correct: false }
           ],
-          expl: "Enterprise operations require strict adherence to standard protocols to protect revenue and delivery accuracy."
+          expl: "Programmatic display automates inventory transactions using software and algorithms, eliminating manual negotiations."
         },
         {
-          q: "4. SLA Governance: What counting discrepancy threshold triggers an operational audit between buy-side and sell-side ad servers?",
+          q: "4. What is the difference between Google Display Network (GDN) and Programmatic Display Advertising?",
           options: [
-            { text: "Between 8.0% and 10.0%", correct: true },
-            { text: "0.5% or lower", correct: false },
-            { text: "Exactly 50.0%", correct: false },
-            { text: "Discrepancies are ignored in commercial billing", correct: false }
+            { text: "GDN is a closed ad network limited to Google-associated publishers; programmatic display spans 20+ ad exchanges and SSPs across the open web", correct: true },
+            { text: "GDN is faster than programmatic display", correct: false },
+            { text: "GDN does not allow banner ads", correct: false },
+            { text: "Programmatic display is owned exclusively by Microsoft", correct: false }
           ],
-          expl: "Standard insertion orders specify that variances exceeding 8% to 10% mandate joint server log reconciliations."
+          expl: "GDN is a single network within Google's closed garden. Programmatic display trades inventory across dozens of external ad exchanges and SSPs."
         },
         {
-          q: "5. Browser Security: What happens if an ad creative asset is called over insecure HTTP on an HTTPS domain?",
+          q: "5. In the 8-step programmatic display flow, what software does the publisher use to manage inventory and floor prices?",
           options: [
-            { text: "The browser issues a Mixed Content block, discarding the asset from rendering", correct: true },
-            { text: "The ad server doubles its clearing price automatically", correct: false },
-            { text: "The ad renders in monochrome black and white", correct: false },
-            { text: "The operating system automatically restarts", correct: false }
+            { text: "Supply-Side Platform (SSP)", correct: true },
+            { text: "Demand-Side Platform (DSP)", correct: false },
+            { text: "Photoshop", correct: false },
+            { text: "Customer Relationship Management (CRM)", correct: false }
           ],
-          expl: "Modern web standards block all mixed-content HTTP scripts and images on secure HTTPS hosts."
+          expl: "Publishers connect to SSPs (Supply-Side Platforms) to package their ad space, configure floor prices, and send requests to ad exchanges."
         },
         {
-          q: "6. Cache Mechanics: What is the primary role of a cache-busting macro (e.g. %%CACHEBUSTER%%)?",
+          q: "6. According to MRC viewability standards, when is a standard display ad officially counted as 'viewable'?",
           options: [
-            { text: "Injects a random integer to prevent intermediate proxies from serving uncounted cached responses", correct: true },
-            { text: "Clears the end user's local browser search history", correct: false },
-            { text: "Compresses heavy MP4 video files into static GIFs", correct: false },
-            { text: "Doubles the CPU processing speed of the ad server", correct: false }
+            { text: "At least 50% of pixels in the active viewport for at least 1.0 continuous second", correct: true },
+            { text: "100% of pixels for at least 5 seconds", correct: false },
+            { text: "When the user clicks the ad creative", correct: false },
+            { text: "When the ad finishes downloading", correct: false }
           ],
-          expl: "Cache-busters guarantee that each impression executes a fresh network call rather than reading from proxy storage."
+          expl: "The standard MRC threshold for display is at least 50% of physical pixels visible in the active viewport for >=1.0 continuous second."
         },
         {
-          q: "7. Pacing Diagnostics: How does aggressive audience and geo-targeting layering affect campaign run-rates?",
+          q: "7. Under AdPushup yield optimization best practices, when should an ad slot trigger an automated Ad Refresh?",
           options: [
-            { text: "It constricts eligible bid volume, significantly increasing the risk of under-delivery", correct: true },
-            { text: "It increases total available impression capacity", correct: false },
-            { text: "It removes floor price requirements from the auction", correct: false },
-            { text: "It forces the creative to load lazily", correct: false }
+            { text: "Only when the ad unit remains viewable (>=50% in-view) for 30 to 60 seconds", correct: true },
+            { text: "Every 5 seconds regardless of user scrolling", correct: false },
+            { text: "Only when the user minimizes the browser window", correct: false },
+            { text: "Whenever a user clicks on an ad", correct: false }
           ],
-          expl: "Layering multiple restrictive targeting dimensions shrinks the addressable bid pool, frequently causing campaigns to under-pace."
+          expl: "Ad refresh must be viewability-based: refreshing an unviewable ad unit damages advertiser ROI and risks publisher policy violations."
         },
         {
-          q: "8. Core Web Vitals: Why must ad unit container div tags explicitly define min-width and min-height in CSS?",
+          q: "8. What is the pixel dimension of the industry standard Medium Rectangle (MPU)?",
           options: [
-            { text: "To prevent Cumulative Layout Shift (CLS) penalties caused by unreserved DOM elements popping open", correct: true },
-            { text: "To prevent ad creatives from downloading over cellular networks", correct: false },
-            { text: "To block users from right-clicking on page elements", correct: false },
+            { text: "300 x 250 px", correct: true },
+            { text: "728 x 90 px", correct: false },
+            { text: "320 x 50 px", correct: false },
+            { text: "300 x 600 px", correct: false }
+          ],
+          expl: "The Medium Rectangle (MPU) measures exactly 300 x 250 pixels."
+        },
+        {
+          q: "9. In OpenRTB programmatic auctions, what is a Hard Floor?",
+          options: [
+            { text: "A strict reserve price threshold; any bid submitted beneath this CPM is immediately rejected", correct: true },
+            { text: "A flexible baseline price that fluctuates dynamically", correct: false },
+            { text: "The maximum budget an advertiser can spend", correct: false },
+            { text: "A physical computer in an ad tech server room", correct: false }
+          ],
+          expl: "A Hard Floor is a strict pricing cutoff. Any bid submitted below the hard floor is rejected."
+        },
+        {
+          q: "10. Why must container dimensions be explicitly reserved in page CSS prior to ad loading?",
+          options: [
+            { text: "To prevent Cumulative Layout Shift (CLS) penalties when creatives render asynchronously", correct: true },
+            { text: "To stop ad creatives from downloading over cellular networks", correct: false },
+            { text: "To prevent users from clicking on ads", correct: false },
             { text: "To encrypt the host HTML source code", correct: false }
           ],
-          expl: "Explicit container dimensions reserve physical space on the page, preventing layout shifts when creatives render."
-        },
-        {
-          q: "9. Auction Protocol: In a First-Price programmatic auction, what does the winning buyer pay?",
-          options: [
-            { text: "Exactly their submitted bid price", correct: true },
-            { text: "The runner-up's bid plus exactly one cent ($0.01)", correct: false },
-            { text: "The average of all submitted bids in the auction", correct: false },
-            { text: "The floor price minus an agency discount", correct: false }
-          ],
-          expl: "In modern first-price auctions, the winning bidder pays 100% of their clearing bid, necessitating DSP bid shading."
-        },
-        {
-          q: "10. Yield Engineering: What is the primary operational utility of eCPM for a media publisher?",
-          options: [
-            { text: "Normalizes disparate revenue models (CPC, CPA, Flat Rate) into an impression-level baseline for yield comparison", correct: true },
-            { text: "Calculates the physical rendering speed of browser fonts", correct: false },
-            { text: "Converts video bitrates from 720p to 1080p", correct: false },
-            { text: "Monitors server fan speeds in cloud data centers", correct: false }
-          ],
-          expl: "Effective CPM (eCPM) standardizes non-CPM earnings back to a cost-per-thousand baseline for programmatic auction competition."
+          expl: "Reserving container space in CSS prevents the webpage layout from jumping when the ad renders, protecting Core Web Vitals (CLS)."
         }
       ];
 
@@ -1062,7 +1034,7 @@
       if (titleDisplay) titleDisplay.textContent = "Day " + dayNumStr + ": " + title;
 
       var mount = document.getElementById('dynamic-content-mount');
-      if (mount) mount.innerHTML = renderClassroomContent(activeDayIndex, title);
+      if (mount) mount.innerHTML = renderDynamicLesson(activeDayIndex, title);
 
       attachLabListeners();
       refreshQuiz();
@@ -1157,7 +1129,7 @@
         var a = document.getElementById('sim-agency');
         var d = document.getElementById('sim-dsp');
         var s = document.getElementById('sim-ssp');
-        var run = function() {
+        var runWf = function() {
           var gross = parseFloat(g ? g.value : 0) || 0;
           var agency = parseFloat(a ? a.value : 0) || 0;
           var dsp = parseFloat(d ? d.value : 0) || 0;
@@ -1171,10 +1143,10 @@
           if (elW) elW.textContent = "$" + working.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
           if (elT) elT.textContent = take + "%";
         };
-        if (g) g.addEventListener('input', run);
-        if (a) a.addEventListener('input', run);
-        if (d) d.addEventListener('input', run);
-        if (s) s.addEventListener('input', run);
+        if (g) g.addEventListener('input', runWf);
+        if (a) a.addEventListener('input', runWf);
+        if (d) d.addEventListener('input', runWf);
+        if (s) s.addEventListener('input', runWf);
       } else if (activeDayIndex === 1) {
         var box = document.getElementById('live-slot-box');
         var setSlot = function(w, h, name, btn) {
@@ -1193,27 +1165,6 @@
         if (lead) lead.addEventListener('click', function() { setSlot(728, 90, 'Leaderboard', this); });
         if (half) half.addEventListener('click', function() { setSlot(300, 600, 'Half Page', this); });
         if (mob) mob.addEventListener('click', function() { setSlot(320, 50, 'Mobile Banner', this); });
-      } else if (activeDayIndex === 2) {
-        var cpmIn = document.getElementById('sim-cpm-bid');
-        var cpcIn = document.getElementById('sim-cpc-bid');
-        var ctrIn = document.getElementById('sim-ctr');
-        var impIn = document.getElementById('sim-slot-imp');
-        var runArb = function() {
-          var cpmBid = parseFloat(cpmIn ? cpmIn.value : 0) || 0;
-          var cpcBid = parseFloat(cpcIn ? cpcIn.value : 0) || 0;
-          var ctr = parseFloat(ctrIn ? ctrIn.value : 0) || 0;
-          var cpcAsEcpm = cpcBid * (ctr / 100) * 1000;
-          var isCpcWinner = cpcAsEcpm > cpmBid;
-          var winningEcpm = Math.max(cpcAsEcpm, cpmBid);
-          var winEl = document.getElementById('arb-winner');
-          var ecpmEl = document.getElementById('arb-effective-cpm');
-          if (winEl) winEl.textContent = isCpcWinner ? "Buyer 2 (CPC)" : "Buyer 1 (CPM)";
-          if (ecpmEl) ecpmEl.textContent = "$" + winningEcpm.toFixed(2) + " eCPM";
-        };
-        if (cpmIn) cpmIn.addEventListener('input', runArb);
-        if (cpcIn) cpcIn.addEventListener('input', runArb);
-        if (ctrIn) ctrIn.addEventListener('input', runArb);
-        if (impIn) impIn.addEventListener('input', runArb);
       } else {
         var imp = document.getElementById('gen-imp');
         var cpm = document.getElementById('gen-cpm');
@@ -1293,6 +1244,14 @@
       });
     }
 
+    function quickQuery(term) {
+      var searchInput = document.getElementById('lexicon-query');
+      if (searchInput) {
+        searchInput.value = term;
+        executeCuratedSearch();
+      }
+    }
+
     function executeCuratedSearch() {
       var rawQ = document.getElementById('lexicon-query').value.trim();
       if (!rawQ) return;
@@ -1303,8 +1262,8 @@
       var title = document.getElementById('search-res-title');
 
       panel.style.display = 'block';
-      title.textContent = "Verified Search Results: '" + rawQ + "'";
-      body.innerHTML = "<p style='color:var(--primary);'>Searching enterprise corpus and querying live open-web databases...</p>";
+      title.textContent = "Verified Knowledge Results: '" + rawQ + "'";
+      body.innerHTML = "<p style='color:var(--primary);'>Searching enterprise AdPushup/IAB knowledge corpus and querying live open-web databases...</p>";
 
       var matches = [];
       ENTERPRISE_LEXICON.forEach(function(item) {
@@ -1348,7 +1307,7 @@
         if (remoteHtml) {
           html += remoteHtml;
         } else if (matches.length === 0 && matchedDays.length === 0) {
-          html = '<p style="color:var(--warning);">No direct match found for "<strong>' + rawQ + '</strong>". Try standard terms like Display Ads, IP Targeting, ABM, SSP, DSP, Header Bidding.</p>';
+          html = '<p style="color:var(--warning);">No direct match found for "<strong>' + rawQ + '</strong>". Try standard terms like Programmatic Display, GDN vs Programmatic, SSP, DSP, Header Bidding, Floor Price, Ad Refresh.</p>';
         }
 
         body.innerHTML = html;
@@ -1389,6 +1348,7 @@
         .catch(function() { renderOutput(""); });
     }
 
+    // Direct immediate startup
     initCodex();
   </script>
 </body>
