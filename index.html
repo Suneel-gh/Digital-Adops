@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>AdTech Academy: Digital Marketing & Ad Ops</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --accent: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      line-height: 1.5;
+      padding-bottom: 70px;
+    }
+
+    /* Top App Bar */
+    header {
+      position: sticky;
+      top: 0;
+      background: #0f172ae6;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+    .badge {
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      background: var(--card-border);
+      border-radius: 999px;
+      color: var(--text-muted);
+    }
+
+    /* Layout Containers */
+    .container { max-width: 720px; margin: 0 auto; padding: 16px; }
+
+    /* Module Navigation Tabs */
+    .tier-scroller {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .tier-scroller::-webkit-scrollbar { display: none; }
+    .tier-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tier-btn.active {
+      background: var(--primary);
+      color: #0f172a;
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* Card Panels */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    /* Content Typography */
+    h3 { font-size: 1rem; color: var(--primary); margin: 16px 0 6px 0; }
+    p { font-size: 0.92rem; color: #cbd5e1; margin-bottom: 12px; }
+    ul { margin: 8px 0 14px 20px; font-size: 0.9rem; color: #cbd5e1; }
+    li { margin-bottom: 4px; }
+    code {
+      background: #090d16;
+      color: var(--primary);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+
+    /* Visual Simulation Elements */
+    .simulation-box {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .flow-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      opacity: 0.35;
+      transition: opacity 0.3s;
+    }
+    .flow-step.active { opacity: 1; }
+    .flow-num {
+      width: 26px;
+      height: 26px;
+      background: var(--card-border);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .flow-step.active .flow-num { background: var(--primary); color: #090d16; }
+    .flow-desc { font-size: 0.85rem; }
+    .flow-desc strong { color: var(--text); display: block; }
+    .flow-desc span { color: var(--text-muted); font-size: 0.8rem; }
+
+    /* Interactive Calculator inside Class 1 */
+    .calc-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .calc-input label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
+    .calc-input input {
+      width: 100%;
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 8px 10px;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+    .calc-res {
+      background: #1e3a8a33;
+      border: 1px solid var(--primary-dark);
+      padding: 10px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 10px;
+    }
+    .calc-res span { font-size: 0.8rem; color: var(--primary); }
+    .calc-res strong { display: block; font-size: 1.2rem; color: var(--text); }
+
+    /* Action Buttons */
+    .btn {
+      width: 100%;
+      background: var(--primary);
+      color: #0f172a;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn-secondary {
+      background: var(--card-border);
+      color: var(--text);
+    }
+
+    /* Quiz Module */
+    .quiz-option {
+      background: #090d16;
+      border: 1px solid var(--card-border);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .quiz-option:hover { border-color: var(--primary); }
+    .quiz-option.correct { background: #064e3b; border-color: var(--accent); color: #a7f3d0; }
+    .quiz-option.wrong { background: #7f1d1d; border-color: var(--danger); color: #fecaca; }
+    .quiz-feedback {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    /* Bottom Navigation Bar */
+    nav.bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #0f172af0;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      backdrop-filter: blur(10px);
+    }
+    .nav-item {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+    }
+    .nav-item.active { color: var(--primary); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>AdTech Academy</h1>
+    <div class="badge" id="progress-badge">Class 1 of 15</div>
+  </header>
+
+  <div class="container">
+    
+    <!-- Tier Category Scroller -->
+    <div class="tier-scroller">
+      <button class="tier-btn active" onclick="switchTier(1)">Tier 1: Foundations</button>
+      <button class="tier-btn" onclick="switchTier(2)">Tier 2: Ad Operations</button>
+      <button class="tier-btn" onclick="switchTier(3)">Tier 3: Programmatic</button>
+      <button class="tier-btn" onclick="switchTier(4)">Tier 4: Advanced Tech</button>
+      <button class="tier-btn" onclick="switchTier(5)">Tier 5: Modern Privacy</button>
+    </div>
+
+    <!-- Active Class Card -->
+    <div class="card" id="lesson-card">
+      <div id="lesson-header">
+        <div class="card-title" id="class-title">Class 1: Digital Buying Models & Core Jargon</div>
+        <div class="card-subtitle" id="class-desc">Mastering CPM, CPC, CTR, and the mechanics of media buying.</div>
+      </div>
+
+      <div id="lesson-body">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </div>
+
+    <!-- Interactive Workspace (Visualizer / Calculator) -->
+    <div class="card" id="interactive-card">
+      <div class="card-title">Interactive Practical Lab</div>
+      <div class="card-subtitle">Hands-on application of concepts learned in this class.</div>
+      <div id="interactive-body">
+        <!-- Dynamic Interactive Tool -->
+      </div>
+    </div>
+
+    <!-- Knowledge Assessment / Quiz -->
+    <div class="card" id="quiz-card">
+      <div class="card-title">Classroom Knowledge Check</div>
+      <div class="card-subtitle">Verify your mastery to clear the module.</div>
+      <div id="quiz-question" style="margin-bottom: 12px; font-weight: 600;"></div>
+      <div id="quiz-options"></div>
+      <div id="quiz-feedback" class="quiz-feedback"></div>
+      <button class="btn btn-secondary" id="next-class-btn" style="display:none;" onclick="loadNextClass()">Proceed to Next Class &rarr;</button>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <div class="nav-item active" onclick="jumpClass(0)">📚 Lessons</div>
+    <div class="nav-item" onclick="jumpClass(6)">⚡ RTB Sim</div>
+    <div class="nav-item" onclick="showGlossary()">📖 Jargon Lexicon</div>
+  </nav>
+
+  <script>
+    // Master Curriculum Course Data
+    const classes = [
+      {
+        id: 1,
+        tier: 1,
+        title: "Class 1: Digital Buying Models & Core Jargon",
+        desc: "Mastering CPM, CPC, vCPM, and the mechanics of media valuation.",
+        content: `
+          <p>In digital ad operations, everything revolves around how advertisers pay for exposure and how publishers charge for attention.</p>
+          <h3>1. CPM (Cost Per Mille)</h3>
+          <p>The universal currency of display, video, and programmatic advertising. <em>Mille</em> is Latin for 1,000. It is the cost an advertiser pays for <strong>1,000 ad impressions</strong>.</p>
+          <code>Formula: CPM = (Total Cost / Total Impressions) × 1,000</code>
+          
+          <h3>2. CPC vs. CPA</h3>
+          <ul>
+            <li><strong>CPC (Cost Per Click):</strong> Performance model where advertisers pay only when a user actively clicks the creative. Standard in Google Search & Retail Media.</li>
+            <li><strong>CPA (Cost Per Acquisition):</strong> Advertiser pays strictly when a conversion event (purchase, lead form, sign-up) occurs.</li>
+          </ul>
+
+          <h3>3. CTR & Viewability (MRC Standard)</h3>
+          <p><strong>CTR (Click-Through Rate):</strong> <code>(Clicks / Impressions) × 100</code>. Typical display benchmark ranges between 0.05% and 0.12%.</p>
+          <p><strong>Viewability:</strong> Per MRC (Media Rating Council) standards, a display ad is only viewable if <strong>at least 50% of the pixels</strong> are in view for <strong>at least 1 continuous second</strong> (2 seconds for video).</p>
+        `,
+        interactiveType: "calculator",
+        quiz: {
+          q: "An advertiser pays $1,200 for a campaign that generates 400,000 impressions. What is the CPM?",
+          options: ["$0.30", "$3.00", "$4.80", "$30.00"],
+          correct: 1,
+          explanation: "CPM = ($1,200 / 400,000) * 1,000 = $0.003 * 1,000 = $3.00."
+        }
+      },
+      {
+        id: 2,
+        tier: 1,
+        title: "Class 2: Delivery & Creative Specifications",
+        desc: "Standard IAB display units, polite loading, and creative QA rules.",
+        content: `
+          <p>Ad operations teams act as gatekeepers for publisher website speed and user experience.</p>
+          <h3>Standard IAB Display Sizes</h3>
+          <ul>
+            <li><strong>300×250 (Medium Rectangle / MPU):</strong> Most liquid inventory size globally. Supported across desktop and mobile.</li>
+            <li><strong>728×90 (Leaderboard):</strong> Placed at top of desktop page folds.</li>
+            <li><strong>320×50 (Mobile Leaderboard) & 300×600 (Half Page):</strong> Dominant on mobile banners and high-impact sidebars.</li>
+          </ul>
+          <h3>Polite Loading vs. Initial File Size</h3>
+          <p>Ad servers strictly enforce initial file size limits (usually ≤ 150 KB). <strong>Polite loading</strong> waits until the host page finishes its primary HTML load before streaming secondary assets (high-res images, fonts, video wrappers).</p>
+        `,
+        interactiveType: "creativeQA",
+        quiz: {
+          q: "What is the primary purpose of 'Polite Loading' in HTML5 ad creatives?",
+          options: [
+            "To encrypt creative files against ad scrapers",
+            "To delay rendering heavier ad assets until the publisher's core page load completes",
+            "To automatically resize a 300x250 ad into a 728x90",
+            "To bypass standard Google Ad Manager file size limits"
+          ],
+          correct: 1,
+          explanation: "Polite loading defers secondary creative payload execution until the host web page fires its onload event, safeguarding page load speed."
+        }
+      },
+      {
+        id: 7,
+        tier: 3,
+        title: "Class 7: The 100ms Real-Time Bidding (RTB) Lifecycle",
+        desc: "Step-by-step transaction between Publisher, SSP, Ad Exchange, and DSP.",
+        content: `
+          <p>Every time an ad loads on a programmatic website, an automated auction runs within <strong>~100 milliseconds</strong>.</p>
+          <h3>The Complete Chain:</h3>
+          <ul>
+            <li><strong>1. Impression Trigger:</strong> User navigates to webpage. The ad tag fires an HTTP request.</li>
+            <li><strong>2. SSP Bid Request:</strong> The Supply-Side Platform parses user metadata (geo, device, cookie/ID) and packages a Bid Request (OpenRTB protocol).</li>
+            <li><strong>3. Broadcast to DSPs:</strong> Multiple Demand-Side Platforms receive the bid request simultaneously.</li>
+            <li><strong>4. Evaluation & Bid Shading:</strong> DSP algorithms evaluate audience value and submit their bids within 50ms.</li>
+            <li><strong>5. Auction & Render:</strong> The winning creative URL is returned, rendered in the user's browser, and billing tracking pixels ping the server.</li>
+          </ul>
+        `,
+        interactiveType: "rtbSim",
+        quiz: {
+          q: "In an OpenRTB auction, which entity packages the ad slot with user context and broadcasts it to buyers?",
+          options: ["The DSP", "The Advertiser", "The SSP", "The Creative Agency"],
+          correct: 2,
+          explanation: "The SSP (Supply-Side Platform) represents the publisher, packaging impression context into an OpenRTB bid request sent to DSPs."
+        }
+      }
+    ];
+
+    let currentClassIndex = 0;
+
+    function renderClass(index) {
+      currentClassIndex = index;
+      const c = classes[index];
+      
+      document.getElementById('progress-badge').textContent = `Class ${c.id} of 15`;
+      document.getElementById('class-title').textContent = c.title;
+      document.getElementById('class-desc').textContent = c.desc;
+      document.getElementById('lesson-body').innerHTML = c.content;
+
+      // Render interactive component
+      renderInteractive(c.interactiveType);
+
+      // Render Quiz
+      renderQuiz(c.quiz);
+
+      // Update scroller tabs
+      document.querySelectorAll('.tier-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', (i + 1) === c.tier);
+      });
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderInteractive(type) {
+      const container = document.getElementById('interactive-body');
+      
+      if (type === "calculator") {
+        container.innerHTML = `
+          <div class="calc-row">
+            <div class="calc-input">
+              <label>Budget / Cost ($)</label>
+              <input type="number" id="calc-cost" value="500" oninput="calculateMetrics()">
+            </div>
+            <div class="calc-input">
+              <label>Impressions Delivered</label>
+              <input type="number" id="calc-impr" value="125000" oninput="calculateMetrics()">
+            </div>
+          </div>
+          <div class="calc-row">
+            <div class="calc-input">
+              <label>Clicks Generated</label>
+              <input type="number" id="calc-clicks" value="250" oninput="calculateMetrics()">
+            </div>
+            <div class="calc-input">
+              <label>Conversions</label>
+              <input type="number" id="calc-conv" value="15" oninput="calculateMetrics()">
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+            <div class="calc-res">
+              <span>Calculated CPM</span>
+              <strong id="out-cpm">$4.00</strong>
+            </div>
+            <div class="calc-res">
+              <span>Calculated CTR</span>
+              <strong id="out-ctr">0.20%</strong>
+            </div>
+          </div>
+        `;
+        calculateMetrics();
+      } else if (type === "rtbSim") {
+        container.innerHTML = `
+          <div class="simulation-box">
+            <div class="flow-step" id="step-1">
+              <div class="flow-num">1</div>
+              <div class="flow-desc">
+                <strong>0ms: User Lands on Publisher Site</strong>
+                <span>Ad Tag initiates call with user device, geo, and ad unit data.</span>
+              </div>
+            </div>
+            <div class="flow-step" id="step-2">
+              <div class="flow-num">2</div>
+              <div class="flow-desc">
+                <strong>25ms: SSP Generates OpenRTB Bid Request</strong>
+                <span>Enriches floor price ($2.50) & broadcasts to connected DSPs.</span>
+              </div>
+            </div>
+            <div class="flow-step" id="step-3">
+              <div class="flow-num">3</div>
+              <div class="flow-desc">
+                <strong>60ms: DSPs Algorithm Evaluates & Bids</strong>
+                <span>DSP 1 bids $2.80 | DSP 2 bids $3.40 (Winner) | DSP 3 bids $1.90.</span>
+              </div>
+            </div>
+            <div class="flow-step" id="step-4">
+              <div class="flow-num">4</div>
+              <div class="flow-desc">
+                <strong>95ms: Auction Clears & Creative Injected</strong>
+                <span>DSP 2 wins. Winning snippet injected. 1x1 impression pixel pings.</span>
+              </div>
+            </div>
+          </div>
+          <button class="btn" onclick="runRtbAnimation()">Run 100ms Auction Step-Through</button>
+        `;
+      } else {
+        container.innerHTML = `<p style="color:var(--text-muted); font-size:0.85rem;">Interactive sandbox active for this module.</p>`;
+      }
+    }
+
+    function calculateMetrics() {
+      const cost = parseFloat(document.getElementById('calc-cost')?.value) || 0;
+      const impr = parseFloat(document.getElementById('calc-impr')?.value) || 0;
+      const clicks = parseFloat(document.getElementById('calc-clicks')?.value) || 0;
+
+      const cpm = impr > 0 ? ((cost / impr) * 1000).toFixed(2) : "0.00";
+      const ctr = impr > 0 ? ((clicks / impr) * 100).toFixed(2) : "0.00";
+
+      if(document.getElementById('out-cpm')) document.getElementById('out-cpm').textContent = `$${cpm}`;
+      if(document.getElementById('out-ctr')) document.getElementById('out-ctr').textContent = `${ctr}%`;
+    }
+
+    function runRtbAnimation() {
+      const steps = [1, 2, 3, 4];
+      steps.forEach(s => document.getElementById(`step-${s}`).classList.remove('active'));
+      
+      steps.forEach((s, idx) => {
+        setTimeout(() => {
+          document.getElementById(`step-${s}`).classList.add('active');
+        }, idx * 600);
+      });
+    }
+
+    function renderQuiz(quiz) {
+      document.getElementById('quiz-question').textContent = quiz.q;
+      const optContainer = document.getElementById('quiz-options');
+      const feedback = document.getElementById('quiz-feedback');
+      const nextBtn = document.getElementById('next-class-btn');
+      
+      feedback.style.display = 'none';
+      nextBtn.style.display = 'none';
+      optContainer.innerHTML = '';
+
+      quiz.options.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'quiz-option';
+        div.textContent = opt;
+        div.onclick = () => {
+          const allOptions = optContainer.querySelectorAll('.quiz-option');
+          allOptions.forEach(o => o.onclick = null);
+
+          if (idx === quiz.correct) {
+            div.classList.add('correct');
+            feedback.style.display = 'block';
+            feedback.style.background = '#064e3b';
+            feedback.style.color = '#a7f3d0';
+            feedback.innerHTML = `<strong>Correct!</strong> ${quiz.explanation}`;
+            nextBtn.style.display = 'block';
+          } else {
+            div.classList.add('wrong');
+            allOptions[quiz.correct].classList.add('correct');
+            feedback.style.display = 'block';
+            feedback.style.background = '#7f1d1d';
+            feedback.style.color = '#fecaca';
+            feedback.innerHTML = `<strong>Incorrect.</strong> ${quiz.explanation}`;
+            nextBtn.style.display = 'block';
+          }
+        };
+        optContainer.appendChild(div);
+      });
+    }
+
+    function loadNextClass() {
+      if (currentClassIndex < classes.length - 1) {
+        renderClass(currentClassIndex + 1);
+      } else {
+        alert("Tier complete! More classes loading in next continuous update.");
+      }
+    }
+
+    function switchTier(tierNum) {
+      const target = classes.findIndex(c => c.tier === tierNum);
+      if (target !== -1) renderClass(target);
+      else alert(`Tier ${tierNum} classes are drafted and will be plugged into this shell.`);
+    }
+
+    function jumpClass(idx) {
+      if (classes[idx]) renderClass(idx);
+    }
+
+    function showGlossary() {
+      alert("AdTech Quick Glossary:\n\n• DSP: Demand-Side Platform (Agency/Advertiser bid tool)\n• SSP: Supply-Side Platform (Publisher inventory manager)\n• Ad Server: Logic engine deciding which ad wins priority\n• Header Bidding: Running programmatic auction on browser before ad server");
+    }
+
+    // Initialize Class 1 on Load
+    renderClass(0);
+  </script>
+</body>
+</html>
