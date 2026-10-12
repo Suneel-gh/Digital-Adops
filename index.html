@@ -22,7 +22,7 @@
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --code: monospace;
+      --code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -162,10 +162,11 @@
       padding: 8px 12px;
       margin-top: 10px;
       font-size: 0.78rem;
+      align-items: center;
     }
     .schedule-bar span { color: var(--accent); font-weight: 700; }
 
-    /* Progressive Pedagogy Tier Cards */
+    /* Pedagogical Tier Cards */
     .pedagogy-card {
       background: var(--surface-elevated);
       border: 1px solid var(--border);
@@ -187,7 +188,70 @@
     .tier-2-hdr { color: var(--purple); }
     .tier-3-hdr { color: var(--accent); }
 
-    /* Interactive Calculators & Labs */
+    /* Interactive UI Blocks */
+    .terminal-window {
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      font-family: var(--code);
+      font-size: 0.85rem;
+      color: #38bdf8;
+      padding: 16px;
+      margin: 16px 0;
+      overflow-x: auto;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .terminal-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #1e293b;
+      padding-bottom: 8px;
+    }
+    .term-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .term-red { background: #ef4444; }
+    .term-yellow { background: #f59e0b; }
+    .term-green { background: #10b981; }
+
+    .canvas-spec-board {
+      background: var(--surface-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 18px 0;
+      text-align: center;
+    }
+    .live-slot-preview {
+      margin: 16px auto;
+      background: #070b14;
+      border: 2px dashed var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .matrix-decision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .matrix-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .matrix-card:hover { border-color: var(--warning); transform: translateY(-2px); }
+    .matrix-card.active { border-color: var(--warning); background: rgba(245, 158, 11, 0.08); }
+    .matrix-card strong { display: block; color: var(--warning); margin-bottom: 4px; }
+
     .lab-box {
       background: var(--surface-card);
       border: 1px solid var(--border);
@@ -228,7 +292,7 @@
     .metric-value { font-size: 1.15rem; font-weight: 800; color: var(--primary); }
     .metric-label { font-size: 0.75rem; color: var(--text-muted); }
 
-    /* Content Typography & Tables */
+    /* Typography & Tables */
     h2 { font-size: 1.25rem; color: var(--primary); margin: 24px 0 10px 0; border-left: 4px solid var(--primary); padding-left: 10px; }
     p { font-size: 0.96rem; color: #cbd5e1; margin-bottom: 14px; }
     ul, ol { margin: 10px 0 16px 22px; font-size: 0.94rem; color: #cbd5e1; }
@@ -252,7 +316,7 @@
     th { background: #070b14; color: var(--primary); padding: 12px 14px; border-bottom: 1px solid var(--border); }
     td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: #cbd5e1; vertical-align: top; }
 
-    /* Dynamic Assessment Questions */
+    /* Assessment Questions */
     .quiz-container { background: #070b14; border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 16px; }
     .quiz-question-box { margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid var(--border); }
     .quiz-q-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 12px; color: var(--text); }
@@ -304,7 +368,7 @@
         <span>Curated Enterprise Corpus + Live Wiki API</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. Display Ads, IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding)...">
+        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. SSP, DSP, Header Bidding, Floor Price, VAST, UID2)...">
         <button type="button" class="btn-search" id="btn-trigger-search">Search</button>
       </div>
     </div>
@@ -334,24 +398,9 @@
       </div>
 
       <!-- DYNAMIC CONTAINER -->
-      <div id="dynamic-content-mount">
-        <!-- Day 001 Hardcoded Fallback (Ensures zero blank screens on load) -->
-        <div class="pedagogy-card">
-          <div class="pedagogy-header tier-1-hdr">
-            <span>📚 Tier 1: Core Fundamentals & Plain-English Blueprint</span>
-          </div>
-          <h2>1. What Is It?</h2>
-          <p>The digital advertising ecosystem is the commercial value chain that connects four primary entities: <strong>The Advertiser</strong> (the business funding media to generate demand), <strong>The Publisher</strong> (the media owner trading attention for monetization), <strong>The Agency</strong> (the operational partner managing strategy and procurement), and <strong>The Consumer/Audience</strong> (the user consuming content).</p>
-          <h2>2. Why Does It Exist & Why Is It Useful?</h2>
-          <p>Without advertising, the open internet would not be free. Google Search, YouTube, news portals, and mobile apps would require mandatory paid subscription paywalls. Advertising provides the revenue engine that funds content creation at scale while giving brands targeted access to buyers.</p>
-          <h2>3. Where Is It Used In The Real World?</h2>
-          <p>Across every commercial transaction on the web: when a brand allocates budgets in Google Ads or Meta Ads Manager, when an agency plans media flights in Prisma, and when publishers package inventory in Google Ad Manager 360.</p>
-          <h2>4. Real-World Enterprise Examples</h2>
-          <p>Nike (Advertiser) partnering with WPP (Agency) to run a $500,000 seasonal sports campaign across ESPN (Publisher) to reach running enthusiasts (Audience) on their smartphones.</p>
-        </div>
-      </div>
+      <div id="dynamic-content-mount"></div>
 
-      <!-- 10 Questions Assessment Engine -->
+      <!-- 10 Questions Assessment Engine with Dynamic Permutations -->
       <div class="lab-box" style="margin-top:24px;">
         <div class="lab-title">
           <span>📝 1-Hour Certification Assessment (10 Dynamically Generated Questions)</span>
@@ -664,6 +713,19 @@
             { term: "CTR (Click-Through Rate)", def: "The percentage of users who clicked an ad: (Clicks / Impressions) * 100." }
           ]
         };
+      } else if (title.indexOf("Real Estate") !== -1 || title.indexOf("Inventory Taxonomy") !== -1) {
+        return {
+          what: "<strong>Digital Real Estate & Inventory Taxonomy</strong> refers to the dimensions, coordinates, and positions of ad spaces on web pages, mobile apps, and video players.",
+          why: "Standardizing ad sizes allows advertisers to build one creative asset that runs on millions of websites, while position hierarchy (Above vs. Below the Fold) governs visibility and pricing.",
+          where: "Configured inside publisher website templates, app SDKs, and ad server tags (GPT divs).",
+          examples: "Medium Rectangle (300x250) on desktop sidebar and mobile feeds; Leaderboard (728x90) on website headers; Mobile Banner (320x50) on phone footers.",
+          jargons: [
+            { term: "Above the Fold (ATF)", def: "Inventory visible immediately on the screen without scrolling. High visibility and premium pricing." },
+            { term: "Below the Fold (BTF)", def: "Inventory located lower on the page, requiring active user scrolling to be seen." },
+            { term: "Cumulative Layout Shift (CLS)", def: "A page stability metric penalized when unreserved ad slots pop open, causing content to jump." },
+            { term: "Lazy Loading", def: "Postponing ad asset loading until the user scrolls within proximity of the placement." }
+          ]
+        };
       } else {
         return {
           what: "<strong>" + title + "</strong> is an essential component of the enterprise digital marketing and ad operations infrastructure.",
@@ -900,34 +962,10 @@
       return result;
     }
 
-    var activeDayIndex = 0;
-
     function initCodex() {
       populateDropdown(0);
       setupGlobalListeners();
       jumpToDay(0);
-    }
-
-    function populateDropdown(phaseFilter) {
-      var select = document.getElementById('day-dropdown');
-      select.innerHTML = '';
-
-      var start = 0;
-      var end = 180;
-      if (phaseFilter === 1) { start = 0; end = 10; }
-      else if (phaseFilter === 2) { start = 10; end = 45; }
-      else if (phaseFilter === 3) { start = 45; end = 85; }
-      else if (phaseFilter === 4) { start = 85; end = 120; }
-      else if (phaseFilter === 5) { start = 120; end = 155; }
-      else if (phaseFilter === 6) { start = 155; end = 180; }
-
-      for (var i = start; i < end; i++) {
-        var opt = document.createElement('option');
-        opt.value = i;
-        var dayNum = String(i + 1).padStart(3, '0');
-        opt.textContent = "Day " + dayNum + ": " + (SYLLABUS_TITLES[i] || "Enterprise Ad Tech Module");
-        select.appendChild(opt);
-      }
     }
 
     function jumpToDay(idx) {
