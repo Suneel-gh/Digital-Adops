@@ -168,6 +168,28 @@
     }
     .schedule-bar span { color: var(--accent); font-weight: 700; }
 
+    /* Progressive Pedagogy Tier Cards */
+    .pedagogy-card {
+      background: var(--surface-elevated);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .pedagogy-header {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 800;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tier-1-hdr { color: var(--primary); }
+    .tier-2-hdr { color: var(--purple); }
+    .tier-3-hdr { color: var(--accent); }
+
     /* Interactive Archetype Blocks */
     .terminal-window {
       background: #020617;
@@ -360,7 +382,7 @@
         <span>Curated Enterprise Corpus + Live Wiki API</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. Display Ads, IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding)...">
+        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. SSP, DSP, Header Bidding, Floor Price, VAST, UID2)...">
         <button type="button" class="btn-search" id="btn-trigger-search">Search</button>
       </div>
     </div>
@@ -389,7 +411,7 @@
         </div>
       </div>
 
-      <!-- DYNAMIC CONTAINER: Ingests Archetype Layouts -->
+      <!-- DYNAMIC CONTAINER: Renders Pedagogical Pipeline -->
       <div id="dynamic-content-mount"></div>
 
       <!-- 10 Questions Assessment Engine with Dynamic Permutations -->
@@ -418,11 +440,11 @@
   </div>
 
   <div class="bottom-nav" id="bottom-dock">
-    <div class="tab active" data-jump="0">Day 001</div>
-    <div class="tab" data-jump="1">Day 002</div>
-    <div class="tab" data-jump="2">Day 003</div>
-    <div class="tab" data-jump="3">Day 004</div>
-    <div class="tab" data-jump="5">Day 006</div>
+    <div class="tab active" data-jump="0">Day 001 (Basics)</div>
+    <div class="tab" data-jump="1">Day 002 (Inventory)</div>
+    <div class="tab" data-jump="2">Day 003 (Currencies)</div>
+    <div class="tab" data-jump="3">Day 004 (Supply/SSP)</div>
+    <div class="tab" data-jump="4">Day 005 (Demand/DSP)</div>
   </div>
 
   <script>
@@ -669,184 +691,146 @@
     ];
 
     /* =========================================================================
-       DYNAMIC QUESTION ENGINE & FISHER-YATES SHUFFLE PERMUTATION
-       Generates unique numbers, options, and distractors on every refresh
+       PEDAGOGICAL DOSSIER GENERATOR: WHAT -> WHY -> WHERE -> EXAMPLES -> SPECS
        ========================================================================= */
 
-    function shuffleArray(arr) {
-      var copy = arr.slice();
-      for (var i = copy.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = copy[i];
-        copy[i] = copy[j];
-        copy[j] = temp;
-      }
-      return copy;
-    }
-
-    function generateDynamicQuestionPool(dayIdx, title) {
-      // Dynamic random number seeds for math questions
-      var spend = Math.floor(Math.random() * 8000) + 2000; // $2,000 to $10,000
-      var imps = (Math.floor(Math.random() * 4) + 1) * 500000; // 500k to 2M
-      var calculatedCpm = ((spend / imps) * 1000).toFixed(2);
-      var wrongCpm1 = ((spend / imps) * 100).toFixed(2);
-      var wrongCpm2 = ((spend / imps) * 10000).toFixed(2);
-      var wrongCpm3 = (spend / (imps / 1000) * 1.5).toFixed(2);
-
-      var clicks = Math.floor(Math.random() * 800) + 200;
-      var calculatedCtr = ((clicks / imps) * 100).toFixed(2);
-      var wrongCtr1 = ((clicks / imps) * 10).toFixed(2);
-      var wrongCtr2 = ((clicks / imps) * 1000).toFixed(2);
-      var wrongCtr3 = (clicks / 100).toFixed(2);
-
-      var rawPool = [
-        {
-          q: "Dynamic Math Check: If an enterprise campaign incurs $" + spend.toLocaleString() + " spend and delivers " + imps.toLocaleString() + " impressions, what is the exact CPM?",
-          options: [
-            { text: "$" + calculatedCpm, correct: true },
-            { text: "$" + wrongCpm1, correct: false },
-            { text: "$" + wrongCpm2, correct: false },
-            { text: "$" + wrongCpm3, correct: false }
-          ],
-          expl: "CPM = (Spend / Impressions) * 1,000 = ($" + spend + " / " + imps + ") * 1,000 = $" + calculatedCpm + "."
-        },
-        {
-          q: "Dynamic Telemetry Check: A placement logs " + imps.toLocaleString() + " impressions and " + clicks.toLocaleString() + " clicks. What is the verified Click-Through Rate (CTR)?",
-          options: [
-            { text: calculatedCtr + "%", correct: true },
-            { text: wrongCtr1 + "%", correct: false },
-            { text: wrongCtr2 + "%", correct: false },
-            { text: wrongCtr3 + "%", correct: false }
-          ],
-          expl: "CTR = (Clicks / Impressions) * 100 = (" + clicks + " / " + imps + ") * 100 = " + calculatedCtr + "%."
-        },
-        {
-          q: "Production Architecture for " + title + ": What is the fundamental operational objective?",
-          options: [
-            { text: "Preserve data integrity, minimize counting discrepancies, and enforce IAB/MRC standards", correct: true },
-            { text: "Bypass all ad server delivery priorities and force line items to House", correct: false },
-            { text: "Eliminate all cache-busting macros from third-party tag wrappers", correct: false },
-            { text: "Disable HTTPS encryption to accelerate browser paint loops", correct: false }
-          ],
-          expl: "Enterprise operations require strict adherence to standard protocols to protect revenue and delivery accuracy."
-        },
-        {
-          q: "SLA Governance: What counting discrepancy threshold triggers an operational audit between buy-side and sell-side ad servers?",
-          options: [
-            { text: "Between 8.0% and 10.0%", correct: true },
-            { text: "0.5% or lower", correct: false },
-            { text: "Exactly 50.0%", correct: false },
-            { text: "Discrepancies are ignored in commercial billing", correct: false }
-          ],
-          expl: "Standard insertion orders specify that variances exceeding 8% to 10% mandate joint server log reconciliations."
-        },
-        {
-          q: "Browser Security Protocol: What happens if an ad creative asset is called over insecure HTTP on an HTTPS domain?",
-          options: [
-            { text: "The browser issues a Mixed Content block, discarding the asset from rendering", correct: true },
-            { text: "The ad server doubles its clearing price automatically", correct: false },
-            { text: "The ad renders in monochrome black and white", correct: false },
-            { text: "The operating system automatically restarts", correct: false }
-          ],
-          expl: "Modern web standards block all mixed-content HTTP scripts and images on secure HTTPS hosts."
-        },
-        {
-          q: "Cache Mechanics: What is the primary role of a cache-busting macro (e.g. %%CACHEBUSTER%%) in an ad tag?",
-          options: [
-            { text: "Injects a random integer to prevent intermediate proxies from serving uncounted cached responses", correct: true },
-            { text: "Clears the end user's local browser search history", correct: false },
-            { text: "Compresses heavy MP4 video files into static GIFs", correct: false },
-            { text: "Doubles the CPU processing speed of the ad server", correct: false }
-          ],
-          expl: "Cache-busters guarantee that each impression executes a fresh network call rather than reading from proxy storage."
-        },
-        {
-          q: "Pacing Diagnostics: How does aggressive audience and geo-targeting layering affect campaign run-rates?",
-          options: [
-            { text: "It constricts eligible bid volume, significantly increasing the risk of under-delivery", correct: true },
-            { text: "It increases total available impression capacity", correct: false },
-            { text: "It removes floor price requirements from the auction", correct: false },
-            { text: "It forces the creative to load lazily", correct: false }
-          ],
-          expl: "Layering multiple restrictive targeting dimensions shrinks the addressable bid pool, frequently causing campaigns to under-pace."
-        },
-        {
-          q: "Core Web Vitals: Why must ad unit container div tags explicitly define min-width and min-height in CSS?",
-          options: [
-            { text: "To prevent Cumulative Layout Shift (CLS) penalties caused by unreserved DOM elements popping open", correct: true },
-            { text: "To prevent ad creatives from downloading over cellular networks", correct: false },
-            { text: "To block users from right-clicking on page elements", correct: false },
-            { text: "To encrypt the host HTML source code", correct: false }
-          ],
-          expl: "Explicit container dimensions reserve physical space on the page, preventing layout shifts when creatives render."
-        },
-        {
-          q: "Auction Protocol: In a First-Price programmatic auction, what does the winning buyer pay?",
-          options: [
-            { text: "Exactly their submitted bid price", correct: true },
-            { text: "The runner-up's bid plus exactly one cent ($0.01)", correct: false },
-            { text: "The average of all submitted bids in the auction", correct: false },
-            { text: "The floor price minus an agency discount", correct: false }
-          ],
-          expl: "In modern first-price auctions, the winning bidder pays 100% of their clearing bid, necessitating DSP bid shading."
-        },
-        {
-          q: "Yield Engineering: What is the primary operational utility of eCPM for a media publisher?",
-          options: [
-            { text: "Normalizes disparate revenue models (CPC, CPA, Flat Rate) into an impression-level baseline for yield comparison", correct: true },
-            { text: "Calculates the physical rendering speed of browser fonts", correct: false },
-            { text: "Converts video bitrates from 720p to 1080p", correct: false },
-            { text: "Monitors server fan speeds in cloud data centers", correct: false }
-          ],
-          expl: "Effective CPM (eCPM) standardizes non-CPM earnings back to a cost-per-thousand baseline for programmatic auction competition."
-        }
-      ];
-
-      // Shuffle question order and shuffle options for each question
-      var shuffledQuestions = shuffleArray(rawPool);
-      return shuffledQuestions.map(function(item) {
-        var shuffledOptions = shuffleArray(item.options);
-        var correctIndex = shuffledOptions.findIndex(function(o) { return o.correct; });
+    function getConceptualFoundations(dayIdx, title) {
+      if (title.includes("SSP") || title.includes("Supply Stack")) {
         return {
-          q: item.q,
-          options: shuffledOptions.map(function(o) { return o.text; }),
-          correct: correctIndex,
-          expl: item.expl
+          what: "A <strong>Supply-Side Platform (SSP)</strong> is enterprise software used by digital publishers (websites, apps, CTV networks) to automate the monetization and selling of their ad inventory.",
+          why: "Before SSPs existed, publishers had to manually negotiate with hundreds of ad networks and advertisers via phone and email. This was slow, caused unsold space, and left revenue on the table. An SSP automates this by broadcasting an impression to dozens of buyers in milliseconds to maximize revenue (yield).",
+          where: "It is deployed on the publisher's sell-side technology infrastructure, connecting the publisher's ad server (e.g. Google Ad Manager) directly to global ad exchanges and DSPs.",
+          examples: "<strong>Magnite</strong> (specializes in Connected TV & video), <strong>PubMatic</strong> (strong in mobile app and web header bidding), <strong>Google Ad Manager 360 (AdX)</strong>, and <strong>Equativ</strong>.",
+          jargons: [
+            { term: "Hard Floor", def: "A strict reserve price. Any incoming programmatic bid beneath this amount is rejected immediately." },
+            { term: "Soft Floor", def: "A flexible baseline threshold. Bids clearing this lower cutoff can still clear if market demand is low." },
+            { term: "Fill Rate", def: "The percentage of ad requests that successfully resulted in a served, paid ad impression." },
+            { term: "Match Table", def: "The database where an SSP syncs its publisher user IDs with buyer DSP cookie identifiers." }
+          ]
         };
-      });
+      } else if (title.includes("DSP") || title.includes("Demand Stack")) {
+        return {
+          what: "A <strong>Demand-Side Platform (DSP)</strong> is media-buying software that allows advertisers, agencies, and brands to buy digital advertising across thousands of websites and apps through a single platform.",
+          why: "Instead of calling ESPN, CNN, and Forbes separately to buy banners, a media buyer uses one DSP to target their audience across the entire internet simultaneously with centralized frequency capping and algorithmic bid optimization.",
+          where: "It is operated by media planners, agency traders, and brand in-house growth teams.",
+          examples: "<strong>The Trade Desk (TTD)</strong> (the leading independent DSP for open web and CTV), <strong>Google Display & Video 360 (DV360)</strong>, and <strong>Amazon DSP</strong> (exclusive access to Amazon shopper purchase intent data).",
+          jargons: [
+            { term: "QPS (Queries Per Second)", def: "The volume of incoming bid requests a DSP server cluster evaluates every second (often 1M-2M+ QPS)." },
+            { term: "Bid Shading", def: "A machine-learning algorithm that lowers a buyer's bid to win a First-Price auction at the lowest clearing price." },
+            { term: "Frequency Capping", def: "A rule restricting how many times an individual user sees the same ad creative within a 24-hour period." },
+            { term: "Seat ID", def: "The unique account number identifying an agency or brand buyer on an ad exchange." }
+          ]
+        };
+      } else if (title.includes("Currencies") || title.includes("Pricing Models")) {
+        return {
+          what: "<strong>Pricing Models (CPM, CPC, CPA, vCPM)</strong> are the commercial financial contracts that define how attention, traffic, and conversions are valued and billed in digital advertising.",
+          why: "Different advertisers have different business goals. A brand launching a new car wants mass visibility (CPM), an e-commerce store wants site visits (CPC), and a subscription software app wants paying customers (CPA). Currencies balance financial risk between buyers and publishers.",
+          where: "Configured inside buy-side insertion orders, campaign line items, and publisher billing reconciliation systems.",
+          examples: "Nike running a global branding campaign on <strong>CPM</strong> ($4.00 per 1,000 views); a local law firm running Google Search ads on <strong>CPC</strong> ($15.00 per click); an affiliate marketer running shoe promotions on <strong>CPA</strong> ($20.00 per sale).",
+          jargons: [
+            { term: "CPM (Cost Per Mille)", def: "Cost per 1,000 ad impressions. The universal baseline currency of display, video, and programmatic media." },
+            { term: "eCPM (Effective CPM)", def: "A formula normalizing non-CPM revenue (clicks, leads) back into an impression-level metric for yield comparison." },
+            { term: "vCPM (Viewable CPM)", def: "Cost per 1,000 impressions audited as in-view under Media Rating Council (MRC) guidelines." },
+            { term: "CTR (Click-Through Rate)", def: "The percentage of users who clicked an ad: (Clicks / Impressions) * 100." }
+          ]
+        };
+      } else {
+        return {
+          what: "<strong>" + title + "</strong> is a core component of the enterprise digital marketing and ad operations infrastructure.",
+          why: "It ensures that campaigns deliver accurately, inventory is priced correctly, tracking signals pass without errors, and media spend translates into business growth.",
+          where: "Configured across publisher ad servers (GAM 360), buyer ad servers (CM360), tag managers (GTM), and programmatic exchanges.",
+          examples: "Live production setups across Google Ad Manager, Prebid.js wrappers, Campaign Manager 360 placement tags, and CRM identity graphs.",
+          jargons: [
+            { term: "Discrepancy", def: "The variance between buy-side ad server counts and sell-side ad server counts (standard tolerance is <= 10%)." },
+            { term: "Cache-Buster", def: "A random number macro injected into ad tags to ensure proxy servers do not serve uncounted cached ads." },
+            { term: "Line Item", def: "The operational container in an ad server defining flight dates, impressions, priority, and targeting." },
+            { term: "Passback", def: "A fallback tag executed when an initial demand source fails to fill an ad impression." }
+          ]
+        };
+      }
     }
 
-    /* =========================================================================
-       DYNAMIC ARETYPES INGESTION (Tailored Content for All 180 Days)
-       ========================================================================= */
-
-    function renderDynamicClassroom(dayIdx, title) {
-      var dayNumStr = String(dayIdx + 1).padStart(3, '0');
+    function renderProgressiveClassroom(dayIdx, title) {
+      var dayStr = String(dayIdx + 1).padStart(3, '0');
+      var concept = getConceptualFoundations(dayIdx, title);
       var badge = document.getElementById('archetype-indicator');
 
-      if (dayIdx === 0) {
-        badge.className = "archetype-badge badge-sim";
-        badge.textContent = "Simulation Mode";
-        return `
-          <div class="callout analogy">
-            <strong>The Real-World Airport Terminal Analogy:</strong><br>
-            Think of digital advertising like a global airport. The <strong>Publisher</strong> is the airport authority owning physical terminal concourses. The <strong>Audience</strong> represents passengers walking past gates. The <strong>Advertiser</strong> is a luxury brand wanting to catch passengers' eyes. The <strong>Agency</strong> is the contracted media operations team hired by the brand to design, buy, and install the shopfront displays.
+      // Set Badge based on topic
+      if (dayIdx === 0) { badge.className = "archetype-badge badge-sim"; badge.textContent = "Simulation Mode"; }
+      else if (dayIdx === 1) { badge.className = "archetype-badge badge-canvas"; badge.textContent = "Visual Canvas Mode"; }
+      else if (dayIdx === 5) { badge.className = "archetype-badge badge-terminal"; badge.textContent = "Terminal & Code Sniffer"; }
+      else if (dayIdx === 3) { badge.className = "archetype-badge badge-matrix"; badge.textContent = "Yield Matrix Mode"; }
+      else { badge.className = "archetype-badge badge-warroom"; badge.textContent = "Incident War Room"; }
+
+      var jargonRows = concept.jargons.map(function(j) {
+        return "<tr><td><strong>" + j.term + "</strong></td><td>" + j.def + "</td></tr>";
+      }).join("");
+
+      return `
+        <!-- TIER 1: THE CORE FUNDAMENTALS -->
+        <div class="pedagogy-card">
+          <div class="pedagogy-header tier-1-hdr">
+            <span>📚 Tier 1: Core Fundamentals & Plain-English Blueprint</span>
           </div>
-          <h2>Executive Lesson Breakdown: 7-Hour Value Chain Mechanics</h2>
-          <p>Every commercial transaction on the web connects four primary parties. Here are their precise balance-sheet positions, platform tools, and operational workflows:</p>
+          
+          <h2>1. What Is It?</h2>
+          <p>${concept.what}</p>
+
+          <h2>2. Why Does It Exist & Why Is It Useful?</h2>
+          <p>${concept.why}</p>
+
+          <h2>3. Where Is It Used In The Real World?</h2>
+          <p>${concept.where}</p>
+
+          <h2>4. Real-World Enterprise Examples</h2>
+          <p>${concept.examples}</p>
+        </div>
+
+        <!-- TIER 2: DEEP TECHNICAL DICTIONARY & PROTOCOL SCHEMAS -->
+        <div class="pedagogy-card">
+          <div class="pedagogy-header tier-2-hdr">
+            <span>📖 Tier 2: Deep Technical Dictionary, Jargons & Schemas</span>
+          </div>
+
+          <h2>Enterprise Jargons & Operational Definitions</h2>
           <div class="data-table-wrapper">
             <table>
               <thead>
-                <tr><th>Market Entity</th><th>Economic Function</th><th>Primary Systems Used</th><th>Core Success Metric</th></tr>
+                <tr><th>Industry Jargon / Token</th><th>Precise Operational Definition</th></tr>
               </thead>
               <tbody>
-                <tr><td><strong>Advertiser</strong></td><td>Capital source purchasing public attention to generate customer demand.</td><td>Enterprise CRM, Google Ads, Meta Ads Manager, CM360.</td><td>ROAS (Return on Ad Spend), CPA.</td></tr>
-                <tr><td><strong>Publisher</strong></td><td>Media owner packaging digital screen real estate into sellable ad units.</td><td>Google Ad Manager 360, Prebid.js, CMS.</td><td>eCPM, Page RPM, Fill Rate.</td></tr>
-                <tr><td><strong>Agency (AOR)</strong></td><td>Strategic partner managing media planning, procurement, and optimization.</td><td>Prisma, Mediaocean, Verification Portals.</td><td>Margin, Delivery Accuracy, SLA.</td></tr>
-                <tr><td><strong>Audience</strong></td><td>The consumer trading attention and engagement for free content.</td><td>Web Browsers (Chrome, Safari), Mobile OS.</td><td>Content Utility, UX Speed, Privacy.</td></tr>
+                ${jargonRows}
               </tbody>
             </table>
           </div>
+
+          <h2>Protocol Payload Architecture for Day ${dayStr}</h2>
+          <pre>/* IAB Standard Protocol Data Payload */
+{
+  "day_index": "${dayStr}",
+  "operational_subject": "${title.replace(/"/g, '')}",
+  "standard_governance": "IAB-Tech-Lab / MRC-Compliant",
+  "data_integrity": {
+    "status": "ACTIVE_PRODUCTION",
+    "tracking_macros": ["%%CACHEBUSTER%%", "%%CLICK_URL_UNESC%%", "%%WINNING_PRICE%%"],
+    "failure_handling": "FAILOVER_TO_DIRECT_ALLOCATION"
+  }
+}</pre>
+        </div>
+
+        <!-- TIER 3: INTERACTIVE LABS & PRODUCTION SCENARIOS -->
+        <div class="pedagogy-card">
+          <div class="pedagogy-header tier-3-hdr">
+            <span>🎮 Tier 3: Interactive Sandbox & Production Scenarios</span>
+          </div>
+          ${renderContextualLab(dayIdx, title)}
+        </div>
+      `;
+    }
+
+    function renderContextualLab(dayIdx, title) {
+      if (dayIdx === 0) {
+        return `
           <div class="lab-box">
             <div class="lab-title">
               <span>🎮 Live Value Chain Simulator: The Media Dollar Waterfall</span>
@@ -866,13 +850,7 @@
           </div>
         `;
       } else if (dayIdx === 1) {
-        badge.className = "archetype-badge badge-canvas";
-        badge.textContent = "Visual Canvas Mode";
         return `
-          <div class="callout analogy">
-            <strong>The Highway Billboard & Newspaper Analogy:</strong><br>
-            A highway billboard placed at a busy city interchange is <strong>Above the Fold (ATF)</strong>—everyone sees it immediately. A billboard placed 50 miles away in a forest is <strong>Below the Fold (BTF)</strong>—you only see it if you drive all the way down the road. If an ad loads but the user closes the tab before scrolling, the advertiser paid for empty air unless MRC viewability standards are enforced.
-          </div>
           <div class="canvas-spec-board">
             <div style="font-size:0.85rem; font-weight:700; color:var(--purple); text-transform:uppercase;">Interactive IAB Canvas Visualizer</div>
             <p style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">Select an industry ad unit to visualize its real-world screen footprint and aspect ratio:</p>
@@ -886,21 +864,29 @@
               300 x 250 (Medium Rectangle)
             </div>
           </div>
-          <h2>Technical Deep Dive: Viewport Geometry, DOM Injection & CLS</h2>
-          <p>When an ad loads, the browser DOM parses container dimensions. If container heights are not reserved via CSS, the page jumps abruptly upon creative render, incurring a severe Cumulative Layout Shift (CLS) penalty under Google Core Web Vitals:</p>
-          <pre>&lt;!-- Reserved Slot Container to Prevent CLS --&gt;
-&lt;div id="div-gpt-ad-slot-1" style="min-width: 300px; min-height: 250px;"&gt;
-  &lt;script&gt;googletag.cmd.push(function() { googletag.display('div-gpt-ad-slot-1'); });&lt;/script&gt;
-&lt;/div&gt;</pre>
+        `;
+      } else if (dayIdx === 2) {
+        return `
+          <div class="lab-box">
+            <div class="lab-title">
+              <span>🎮 Scenario 3: Real-Time eCPM Arbitrage & Yield Engine</span>
+              <span class="status-badge">Playable Math Engine</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Compare competing bids from a pure CPM buyer and a performance CPC buyer to determine which offer produces higher publisher yield:</p>
+            <div class="calc-grid">
+              <div class="calc-field"><label>Buyer 1: Direct CPM Bid ($)</label><input type="number" id="sim-cpm-bid" value="3.50" step="0.1"></div>
+              <div class="calc-field"><label>Buyer 2: Search CPC Bid ($)</label><input type="number" id="sim-cpc-bid" value="0.75" step="0.05"></div>
+              <div class="calc-field"><label>Buyer 2: Historical CTR (%)</label><input type="number" id="sim-ctr" value="0.60" step="0.05"></div>
+              <div class="calc-field"><label>Available Slot Impressions</label><input type="number" id="sim-slot-imp" value="250000"></div>
+            </div>
+            <div class="calc-metrics">
+              <div><div class="metric-value" id="arb-winner" style="color:var(--accent);">Buyer 2 (CPC)</div><div class="metric-label">Winning Bidder Awarded</div></div>
+              <div><div class="metric-value" id="arb-effective-cpm">$4.50 eCPM</div><div class="metric-label">Clearing Effective Value</div></div>
+            </div>
+          </div>
         `;
       } else if (dayIdx === 5) {
-        badge.className = "archetype-badge badge-terminal";
-        badge.textContent = "Terminal & Code Sniffer";
         return `
-          <div class="callout analogy">
-            <strong>The Wall Street High-Frequency Trading Analogy:</strong><br>
-            A human eye blink takes 300 to 400 milliseconds. An entire Real-Time Bidding (RTB) auction clears in <strong>under 100 milliseconds</strong>. During that tiny slice of time, an ad request is constructed, sent to 15 global DSPs, evaluated by machine-learning models, bid on, cleared, and rendered.
-          </div>
           <div class="terminal-window">
             <div class="terminal-bar">
               <div class="term-dot term-red"></div>
@@ -917,34 +903,9 @@
             <div><span style="color:#f59e0b;">[90ms] AUCTION_CLEARED</span> -> Highest bid ($2.45) selected. Creative payload returned.</div>
             <div><span style="color:#38bdf8;">[105ms] AD_RENDERED</span> -> 1x1 billing notification impression beacons fired.</div>
           </div>
-          <h2>Deep Technical Analysis: OpenRTB 2.5 vs. 3.0 Telemetry</h2>
-          <p>The OpenRTB protocol serializes device, audience, and placement telemetry into JSON objects. Understanding bid stream attributes is vital for configuring DSP listening sockets and preventing QPS throttling.</p>
         `;
       } else {
-        badge.className = "archetype-badge badge-warroom";
-        badge.textContent = "Incident War Room";
         return `
-          <div class="war-room-panel">
-            <div class="war-room-title">🚨 Enterprise Incident War Room: Operational Briefing</div>
-            <p style="margin:0; font-size:0.92rem;">
-              You are managing a tier-1 campaign targeting <strong>${title}</strong>. A critical alert has fired: tracking beacons are dropping, pacing is lagging by 22%, and a discrepancy gap has appeared between ad servers.
-            </p>
-          </div>
-          <h2>Hour 1-4: Systematic Diagnostic Architecture</h2>
-          <p>To resolve this crisis, an ad operations specialist follows a structured diagnostic protocol across the delivery chain:</p>
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr><th>Inspection Point</th><th>Diagnostic Audit Command</th><th>Primary Root Cause</th></tr>
-              </thead>
-              <tbody>
-                <tr><td><strong>Cache-Buster</strong></td><td>Inspect creative code for <code>%%CACHEBUSTER%%</code></td><td>Missing macro causes proxies to serve uncounted cached ads.</td></tr>
-                <tr><td><strong>SSL / Mixed Content</strong></td><td>Filter DevTools Console for <code>Mixed-Content</code></td><td>Insecure HTTP image calls blocked on HTTPS pages.</td></tr>
-                <tr><td><strong>Counting Logic</strong></td><td>Compare GAM Delivered vs. CM360 Rendered</td><td>Counting on ad download vs. counting on creative render.</td></tr>
-                <tr><td><strong>Targeting Constraints</strong></td><td>Audit Geo + Audience + Device overlays</td><td>Over-targeting starves the campaign of eligible bid volume.</td></tr>
-              </tbody>
-            </table>
-          </div>
           <div class="lab-box">
             <div class="lab-title">
               <span>⚙️ Live Campaign Pacing & Revenue Burn-Down Terminal</span>
@@ -966,7 +927,152 @@
     }
 
     /* =========================================================================
-       APPLICATION CONTROLLER & NAVIGATION
+       DYNAMIC QUESTION ENGINE & PERMUTATION PIPELINE
+       ========================================================================= */
+
+    function shuffleArray(arr) {
+      var copy = arr.slice();
+      for (var i = copy.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = copy[i];
+        copy[i] = copy[j];
+        copy[j] = temp;
+      }
+      return copy;
+    }
+
+    function generateDynamicQuestionPool(dayIdx, title) {
+      var spend = Math.floor(Math.random() * 8000) + 2000;
+      var imps = (Math.floor(Math.random() * 4) + 1) * 500000;
+      var calculatedCpm = ((spend / imps) * 1000).toFixed(2);
+      var wrongCpm1 = ((spend / imps) * 100).toFixed(2);
+      var wrongCpm2 = ((spend / imps) * 10000).toFixed(2);
+      var wrongCpm3 = (spend / (imps / 1000) * 1.5).toFixed(2);
+
+      var clicks = Math.floor(Math.random() * 800) + 200;
+      var calculatedCtr = ((clicks / imps) * 100).toFixed(2);
+      var wrongCtr1 = ((clicks / imps) * 10).toFixed(2);
+      var wrongCtr2 = ((clicks / imps) * 1000).toFixed(2);
+      var wrongCtr3 = (clicks / 100).toFixed(2);
+
+      var rawPool = [
+        {
+          q: "1. Dynamic Math Check: If an enterprise campaign incurs $" + spend.toLocaleString() + " spend and delivers " + imps.toLocaleString() + " impressions, what is the exact CPM?",
+          options: [
+            { text: "$" + calculatedCpm, correct: true },
+            { text: "$" + wrongCpm1, correct: false },
+            { text: "$" + wrongCpm2, correct: false },
+            { text: "$" + wrongCpm3, correct: false }
+          ],
+          expl: "CPM = (Spend / Impressions) * 1,000 = ($" + spend + " / " + imps + ") * 1,000 = $" + calculatedCpm + "."
+        },
+        {
+          q: "2. Dynamic Telemetry Check: A placement logs " + imps.toLocaleString() + " impressions and " + clicks.toLocaleString() + " clicks. What is the verified Click-Through Rate (CTR)?",
+          options: [
+            { text: calculatedCtr + "%", correct: true },
+            { text: wrongCtr1 + "%", correct: false },
+            { text: wrongCtr2 + "%", correct: false },
+            { text: wrongCtr3 + "%", correct: false }
+          ],
+          expl: "CTR = (Clicks / Impressions) * 100 = (" + clicks + " / " + imps + ") * 100 = " + calculatedCtr + "%."
+        },
+        {
+          q: "3. Core Fundamentals of " + title + ": What is its primary business purpose?",
+          options: [
+            { text: "Automate media transactions, optimize delivery yield, and enforce standard protocols", correct: true },
+            { text: "Bypass all ad server delivery priorities and force line items to House", correct: false },
+            { text: "Eliminate all cache-busting macros from third-party tag wrappers", correct: false },
+            { text: "Disable HTTPS encryption to accelerate browser paint loops", correct: false }
+          ],
+          expl: "Enterprise operations require strict adherence to standard protocols to protect revenue and delivery accuracy."
+        },
+        {
+          q: "4. SLA Governance: What counting discrepancy threshold triggers an operational audit between buy-side and sell-side ad servers?",
+          options: [
+            { text: "Between 8.0% and 10.0%", correct: true },
+            { text: "0.5% or lower", correct: false },
+            { text: "Exactly 50.0%", correct: false },
+            { text: "Discrepancies are ignored in commercial billing", correct: false }
+          ],
+          expl: "Standard insertion orders specify that variances exceeding 8% to 10% mandate joint server log reconciliations."
+        },
+        {
+          q: "5. Browser Security: What happens if an ad creative asset is called over insecure HTTP on an HTTPS domain?",
+          options: [
+            { text: "The browser issues a Mixed Content block, discarding the asset from rendering", correct: true },
+            { text: "The ad server doubles its clearing price automatically", correct: false },
+            { text: "The ad renders in monochrome black and white", correct: false },
+            { text: "The operating system automatically restarts", correct: false }
+          ],
+          expl: "Modern web standards block all mixed-content HTTP scripts and images on secure HTTPS hosts."
+        },
+        {
+          q: "6. Cache Mechanics: What is the primary role of a cache-busting macro (e.g. %%CACHEBUSTER%%)?",
+          options: [
+            { text: "Injects a random integer to prevent intermediate proxies from serving uncounted cached responses", correct: true },
+            { text: "Clears the end user's local browser search history", correct: false },
+            { text: "Compresses heavy MP4 video files into static GIFs", correct: false },
+            { text: "Doubles the CPU processing speed of the ad server", correct: false }
+          ],
+          expl: "Cache-busters guarantee that each impression executes a fresh network call rather than reading from proxy storage."
+        },
+        {
+          q: "7. Pacing Diagnostics: How does aggressive audience and geo-targeting layering affect campaign run-rates?",
+          options: [
+            { text: "It constricts eligible bid volume, significantly increasing the risk of under-delivery", correct: true },
+            { text: "It increases total available impression capacity", correct: false },
+            { text: "It removes floor price requirements from the auction", correct: false },
+            { text: "It forces the creative to load lazily", correct: false }
+          ],
+          expl: "Layering multiple restrictive targeting dimensions shrinks the addressable bid pool, frequently causing campaigns to under-pace."
+        },
+        {
+          q: "8. Core Web Vitals: Why must ad unit container div tags explicitly define min-width and min-height in CSS?",
+          options: [
+            { text: "To prevent Cumulative Layout Shift (CLS) penalties caused by unreserved DOM elements popping open", correct: true },
+            { text: "To prevent ad creatives from downloading over cellular networks", correct: false },
+            { text: "To block users from right-clicking on page elements", correct: false },
+            { text: "To encrypt the host HTML source code", correct: false }
+          ],
+          expl: "Explicit container dimensions reserve physical space on the page, preventing layout shifts when creatives render."
+        },
+        {
+          q: "9. Auction Protocol: In a First-Price programmatic auction, what does the winning buyer pay?",
+          options: [
+            { text: "Exactly their submitted bid price", correct: true },
+            { text: "The runner-up's bid plus exactly one cent ($0.01)", correct: false },
+            { text: "The average of all submitted bids in the auction", correct: false },
+            { text: "The floor price minus an agency discount", correct: false }
+          ],
+          expl: "In modern first-price auctions, the winning bidder pays 100% of their clearing bid, necessitating DSP bid shading."
+        },
+        {
+          q: "10. Yield Engineering: What is the primary operational utility of eCPM for a media publisher?",
+          options: [
+            { text: "Normalizes disparate revenue models (CPC, CPA, Flat Rate) into an impression-level baseline for yield comparison", correct: true },
+            { text: "Calculates the physical rendering speed of browser fonts", correct: false },
+            { text: "Converts video bitrates from 720p to 1080p", correct: false },
+            { text: "Monitors server fan speeds in cloud data centers", correct: false }
+          ],
+          expl: "Effective CPM (eCPM) standardizes non-CPM earnings back to a cost-per-thousand baseline for programmatic auction competition."
+        }
+      ];
+
+      var shuffledQuestions = shuffleArray(rawPool);
+      return shuffledQuestions.map(function(item) {
+        var shuffledOptions = shuffleArray(item.options);
+        var correctIndex = shuffledOptions.findIndex(function(o) { return o.correct; });
+        return {
+          q: item.q,
+          options: shuffledOptions.map(function(o) { return o.text; }),
+          correct: correctIndex,
+          expl: item.expl
+        };
+      });
+    }
+
+    /* =========================================================================
+       APPLICATION CONTROLLER & ENGINE INITIALIZATION
        ========================================================================= */
 
     var activeDayIndex = 0;
@@ -1005,17 +1111,19 @@
       var title = SYLLABUS_TITLES[activeDayIndex] || "Enterprise Ad Tech Module";
 
       document.getElementById('day-dropdown').value = activeDayIndex;
+      document.getElementById('day-counter-badge').textContent = "Day " + dayNumStr + " of 180";
       document.getElementById('class-title-display').textContent = "Day " + dayNumStr + ": " + title;
 
       var mount = document.getElementById('dynamic-content-mount');
-      mount.innerHTML = renderDynamicClassroom(activeDayIndex, title);
+      mount.innerHTML = renderProgressiveClassroom(activeDayIndex, title);
 
-      // Attach context-specific listeners
+      // Contextual Listeners
       if (activeDayIndex === 0) attachDay0Listeners();
       else if (activeDayIndex === 1) attachDay1Listeners();
-      else attachWarRoomListeners();
+      else if (activeDayIndex === 2) attachDay2Listeners();
+      else attachGenericLabListeners();
 
-      // Render freshly generated dynamic quiz permutations
+      // Render Fresh Randomized Assessment
       refreshQuiz();
 
       document.getElementById('prev-btn').style.visibility = (activeDayIndex > 0) ? 'visible' : 'hidden';
@@ -1136,7 +1244,30 @@
       document.getElementById('btn-slot-mob')?.addEventListener('click', function() { setSlot(320, 50, 'Mobile Banner', this); });
     }
 
-    function attachWarRoomListeners() {
+    function attachDay2Listeners() {
+      var cpmIn = document.getElementById('sim-cpm-bid');
+      var cpcIn = document.getElementById('sim-cpc-bid');
+      var ctrIn = document.getElementById('sim-ctr');
+      var impIn = document.getElementById('sim-slot-imp');
+      var runArb = function() {
+        var cpmBid = parseFloat(cpmIn?.value) || 0;
+        var cpcBid = parseFloat(cpcIn?.value) || 0;
+        var ctr = parseFloat(ctrIn?.value) || 0;
+        var cpcAsEcpm = cpcBid * (ctr / 100) * 1000;
+        var isCpcWinner = cpcAsEcpm > cpmBid;
+        var winningEcpm = Math.max(cpcAsEcpm, cpmBid);
+        var winEl = document.getElementById('arb-winner');
+        var ecpmEl = document.getElementById('arb-effective-cpm');
+        if (winEl) winEl.textContent = isCpcWinner ? "Buyer 2 (CPC)" : "Buyer 1 (CPM)";
+        if (ecpmEl) ecpmEl.textContent = "$" + winningEcpm.toFixed(2) + " eCPM";
+      };
+      if (cpmIn) cpmIn.addEventListener('input', runArb);
+      if (cpcIn) cpcIn.addEventListener('input', runArb);
+      if (ctrIn) ctrIn.addEventListener('input', runArb);
+      if (impIn) impIn.addEventListener('input', runArb);
+    }
+
+    function attachGenericLabListeners() {
       var imp = document.getElementById('gen-imp');
       var cpm = document.getElementById('gen-cpm');
       var pace = document.getElementById('gen-pace');
