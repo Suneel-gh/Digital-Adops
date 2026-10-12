@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>AdOps & Programmatic Master Codex</title>
+  <title>OmniAdTech: Unrestricted Digital Marketing & Ad Ops Codex</title>
   <style>
     :root {
       --bg: #070b14;
@@ -30,7 +30,6 @@
       padding-bottom: 85px;
     }
 
-    /* Sticky App Header */
     header {
       position: sticky;
       top: 0;
@@ -56,7 +55,6 @@
 
     .container { max-width: 920px; margin: 0 auto; padding: 18px; }
 
-    /* Open-Web In-App Search Engine */
     .search-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -117,7 +115,6 @@
     }
     .tag:hover { color: var(--primary); border-color: var(--primary); }
 
-    /* Perspective Switcher */
     .level-toggle {
       display: flex;
       background: var(--surface);
@@ -141,7 +138,6 @@
     }
     .level-btn.active { background: var(--border); color: #fff; font-weight: 700; }
 
-    /* Classroom Content Panel */
     .classroom-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -153,7 +149,6 @@
     .class-title { font-size: 1.45rem; font-weight: 800; color: #fff; line-height: 1.3; }
     .class-meta { font-size: 0.82rem; color: var(--primary); margin-top: 6px; font-weight: 600; }
 
-    /* Deep-Reading Typography */
     h2 { font-size: 1.25rem; color: var(--primary); margin: 26px 0 10px 0; border-left: 4px solid var(--primary); padding-left: 10px; }
     h3 { font-size: 1.05rem; color: #cbd5e1; margin: 18px 0 8px 0; }
     p { font-size: 0.98rem; color: #cbd5e1; margin-bottom: 16px; }
@@ -181,19 +176,13 @@
       background: rgba(192, 132, 252, 0.08);
       border-left-color: var(--purple);
     }
-    .callout.ops-alert {
-      background: rgba(245, 158, 11, 0.08);
-      border-left-color: var(--warning);
-    }
 
-    /* Comparison Data Table */
     .data-table-wrapper { overflow-x: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 10px; }
     table { width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left; }
     th { background: #070b14; color: var(--primary); padding: 12px 14px; border-bottom: 1px solid var(--border); }
     td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: #cbd5e1; }
     tr:last-child td { border-bottom: none; }
 
-    /* In-App Live Open Web Ingestion Frame */
     #open-web-result {
       background: #070b14;
       border: 1px solid var(--border);
@@ -213,17 +202,6 @@
     .web-result-title { font-weight: 700; color: var(--accent); font-size: 1rem; }
     .web-result-status { font-size: 0.72rem; background: var(--surface); padding: 3px 8px; border-radius: 4px; color: var(--text-muted); }
 
-    /* Interactive Simulation Shell */
-    .lab-box {
-      background: #070b14;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
-      margin: 22px 0;
-    }
-    .lab-title { font-size: 0.9rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 6px; }
-
-    /* Navigation Buttons */
     .nav-bar { display: flex; gap: 12px; margin-top: 28px; }
     .nav-btn {
       flex: 1;
@@ -237,7 +215,6 @@
     .nav-btn.next { background: var(--primary); color: #070b14; }
     .nav-btn.prev { background: var(--surface-elevated); border: 1px solid var(--border); color: var(--text); }
 
-    /* Bottom Quick Nav Bar */
     .bottom-nav {
       position: fixed;
       bottom: 0;
@@ -272,44 +249,64 @@
 
   <div class="container">
 
-    <!-- In-App Open-Web Live Ingestion Engine -->
     <div class="search-card">
       <div class="search-title">
         <span>Open-Web Live Search Engine</span>
         <span>In-App Direct Extraction</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="web-search-query" placeholder="Search any term (e.g., Audience, SSP, DSP, Header Bidding, OpenRTB, DMP)..." onkeydown="if(event.key==='Enter') triggerWebSearch()">
+        <input type="text" id="web-search-query" placeholder="Search any term (e.g., Target audience, SSP, DSP, Header Bidding, Prebid)..." onkeydown="if(event.key==='Enter') triggerWebSearch()">
         <button class="btn-search" onclick="triggerWebSearch()">Search Web</button>
       </div>
       <div class="quick-tags">
-        <div class="tag" onclick="quickSearch('Target audience')">Audience Exhaustive</div>
+        <div class="tag" onclick="quickSearch('Target audience')">Audience Deep-Dive</div>
         <div class="tag" onclick="quickSearch('Supply-side platform')">SSP Architecture</div>
         <div class="tag" onclick="quickSearch('Demand-side platform')">DSP Mechanics</div>
         <div class="tag" onclick="quickSearch('Real-time bidding')">RTB Protocol</div>
-        <div class="tag" onclick="quickSearch('Ad serving')">Ad Servers</div>
         <div class="tag" onclick="quickSearch('Customer data platform')">CDP vs DMP</div>
         <div class="tag" onclick="quickSearch('Header bidding')">Header Bidding</div>
       </div>
     </div>
 
-    <!-- Audience & Class Perspective Switcher -->
     <div class="level-toggle">
       <button class="level-btn active" id="btn-layman" onclick="setLevel('layman')">🌱 Layperson: Deep Plain English & Analogies</button>
       <button class="level-btn" id="btn-expert" onclick="setLevel('expert')">🛠️ Ad Ops Specialist: Technical Specs & Mechanics</button>
     </div>
 
-    <!-- Main Classroom Content Card -->
     <div class="classroom-card">
       <div class="class-header">
-        <div class="class-title" id="class-title-display">Loading Module...</div>
-        <div class="class-meta" id="class-meta-display">Exhaustive Curriculum</div>
+        <div class="class-title" id="class-title-display">Session 1: The Macro Foundations of Digital Advertising</div>
+        <div class="class-meta" id="class-meta-display">Foundations & Global Ecosystem</div>
       </div>
 
-      <!-- Core Deep Content Render Space -->
-      <div id="class-body-display"></div>
+      <div id="class-body-display">
+        <h2>1. Why Does Digital Advertising Actually Exist?</h2>
+        <p>Imagine the internet without advertising. If advertising disappeared tomorrow, almost every website you visit—Google Search, YouTube, Instagram, news websites, gaming apps, recipe blogs—would have to charge you a cash subscription just to open their homepage. Advertising is the <strong>financial engine that keeps the open internet free for billions of people</strong>.</p>
+        
+        <div class="callout analogy">
+          <strong>The Traditional Offline Tragedy:</strong><br>
+          Suppose you open a small boutique bakery. You want to sell chocolate cakes. In the offline world, you spend $1,000 to print 10,000 paper leaflets and pay someone to hand them out outside a train station.<br><br>
+          What happens? 8,000 people immediately drop it in the trash without looking. 1,000 people are strictly diabetic or on diets. 900 people live 40 miles away and will never visit your store. Only 100 people might be interested, and out of them, maybe 3 actually buy. You wasted 95% of your money, and worse: <em>you have zero mathematical data on which flyer worked.</em>
+        </div>
 
-      <!-- Live Web Search Container (Appears right inside this card without redirects) -->
+        <h2>2. The Digital Transformation: Direct Addressability</h2>
+        <p>Digital marketing changed everything through a concept called <strong>Addressability</strong>. Instead of shouting through a megaphone to 10,000 random strangers, you tell an ad platform:</p>
+        <ul>
+          <li><em>"Only show my cake ad to people located within a 3-kilometer radius of my bakery."</em></li>
+          <li><em>"Only show it between 4:00 PM and 7:00 PM (when people are hungry after work)."</em></li>
+          <li><em>"Only show it to people whose social activity indicates they love desserts or have an upcoming birthday this week."</em></li>
+        </ul>
+        <p>You don't waste money printing paper for people who don't care. Every penny is accounted for with live data.</p>
+
+        <h2>3. The Three Universal Players of the Digital World</h2>
+        <p>Every single ad you see on your phone, computer, or connected TV involves three distinct parties:</p>
+        <ol>
+          <li><strong>The Audience (The Consumer):</strong> This is you and me. We provide our attention in exchange for free articles, videos, or games.</li>
+          <li><strong>The Publisher (The Seller):</strong> Anyone who owns digital real estate that attracts attention. Examples: ESPN, The New York Times, YouTube creators, Candy Crush. They create content and package empty screen space into <em>Ad Slots</em> (also known as <em>Inventory</em>).</li>
+          <li><strong>The Advertiser (The Buyer):</strong> Any business that wants to reach that audience to sell products. Examples: Nike, Apple, Coca-Cola, or your local dentist.</li>
+        </ol>
+      </div>
+
       <div id="open-web-result">
         <div class="web-result-header">
           <div class="web-result-title" id="web-res-title">Live Ingestion</div>
@@ -318,9 +315,8 @@
         <div id="web-res-content"></div>
       </div>
 
-      <!-- Chapter Stepper Navigation -->
       <div class="nav-bar">
-        <button class="nav-btn prev" id="prev-btn" onclick="stepLesson(-1)">← Previous Session</button>
+        <button class="nav-btn prev" id="prev-btn" style="visibility:hidden;" onclick="stepLesson(-1)">← Previous Session</button>
         <button class="nav-btn next" id="next-btn" onclick="stepLesson(1)">Next Session →</button>
       </div>
     </div>
@@ -329,7 +325,7 @@
 
   <div class="bottom-nav">
     <div class="tab active" onclick="loadLessonByIndex(0)">📖 Foundations</div>
-    <div class="tab" onclick="loadLessonByIndex(1)">👥 Audience Deep-Dive</div>
+    <div class="tab" onclick="loadLessonByIndex(1)">👥 Audience Masterclass</div>
     <div class="tab" onclick="loadLessonByIndex(2)">⚡ SSP & DSP Master</div>
     <div class="tab" onclick="loadLessonByIndex(3)">⏱️ 100ms RTB Cycle</div>
   </div>
@@ -338,377 +334,44 @@
     var currentLevel = 'layman';
     var activeLessonIndex = 0;
 
-    /* =========================================================================
-       EXHAUSTIVE, MULTI-THOUSAND WORD CLASSROOM CURRICULUM
-       ========================================================================= */
     var SESSIONS = [
       {
-        id: "s1",
         title: "Session 1: The Macro Foundations of Digital Advertising",
         category: "Foundations & Global Ecosystem",
-        layman: `
-          <h2>1. Why Does Digital Advertising Actually Exist?</h2>
-          <p>Imagine the internet did not have advertising. If advertising vanished tomorrow, almost every website you visit—Google Search, YouTube, Instagram, news websites, gaming apps, recipes blogs—would have to charge you a paid cash subscription just to open the home page. Advertising is the <strong>financial engine that keeps the open internet free for billions of human beings</strong>.</p>
-          
-          <div class="callout analogy">
-            <strong>The Traditional Offline Tragedy:</strong><br>
-            Suppose you open a small boutique bakery. You want to sell chocolate cakes. In the offline world, you pay $1,000 to print 10,000 paper leaflets and pay someone to hand them out outside a train station.<br><br>
-            What happens? 8,000 people immediately drop it in the trash without looking. 1,000 people are strictly diabetic or on diets. 900 people live 40 miles away and will never visit your store. Only 100 people might be interested, and out of them, maybe 3 actually buy. You wasted 95% of your money, and worse: <em>you have zero mathematical data on which flyer worked.</em>
-          </div>
-
-          <h2>2. The Digital Transformation: Direct Addressability</h2>
-          <p>Digital marketing changed the game completely through a concept called <strong>Addressability</strong>. Instead of shouting through a megaphone to 10,000 random strangers, you tell an ad platform:</p>
-          <ul>
-            <li><em>"Only show my cake ad to people located within a 3-kilometer radius of my bakery."</em></li>
-            <li><em>"Only show it between 4:00 PM and 7:00 PM (when people are hungry after work)."</em></li>
-            <li><em>"Only show it to people whose social activity indicates they love desserts or have an upcoming birthday this week."</em></li>
-          </ul>
-          <p>You don't waste money printing paper for people who don't care. Every penny is accounted for with live data.</p>
-
-          <h2>3. The Three Universal Players of the Digital World</h2>
-          <p>Every single ad you see on your phone, computer, or connected TV involves three distinct parties:</p>
-          <ol>
-            <li><strong>The Audience (The Consumer):</strong> This is you and me. We provide our attention in exchange for free articles, videos, or games.</li>
-            <li><strong>The Publisher (The Seller):</strong> Anyone who owns digital real estate that attracts attention. Examples: ESPN, The New York Times, YouTube creators, Candy Crush. They create content and package empty screen space into <em>Ad Slots</em> (also known as <em>Inventory</em>).</li>
-            <li><strong>The Advertiser (The Buyer):</strong> Any business that wants to reach that audience to sell products. Examples: Nike, Apple, Coca-Cola, or your local dentist.</li>
-          </ol>
-        `,
-        expert: `
-          <h2>1. Deterministic vs. Probabilistic Media Ecosystems</h2>
-          <p>Digital advertising replaces broadcast media (Linear TV, Print, Radio) with an addressable auction architecture powered by client telemetry and server-side auctions.</p>
-          
-          <h3>Core Technical Infrastructure:</h3>
-          <ul>
-            <li><strong>Telemetry Ingestion:</strong> User devices pass request parameters via HTTP request headers: User-Agent (browser, OS, device model), Client IP (coarse geolocation), Device Pixel Ratio, and Viewport Dimensions.</li>
-            <li><strong>Dynamic Creative Optimization (DCO):</strong> Real-time creative assembly using template engines that inject distinct assets (copy, calls-to-action, pricing) based on recipient audience segments.</li>
-            <li><strong>Closed-Loop Attribution:</strong> Tracing impressions and click tags directly to downstream server postback events to evaluate Return on Ad Spend (ROAS).</li>
-          </ul>
-
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Attribute</th>
-                  <th>Traditional Broadcast (TV/Print)</th>
-                  <th>Digital Programmatic</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Targeting Precision</strong></td>
-                  <td>Broad demographic estimates (Nielsen panels)</td>
-                  <td>Granular (Device, First-Party ID, Contextual, Geo)</td>
-                </tr>
-                <tr>
-                  <td><strong>Pricing Mechanism</strong></td>
-                  <td>Upfront, fixed-rate manual rate cards</td>
-                  <td>Dynamic Real-Time Bidding (RTB) auctions</td>
-                </tr>
-                <tr>
-                  <td><strong>Feedback Loop</strong></td>
-                  <td>Weeks or months post-campaign</td>
-                  <td>Real-time (milliseconds to minutes)</td>
-                </tr>
-                <tr>
-                  <td><strong>Delivery Verification</strong></td>
-                  <td>Sample audits and broadcast logs</td>
-                  <td>MRC Viewability beacons, OMID verification</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        `
+        layman: "<h2>1. Why Does Digital Advertising Actually Exist?</h2><p>Imagine the internet without advertising. If advertising disappeared tomorrow, almost every website you visit—Google Search, YouTube, Instagram, news websites, gaming apps, recipe blogs—would have to charge you a cash subscription just to open their homepage. Advertising is the <strong>financial engine that keeps the open internet free for billions of people</strong>.</p><div class='callout analogy'><strong>The Traditional Offline Tragedy:</strong><br>Suppose you open a small boutique bakery. You want to sell chocolate cakes. In the offline world, you spend $1,000 to print 10,000 paper leaflets and pay someone to hand them out outside a train station.<br><br>What happens? 8,000 people immediately drop it in the trash without looking. 1,000 people are strictly diabetic or on diets. 900 people live 40 miles away and will never visit your store. Only 100 people might be interested, and out of them, maybe 3 actually buy. You wasted 95% of your money, and worse: <em>you have zero mathematical data on which flyer worked.</em></div><h2>2. The Digital Transformation: Direct Addressability</h2><p>Digital marketing changed everything through a concept called <strong>Addressability</strong>. Instead of shouting through a megaphone to 10,000 random strangers, you tell an ad platform:</p><ul><li><em>'Only show my cake ad to people located within a 3-kilometer radius of my bakery.'</em></li><li><em>'Only show it between 4:00 PM and 7:00 PM (when people are hungry after work).'</em></li><li><em>'Only show it to people whose social activity indicates they love desserts or have an upcoming birthday this week.'</em></li></ul><p>You don't waste money printing paper for people who don't care. Every penny is accounted for with live data.</p><h2>3. The Three Universal Players of the Digital World</h2><p>Every single ad you see on your phone, computer, or connected TV involves three distinct parties:</p><ol><li><strong>The Audience (The Consumer):</strong> This is you and me. We provide our attention in exchange for free articles, videos, or games.</li><li><strong>The Publisher (The Seller):</strong> Anyone who owns digital real estate that attracts attention. Examples: ESPN, The New York Times, YouTube creators, Candy Crush. They create content and package empty screen space into <em>Ad Slots</em> (also known as <em>Inventory</em>).</li><li><strong>The Advertiser (The Buyer):</strong> Any business that wants to reach that audience to sell products. Examples: Nike, Apple, Coca-Cola, or your local dentist.</li></ol>",
+        expert: "<h2>1. Deterministic vs. Probabilistic Media Ecosystems</h2><p>Digital advertising replaces broadcast media (Linear TV, Print, Radio) with an addressable auction architecture powered by client telemetry and server-side auctions.</p><h3>Core Technical Infrastructure:</h3><ul><li><strong>Telemetry Ingestion:</strong> User devices pass request parameters via HTTP request headers: User-Agent (browser, OS, device model), Client IP (coarse geolocation), Device Pixel Ratio, and Viewport Dimensions.</li><li><strong>Dynamic Creative Optimization (DCO):</strong> Real-time creative assembly using template engines that inject distinct assets based on recipient audience segments.</li><li><strong>Closed-Loop Attribution:</strong> Tracing impressions and click tags directly to downstream server postback events to evaluate Return on Ad Spend (ROAS).</li></ul>"
       },
       {
-        id: "s2",
         title: "Session 2: The Complete Audience Encyclopedia",
         category: "Audience Architecture & Data Tech",
-        layman: `
-          <h2>1. What Exactly is an "Audience" in Digital Marketing?</h2>
-          <p>In everyday language, an audience is just a crowd of people watching a show. But in digital marketing and ad operations, an <strong>Audience is NOT just a group of people—it is a mathematically defined bucket of web browsers, devices, and user behaviors</strong>.</p>
-          <p>Advertisers do not buy "people." They buy <em>Audience Segments</em>. For example: <em>"Women aged 25–34 living in California who browsed running shoes in the past 7 days."</em></p>
-
-          <h2>2. The Three Flavors of Data: 1st-Party, 2nd-Party, and 3rd-Party</h2>
-          <p>How does an advertiser know who you are and what you like? Data is grouped into three distinct categories:</p>
-
-          <div class="callout analogy">
-            <strong>The Three Data Flavors Explained with Real-World Analogies:</strong><br><br>
-            <strong>1. First-Party Data (The Gold Standard):</strong><br>
-            This is information that a business collects <em>directly from you</em> with your permission. When you create an account on Amazon, enter your email, buy running shoes, and add your home address, Amazon owns that First-Party data. It is 100% accurate, completely free for Amazon to use, and highest quality.<br><br>
-            <strong>2. Second-Party Data (Someone Else's First-Party Data):</strong><br>
-            Imagine Delta Airlines partners with Marriott Hotels. Delta says: <em>"Hey Marriott, we know which of our passengers just booked a flight to Paris. We will share that list with you so you can show them hotel deals in Paris."</em> Marriott is using Delta's first-party data. It is clean, direct, and negotiated between two trusted partners.<br><br>
-            <strong>3. Third-Party Data (The Data Marketplace):</strong><br>
-            Imagine a massive data broker company (like Oracle or Acxiom) that buys tracking information from 500 different apps, websites, and credit card loyalty programs. They bundle it together into a giant list called "Automobile Enthusiasts" and sell it to anyone on the open market. It is broad and abundant, but can be stale or inaccurate.
-          </div>
-
-          <h2>3. Deterministic vs. Probabilistic Matching</h2>
-          <p>How do computers know that the phone in your hand and the laptop on your desk belong to the same human being?</p>
-          <ul>
-            <li><strong>Deterministic Matching (100% Certainty):</strong> You log into Spotify on your laptop using your email <code>john@gmail.com</code>. Then you log into Spotify on your phone using the exact same email. Spotify now knows with 100% mathematical certainty that both screens belong to John.</li>
-            <li><strong>Probabilistic Matching (Educated Guesswork):</strong> You never log in. But an algorithm notices that a laptop and a phone connect to the exact same home Wi-Fi network every evening between 7 PM and 6 AM, browse similar sports websites, and commute along the exact same highway. The algorithm calculates an 85% probability that both devices belong to the same person.</li>
-          </ul>
-
-          <h2>4. Lookalike Modeling (Finding Digital Twins)</h2>
-          <p>Imagine Nike has a list of their 1,000 top customers who each spent $500 on shoes this year. Nike wants to find 100,000 <em>new</em> customers just like them.</p>
-          <p>Nike uploads those 1,000 profiles into an ad platform's algorithm. The algorithm studies the patterns: What do these 1,000 people read? What time do they browse? What other brands do they love? The algorithm then scans millions of other web users and identifies "Digital Twins"—people who match the exact same behavioral patterns. This is called a <strong>Lookalike Audience</strong>.</p>
-        `,
-        expert: `
-          <h2>1. Audience Data Platforms: DMP vs. CDP</h2>
-          <p>The enterprise infrastructure managing audience data has fundamentally shifted from anonymous cookie stores to authenticated customer identity graphs.</p>
-
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Capability</th>
-                  <th>Data Management Platform (DMP)</th>
-                  <th>Customer Data Platform (CDP)</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Primary Identifier</strong></td>
-                  <td>Third-Party Cookies, Device IDs (MAIDs)</td>
-                  <td>Deterministic PII (Hashed Email, Phone, CRM ID)</td>
-                </tr>
-                <tr>
-                  <td><strong>Data Lifetime</strong></td>
-                  <td>Ephemeral (30–90 days lifespan)</td>
-                  <td>Persistent multi-year customer lifetime history</td>
-                </tr>
-                <tr>
-                  <td><strong>Core Objective</strong></td>
-                  <td>Third-party programmatic audience activation in DSPs</td>
-                  <td>Omnichannel customer journey orchestration</td>
-                </tr>
-                <tr>
-                  <td><strong>Market Examples</strong></td>
-                  <td>Oracle BlueKai, Adobe Audience Manager, Lotame</td>
-                  <td>Segment (Twilio), Tealium, mParticle, Salesforce CDP</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <h2>2. Modern Identity Resolution & Post-Cookie Architecture</h2>
-          <p>With third-party cookie restrictions across modern browsers, the ad operations ecosystem relies on three alternative identity paradigms:</p>
-          <ul>
-            <li><strong>Universal ID Frameworks (e.g., Unified ID 2.0 / UID2, LiveRamp RampID):</strong> Converts authenticated user logins (email/phone) into salting-hashed, encrypted tokens passed via Prebid.js and OpenRTB to DSPs without exposing plain-text PII.</li>
-            <li><strong>Google Privacy Sandbox (Protected Audience API):</strong> Moves auction and interest-group profiling directly inside the browser client. Advertisers define interest groups locally; the browser executes the auction on-device without passing user IDs across domains.</li>
-            <li><strong>Contextual AI & Semantic Extraction:</strong> Bypasses user identity entirely. Analyzes on-page natural language processing (NLP), video transcripts, and page taxonomy (IAB Content Categories Tier 3/4) to serve ads based on immediate content alignment rather than user history.</li>
-          </ul>
-        `
+        layman: "<h2>1. What Exactly is an 'Audience' in Digital Marketing?</h2><p>In everyday language, an audience is just a crowd of people watching a show. But in digital marketing and ad operations, an <strong>Audience is NOT just people—it is a mathematically defined bucket of web browsers, devices, and user behaviors</strong>.</p><p>Advertisers do not buy 'people.' They buy <em>Audience Segments</em>. For example: <em>'Women aged 25–34 living in California who browsed running shoes in the past 7 days.'</em></p><h2>2. The Three Flavors of Data: 1st-Party, 2nd-Party, and 3rd-Party</h2><div class='callout analogy'><strong>1. First-Party Data (The Gold Standard):</strong><br>Information a business collects <em>directly from you</em> with your permission. When you create an account on Amazon, buy running shoes, and enter your home address, Amazon owns that first-party data. It is 100% accurate, completely free for Amazon to use, and highest quality.<br><br><strong>2. Second-Party Data (Someone Else's First-Party Data):</strong><br>Delta Airlines partners with Marriott Hotels. Delta says: <em>'We know which passengers just booked flights to Paris. We will share that list with you so you can show them hotel deals.'</em> Marriott is using Delta's first-party data. It is clean and negotiated directly between two trusted partners.<br><br><strong>3. Third-Party Data (The Marketplace):</strong><br>A data broker company buys tracking records from 500 different apps, websites, and loyalty programs. They bundle it together into a giant list called 'Automobile Enthusiasts' and sell it to anyone on the open market. It is abundant, but can be stale or inaccurate.</div><h2>3. Lookalike Modeling (Finding Digital Twins)</h2><p>Imagine Nike has a list of their 1,000 top customers who each spent $500 on shoes this year. Nike wants to find 100,000 <em>new</em> customers just like them.</p><p>Nike uploads those 1,000 profiles into an ad platform's algorithm. The algorithm studies the patterns: What do these 1,000 people read? What time do they browse? The algorithm then scans millions of other web users and identifies 'Digital Twins' matching the exact same behavioral patterns. This is called a <strong>Lookalike Audience</strong>.</p>",
+        expert: "<h2>1. Audience Data Platforms: DMP vs. CDP</h2><p>The enterprise infrastructure managing audience data has fundamentally shifted from anonymous cookie stores to authenticated customer identity graphs.</p><div class='data-table-wrapper'><table><thead><tr><th>Capability</th><th>Data Management Platform (DMP)</th><th>Customer Data Platform (CDP)</th></tr></thead><tbody><tr><td><strong>Primary Identifier</strong></td><td>Third-Party Cookies, Device IDs (MAIDs)</td><td>Deterministic PII (Hashed Email, Phone, CRM ID)</td></tr><tr><td><strong>Data Lifetime</strong></td><td>Ephemeral (30–90 days lifespan)</td><td>Persistent multi-year customer lifetime history</td></tr><tr><td><strong>Core Objective</strong></td><td>Programmatic audience activation in DSPs</td><td>Omnichannel customer journey orchestration</td></tr></tbody></table></div><h2>2. Identity Resolution in the Post-Cookie Era</h2><ul><li><strong>Universal ID Frameworks (UID2.0, LiveRamp RampID):</strong> Converts authenticated logins into salted-hashed, encrypted tokens passed via Prebid.js and OpenRTB to DSPs.</li><li><strong>Google Privacy Sandbox (Protected Audience API):</strong> Moves auction and interest-group profiling directly inside the browser client without passing user IDs across domains.</li></ul>"
       },
       {
-        id: "s3",
         title: "Session 3: Supply-Side Platforms (SSP) & Demand-Side Platforms (DSP)",
         category: "Programmatic Infrastructure",
-        layman: `
-          <h2>1. Why Manual Media Buying Collapsed</h2>
-          <p>In the early days of the web (1995–2005), if Nike wanted to put an ad on ESPN, a human media planner at an ad agency had to call a human salesperson at ESPN on the phone. They spent two weeks signing paper insertion orders (IOs), emailing JPEG image files, and manually programming the campaign. As millions of websites launched, this manual model became impossible. The industry needed high-speed automation.</p>
-
-          <h2>2. The Supply-Side Platform (SSP): The Publisher's Automated Auctioneer</h2>
-          <div class="callout analogy">
-            <strong>The Real Estate Broker Analogy:</strong><br>
-            Imagine you own a 50-story commercial skyscraper with empty billboard spaces on every wall (you are the <strong>Publisher</strong>). You don't have time to negotiate with 5,000 stores every single minute.<br><br>
-            You hire a high-speed broker called an <strong>SSP</strong>. You tell your SSP: <em>"Here are all my empty banner spaces. Never sell any space for less than $1.50 per 1,000 views. Go connect to every advertising exchange in the world and auction my slots off to the highest bidder every single time someone looks at my building!"</em>
-          </div>
-          <p>The SSP's sole mission is to <strong>maximize the money earned by the publisher</strong>.</p>
-
-          <h2>3. The Demand-Side Platform (DSP): The Advertiser's Automated Broker</h2>
-          <div class="callout analogy">
-            <strong>The Algorithmic Stock Trader Analogy:</strong><br>
-            Now look at the buyer's side. You are Nike (the <strong>Advertiser</strong>). You have $200,000 to spend. You cannot hire 500 humans to sit and refresh websites all day to buy ad slots.<br><br>
-            You use a <strong>DSP</strong>. You log into the DSP software and program your rules: <em>"I want to reach basketball fans aged 18–35. Never pay more than $3.00 CPM. Do not show the same ad to the same person more than 3 times a day. Automatically bid and buy across the entire internet!"</em>
-          </div>
-          <p>The DSP's sole mission is to <strong>buy the best possible inventory for the advertiser at the lowest effective price</strong>.</p>
-        `,
-        expert: `
-          <h2>1. Architectural Roles in the OpenRTB Pipeline</h2>
-          <p>The SSP and DSP communicate using the standardized <strong>IAB OpenRTB Protocol</strong> over low-latency JSON HTTP POST connections.</p>
-
-          <h3>SSP Responsibilities & Yield Optimization:</h3>
-          <ul>
-            <li><strong>Bid Request Serialization:</strong> Converts publisher DOM ad slots into OpenRTB <code>BidRequest</code> objects with slot dimensions (e.g., 300x250, 728x90), viewability score history, floor price rules, and content metadata.</li>
-            <li><strong>Floor Pricing Rules:</strong> Implements Hard Floors (strict rejection threshold) and Soft Floors (dynamic clearing thresholds optimized via historical elasticity curves).</li>
-            <li><strong>Deal ID Routing:</strong> Identifies and routes Private Marketplace (PMP) deals and Preferred Deals matching specific DSP seat IDs.</li>
-          </ul>
-
-          <h3>DSP Responsibilities & Bidding Engine:</h3>
-          <ul>
-            <li><strong>QPS (Queries Per Second) Filtration:</strong> Evaluates incoming bid streams (often exceeding 1,000,000+ QPS) and filters out irrelevant requests before querying core bidding algorithms to preserve server compute resources.</li>
-            <li><strong>Bid Shading Algorithms:</strong> In pure First-Price Auctions, the winner pays exactly what they bid. DSP machine-learning models predict the minimum clearing price needed to win, shading the bid downward to save advertiser capital.</li>
-            <li><strong>Pacing Algorithms:</strong> Manages budget expenditure smoothly over the campaign flight (Evenly Paced vs. Accelerated/ASAP).</li>
-          </ul>
-        `
+        layman: "<h2>1. Why Manual Media Buying Collapsed</h2><p>In the early days of the web, if Nike wanted to put an ad on ESPN, human media planners had to call ESPN salespeople on the phone. They spent two weeks signing paper insertion orders (IOs) and emailing image files. As millions of websites launched, this manual model became impossible. The industry needed high-speed automation.</p><h2>2. The SSP: The Publisher's Automated Auctioneer</h2><div class='callout analogy'><strong>The Real Estate Broker Analogy:</strong><br>Imagine you own a 50-story skyscraper with empty billboard spaces on every wall (you are the <strong>Publisher</strong>). You hire a broker called an <strong>SSP</strong>. You tell your SSP: <em>'Here are all my empty banner spaces. Never sell any space for less than $1.50 per 1,000 views. Go connect to every advertising exchange in the world and auction my slots off to the highest bidder every single time someone looks at my building!'</em></div><h2>3. The DSP: The Advertiser's Automated Broker</h2><div class='callout analogy'><strong>The Algorithmic Stock Trader Analogy:</strong><br>You are Nike (the <strong>Advertiser</strong>) with $200,000 to spend. You use a <strong>DSP</strong>. You log into the DSP software: <em>'I want to reach basketball fans aged 18–35. Never pay more than $3.00 CPM. Automatically bid and buy across the entire internet!'</em></div>",
+        expert: "<h2>1. OpenRTB Infrastructure: SSP vs DSP</h2><ul><li><strong>SSP Responsibilities:</strong> Ingests DOM ad slots, translates them into OpenRTB BidRequests, manages hard/soft floor pricing rules, routes Deal IDs, and maximizes publisher yield.</li><li><strong>DSP Responsibilities:</strong> Ingests 1,000,000+ QPS, applies bid shading algorithms to conserve advertiser budgets in first-price auctions, verifies frequency capping, and responds within 50ms.</li></ul>"
       },
       {
-        id: "s4",
         title: "Session 4: The 100-Millisecond Real-Time Bidding (RTB) Lifecycle",
         category: "Programmatic Execution",
-        layman: `
-          <h2>1. What Happens in the Blink of an Eye?</h2>
-          <p>A human blink takes about 300 to 400 milliseconds. An entire digital programmatic advertising auction happens in <strong>under 100 milliseconds</strong>. During that tiny fraction of a second, an international financial transaction takes place between servers spread across the globe.</p>
-
-          <h2>2. The Step-by-Step Chronology</h2>
-          <ol>
-            <li><strong>0ms (The Request):</strong> You open a website (like CNN or a tech blog) on your mobile phone. The website begins loading text and creates an empty box reserved for an ad banner.</li>
-            <li><strong>20ms (The Broadcast):</strong> The website's code signals its SSP: <em>"A user on an Android device in Chennai is viewing an article about mobile technology. We have an empty 300x250 box available. Floor price is $1.00."</em></li>
-            <li><strong>45ms (The Global Auction Call):</strong> The SSP broadcasts this signal to 15 different DSPs representing thousands of advertisers simultaneously.</li>
-            <li><strong>70ms (The Algorithms Decide):</strong> Inside the DSPs, algorithms evaluate the opportunity:
-              <ul>
-                <li>Samsung's DSP says: <em>"Tech enthusiast in Chennai? I'll bid $2.10!"</em></li>
-                <li>Nike's DSP says: <em>"Not a sports page. I'll pass (bid $0)."</em></li>
-                <li>Amazon's DSP says: <em>"Great prospect. I'll bid $2.80!"</em></li>
-              </ul>
-            </li>
-            <li><strong>90ms (Clearing the Auction):</strong> The SSP receives the bids. Amazon wins with the highest bid of $2.80.</li>
-            <li><strong>100ms (The Creative Renders):</strong> The Amazon banner file downloads into your mobile browser and renders on your screen. The publisher's server logs a successful impression and bills Amazon's account.</li>
-          </ol>
-        `,
-        expert: `
-          <h2>1. OpenRTB JSON Protocol Decomposition</h2>
-          <p>The auction payload exchange conforms to OpenRTB specifications. Below is an architectural representation of the bid stream exchange:</p>
-
-          <h3>A. Sample OpenRTB BidRequest (SSP -> DSP):</h3>
-          <code>
-            {<br>
-            &nbsp;&nbsp;"id": "80ce30c53c16e6ede735f123ef6e32361bfc7b22",<br>
-            &nbsp;&nbsp;"imp": [{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"id": "1",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"banner": { "w": 300, "h": 250, "pos": 1 },<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"bidfloor": 1.50,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"bidfloorcur": "USD"<br>
-            &nbsp;&nbsp;}],<br>
-            &nbsp;&nbsp;"site": { "domain": "techcrunch.com", "cat": ["IAB19-6"] },<br>
-            &nbsp;&nbsp;"device": { "ip": "106.51.x.x", "geo": { "country": "IND", "city": "Chennai" } },<br>
-            &nbsp;&nbsp;"user": { "id": "hashed_e98f0291" }<br>
-            }
-          </code>
-
-          <h3>B. Sample OpenRTB BidResponse (DSP -> SSP):</h3>
-          <code>
-            {<br>
-            &nbsp;&nbsp;"id": "80ce30c53c16e6ede735f123ef6e32361bfc7b22",<br>
-            &nbsp;&nbsp;"seatbid": [{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;"bid": [{<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "campaign_90412",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"impid": "1",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"price": 2.45,<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"adm": "&lt;script src='https://ad.doubleclick.net/ddm/adj/...'&gt;&lt;/script&gt;",<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"nurl": "https://dsp.engine.com/win?price=${AUCTION_PRICE}"<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;}]<br>
-            &nbsp;&nbsp;}]<br>
-            }
-          </code>
-        `
+        layman: "<h2>1. What Happens in the Blink of an Eye?</h2><p>A human blink takes about 300 to 400 milliseconds. An entire digital programmatic advertising auction happens in <strong>under 100 milliseconds</strong>. During that tiny fraction of a second, an automated international financial transaction takes place across global server clusters.</p><h2>2. The Step-by-Step Chronology</h2><ol><li><strong>0ms:</strong> You open a website on your phone. The page begins loading text and reserves an empty box for an ad banner.</li><li><strong>20ms:</strong> The website alerts its SSP: <em>'A user on an Android device in Chennai is viewing a tech article. Ad slot size is 300x250. Floor price is $1.00.'</em></li><li><strong>45ms:</strong> The SSP broadcasts this signal to 15 different DSPs simultaneously.</li><li><strong>70ms:</strong> DSP algorithms evaluate the user context and bid in real-time. Samsung's DSP bids $2.10. Amazon's DSP bids $2.80.</li><li><strong>90ms:</strong> Amazon wins with the highest bid of $2.80.</li><li><strong>100ms:</strong> The Amazon banner file renders inside your browser, and the publisher's ad server logs a verified impression.</li></ol>",
+        expert: "<h2>1. The OpenRTB Protocol Sequence</h2><ul><li><strong>T=0ms:</strong> Browser parses Google Publisher Tag (GPT) or Prebid.js script and fires ad request.</li><li><strong>T=25ms:</strong> SSP parses slot dimensions, Device OS, IP, and First-Party ID, generating an OpenRTB BidRequest JSON.</li><li><strong>T=50ms:</strong> DSP listener clusters ingest the request, apply bid shading, and return BidResponse JSON containing price, adid, and creative markup.</li><li><strong>T=90ms:</strong> First-Price auction clears. Winning markup renders inside an isolated iframe, firing 1x1 billing notification pixels.</li></ul>"
       },
       {
-        id: "s5",
         title: "Session 5: What is an Ad Server & How Does Trafficking Work?",
         category: "Ad Operations Core",
-        layman: `
-          <h2>1. The Ad Server: The Traffic Cop of the Internet</h2>
-          <p>Imagine a highway intersection where 100 cars are trying to drive through a single-lane bridge at the same time. Without a traffic police officer, there is a total pile-up crash.</p>
-          <p>An <strong>Ad Server</strong> is the high-speed traffic police officer for website advertising. It sits between the website code and the advertisers, making instantaneous delivery decisions based on business priorities.</p>
-
-          <h2>2. The Publisher Ad Server Hierarchy</h2>
-          <p>When an ad slot opens on a website, the ad server does not just pick an ad at random. It evaluates a strict priority ladder:</p>
-          <ol>
-            <li><strong>Sponsorship (Top Priority):</strong> An advertiser paid a premium to own 100% of an ad slot for the entire day (e.g., Apple launching a new iPhone takes over the homepage of a tech site). The ad server serves Apple every single time.</li>
-            <li><strong>Standard / Direct Deals:</strong> A company bought a guaranteed package of 500,000 impressions. The ad server paces out delivery evenly across the month to hit the target.</li>
-            <li><strong>Programmatic / Open Market (Backfill):</strong> If no direct sponsor has booked the slot, the ad server opens the floor to SSPs and DSPs to auction off the slot to the highest programmatic bidder.</li>
-            <li><strong>House Ads (Zero Revenue):</strong> If no advertiser wants to buy the slot, the ad server serves an in-house promotional ad (e.g., <em>"Subscribe to our newsletter!"</em>) so the page doesn't show an ugly blank space.</li>
-          </ol>
-        `,
-        expert: `
-          <h2>1. Google Ad Manager (GAM 360) Hierarchy Architecture</h2>
-          <p>Ad Operations professionals traffic campaigns inside publisher ad servers using a strict object hierarchy: <strong>Advertiser &gt; Order &gt; Line Item &gt; Creative</strong>.</p>
-
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Line Item Type</th>
-                  <th>Priority Level</th>
-                  <th>Use Case & Delivery Logic</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Sponsorship</strong></td>
-                  <td>4</td>
-                  <td>Percentage of impressions (Share of Voice). Overrides all non-sponsorship tiers.</td>
-                </tr>
-                <tr>
-                  <td><strong>Standard</strong></td>
-                  <td>6, 8, 10</td>
-                  <td>Guaranteed absolute impression goals with pacing control (High, Normal, Low).</td>
-                </tr>
-                <tr>
-                  <td><strong>Price Priority</strong></td>
-                  <td>12</td>
-                  <td>Non-guaranteed. Competes dynamically based on rate against programmatic demand.</td>
-                </tr>
-                <tr>
-                  <td><strong>Ad Exchange / AdSense</strong></td>
-                  <td>12</td>
-                  <td>Dynamic allocation tier where Google AdX competes against Price Priority lines.</td>
-                </tr>
-                <tr>
-                  <td><strong>House</strong></td>
-                  <td>16</td>
-                  <td>Lowest priority backfill. Only serves when inventory remains completely unsold.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        `
+        layman: "<h2>1. The Ad Server: The Traffic Cop of the Internet</h2><p>Imagine an intersection where 100 cars are trying to drive through a single-lane bridge at the same time. An <strong>Ad Server</strong> is the high-speed traffic police officer for website advertising. It decides which ad displays in which slot based on commercial rules.</p><h2>2. The Publisher Ad Server Priority Ladder</h2><ol><li><strong>Sponsorship (Top Priority):</strong> An advertiser paid a premium to own 100% of an ad slot for the entire day (e.g., Apple launching a new iPhone takes over a homepage).</li><li><strong>Standard / Direct Deals:</strong> A company bought a guaranteed package of 500,000 impressions paced out evenly across the month.</li><li><strong>Programmatic / Open Market:</strong> The ad server opens the floor to SSPs and DSPs to auction off the slot to the highest bidder.</li><li><strong>House Ads (Zero Revenue):</strong> If no advertiser buys the slot, the ad server serves an in-house promotional banner so the page never displays an ugly blank gap.</li></ol>",
+        expert: "<h2>1. Google Ad Manager (GAM 360) Hierarchy Architecture</h2><p>Ad Operations professionals traffic campaigns inside publisher ad servers using a strict object hierarchy: <strong>Advertiser &gt; Order &gt; Line Item &gt; Creative</strong>.</p><div class='data-table-wrapper'><table><thead><tr><th>Line Item Type</th><th>Priority Level</th><th>Use Case & Delivery Logic</th></tr></thead><tbody><tr><td><strong>Sponsorship</strong></td><td>4</td><td>Percentage of impressions (Share of Voice). Overrides non-sponsorship tiers.</td></tr><tr><td><strong>Standard</strong></td><td>6, 8, 10</td><td>Guaranteed absolute impression goals with pacing control (High, Normal, Low).</td></tr><tr><td><strong>Price Priority</strong></td><td>12</td><td>Non-guaranteed. Competes dynamically based on rate against programmatic demand.</td></tr><tr><td><strong>House</strong></td><td>16</td><td>Lowest priority backfill. Serves when inventory remains completely unsold.</td></tr></tbody></table></div>"
       },
       {
-        id: "s6",
         title: "Session 6: Advanced Header Bidding & Prebid Architecture",
         category: "Advanced Ad Tech",
-        layman: `
-          <h2>1. The Problem with the Old "Waterfall"</h2>
-          <p>Before Header Bidding existed, publishers used a system called the <strong>Waterfall</strong>. In the waterfall, the publisher gave Google first preference. If Google didn't want the ad slot, it passed it down to SSP #1. If SSP #1 didn't want it, it passed it to SSP #2.</p>
-          <div class="callout analogy">
-            <strong>The House Sale Analogy:</strong><br>
-            Imagine you want to sell your house. You secretly ask Friend A: <em>"Will you buy it for $100,000?"</em> Friend A says no. Then you ask Friend B: <em>"Will you buy it for $80,000?"</em><br><br>
-            What you didn't know is that Friend C was waiting outside, willing to pay $150,000 in cash! But because Friend C was at the bottom of your list, you never asked him. The waterfall cost publishers billions of dollars in lost revenue.
-          </div>
-
-          <h2>2. Header Bidding: Bringing Everyone Into the Room at Once</h2>
-          <p><strong>Header Bidding</strong> completely replaced the waterfall. It runs a piece of code inside your web browser before the page even finishes loading. It invites <strong>every SSP in the world to bid at the exact same millisecond</strong>.</p>
-          <p>Whoever offers the absolute highest price wins the inventory. It created a fair, unified, democratic auction for publishers and advertisers.</p>
-        `,
-        expert: `
-          <h2>1. Client-Side (Prebid.js) vs. Server-to-Server (Prebid Server)</h2>
-          <p>Header bidding implementations fall into two distinct engineering paradigms:</p>
-
-          <h3>A. Client-Side Header Bidding (Prebid.js):</h3>
-          <ul>
-            <li><strong>Mechanism:</strong> An open-source JavaScript library running in the page header executes parallel asynchronous calls to bidder adapters via browser HTTP requests.</li>
-            <li><strong>Advantage:</strong> Direct access to client-side cookie stores, high user sync match rates, and rich device fingerprinting.</li>
-            <li><strong>Disadvantage:</strong> Network latency and browser connection limits (browser thread blocking) if too many SSP adapters are integrated.</li>
-          </ul>
-
-          <h3>B. Server-Side Header Bidding (Prebid Server / Open Bidding):</h3>
-          <ul>
-            <li><strong>Mechanism:</strong> The browser fires a single auction call to an intermediate cloud server (Prebid Server or Google Open Bidding), which executes auctions across SSP endpoints in cloud infrastructure.</li>
-            <li><strong>Advantage:</strong> Near-zero browser latency; scales to 30+ demand partners without affecting core web vitals.</li>
-            <li><strong>Disadvantage:</strong> Lower cookie synchronization rates due to server-side identity translation loss.</li>
-          </ul>
-        `
+        layman: "<h2>1. The Problem with the Old 'Waterfall'</h2><p>Before Header Bidding existed, publishers gave Google first preference. If Google didn't want the ad slot, it passed it down to SSP #1. If SSP #1 didn't want it, it passed it to SSP #2.</p><div class='callout analogy'><strong>The House Sale Analogy:</strong><br>Imagine you want to sell your house. You secretly ask Friend A: <em>'Will you buy it for $100,000?'</em> Friend A says no. Then you ask Friend B: <em>'Will you buy it for $80,000?'</em><br><br>What you didn't know is that Friend C was waiting outside, willing to pay $150,000 in cash! But because Friend C was at the bottom of your list, you never asked him. The waterfall cost publishers billions in lost revenue.</div><h2>2. Header Bidding: Bringing Everyone Into the Room at Once</h2><p><strong>Header Bidding</strong> runs a piece of code inside your browser before the page even finishes loading. It invites <strong>every SSP in the world to bid at the exact same millisecond</strong>. Whoever offers the highest price wins.</p>",
+        expert: "<h2>1. Client-Side (Prebid.js) vs Server-to-Server (Prebid Server)</h2><ul><li><strong>Client-Side:</strong> Prebid.js executes directly in the user's browser header. It polls multiple SSP adapters in parallel, collects bids within a strict timeout window (e.g., 800ms), and passes winning key-values into Google Ad Manager line items.</li><li><strong>Server-to-Server (S2S):</strong> The browser makes a single network call to a Prebid Server instance, which distributes auction requests across cloud infrastructure, eliminating mobile browser latency.</li></ul>"
       }
     ];
-
-    /* =========================================================================
-       APPLICATION CONTROLLER & INITIALIZATION
-       ========================================================================= */
-    function initCodex() {
-      loadLessonByIndex(0);
-    }
 
     function loadLessonByIndex(idx) {
       activeLessonIndex = idx;
@@ -718,36 +381,26 @@
       document.getElementById('module-counter').textContent = "Session " + (idx + 1) + " of " + SESSIONS.length;
       document.getElementById('class-title-display').textContent = session.title;
       document.getElementById('class-meta-display').textContent = session.category;
-      
-      renderLessonContent();
+      document.getElementById('class-body-display').innerHTML = (currentLevel === 'layman') ? session.layman : session.expert;
 
-      // Navigation Buttons
-      document.getElementById('prev-btn').style.visibility = idx > 0 ? 'visible' : 'hidden';
-      document.getElementById('next-btn').textContent = (idx < SESSIONS.length - 1) ? "Next Master Session →" : "Curriculum Milestone Achieved 🏆";
+      document.getElementById('prev-btn').style.visibility = (idx > 0) ? 'visible' : 'hidden';
+      document.getElementById('next-btn').textContent = (idx < SESSIONS.length - 1) ? "Next Session →" : "Curriculum Milestone Achieved 🏆";
 
-      // Hide live web search on slide change
       document.getElementById('open-web-result').style.display = 'none';
 
-      // Update bottom nav highlighting
       var tabs = document.querySelectorAll('.bottom-nav .tab');
-      tabs.forEach(function(t, i) {
-        if (i < tabs.length) t.classList.toggle('active', i === idx);
-      });
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.toggle('active', i === idx);
+      }
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function renderLessonContent() {
-      var session = SESSIONS[activeLessonIndex];
-      var body = document.getElementById('class-body-display');
-      body.innerHTML = currentLevel === 'layman' ? session.layman : session.expert;
+      window.scrollTo(0, 0);
     }
 
     function setLevel(lvl) {
       currentLevel = lvl;
       document.getElementById('btn-layman').className = "level-btn" + (lvl === 'layman' ? " active" : "");
       document.getElementById('btn-expert').className = "level-btn" + (lvl === 'expert' ? " active" : "");
-      renderLessonContent();
+      loadLessonByIndex(activeLessonIndex);
     }
 
     function stepLesson(direction) {
@@ -757,10 +410,6 @@
       }
     }
 
-    /* =========================================================================
-       ROBUST MULTI-FALLBACK OPEN-WEB INGESTION ENGINE
-       Solves CORS & query-mismatch issues without redirecting out of the app
-       ========================================================================= */
     function quickSearch(term) {
       document.getElementById('web-search-query').value = term;
       triggerWebSearch();
@@ -780,61 +429,41 @@
       status.textContent = "Connecting...";
       content.innerHTML = "<p style='color:var(--primary);'>Connecting to open knowledge graph... extracting full text into app...</p>";
 
-      // Clean search term
-      var primaryTerm = encodeURIComponent(q.replace(/\s+/g, '_'));
+      var searchUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + encodeURIComponent(q) + "&limit=3&namespace=0&format=json&origin=*";
       
-      // Strategy 1: Direct summary endpoint
-      fetch("https://en.wikipedia.org/api/rest_v1/page/summary/" + primaryTerm)
-        .then(function(res) {
-          if (!res.ok) throw new Error("Direct title not matched");
-          return res.json();
-        })
+      fetch(searchUrl)
+        .then(function(res) { return res.json(); })
         .then(function(data) {
-          renderWebData(data.title, data.description, data.extract_html || data.extract);
+          if (data && data[1] && data[1].length > 0) {
+            var matchedTitle = data[1][0];
+            var summaryUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(matchedTitle.replace(/\s+/g, '_'));
+            
+            fetch(summaryUrl)
+              .then(function(sRes) { return sRes.json(); })
+              .then(function(sData) {
+                status.textContent = "Live Stream Extracted";
+                var html = "<h3 style='color:var(--primary); font-size:1.15rem;'>" + (sData.title || matchedTitle) + "</h3>";
+                if (sData.description) {
+                  html += "<p style='color:var(--accent); font-weight:600; font-size:0.85rem;'><em>" + sData.description + "</em></p>";
+                }
+                html += "<div style='font-size:0.95rem; line-height:1.7; margin-top:10px; color:#cbd5e1;'>" + (sData.extract_html || sData.extract || data[2][0]) + "</div>";
+                html += "<div class='callout' style='margin-top:16px; font-size:0.8rem;'><strong>Source:</strong> Ingested directly from open-web knowledge bases into your app frame.</div>";
+                content.innerHTML = html;
+              })
+              .catch(function() {
+                status.textContent = "Search Snippet Matched";
+                content.innerHTML = "<h3>" + matchedTitle + "</h3><p style='margin-top:10px; color:#cbd5e1;'>" + data[2][0] + "</p>";
+              });
+          } else {
+            status.textContent = "No Records Found";
+            content.innerHTML = "<p style='color:var(--warning);'>No direct match found for '" + q + "'. Try testing core concepts like: <em>Target audience</em>, <em>Supply-side platform</em>, <em>Real-time bidding</em>, <em>Customer data platform</em>.</p>";
+          }
         })
         .catch(function() {
-          // Strategy 2: Fallback to full search API with CORS proxying
-          var searchApi = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + encodeURIComponent(q) + "&utf8=&format=json&origin=*";
-          fetch(searchApi)
-            .then(function(sRes) { return sRes.json(); })
-            .then(function(sData) {
-              if (sData.query && sData.query.search && sData.query.search.length > 0) {
-                var topResult = sData.query.search[0];
-                var snippet = topResult.snippet.replace(/<\/?[^>]+(>|$)/g, ""); // Strip raw tags
-                
-                // Fetch the actual page text for the top match
-                var pageUrl = "https://en.wikipedia.org/api/rest_v1/page/summary/" + encodeURIComponent(topResult.title.replace(/\s+/g, '_'));
-                fetch(pageUrl)
-                  .then(function(pRes) { return pRes.json(); })
-                  .then(function(pData) {
-                    renderWebData(pData.title, pData.description, pData.extract_html || pData.extract);
-                  })
-                  .catch(function() {
-                    renderWebData(topResult.title, "Open Web Extraction", "<p>" + snippet + "...</p>");
-                  });
-              } else {
-                status.textContent = "No Records Found";
-                content.innerHTML = "<p style='color:var(--warning);'>No direct match found for '" + q + "'. Try testing core concepts like: <em>Target audience</em>, <em>Supply-side platform</em>, <em>Real-time bidding</em>, <em>Customer data platform</em>.</p>";
-              }
-            })
-            .catch(function() {
-              status.textContent = "Connection Error";
-              content.innerHTML = "<p style='color:var(--danger);'>Unable to retrieve live web data. Please verify your internet connection.</p>";
-            });
+          status.textContent = "Connection Error";
+          content.innerHTML = "<p style='color:var(--danger);'>Unable to retrieve live web data. Please verify your internet connection.</p>";
         });
     }
-
-    function renderWebData(title, desc, bodyHtml) {
-      document.getElementById('web-res-status').textContent = "Live Stream Extracted";
-      var out = "<h3 style='color:var(--primary); font-size:1.15rem;'>" + title + "</h3>";
-      if (desc) out += "<p style='color:var(--accent); font-weight:600; font-size:0.85rem;'><em>" + desc + "</em></p>";
-      out += "<div style='font-size:0.95rem; line-height:1.7; margin-top:10px; color:#cbd5e1;'>" + bodyHtml + "</div>";
-      out += "<div class='callout' style='margin-top:16px; font-size:0.8rem;'><strong>Source:</strong> Ingested directly into the app from open web encyclopedic knowledge bases.</div>";
-      document.getElementById('web-res-content').innerHTML = out;
-    }
-
-    // Direct immediate startup
-    initCodex();
   </script>
 </body>
 </html>
