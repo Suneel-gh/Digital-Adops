@@ -18,7 +18,7 @@
       --purple: #a855f7;
       --text: #f1f5f9;
       --text-muted: #94a3b8;
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -30,7 +30,6 @@
       padding-bottom: 90px;
     }
 
-    /* Top Application Bar */
     header {
       position: sticky;
       top: 0;
@@ -56,11 +55,7 @@
 
     .container { max-width: 860px; margin: 0 auto; padding: 16px; }
 
-    /* Search & Exploration Bar */
-    .search-box {
-      margin-bottom: 16px;
-      position: relative;
-    }
+    .search-box { margin-bottom: 16px; }
     .search-box input {
       width: 100%;
       background: var(--surface);
@@ -70,14 +65,10 @@
       border-radius: 12px;
       font-size: 0.95rem;
       outline: none;
-      transition: all 0.2s;
     }
-    .search-box input:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2); }
+    .search-box input:focus { border-color: var(--primary); }
 
-    /* Interactive Exploration Chips (Clickable Deep-Dive Triggers) */
-    .explore-shelf {
-      margin-bottom: 20px;
-    }
+    .explore-shelf { margin-bottom: 20px; }
     .shelf-title {
       font-size: 0.75rem;
       text-transform: uppercase;
@@ -85,11 +76,7 @@
       color: var(--text-muted);
       margin-bottom: 8px;
     }
-    .chip-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .chip-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
     .term-chip {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -99,18 +86,9 @@
       font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
     }
-    .term-chip:hover, .term-chip:active {
-      background: var(--primary);
-      color: var(--bg);
-      transform: translateY(-1px);
-    }
+    .term-chip:active { background: var(--primary); color: var(--bg); }
 
-    /* Tab Controls */
     .mode-switch {
       display: flex;
       background: var(--surface);
@@ -131,14 +109,9 @@
       font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .mode-btn.active {
-      background: var(--border);
-      color: var(--text);
-    }
+    .mode-btn.active { background: var(--border); color: var(--text); }
 
-    /* Cards & Content Structure */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -150,7 +123,6 @@
     .card-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
     .card-meta { font-size: 0.8rem; color: var(--text-muted); }
 
-    /* Content Typography & Elements */
     h3 { font-size: 1.05rem; color: var(--primary); margin: 18px 0 8px 0; }
     p { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 12px; }
     ul, ol { margin: 10px 0 16px 20px; font-size: 0.92rem; color: #cbd5e1; }
@@ -170,52 +142,7 @@
       border-left-color: var(--purple);
     }
 
-    /* Interactive Diagrams & Flow Visualizers */
-    .diagram-container {
-      background: #0b1120;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 16px 0;
-    }
-    .flow-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .flow-node {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .flow-node:hover { border-color: var(--primary); }
-    .node-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--border);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-    .node-info strong { display: block; font-size: 0.9rem; color: #fff; }
-    .node-info span { font-size: 0.78rem; color: var(--text-muted); }
-
-    /* Open Web Resources Panel */
-    .resource-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 14px;
-    }
+    .resource-list { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
     .resource-link {
       background: #0b1120;
       border: 1px solid var(--border);
@@ -223,15 +150,11 @@
       border-radius: 8px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       text-decoration: none;
       color: var(--text);
       font-size: 0.85rem;
-      transition: all 0.2s;
     }
-    .resource-link:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* Interactive Quiz Shell */
     .quiz-item {
       background: #0b1120;
       border: 1px solid var(--border);
@@ -252,19 +175,12 @@
       font-size: 0.85rem;
       margin-bottom: 6px;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .quiz-btn:hover { border-color: var(--primary); }
     .quiz-btn.correct { background: #064e3b; border-color: var(--accent); color: #a7f3d0; }
     .quiz-btn.incorrect { background: #7f1d1d; border-color: var(--danger); color: #fecaca; }
     .quiz-expl { font-size: 0.82rem; margin-top: 8px; padding: 8px; border-radius: 6px; display: none; }
 
-    /* Navigation Controls */
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
+    .nav-buttons { display: flex; gap: 10px; margin-top: 20px; }
     .action-btn {
       flex: 1;
       padding: 12px;
@@ -273,15 +189,10 @@
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
     }
     .btn-next { background: var(--primary); color: #090d16; }
     .btn-prev { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
 
-    /* Bottom Quick Nav */
     .bottom-bar {
       position: fixed;
       bottom: 0;
@@ -304,78 +215,57 @@
       align-items: center;
       gap: 2px;
     }
-    .tab-link.active { color: var(--primary); font-weight: 700; }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="brand">
-      <span>🌐</span> OmniAdTech Academy
-    </div>
-    <div class="badge" id="syllabus-count">Loading syllabus...</div>
+    <div class="brand"><span>🌐</span> OmniAdTech Academy</div>
+    <div class="badge" id="syllabus-count">0 Classes</div>
   </header>
 
   <div class="container">
-
-    <!-- Search Engine for Any Jargon / Concept -->
     <div class="search-box">
-      <input type="text" id="omni-search" placeholder="Search any term (e.g., SSP, DSP, Header Bidding, CPM, VAST)..." oninput="handleSearch(this.value)">
+      <input type="text" id="omni-search" placeholder="Search any term (e.g., SSP, DSP, Header Bidding)..." oninput="handleSearch(this.value)">
     </div>
 
-    <!-- Quick Exploration Cloud (Deep-Dive Trigger Nodes) -->
     <div class="explore-shelf">
       <div class="shelf-title">Explore Immediate Deep-Dives</div>
-      <div class="chip-cloud" id="quick-chips">
-        <!-- Rendered dynamically -->
-      </div>
+      <div class="chip-cloud" id="quick-chips"></div>
     </div>
 
-    <!-- Level View Toggle (Layman vs. Ops Specialist) -->
     <div class="mode-switch">
       <button class="mode-btn active" id="btn-layman" onclick="setExplanationLevel('layman')">🌱 Layperson (Story & Analogy)</button>
       <button class="mode-btn" id="btn-expert" onclick="setExplanationLevel('expert')">🛠️ Ad Ops Pro (Specs & Setup)</button>
     </div>
 
-    <!-- Main Classroom Board -->
     <div class="card" id="lesson-card">
       <div class="card-header">
-        <div class="card-title" id="class-title">Initializing...</div>
-        <div class="card-meta" id="class-meta">Curriculum sequence</div>
+        <div class="card-title" id="class-title">Loading Class...</div>
+        <div class="card-meta" id="class-meta">Curriculum</div>
       </div>
       <div id="class-content"></div>
-
-      <!-- Interactive Diagram / Visual Sandbox -->
-      <div class="diagram-container" id="visual-sandbox" style="display:none;"></div>
-
-      <!-- Verified External Open-Web Resources -->
       <div id="web-resources-container"></div>
-
-      <!-- Embedded Quiz for Class Verification -->
       <div id="quiz-container"></div>
 
-      <!-- Course Walkthrough Navigation -->
       <div class="nav-buttons">
         <button class="action-btn btn-prev" id="btn-back" onclick="previousClass()">← Previous Class</button>
         <button class="action-btn btn-next" id="btn-fwd" onclick="nextClass()">Next Class →</button>
       </div>
     </div>
-
   </div>
 
   <div class="bottom-bar">
-    <div class="tab-link active" onclick="loadClassByIndex(0)">📖 Curriculum</div>
+    <div class="tab-link" onclick="loadClassByIndex(0)">📖 Curriculum</div>
     <div class="tab-link" onclick="openDeepDive('ssp')">⚡ SSP Deep-Dive</div>
     <div class="tab-link" onclick="openDeepDive('dsp')">🎯 DSP Deep-Dive</div>
-    <div class="tab-link" onclick="openDeepDive('rtb')">⏱️ 100ms RTB Cycle</div>
+    <div class="tab-link" onclick="openDeepDive('rtb')">⏱️ 100ms RTB</div>
   </div>
 
   <script>
-    /* =========================================================================
-       1. EXPANDABLE CURRICULUM ARCHITECTURE (CAN SCALE TO 100+ CLASSES)
-       ========================================================================= */
-    let currentLevel = 'layman'; // 'layman' or 'expert'
+    let currentLevel = 'layman';
     let activeClassIndex = 0;
+    window.currentActiveDeepDive = null;
 
     const CURRICULUM = [
       {
@@ -385,40 +275,31 @@
         layman: `
           <p>Imagine you open a small local bakery in your town. You want people to come buy your freshly baked cakes.</p>
           <div class="callout analogy">
-            <strong>The Old Traditional Way:</strong> You print 5,000 paper leaflets and pay someone to hand them out at the train station. What happens? 80% end up in the trash bin, people on diets don't care, and you have <em>zero idea</em> how many people actually walked into your store because of that paper.
+            <strong>The Old Traditional Way:</strong> You print 5,000 paper leaflets and hand them out at the train station. Most end up in the trash bin, and you have no idea who actually walked into your store because of that paper.
           </div>
-          <p><strong>The Digital Advertising Revolution:</strong> Instead of guessing, you run an ad on Instagram or Google that <em>only shows</em> to people within 3 km of your bakery who have a birthday coming up this week and who follow food pages. You can see exactly how many people looked at it, clicked it, and placed an order.</p>
-          <h3>The 3 Basic Pillars of the Entire Digital World:</h3>
+          <p><strong>The Digital Revolution:</strong> Instead of guessing, you run an ad on Instagram or Google that only shows to people within 3 km who have a birthday coming up this week. You see exactly how many people looked, clicked, and ordered.</p>
+          <h3>The 3 Basic Pillars:</h3>
           <ul>
-            <li><strong>1. The Audience (You & Me):</strong> Regular people browsing websites, scrolling social media, or watching videos. We pay for free content by giving our attention.</li>
-            <li><strong>2. The Publisher:</strong> Anyone who owns digital space that attracts attention (e.g., ESPN, New York Times, YouTube, a gaming mobile app).</li>
-            <li><strong>3. The Advertiser:</strong> Any business with a product or service that wants to borrow that attention (e.g., Nike, your local bakery, Amazon).</li>
+            <li><strong>1. The Audience (You & Me):</strong> Regular people browsing apps or sites.</li>
+            <li><strong>2. The Publisher:</strong> Anyone who owns digital space that attracts attention (ESPN, YouTube, news sites).</li>
+            <li><strong>3. The Advertiser:</strong> Any business with a product wanting to reach that audience (Nike, local shops).</li>
           </ul>
         `,
         expert: `
-          <p>Digital advertising replaces unmeasured mass-market broadcast media (Linear TV, Print, Billboards) with deterministic, addressable media channels.</p>
-          <h3>Core Technical Advantages:</h3>
-          <ul>
-            <li><strong>Granular Audience Targeting:</strong> Targeting based on first-party deterministic identifiers, contextual crawling, device telemetry, and location geofencing.</li>
-            <li><strong>Real-Time Addressability:</strong> The ability to serve distinct ad creatives dynamically based on user context at the moment of request.</li>
-            <li><strong>Closed-Loop Attribution:</strong> Tracing impressions and click tags directly to downstream server events (purchases, lead submissions, app installs).</li>
-          </ul>
-          <div class="callout">
-            <strong>Key Ad Ops Metric:</strong> Return on Ad Spend (ROAS) = <code>(Revenue Generated from Ads / Total Ad Spend)</code>.
-          </div>
+          <p>Digital advertising replaces unmeasured mass-market broadcast media with deterministic, addressable media channels.</p>
+          <h3>Key Ad Ops Metric:</h3>
+          <p>Return on Ad Spend (ROAS) = <code>(Revenue Generated / Total Ad Spend)</code>.</p>
         `,
-        diagram: null,
         resources: [
-          { name: "IAB Digital Advertising Overview", url: "https://www.iab.com" },
-          { name: "Google Digital Marketing Certification Course", url: "https://grow.google/certificates/digital-marketing-ecommerce/" }
+          { name: "IAB Digital Advertising Overview", url: "https://www.iab.com" }
         ],
         quiz: {
           q: "What is the defining difference between traditional billboard advertising and digital advertising?",
           options: [
             "Digital advertising is always free",
-            "Digital advertising enables precise targeting, direct measurement, and real-time delivery",
-            "Traditional billboards reach more mobile phones",
-            "Digital ads do not require an advertiser"
+            "Digital advertising enables precise targeting, measurement, and real-time delivery",
+            "Billboards reach more mobile phones",
+            "Digital ads do not need an advertiser"
           ],
           correct: 1,
           expl: "Digital advertising provides addressability: you can target specific audiences, control delivery frequencies, and measure exact conversion results."
@@ -426,43 +307,33 @@
       },
       {
         id: "c2",
-        title: "Class 2: The Core Jargon (CPM, CPC, CTR & Impressions)",
+        title: "Class 2: Core Jargon (CPM, CPC, CTR & Impressions)",
         category: "Foundations",
         layman: `
-          <p>The ad industry uses weird acronyms to describe simple concepts. Let's decode them in plain English:</p>
-          <h3>1. What is an "Impression"?</h3>
-          <p>An impression simply means: <strong>one single display of an ad on a screen</strong>. If you open a webpage and see a banner ad, that is 1 impression. If you reload the page and see it again, that is 2 impressions.</p>
+          <p>Let's decode the industry acronyms into plain English:</p>
+          <h3>1. What is an Impression?</h3>
+          <p>One single display of an ad on a screen. If you see a banner once, that is 1 impression.</p>
           <h3>2. What is CPM (Cost Per Mille)?</h3>
-          <p><em>Mille</em> is Latin for 1,000. In digital media, advertisers buy attention in bulk. <strong>CPM is the price to show an ad 1,000 times.</strong></p>
-          <div class="callout analogy">
-            <strong>Analogy:</strong> Buying eggs by the dozen. Instead of paying 1 cent for each person, Nike pays $3.00 for every 1,000 times their sneaker ad appears on a screen.
-          </div>
+          <p><em>Mille</em> is Latin for 1,000. <strong>CPM is the price to show an ad 1,000 times.</strong></p>
           <h3>3. What is CPC (Cost Per Click)?</h3>
-          <p>You only pay when a human finger or mouse actually clicks on the banner. If 1,000 people see it but nobody clicks, it costs you $0.</p>
-          <h3>4. What is CTR (Click-Through Rate)?</h3>
-          <p>The percentage of viewers who clicked. If 1,000 people saw the ad and 2 people clicked it, your CTR is <strong>0.2%</strong>.</p>
+          <p>You only pay when a user actively clicks on the banner. If 1,000 people view it but nobody clicks, it costs $0.</p>
         `,
         expert: `
-          <h3>Media Valuation Formulas & Benchmarks:</h3>
+          <h3>Formulas:</h3>
           <ul>
             <li><code>CPM = (Cost / Impressions) × 1,000</code></li>
             <li><code>CPC = Cost / Clicks</code></li>
             <li><code>CTR = (Clicks / Impressions) × 100</code></li>
-            <li><code>eCPM (Effective CPM) = (Total Revenue / Total Impressions) × 1,000</code></li>
           </ul>
-          <div class="callout">
-            <strong>Industry Standard Benchmarks:</strong> Average Open Web Display CTR sits between <strong>0.05% and 0.15%</strong>. Standard programmatic display CPM ranges from $0.80 to $3.50 depending on geography, viewability, and publisher tier.
-          </div>
         `,
-        diagram: null,
         resources: [
-          { name: "MRC Standard Viewability Guidelines", url: "https://www.mediaratingcouncil.org" }
+          { name: "MRC Viewability Guidelines", url: "https://www.mediaratingcouncil.org" }
         ],
         quiz: {
           q: "An advertiser spends $600 and generates 200,000 impressions. What is their CPM?",
           options: ["$1.20", "$3.00", "$6.00", "$30.00"],
           correct: 1,
-          expl: "CPM = ($600 / 200,000) * 1,000 = $0.003 * 1,000 = $3.00."
+          expl: "CPM = ($600 / 200,000) * 1,000 = $3.00."
         }
       },
       {
@@ -470,38 +341,35 @@
         title: "Class 3: What is an Ad Server?",
         category: "Ad Operations",
         layman: `
-          <p>Have you ever wondered: when you open a website like CNN or a gaming app, how does the computer decide <em>which</em> ad to show you in that exact split second?</p>
+          <p>When you open a website, how does the computer decide <em>which</em> ad to show in that exact split second?</p>
           <div class="callout analogy">
-            <strong>Analogy: The Traffic Cop at a Busy Intersection.</strong><br>
-            Imagine 50 different advertisers all waving cash wanting to put their billboard on the website. An <strong>Ad Server</strong> is the super-fast computer system that acts as the traffic cop. It checks the rules: "Did Nike pay to show this to people in Chennai? Yes. Has this user already seen it 3 times today? No. Okay, show Nike!"
+            <strong>Analogy: The Traffic Cop.</strong><br>
+            An <strong>Ad Server</strong> is the super-fast computer that acts as the traffic cop. It checks the rules: "Did Nike pay for users in this city? Has this user seen it too many times already? Okay, show Nike!"
           </div>
-          <p>Without an ad server, websites would have to manually hardcode image files onto their pages like it was 1995.</p>
         `,
         expert: `
-          <p>An Ad Server manages the hosting, prioritization, targeting, decisioning, and impression tracking for ad placements.</p>
-          <h3>There are Two Types of Ad Servers:</h3>
+          <p>An Ad Server manages inventory forecasting, prioritization tiers, targeting criteria, and creative delivery.</p>
           <ul>
-            <li><strong>Publisher Ad Server (e.g., Google Ad Manager / GAM 360):</strong> Owned by the site/app owner. Responsible for forecasting available inventory, enforcing delivery tiers (Sponsorship > Standard > Network > House), and choosing the winning creative.</li>
-            <li><strong>Advertiser / Third-Party Ad Server (e.g., Flashtalking, Campaign Manager 360):</strong> Owned by the agency or brand. Hosts the master creative tags, standardizes creative updates across 100 different publishers, and verifies independent impression and click metrics.</li>
+            <li><strong>Publisher Ad Server:</strong> (e.g., Google Ad Manager) Manages inventory priorities and yields.</li>
+            <li><strong>Third-Party Ad Server:</strong> (e.g., CM360) Hosts master creatives and verifies advertiser metrics.</li>
           </ul>
         `,
-        diagram: null,
         resources: [
-          { name: "Google Ad Manager Training - Skillshop", url: "https://skillshop.exceedlms.com/student/catalog/browse" }
+          { name: "Google Ad Manager Training", url: "https://skillshop.exceedlms.com" }
         ],
         quiz: {
-          q: "What is the primary function of a Publisher Ad Server like Google Ad Manager?",
+          q: "What is the primary role of a Publisher Ad Server like Google Ad Manager?",
           options: [
-            "To design graphic banners for advertisers",
-            "To manage, forecast, prioritize, and deliver ad impressions into the publisher's ad slots",
-            "To manufacture display monitors",
-            "To host web pages for the public"
+            "To design graphic banners",
+            "To manage, prioritize, and deliver ads into a publisher's ad slots",
+            "To manufacture computer hardware",
+            "To provide internet access"
           ],
           correct: 1,
-          expl: "The Publisher Ad Server governs inventory management, priority delivery (direct sales vs. programmatic backfill), and creative rendering."
+          expl: "The Publisher Ad Server governs inventory management, priority delivery, and creative rendering."
         }
       },
-            {
+      {
         id: "c4",
         title: "Class 4: What is Header Bidding?",
         category: "Programmatic Tech",
@@ -513,13 +381,12 @@
           </div>
         `,
         expert: `
-          <p>Header Bidding is an advanced programmatic technique where publishers offer ad inventory to multiple ad exchanges (SSPs) simultaneously within the browser header before calling the primary ad server (GAM).</p>
+          <p>Header Bidding is a programmatic technique where publishers offer ad inventory to multiple ad exchanges (SSPs) simultaneously within the browser header before calling the primary ad server.</p>
           <ul>
             <li><strong>Client-Side (Prebid.js):</strong> JavaScript runs in the browser, triggering asynchronous auction requests to bidder adapters.</li>
             <li><strong>Server-to-Server (S2S):</strong> Prebid Server receives a single call and executes bidder auctions on cloud infrastructure to reduce browser latency.</li>
           </ul>
         `,
-        diagram: null,
         resources: [
           { name: "Prebid.js Official Docs", url: "https://docs.prebid.org" }
         ],
@@ -537,168 +404,110 @@
       }
     ];
 
-    /* =========================================================================
-       2. DEEP-DIVE KNOWLEDGE NODES (INTERACTIVE PROMPTS ON SSP, DSP, RTB, ETC.)
-       ========================================================================= */
     const DEEP_DIVES = {
       ssp: {
-        title: "Deep-Dive Masterclass: Supply-Side Platform (SSP)",
+        title: "Deep-Dive: Supply-Side Platform (SSP)",
         category: "Programmatic Tech",
         layman: `
-          <h3>What is an SSP in Pure Layperson Terms?</h3>
-          <p>Imagine you own a huge commercial building with 10 empty billboard frames on the roof (you are the <strong>Publisher</strong>). You are too busy running your business to negotiate with 1,000 local stores individually every single day.</p>
+          <p>Imagine you own a building with empty billboard frames on the roof (you are the <strong>Publisher</strong>).</p>
           <div class="callout analogy">
             <strong>The SSP is your automated real estate broker / auctioneer.</strong><br>
-            You tell the SSP: <em>"Here are my 10 billboard slots. Never sell any slot for less than $1.00. Go connect to every auction house in the world and get me the highest possible price every time a car drives by."</em>
+            You tell the SSP: <em>"Never sell any slot for less than $1.00. Connect to every buyer in the world and get me the highest possible price."</em>
           </div>
-          <p>In digital terms, an SSP connects websites and apps to dozens of ad buyers at the same time, maximizing what the publisher earns.</p>
         `,
         expert: `
-          <h3>Technical Architecture of an SSP:</h3>
-          <p>The Supply-Side Platform (SSP) aggregates publisher ad inventory, translates ad slots into OpenRTB bid request packets, and interfaces with multiple DSPs and Ad Exchanges simultaneously.</p>
-          <h3>Core Responsibilities:</h3>
-          <ul>
-            <li><strong>Floor Price Management:</strong> Sets Hard Floors (rejects any bid under $X.XX) and Soft Floors (secondary thresholds for algorithmic dynamic bidding).</li>
-            <li><strong>Yield Optimization:</strong> Dynamically models historical bidder latency, timeout windows, and win rates to maximize publisher eCPM.</li>
-            <li><strong>Deal ID Packaging:</strong> Generates unique identifiers for Private Marketplaces (PMP) and Preferred Deals matching specific DSP buyer seats.</li>
-          </ul>
-          <h3>Leading Enterprise SSPs in the Market:</h3>
-          <ul>
-            <li><strong>Magnite</strong> (Merged Rubicon Project & Telaria)</li>
-            <li><strong>PubMatic</strong></li>
-            <li><strong>Google Ad Manager (AdX / Authorized Buyers)</strong></li>
-            <li><strong>Equativ</strong> (formerly Smart AdServer)</li>
-            <li><strong>OpenX</strong></li>
-          </ul>
+          <p>The SSP aggregates publisher inventory, converts slots into OpenRTB bid requests, and enforces floor prices across DSPs.</p>
         `,
         resources: [
-          { name: "IAB OpenRTB 2.6 Official Specification", url: "https://iabtechlab.com/standards/openrtb/" },
-          { name: "PubMatic Ad Tech Education Series", url: "https://pubmatic.com" }
+          { name: "IAB OpenRTB Spec", url: "https://iabtechlab.com/standards/openrtb/" }
         ],
         quiz: {
-          q: "Whom does the Supply-Side Platform (SSP) represent in an advertising transaction?",
-          options: ["The Advertiser / Brand", "The Publisher / Website Owner", "The Consumer", "The Creative Agency"],
+          q: "Whom does the Supply-Side Platform (SSP) represent?",
+          options: ["The Advertiser", "The Publisher / Website Owner", "The Consumer", "The Creative Agency"],
           correct: 1,
-          expl: "The SSP acts exclusively on behalf of the publisher (the supply of inventory) to maximize yield and monetization."
+          expl: "The SSP acts on behalf of the publisher to maximize inventory revenue."
         }
       },
-
       dsp: {
-        title: "Deep-Dive Masterclass: Demand-Side Platform (DSP)",
+        title: "Deep-Dive: Demand-Side Platform (DSP)",
         category: "Programmatic Tech",
         layman: `
-          <h3>What is a DSP in Pure Layperson Terms?</h3>
-          <p>Now look at the opposite side: You are Nike (the <strong>Advertiser</strong>). You have an advertising budget of $50,000. You want to show your brand-new running shoe to marathon runners across the entire internet.</p>
+          <p>You are Nike (the <strong>Advertiser</strong>). You have $50,000 and want to reach runners across the entire web.</p>
           <div class="callout analogy">
-            <strong>The DSP is your personal automated stockbroker.</strong><br>
-            Instead of calling 500 different sports blogs, you open your DSP software and type: <em>"Target people aged 20-45 who visit fitness sites. Do not pay more than $2.50 per 1,000 views. Start bidding!"</em>
+            <strong>The DSP is your automated buying agent.</strong><br>
+            You tell the DSP: <em>"Find fitness enthusiasts, don't pay more than $2.50 CPM, and buy only relevant slots."</em>
           </div>
-          <p>The DSP evaluates millions of ad slots every second and buys only the ones matching your exact criteria within milliseconds.</p>
         `,
         expert: `
-          <h3>Technical Architecture of a DSP:</h3>
-          <p>The Demand-Side Platform (DSP) ingests OpenRTB bid requests, enriches them with bidder-side audience graph data, applies machine-learning bid valuation (bid shading), and emits bid responses back to SSPs within strict timeout budgets (usually ≤ 50ms).</p>
-          <h3>Core Components of a Modern DSP:</h3>
-          <ul>
-            <li><strong>Targeting Engine:</strong> Evaluates Geo, Device User-Agent, App ID / Domain, Frequency Capping, Dayparting, and Audience Segments.</li>
-            <li><strong>Bid Shading Algorithm:</strong> In first-price auctions, DSP algorithms calculate the minimal winning bid price above the competitive clearing price to conserve advertiser budget.</li>
-            <li><strong>Pacing & Budget Controller:</strong> Smoothly distributes spend across the calendar flight (ASAP vs. Evenly paced).</li>
-          </ul>
-          <h3>Leading Enterprise DSPs:</h3>
-          <ul>
-            <li><strong>The Trade Desk (TTD)</strong></li>
-            <li><strong>Google Display & Video 360 (DV360)</strong></li>
-            <li><strong>Amazon DSP (ADSP)</strong></li>
-            <li><strong>Xandr / Microsoft Invest</strong></li>
-          </ul>
+          <p>The DSP evaluates OpenRTB bid requests, applies bid shading algorithms, verifies frequency capping, and responds with creative snippets.</p>
         `,
         resources: [
-          { name: "The Trade Desk Edge Academy", url: "https://www.thetradedesk.com/us/edge-academy" },
-          { name: "Google DV360 Certification Guide", url: "https://skillshop.exceedlms.com" }
+          { name: "The Trade Desk Edge Academy", url: "https://www.thetradedesk.com" }
         ],
         quiz: {
-          q: "What is the primary function of 'Bid Shading' inside a DSP?",
+          q: "What is the main function of 'Bid Shading' in a DSP?",
           options: [
-            "To darken the colors of the ad creative",
+            "To darken banner graphics",
             "To prevent overpaying in a First-Price Auction by bidding just enough to win",
-            "To hide the ad from competitors",
-            "To block fraudulent ad clicks"
+            "To block ads",
+            "To hide metrics"
           ],
           correct: 1,
-          expl: "Bid shading analyzes historical clearing prices in first-price auctions so advertisers win impressions without paying unnecessary premiums."
+          expl: "Bid shading calculates the optimal bid price above the clearing price to save advertiser budget."
         }
       },
-
       rtb: {
-        title: "Deep-Dive Masterclass: The 100-Millisecond RTB Auction",
+        title: "Deep-Dive: The 100ms Real-Time Bidding Auction",
         category: "Programmatic Tech",
         layman: `
-          <h3>What Happens in the Blink of an Eye?</h3>
-          <p>Every time you load a webpage on your phone, a live financial auction takes place between computers across the world in <strong>less than 100 milliseconds</strong> (faster than you can blink).</p>
+          <p>Every time you load a webpage, a complete auction happens in less than 100 milliseconds.</p>
           <div class="callout analogy">
-            <strong>The 4-Step Speedrun:</strong>
+            <strong>The 4 Steps:</strong>
             <ol>
-              <li><strong>0ms:</strong> You open a website. The page reserves an empty box for an ad.</li>
-              <li><strong>20ms:</strong> The website shouts to an SSP: <em>"Hey! A user in Chennai on Android is looking at this sports article. Who wants this space?"</em></li>
-              <li><strong>50ms:</strong> The SSP broadcasts this shout to DSPs across the world. Nike's DSP responds: <em>"I'll pay $2.20!"</em> Adidas's DSP responds: <em>"I'll pay $2.80!"</em></li>
-              <li><strong>90ms:</strong> Adidas wins. Their sneaker picture loads onto your screen.</li>
+              <li>0ms: You open a website. The page reserves a slot.</li>
+              <li>25ms: The SSP broadcasts: "User in India on mobile. Who wants this slot?"</li>
+              <li>60ms: DSPs evaluate user data and submit their bids.</li>
+              <li>95ms: The highest bid wins and the ad displays on your screen.</li>
             </ol>
           </div>
         `,
         expert: `
-          <h3>The OpenRTB 100ms Lifecycle Breakdown:</h3>
-          <ul>
-            <li><strong>T=0ms:</strong> Browser parses Google Publisher Tag (GPT) or Prebid.js script and fires ad request.</li>
-            <li><strong>T=25ms:</strong> SSP parses slot dimensions (e.g., 300x250), Device OS, IP (coarse geo), and First-Party ID, outputting an OpenRTB Bid Request packet.</li>
-            <li><strong>T=50ms:</strong> Bid request reaches DSP listener clusters. DSP checks advertiser budget pacing, performs user-sync ID matching, checks frequency cap, applies bid shading, and generates Bid Response with creative snippet.</li>
-            <li><strong>T=85ms:</strong> SSP executes auction logic, confirms floor price compliance, and returns winning ad markup to client browser.</li>
-            <li><strong>T=100ms+:</strong> Creative assets render inside an isolated iframe, firing 1x1 billing notification impression pixels.</li>
-          </ul>
+          <p>OpenRTB protocol executes HTTP POST requests containing device telemetry, coarse geo, and ID graphs, expecting bidder responses within 50ms.</p>
         `,
         resources: [
-          { name: "Prebid.js Official Developer Architecture", url: "https://docs.prebid.org" }
+          { name: "Prebid Documentation", url: "https://docs.prebid.org" }
         ],
         quiz: {
-          q: "Approximately how much time does an entire Real-Time Bidding (RTB) cycle have to complete?",
+          q: "How long does a standard Real-Time Bidding (RTB) cycle have to complete?",
           options: ["5 to 10 seconds", "~100 milliseconds", "1 minute", "24 hours"],
           correct: 1,
-          expl: "RTB auctions must clear in roughly 100 milliseconds to avoid degrading user page-load speeds."
+          expl: "RTB auctions must clear in roughly 100ms to preserve page load performance."
         }
       },
-            vast: {
-        title: "Deep-Dive Masterclass: VAST & Video Ad Tech",
+      vast: {
+        title: "Deep-Dive: VAST & Video Ad Tech",
         category: "Video Tech",
         layman: `
-          <h3>What is VAST?</h3>
-          <p>Ever watched a YouTube video or a news clip and an ad played before it? The video player needs instructions on what video file to play.</p>
+          <p>When you watch a video online, an ad plays first. The video player needs instructions on what file to play.</p>
           <div class="callout analogy">
-            <strong>Analogy: A Postal Envelope with Instructions.</strong><br>
-            VAST stands for <em>Video Ad Serving Template</em>. Think of it as a standard digital envelope sent to the video player. Inside, it says: "Here is the MP4 video link. Play it for 15 seconds. When the user reaches 50%, notify this tracking URL."
+            <strong>VAST is an Instruction Envelope:</strong><br>
+            It tells the video player: "Play this MP4 file. When the user reaches 50%, notify this tracking URL."
           </div>
         `,
         expert: `
-          <h3>Technical Architecture of VAST:</h3>
-          <p>VAST is an XML schema standard maintained by the IAB Tech Lab that facilitates communication between ad servers and video players.</p>
-          <ul>
-            <li><strong>InLine vs. Wrapper:</strong> An InLine tag contains direct media files (MP4/HLS). A Wrapper tag redirects the player to another downstream ad server.</li>
-            <li><strong>Tracking Events:</strong> Fires impression beacons at Quartiles: <code>start</code>, <code>firstQuartile</code> (25%), <code>midpoint</code> (50%), <code>thirdQuartile</code> (75%), and <code>complete</code> (100%).</li>
-          </ul>
+          <p>VAST (Video Ad Serving Template) is an XML schema standard maintained by IAB Tech Lab for video player and ad server communication.</p>
         `,
         resources: [
           { name: "IAB VAST 4.2 Guidelines", url: "https://iabtechlab.com/standards/vast/" }
         ],
         quiz: {
-          q: "What format does a VAST tag use to send instructions to a video player?",
-          options: ["MP3 audio", "XML document", "Photoshop PSD", "Excel Spreadsheet"],
+          q: "What format does a VAST tag use to provide instructions to a video player?",
+          options: ["MP3 audio", "XML document", "Photoshop PSD", "Excel spreadsheet"],
           correct: 1,
-          expl: "VAST relies on a standardized XML structure to transmit media URLs and tracking event beacons to video players."
+          expl: "VAST relies on a standardized XML structure to transmit media URLs and tracking beacons."
         }
       }
     };
-
-    /* =========================================================================
-       3. CONTROLLER & UI RENDERING ENGINE
-       ========================================================================= */
 
     function initApp() {
       renderQuickChips();
@@ -707,8 +516,9 @@
     }
 
     function updateSyllabusCounter() {
-      const totalItems = CURRICULUM.length + Object.keys(DEEP_DIVES).length;
-      document.getElementById('syllabus-count').textContent = `${totalItems} Interactive Classes Active`;
+      const total = CURRICULUM.length + Object.keys(DEEP_DIVES).length;
+      const el = document.getElementById('syllabus-count');
+      if (el) el.textContent = `${total} Classes Ready`;
     }
 
     function renderQuickChips() {
@@ -716,12 +526,13 @@
         { label: "SSP (Supply-Side)", key: "ssp" },
         { label: "DSP (Demand-Side)", key: "dsp" },
         { label: "100ms RTB Cycle", key: "rtb" },
+        { label: "VAST Video Ads", key: "vast" },
         { label: "CPM & CPC Math", index: 1 },
         { label: "Ad Server Traffic Cop", index: 2 }
-        { label: "VAST Video Ads", key: "vast" },
       ];
 
       const container = document.getElementById('quick-chips');
+      if (!container) return;
       container.innerHTML = chips.map(c => {
         if (c.key) {
           return `<div class="term-chip" onclick="openDeepDive('${c.key}')">⚡ ${c.label}</div>`;
@@ -736,7 +547,6 @@
       document.getElementById('btn-layman').classList.toggle('active', level === 'layman');
       document.getElementById('btn-expert').classList.toggle('active', level === 'expert');
       
-      // Re-render current visible lesson
       if (window.currentActiveDeepDive) {
         openDeepDive(window.currentActiveDeepDive);
       } else {
@@ -748,6 +558,7 @@
       window.currentActiveDeepDive = null;
       activeClassIndex = idx;
       const lesson = CURRICULUM[idx];
+      if (!lesson) return;
 
       document.getElementById('class-title').textContent = lesson.title;
       document.getElementById('class-meta').textContent = `Category: ${lesson.category} • Module ${idx + 1} of ${CURRICULUM.length}`;
@@ -756,7 +567,6 @@
       renderWebResources(lesson.resources);
       renderQuiz(lesson.quiz);
 
-      // Back / Fwd button state
       document.getElementById('btn-back').style.visibility = idx > 0 ? 'visible' : 'hidden';
       document.getElementById('btn-fwd').textContent = (idx < CURRICULUM.length - 1) ? "Next Class →" : "Course Milestone Reached 🏆";
       
@@ -769,7 +579,7 @@
       if (!dive) return;
 
       document.getElementById('class-title').textContent = dive.title;
-      document.getElementById('class-meta').textContent = `Interactive Deep-Dive Masterclass • ${dive.category}`;
+      document.getElementById('class-meta').textContent = `Interactive Deep-Dive • ${dive.category}`;
       document.getElementById('class-content').innerHTML = currentLevel === 'layman' ? dive.layman : dive.expert;
 
       renderWebResources(dive.resources);
@@ -783,13 +593,14 @@
 
     function renderWebResources(resList) {
       const container = document.getElementById('web-resources-container');
+      if (!container) return;
       if (!resList || resList.length === 0) {
         container.innerHTML = '';
         return;
       }
 
       container.innerHTML = `
-        <h3 style="margin-top:20px;">🌐 Verified Free Web Resources & Official Docs:</h3>
+        <h3 style="margin-top:20px;">🌐 Verified Open Web Resources:</h3>
         <div class="resource-list">
           ${resList.map(r => `
             <a href="${r.url}" target="_blank" rel="noopener" class="resource-link">
@@ -803,6 +614,7 @@
 
     function renderQuiz(q) {
       const container = document.getElementById('quiz-container');
+      if (!container) return;
       if (!q) {
         container.innerHTML = '';
         return;
@@ -813,7 +625,7 @@
           <div class="quiz-q">📝 Knowledge Verification: ${q.q}</div>
           <div id="quiz-options-group">
             ${q.options.map((opt, i) => `
-              <button class="quiz-btn" onclick="checkQuizAnswer(this, ${i},${q.correct}, '${escapeQuotes(q.expl)}')">${opt}</button>
+              <button class="quiz-btn" onclick="checkQuizAnswer(this, ${i},${q.correct}, '${(q.expl \vert{}\vert{} '').replace(/'/g, "\\'")}')">${opt}</button>
             `).join('')}
           </div>
           <div class="quiz-expl" id="quiz-feedback-box"></div>
@@ -860,10 +672,9 @@
     }
 
     function handleSearch(val) {
-      const q = val.toLowerCase().trim();
+      const q = (val || '').toLowerCase().trim();
       if (!q) return;
 
-      // Check deep dives first
       for (let key in DEEP_DIVES) {
         if (key.includes(q) || DEEP_DIVES[key].title.toLowerCase().includes(q)) {
           openDeepDive(key);
@@ -871,20 +682,14 @@
         }
       }
 
-      // Check curriculum titles and contents
       for (let i = 0; i < CURRICULUM.length; i++) {
-        if (CURRICULUM[i].title.toLowerCase().includes(q) || CURRICULUM[i].layman.toLowerCase().includes(q)) {
+        if (CURRICULUM[i].title.toLowerCase().includes(q)) {
           loadClassByIndex(i);
           return;
         }
       }
     }
 
-    function escapeQuotes(str) {
-      return (str || '').replace(/'/g, "\\'");
-    }
-
-    // Launch application on ready
     window.addEventListener('DOMContentLoaded', initApp);
   </script>
 </body>
