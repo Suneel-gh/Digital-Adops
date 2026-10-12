@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>AdOps Mastery Engine | Digital Advertising Academy</title>
+  <title>AdOps Mastery Core | 180-Day Global Curriculum</title>
   <style>
     :root {
-      --bg-primary: #0a0e17;
-      --bg-secondary: #131a29;
-      --bg-card: #1c2638;
-      --bg-elevated: #243248;
-      --accent-blue: #2563eb;
+      --bg-canvas: #090d16;
+      --bg-surface: #111827;
+      --bg-card: #1f293d;
+      --bg-card-hover: #28354f;
       --accent-cyan: #06b6d4;
+      --accent-blue: #3b82f6;
       --accent-emerald: #10b981;
       --accent-amber: #f59e0b;
       --accent-rose: #f43f5e;
-      --text-main: #f8fafc;
+      --accent-violet: #8b5cf6;
+      --text-primary: #f8fafc;
       --text-muted: #94a3b8;
-      --border-color: rgba(255, 255, 255, 0.08);
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
 
     * {
@@ -29,9 +30,9 @@
     }
 
     body {
-      background-color: var(--bg-primary);
-      color: var(--text-main);
-      font-family: var(--font-family);
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-stack);
       line-height: 1.6;
       display: flex;
       justify-content: center;
@@ -40,369 +41,251 @@
 
     #app-container {
       width: 100%;
-      max-width: 480px;
+      max-width: 500px;
       min-height: 100vh;
-      background-color: var(--bg-secondary);
+      background-color: var(--bg-surface);
       display: flex;
       flex-direction: column;
       position: relative;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     }
 
+    /* Top App Bar */
     header {
       padding: 16px 20px;
-      background: rgba(19, 26, 41, 0.95);
+      background: rgba(17, 24, 39, 0.96);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-subtle);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .brand-title {
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
       letter-spacing: -0.02em;
       background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .header-controls {
-      display: flex;
-      gap: 12px;
-    }
-
-    .icon-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      padding: 6px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .icon-btn:hover {
-      color: var(--text-main);
-      background-color: var(--bg-card);
+    .badge-status {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
 
     main {
       flex: 1;
-      padding: 20px;
-      overflow-y: auto;
-      padding-bottom: 85px;
-    }
-
-    /* Overall Progress Bar */
-    .progress-banner {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
       padding: 16px;
-      margin-bottom: 20px;
+      overflow-y: auto;
+      padding-bottom: 40px;
     }
 
-    .progress-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .bar-outer {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .bar-inner {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
-      width: 0%;
-      transition: width 0.4s ease-out;
-    }
-
-    /* Track Cards */
-    .section-title {
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-      margin: 20px 0 12px;
-      font-weight: 700;
-    }
-
-    .stage-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .stage-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 18px;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
-      overflow: hidden;
-    }
-
-    .stage-card:active {
-      transform: scale(0.98);
-    }
-
-    .stage-card.locked {
-      opacity: 0.45;
-      cursor: not-allowed;
-      filter: grayscale(0.8);
-    }
-
-    .stage-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 8px;
-    }
-
-    .stage-badge {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.04em;
-    }
-
-    .badge-foundations { background: rgba(6, 182, 212, 0.15); color: var(--accent-cyan); }
-    .badge-operations { background: rgba(37, 99, 235, 0.15); color: #60a5fa; }
-    .badge-advanced { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
-    .badge-leadership { background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); }
-
-    .stage-name {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .stage-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    .stage-stats {
-      margin-top: 14px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      border-top: 1px solid var(--border-color);
-      padding-top: 10px;
-    }
-
-    /* Fast Access Blocks */
-    .tool-grid {
+    /* 8-Tile Landing Grid */
+    .tiles-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
       margin-top: 10px;
     }
 
-    .tool-card {
+    .tile {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
       padding: 16px;
-      cursor: pointer;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      transition: background 0.2s;
+      justify-content: space-between;
+      min-height: 140px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
     }
 
-    .tool-card:active {
-      background: var(--bg-elevated);
+    .tile:active {
+      transform: scale(0.97);
+      background: var(--bg-card-hover);
     }
 
-    .tool-card h4 {
+    .tile.locked {
+      opacity: 0.45;
+      cursor: not-allowed;
+      filter: grayscale(0.7);
+    }
+
+    .tile-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    .tile-title {
       font-size: 0.95rem;
-      color: var(--text-main);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+      line-height: 1.25;
     }
 
-    .tool-card p {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    /* Navigation Bar */
-    nav.bottom-nav {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 65px;
-      background: rgba(19, 26, 41, 0.98);
-      border-top: 1px solid var(--border-color);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 40;
-    }
-
-    .nav-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-      color: var(--text-muted);
+    .tile-subtitle {
       font-size: 0.72rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: none;
-      background: none;
-      width: 25%;
+      color: var(--text-muted);
+      line-height: 1.3;
     }
 
-    .nav-item.active {
-      color: var(--accent-cyan);
+    .tile-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
     }
 
-    /* Views Framework */
-    .view-panel {
+    /* Views */
+    .view-screen {
       display: none;
     }
 
-    .view-panel.active {
+    .view-screen.active {
       display: block;
-      animation: fadeIn 0.2s ease-in-out;
+      animation: viewSlide 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
+    @keyframes viewSlide {
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Reader View Styling */
-    .reader-header {
+    .view-header {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .back-btn {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 8px 12px;
-      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 8px 14px;
+      border-radius: 10px;
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
     }
 
-    .article-body {
-      font-size: 0.95rem;
-      color: #cbd5e1;
-      line-height: 1.7;
+    /* Lesson Navigation List */
+    .submodule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
-    .article-body h2 {
-      color: var(--text-main);
-      font-size: 1.35rem;
-      margin: 24px 0 12px;
+    .submodule-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .submodule-item:active {
+      background: var(--bg-card-hover);
+    }
+
+    /* Dynamic Content Container */
+    .article-container {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.75;
+    }
+
+    .article-container h2 {
+      color: var(--text-primary);
+      font-size: 1.3rem;
+      margin: 20px 0 10px;
       line-height: 1.3;
     }
 
-    .article-body h3 {
+    .article-container h3 {
       color: var(--accent-cyan);
-      font-size: 1.1rem;
-      margin: 18px 0 10px;
+      font-size: 1.05rem;
+      margin: 18px 0 8px;
     }
 
-    .article-body p {
+    .article-container p {
       margin-bottom: 14px;
     }
 
-    .article-body strong {
-      color: #fff;
-    }
-
-    .article-body ul {
+    .article-container ul {
       margin: 0 0 16px 20px;
     }
 
-    .article-body li {
+    .article-container li {
       margin-bottom: 6px;
     }
 
-    /* Hyperlink Jargon Tag */
-    .jargon-term {
-      color: var(--accent-cyan);
-      text-decoration: underline;
-      text-decoration-style: dotted;
-      cursor: pointer;
-      font-weight: 600;
-    }
-
-    /* Embedded SVG Diagrams (20%) */
-    .diagram-container {
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
+    /* Embedded Architecture Diagram (20%) */
+    .diagram-panel {
+      background: #090e17;
+      border: 1px solid var(--border-subtle);
       border-radius: 12px;
-      padding: 16px;
+      padding: 14px;
       margin: 20px 0;
       text-align: center;
     }
 
     .diagram-caption {
-      font-size: 0.78rem;
+      font-size: 0.75rem;
       color: var(--text-muted);
       margin-top: 8px;
-      font-weight: 500;
     }
 
-    /* Interactive RTB Sandbox (5%) */
-    .sandbox-widget {
-      background: #0d1524;
+    /* Live Interactive Sandbox (5%) */
+    .interactive-box {
+      background: #0d1527;
       border: 1px solid var(--accent-blue);
       border-radius: 14px;
-      padding: 18px;
-      margin: 24px 0;
+      padding: 16px;
+      margin: 20px 0;
     }
 
-    .sandbox-title {
-      font-size: 1rem;
+    .interactive-title {
+      font-size: 0.95rem;
       font-weight: 700;
       color: #93c5fd;
-      display: flex;
-      align-items: center;
-      gap: 8px;
       margin-bottom: 12px;
     }
 
-    .slider-control {
-      margin-bottom: 14px;
+    .control-row {
+      margin-bottom: 12px;
     }
 
-    .slider-header {
+    .control-labels {
       display: flex;
       justify-content: space-between;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       margin-bottom: 4px;
     }
 
@@ -411,10 +294,10 @@
       accent-color: var(--accent-cyan);
     }
 
-    .sandbox-output {
-      background: var(--bg-primary);
+    .calc-output {
+      background: #090e17;
       border-radius: 8px;
-      padding: 12px;
+      padding: 10px;
       font-family: monospace;
       font-size: 0.8rem;
       color: var(--accent-emerald);
@@ -423,794 +306,861 @@
       margin-top: 10px;
     }
 
-    /* Quiz Widget (5%) */
-    .quiz-card {
+    /* Verification Quizzes (5%) */
+    .quiz-container {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
+      border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 18px;
-      margin: 24px 0;
+      padding: 16px;
+      margin: 22px 0;
     }
 
-    .quiz-question {
-      font-size: 0.95rem;
-      font-weight: 600;
-      margin-bottom: 14px;
-      color: var(--text-main);
+    .quiz-q {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
     }
 
-    .quiz-options {
+    .quiz-options-group {
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
 
-    .quiz-option {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
+    .quiz-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
       color: #cbd5e1;
-      padding: 12px 14px;
+      padding: 10px 14px;
       border-radius: 10px;
       font-size: 0.85rem;
       text-align: left;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
-    .quiz-option.correct {
+    .quiz-btn.correct {
       background: rgba(16, 185, 129, 0.2) !important;
       border-color: var(--accent-emerald) !important;
       color: #6ee7b7 !important;
     }
 
-    .quiz-option.incorrect {
+    .quiz-btn.incorrect {
       background: rgba(244, 63, 94, 0.2) !important;
       border-color: var(--accent-rose) !important;
       color: #fca5a5 !important;
     }
 
-    .quiz-feedback {
-      margin-top: 12px;
-      font-size: 0.82rem;
+    .quiz-expl {
+      margin-top: 10px;
+      font-size: 0.8rem;
       display: none;
-      line-height: 1.4;
     }
 
-    /* Modal / Bottom Drawer for Jargon */
-    .modal-backdrop {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(4px);
-      z-index: 100;
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .modal-panel {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border-color);
-      width: 100%;
-      max-width: 480px;
-      border-radius: 20px 20px 0 0;
-      padding: 24px 20px;
-      max-height: 75vh;
-      overflow-y: auto;
-      transform: translateY(100%);
-      transition: transform 0.25s ease-out;
-    }
-
-    .modal-backdrop.open {
+    /* Search & External Stream UI */
+    .search-bar-wrap {
       display: flex;
-    }
-
-    .modal-backdrop.open .modal-panel {
-      transform: translateY(0);
-    }
-
-    .modal-term-name {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent-cyan);
-      margin-bottom: 8px;
-    }
-
-    .modal-term-desc {
-      font-size: 0.9rem;
-      color: #cbd5e1;
+      gap: 8px;
       margin-bottom: 16px;
     }
 
-    /* Search Bar Input */
-    .search-input-box {
-      width: 100%;
+    .search-input {
+      flex: 1;
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
       padding: 12px 16px;
       border-radius: 12px;
       font-size: 0.9rem;
       outline: none;
-      margin-bottom: 16px;
     }
 
-    .search-input-box:focus {
+    .search-input:focus {
       border-color: var(--accent-cyan);
+    }
+
+    .search-action-btn {
+      background: var(--accent-blue);
+      border: none;
+      color: #fff;
+      padding: 0 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .api-badge {
+      font-size: 0.68rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(59, 130, 246, 0.15);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      width: max-content;
+      margin-bottom: 6px;
+    }
+
+    .loader {
+      display: none;
+      text-align: center;
+      padding: 30px;
+      color: var(--accent-cyan);
+      font-size: 0.9rem;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
   <div id="app-container">
     
-    <!-- Top Global Header -->
+    <!-- App Header -->
     <header>
       <div class="brand-title">AdOps Execution Core</div>
-      <div class="header-controls">
-        <button class="icon-btn" onclick="switchView('search-view')" title="Global Search">
-          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        </button>
-      </div>
+      <div class="badge-status" id="live-sync-indicator">Online Live Stream</div>
     </header>
 
-    <!-- Main Workspace Frame -->
     <main>
       
-      <!-- VIEW 1: HOME DASHBOARD -->
-      <section id="home-view" class="view-panel active">
-        <div class="progress-banner">
-          <div class="progress-labels">
-            <span>Certification Readiness</span>
-            <span id="global-progress-percent">0%</span>
-          </div>
-          <div class="bar-outer">
-            <div id="global-progress-bar" class="bar-inner"></div>
-          </div>
+      <!-- ==========================================
+           TILE DIRECTORY LANDING PAGE (8 TILES)
+           ========================================== -->
+      <section id="landing-view" class="view-screen active">
+        <div style="margin-bottom:14px;">
+          <h2 style="font-size:1.15rem; font-weight:800;">Training Blocks</h2>
+          <p style="font-size:0.8rem; color:var(--text-muted);">180-Day Professional AdTech & Media Operations Track</p>
         </div>
 
-        <div class="section-title">Professional Training Trajectory</div>
-        <div class="stage-grid">
+        <div class="tiles-grid">
           
-          <!-- Stage 1: Foundations -->
-          <div class="stage-card" onclick="openModule('foundations')">
-            <div class="stage-header">
-              <span class="stage-badge badge-foundations">Level 1 - Core Entry</span>
-              <span id="foundations-status" style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">ACTIVE</span>
+          <!-- Tile 1: Beginner -->
+          <div class="tile" id="tile-beginner" onclick="openTrack('beginner')">
+            <div>
+              <div class="tile-icon" style="background:rgba(6, 182, 212, 0.15); color:var(--accent-cyan);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+              </div>
+              <div class="tile-title">1. Beginner</div>
+              <div class="tile-subtitle">Days 1 to 20: Digital Foundations, History & Models</div>
             </div>
-            <div class="stage-name">Ad Ecosystem & Taxonomy</div>
-            <div class="stage-desc">
-              Transition from traditional direct insertion to the modern real-time programmatic ad stack. Core terminology, supply/demand architectures, and basic trafficking mechanics.
-            </div>
-            <div class="stage-stats">
-              <span>Lessons: 12 In-depth</span>
-              <span id="foundations-completion">0/12 Done</span>
-            </div>
-          </div>
-
-          <!-- Stage 2: Operations & Delivery -->
-          <div class="stage-card locked" id="stage-card-operations" onclick="openModule('operations')">
-            <div class="stage-header">
-              <span class="stage-badge badge-operations">Level 2 - Operations</span>
-              <span id="operations-status" style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">LOCKED</span>
-            </div>
-            <div class="stage-name">Campaign Trafficking & Inventory Yield</div>
-            <div class="stage-desc">
-              Ad server configurations (GAM), pixel implementations, line-item priority hierarchies, pacing algorithms, and header bidding auction wrappers.
-            </div>
-            <div class="stage-stats">
-              <span>Lessons: 24 Deep Ops</span>
-              <span id="operations-completion">Locked</span>
+            <div class="tile-footer">
+              <span style="color:var(--accent-cyan);" id="badge-beginner">OPEN</span>
+              <span id="prog-beginner">0% Complete</span>
             </div>
           </div>
 
-          <!-- Stage 3: Programmatic & Optimization -->
-          <div class="stage-card locked" id="stage-card-advanced" onclick="openModule('advanced')">
-            <div class="stage-header">
-              <span class="stage-badge badge-advanced">Level 3 - Optimization</span>
-              <span id="advanced-status" style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">LOCKED</span>
+          <!-- Tile 2: Intermediate -->
+          <div class="tile locked" id="tile-intermediate" onclick="openTrack('intermediate')">
+            <div>
+              <div class="tile-icon" style="background:rgba(59, 130, 246, 0.15); color:var(--accent-blue);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+              </div>
+              <div class="tile-title">2. Intermittent</div>
+              <div class="tile-subtitle">Days 21 to 75: Ad Servers, GAM, Line Items & Yield</div>
             </div>
-            <div class="stage-name">Auction Architecture & Signal Resolution</div>
-            <div class="stage-desc">
-              OpenRTB 2.x/3.0 specs, cookie degradation, clean rooms, identity graphs (UID2), server-side bidding, supply path optimization (SPO), and fraud mechanics.
-            </div>
-            <div class="stage-stats">
-              <span>Lessons: 30 Masterclasses</span>
-              <span id="advanced-completion">Locked</span>
-            </div>
-          </div>
-
-          <!-- Stage 4: Enterprise Strategy -->
-          <div class="stage-card locked" id="stage-card-leadership" onclick="openModule('leadership')">
-            <div class="stage-header">
-              <span class="stage-badge badge-leadership">Level 4 - Enterprise</span>
-              <span id="leadership-status" style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">LOCKED</span>
-            </div>
-            <div class="stage-name">Revenue Architecture & CoE Governance</div>
-            <div class="stage-desc">
-              Yield management modeling, custom bid stream algorithms, multi-touch attribution (MTA), retail media networks (RMN), and operational floor SLA scaling.
-            </div>
-            <div class="stage-stats">
-              <span>Lessons: 18 Capstones</span>
-              <span id="leadership-completion">Locked</span>
+            <div class="tile-footer">
+              <span style="color:var(--text-muted);" id="badge-intermediate">LOCKED</span>
+              <span id="prog-intermediate">Locked</span>
             </div>
           </div>
 
-        </div>
+          <!-- Tile 3: Advanced -->
+          <div class="tile locked" id="tile-advanced" onclick="openTrack('advanced')">
+            <div>
+              <div class="tile-icon" style="background:rgba(245, 158, 11, 0.15); color:var(--accent-amber);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+              </div>
+              <div class="tile-title">3. Advanced</div>
+              <div class="tile-subtitle">Days 76 to 120: Header Bidding, Prebid & Identity</div>
+            </div>
+            <div class="tile-footer">
+              <span style="color:var(--text-muted);" id="badge-advanced">LOCKED</span>
+              <span id="prog-advanced">Locked</span>
+            </div>
+          </div>
 
-        <div class="section-title">Operational Acceleration Tools</div>
-        <div class="tool-grid">
-          <div class="tool-card" onclick="switchView('glossary-view')">
-            <h4>AdTech Lexicon</h4>
-            <p>150+ Technical protocols & market jargons explained.</p>
+          <!-- Tile 4: Expert -->
+          <div class="tile locked" id="tile-expert" onclick="openTrack('expert')">
+            <div>
+              <div class="tile-icon" style="background:rgba(244, 63, 94, 0.15); color:var(--accent-rose);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+              </div>
+              <div class="tile-title">4. Expert</div>
+              <div class="tile-subtitle">Days 121 to 180: Enterprise Yield & CoE Management</div>
+            </div>
+            <div class="tile-footer">
+              <span style="color:var(--text-muted);" id="badge-expert">LOCKED</span>
+              <span id="prog-expert">Locked</span>
+            </div>
           </div>
-          <div class="tool-card" onclick="switchView('certification-view')">
-            <h4>Certification Tracks</h4>
-            <p>Evaluations with credential verifications.</p>
+
+          <!-- Tile 5: Jargons -->
+          <div class="tile" onclick="openView('jargons-view')">
+            <div>
+              <div class="tile-icon" style="background:rgba(139, 92, 246, 0.15); color:var(--accent-violet);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
+              </div>
+              <div class="tile-title">5. Jargons</div>
+              <div class="tile-subtitle">Interactive Glossary: SSP, DSP, OpenRTB & VAST</div>
+            </div>
+            <div class="tile-footer">
+              <span style="color:var(--accent-violet);">OPEN ACCESS</span>
+              <span>150+ Terms</span>
+            </div>
           </div>
+
+          <!-- Tile 6: Certification -->
+          <div class="tile" onclick="openView('cert-hub-view')">
+            <div>
+              <div class="tile-icon" style="background:rgba(16, 185, 129, 0.15); color:var(--accent-emerald);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138z"></path></svg>
+              </div>
+              <div class="tile-title">6. Certification</div>
+              <div class="tile-subtitle">4 Internal Assessment Blocks: Associate to Lead</div>
+            </div>
+            <div class="tile-footer">
+              <span style="color:var(--accent-emerald);">OPEN ACCESS</span>
+              <span>4 Badges</span>
+            </div>
+          </div>
+
+          <!-- Tile 7: Global Web Search -->
+          <div class="tile" onclick="openView('search-view')">
+            <div>
+              <div class="tile-icon" style="background:rgba(6, 182, 212, 0.15); color:var(--accent-cyan);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              </div>
+              <div class="tile-title">7. Search</div>
+              <div class="tile-subtitle">Global Open Web & Wikipedia Live Retrieval</div>
+            </div>
+            <div class="tile-footer">
+              <span style="color:var(--accent-cyan);">ONLINE REST</span>
+              <span>Live Queries</span>
+            </div>
+          </div>
+
+          <!-- Tile 8: Progress / Completion % -->
+          <div class="tile" onclick="openView('analytics-view')">
+            <div>
+              <div class="tile-icon" style="background:rgba(245, 158, 11, 0.15); color:var(--accent-amber);">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg>
+              </div>
+              <div class="tile-title">8. Progress %</div>
+              <div class="tile-subtitle">Audit Readiness, Trajectory & Time Spent</div>
+            </div>
+            <div class="tile-footer">
+              <span style="color:var(--accent-amber);" id="total-pct-badge">0% Total</span>
+              <span>Audit Ready</span>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <!-- VIEW 2: MODULE READER VIEW -->
-      <section id="reader-view" class="view-panel">
-        <div class="reader-header">
-          <button class="back-btn" onclick="switchView('home-view')">← Directory</button>
-          <span id="reader-stage-title" style="font-size:0.8rem; color:var(--text-muted); font-weight:600;"></span>
+      <!-- ==========================================
+           TRACK MODULE EXPLORER (Sub-lessons)
+           ========================================== -->
+      <section id="track-explorer-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
+          <div style="font-size:0.9rem; font-weight:700;" id="explorer-track-name">Track Details</div>
+        </div>
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:14px;" id="explorer-track-desc"></p>
+        <div class="submodule-list" id="explorer-submodules"></div>
+      </section>
+
+      <!-- ==========================================
+           DETAILED LESSON READER (70/20/5/5 ENGINE)
+           ========================================== -->
+      <section id="reader-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('track-explorer-view')">← Lessons</button>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--text-muted);" id="reader-breadcrumb">Lesson</div>
         </div>
 
-        <div id="reader-content" class="article-body">
-          <!-- Dynamically populated via loadLesson() -->
+        <div class="api-badge" id="reader-data-source">Live Knowledge Engine</div>
+        <div id="reader-stream" class="article-container"></div>
+
+        <div style="margin-top:30px;">
+          <button class="back-btn" style="width:100%; padding:14px; background:var(--accent-blue); border:none; color:#fff;" onclick="markLessonComplete()">
+            Mark Lesson Complete & Verify Mastery
+          </button>
         </div>
       </section>
 
-      <!-- VIEW 3: GLOSSARY / JARGONS -->
-      <section id="glossary-view" class="view-panel">
-        <div class="reader-header">
-          <button class="back-btn" onclick="switchView('home-view')">← Home</button>
-          <span style="font-size:0.9rem; font-weight:700;">AdTech Ecosystem Lexicon</span>
+      <!-- ==========================================
+           TILE 5: JARGONS DIRECTORY
+           ========================================== -->
+      <section id="jargons-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
+          <div style="font-size:0.9rem; font-weight:700;">AdTech Jargons & Terms</div>
         </div>
-        <input type="text" class="search-input-box" id="glossary-search" placeholder="Search jargons (e.g., DSP, VAST, Header Bidding)..." oninput="filterGlossary()" />
-        <div id="glossary-list" style="display:flex; flex-direction:column; gap:10px;"></div>
+        <input type="text" class="search-input" id="jargon-input" placeholder="Filter jargons (e.g., DSP, VAST, SPO)..." oninput="filterJargonList()" style="width:100%; margin-bottom:14px;"/>
+        <div id="jargons-container" style="display:flex; flex-direction:column; gap:10px;"></div>
       </section>
 
-      <!-- VIEW 4: CERTIFICATIONS -->
-      <section id="certification-view" class="view-panel">
-        <div class="reader-header">
-          <button class="back-btn" onclick="switchView('home-view')">← Home</button>
-          <span style="font-size:0.9rem; font-weight:700;">Operational Certifications</span>
+      <!-- ==========================================
+           TILE 6: CERTIFICATION HUB (4 Sub-Blocks)
+           ========================================== -->
+      <section id="cert-hub-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
+          <div style="font-size:0.9rem; font-weight:700;">Credential Evaluations</div>
         </div>
         <div style="display:flex; flex-direction:column; gap:12px;">
-          <div class="stage-card" onclick="startCertification('foundations')">
-            <div class="stage-badge badge-foundations" style="width:max-content; margin-bottom:6px;">Foundation Level</div>
-            <div class="stage-name">Certified AdTech Operations Associate</div>
-            <div class="stage-desc">Covers basics of inventory taxonomy, trafficking flow, metrics (eCPM, CTR, VCR), and RTB handshakes.</div>
+          <div class="tile" onclick="launchCertExam('Beginner')">
+            <div class="tile-title" style="color:var(--accent-cyan);">Block A: Beginner Certification</div>
+            <div class="tile-subtitle">Tests Days 1-20 knowledge: Traditional vs. Programmatic, Taxonomy, Ecosystem Triad.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
           </div>
-          <div class="stage-card" onclick="startCertification('operations')">
-            <div class="stage-badge badge-operations" style="width:max-content; margin-bottom:6px;">Practitioner Level</div>
-            <div class="stage-name">Certified Ad Trafficker & Yield Specialist</div>
-            <div class="stage-desc">Covers line items, key-values, pacing fixes, header bidding wrappers, and discrepancy debugging.</div>
+          <div class="tile" onclick="launchCertExam('Intermediate')">
+            <div class="tile-title" style="color:var(--accent-blue);">Block B: Intermittent Certification</div>
+            <div class="tile-subtitle">Tests Days 21-75 knowledge: Line Item Priority Tiers, GAM Yield & Discrepancies.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
           </div>
-          <div class="stage-card" onclick="startCertification('advanced')">
-            <div class="stage-badge badge-advanced" style="width:max-content; margin-bottom:6px;">Architect Level</div>
-            <div class="stage-name">Programmatic Solutions Specialist</div>
-            <div class="stage-desc">Covers OpenRTB specifications, Prebid configurations, identity graphs, and fraud mitigation.</div>
+          <div class="tile" onclick="launchCertExam('Advanced')">
+            <div class="tile-title" style="color:var(--accent-amber);">Block C: Advanced Certification</div>
+            <div class="tile-subtitle">Tests Days 76-120 knowledge: Header Bidding Wrappers, Prebid, Clean Rooms & UID2.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
           </div>
-          <div class="stage-card" onclick="startCertification('leadership')">
-            <div class="stage-badge badge-leadership" style="width:max-content; margin-bottom:6px;">Director Level</div>
-            <div class="stage-name">Enterprise Ad Operations Lead</div>
-            <div class="stage-desc">Covers yield management, floor optimization strategies, SLA frameworks, and omnichannel monetization.</div>
+          <div class="tile" onclick="launchCertExam('Expert')">
+            <div class="tile-title" style="color:var(--accent-rose);">Block D: Expert Certification</div>
+            <div class="tile-subtitle">Tests Days 121-180 knowledge: Enterprise Revenue Operations, Dynamic Floors & CoE SLAs.</div>
+            <div class="tile-footer"><span>Passing Score: 80%</span><span>Start Test →</span></div>
           </div>
         </div>
       </section>
 
-      <!-- VIEW 5: GLOBAL SEARCH -->
-      <section id="search-view" class="view-panel">
-        <div class="reader-header">
-          <button class="back-btn" onclick="switchView('home-view')">← Return</button>
-          <span style="font-size:0.9rem; font-weight:700;">Global Knowledge Index</span>
+      <!-- ==========================================
+           TILE 7: GLOBAL OPEN WEB SEARCH
+           ========================================== -->
+      <section id="search-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
+          <div style="font-size:0.9rem; font-weight:700;">Global Open Web Search</div>
         </div>
-        <input type="text" class="search-input-box" id="global-search-input" placeholder="Query frameworks, protocols, and guides..." oninput="handleGlobalSearch()" />
-        <div id="search-results-list" style="display:flex; flex-direction:column; gap:10px;"></div>
+        <div class="search-bar-wrap">
+          <input type="text" class="search-input" id="global-web-query" placeholder="Search Google/Wikipedia (e.g. Header Bidding)..." />
+          <button class="search-action-btn" onclick="executeGlobalSearch()">Search</button>
+        </div>
+        <div id="search-loader" class="loader">Querying Global Web Knowledge API...</div>
+        <div id="global-search-results" style="display:flex; flex-direction:column; gap:12px;"></div>
+      </section>
+
+      <!-- ==========================================
+           TILE 8: ANALYTICS & COMPLETION %
+           ========================================== -->
+      <section id="analytics-view" class="view-screen">
+        <div class="view-header">
+          <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
+          <div style="font-size:0.9rem; font-weight:700;">Progress & Audit %</div>
+        </div>
+        <div style="background:var(--bg-card); padding:18px; border-radius:14px; border:1px solid var(--border-subtle); margin-bottom:14px;">
+          <div style="font-size:0.85rem; color:var(--text-muted); margin-bottom:6px;">Overall Curriculum Mastery</div>
+          <div style="font-size:2rem; font-weight:800; color:var(--accent-cyan);" id="analytics-grand-pct">0%</div>
+          <div style="margin-top:10px; font-size:0.8rem; color:#cbd5e1;">Target: 180 Days of 8-Hour Daily Operational Competency</div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:8px;" id="analytics-breakdown"></div>
       </section>
 
     </main>
-
-    <!-- Bottom Persistent Navigation Bar -->
-    <nav class="bottom-nav">
-      <button class="nav-item active" id="nav-btn-home" onclick="switchView('home-view')">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-        <span>Curriculum</span>
-      </button>
-      <button class="nav-item" id="nav-btn-glossary" onclick="switchView('glossary-view')">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-        <span>Lexicon</span>
-      </button>
-      <button class="nav-item" id="nav-btn-cert" onclick="switchView('certification-view')">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-        <span>Credentials</span>
-      </button>
-      <button class="nav-item" id="nav-btn-search" onclick="switchView('search-view')">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <span>Search</span>
-      </button>
-    </nav>
-
-    <!-- Interactive Bottom Sheet Flashcard Modal for In-Lesson Jargons -->
-    <div class="modal-backdrop" id="jargon-modal" onclick="closeModal(event)">
-      <div class="modal-panel" onclick="event.stopPropagation()">
-        <div class="modal-term-name" id="modal-term-title">Protocol</div>
-        <div class="modal-term-desc" id="modal-term-description">Details</div>
-        <button class="back-btn" style="width:100%; text-align:center;" onclick="document.getElementById('jargon-modal').classList.remove('open')">Acknowledge</button>
-      </div>
-    </div>
-
   </div>
 
   <script>
     /* =========================================================================
-       DATA STORE: JARGONS, CURRICULUM, AND REVENUE OPERATIONS
+       COMPREHENSIVE ADTECH CURRICULUM ARCHITECTURE (180 DAYS)
        ========================================================================= */
 
-    const LEXICON = {
-      "DSP": {
-        term: "Demand-Side Platform (DSP)",
-        definition: "Software utilized by advertisers and media agencies to automate the procurement of digital ad inventory across multiple ad exchanges and SSPs through a centralized interface using real-time auction bids."
-      },
-      "SSP": {
-        term: "Supply-Side Platform (SSP)",
-        definition: "An adtech programmatic monetization platform designed for web and mobile publishers to automate inventory management, auction off ad slots, set yield price floors, and maximize ad revenue."
-      },
-      "Ad Exchange": {
-        term: "Ad Exchange",
-        definition: "A digital marketplace that facilitates the real-time buying and selling of media advertising inventory from multiple ad networks and supply platforms using OpenRTB protocols."
-      },
-      "Header Bidding": {
-        term: "Header Bidding",
-        definition: "An advanced programmatic bidding technique where publishers insert a client-side JavaScript snippet in their site's header, allowing multiple SSPs/exchanges to bid on inventory concurrently prior to invoking the primary ad server."
-      },
-      "RTB": {
-        term: "Real-Time Bidding (RTB)",
-        definition: "A server-to-server or client-to-server dynamic auction model where impressions are individually evaluated, bid on, and allocated within 100 milliseconds as a webpage loads."
-      },
-      "Ad Server": {
-        term: "Ad Server (e.g., Google Ad Manager)",
-        definition: "The core decisioning engine responsible for storing ad creatives, executing trafficking logic, matching audience targeting, controlling delivery pacing, and measuring impression events."
-      },
-      "Floor Price": {
-        term: "Floor Price (CPM)",
-        definition: "The minimum price threshold set by a publisher in an SSP or exchange below which incoming DSP bids are disqualified."
-      },
-      "Discrepancy": {
-        term: "Impression Discrepancy",
-        definition: "The delta between the impressions logged by the primary ad server versus those logged by the 3rd-party buyer DSP, typically expected within a 2-5% variance due to latency or drop-offs."
-      }
-    };
-
-    const CURRICULUM_DATA = {
-      foundations: {
-        stageId: "foundations",
-        title: "Foundations: The Digital Advertising & AdOps Stack",
-        totalLessons: 12,
+    const TRACK_METRICS = {
+      beginner: {
+        title: "1. Beginner (Days 1 to 20)",
+        days: "Days 1 - 20",
+        desc: "Foundations: Traditional Direct Advertising to Real-Time Programmatic Ecosystems, Supply/Demand Taxonomy.",
+        total: 20,
+        completed: 0,
         unlocked: true,
-        completed: 0,
-        lessonContent: {
-          title: "Introduction to Digital Advertising Architecture: From Insertion Orders to Real-Time Auctions",
-          html: `
-            <h2>Evolution of Digital Media Monetization</h2>
-            <p>
-              In the legacy era of digital publishing, media transactions mirrored print models: sales representatives negotiated direct <strong>Insertion Orders (IOs)</strong> with agency buyers for static banners. Ad tags were manually deployed on web servers, setting a static allocation of inventory with fixed pricing.
-            </p>
-            <p>
-              As web volume and mobile page views surged, direct sales teams could not sell all inventory, leaving behind unsold "remnant" ad space. This triggered the creation of ad networks, which aggregated remnant impressions. As networks proliferated, the programmatic ecosystem emerged: dynamic auctions governed by protocols like OpenRTB replace manual IO negotiations in 100 milliseconds.
-            </p>
-
-            <!-- 20% Graphic: Ecosystem Architecture Diagram -->
-            <div class="diagram-container">
-              <svg viewBox="0 0 420 130" width="100%" height="100%" style="max-height:160px;">
-                <rect x="10" y="40" width="70" height="50" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
-                <text x="45" y="68" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Publisher</text>
-                <text x="45" y="80" fill="#94a3b8" font-size="8" text-anchor="middle">(Inventory)</text>
-                
-                <path d="M 80 65 L 115 65" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
-                
-                <rect x="120" y="40" width="70" height="50" rx="8" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
-                <text x="155" y="68" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle"><tspan class="jargon-term" onclick="lookupJargon('SSP')">SSP</tspan></text>
-                <text x="155" y="80" fill="#94a3b8" font-size="8" text-anchor="middle">Supply Yield</text>
-                
-                <path d="M 190 65 L 225 65" stroke="#60a5fa" stroke-width="2"/>
-                
-                <rect x="230" y="40" width="70" height="50" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
-                <text x="265" y="68" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Exchange</text>
-                <text x="265" y="80" fill="#94a3b8" font-size="8" text-anchor="middle"><tspan class="jargon-term" onclick="lookupJargon('RTB')">RTB</tspan> Auction</text>
-                
-                <path d="M 300 65 L 335 65" stroke="#a78bfa" stroke-width="2"/>
-                
-                <rect x="340" y="40" width="70" height="50" rx="8" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
-                <text x="375" y="68" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle"><tspan class="jargon-term" onclick="lookupJargon('DSP')">DSP</tspan></text>
-                <text x="375" y="80" fill="#94a3b8" font-size="8" text-anchor="middle">Buyer Engine</text>
-              </svg>
-              <div class="diagram-caption">Figure 1.1: Canonical Programmatic Handshake Flow via OpenRTB Protocols</div>
-            </div>
-
-            <h3>Core Mechanics of the Triad</h3>
-            <ul>
-              <li><strong>The Ad Server:</strong> The publisher's master engine (e.g., Google Ad Manager). Evaluates priority rules, controls pacing, verifies geographic targeting, and serves the winning creative asset.</li>
-              <li><strong>Supply-Side Platforms (<span class="jargon-term" onclick="lookupJargon('SSP')">SSP</span>):</strong> Connects publisher slots to multiple buyers simultaneously, enforcing minimum <span class="jargon-term" onclick="lookupJargon('Floor Price')">Floor Prices</span>.</li>
-              <li><strong>Demand-Side Platforms (<span class="jargon-term" onclick="lookupJargon('DSP')">DSP</span>):</strong> Evaluates bid requests based on device IDs, context, audience signals, and frequency caps to submit a monetary bid.</li>
-            </ul>
-
-            <!-- 5% Interactive Simulator: RTB Bidding Core -->
-            <div class="sandbox-widget">
-              <div class="sandbox-title">Interactive Sandbox: OpenRTB Auction Engine</div>
-              <div class="slider-control">
-                <div class="slider-header">
-                  <span>Publisher Floor Price ($ CPM)</span>
-                  <span id="display-floor">$1.50</span>
-                </div>
-                <input type="range" id="input-floor" min="0.50" max="5.00" step="0.10" value="1.50" oninput="runRtbSandbox()"/>
-              </div>
-              <div class="slider-control">
-                <div class="slider-header">
-                  <span>DSP Max Bid ($ CPM)</span>
-                  <span id="display-bid">$2.80</span>
-                </div>
-                <input type="range" id="input-bid" min="0.50" max="5.00" step="0.10" value="2.80" oninput="runRtbSandbox()"/>
-              </div>
-              <div class="sandbox-output" id="sandbox-log">Running evaluation...</div>
-            </div>
-
-            <!-- 5% Evaluation Check: Interactive Quiz -->
-            <div class="quiz-card">
-              <div class="quiz-question">1. A publisher sets a hard CPM floor of $2.20 in their SSP. DSP A bids $2.10, and DSP B bids $2.60 in a first-price auction. What happens?</div>
-              <div class="quiz-options">
-                <button class="quiz-option" onclick="evaluateQuiz(this, false, 'DSP A bid is below the floor price.')">A. DSP A wins at $2.10 because it entered first.</button>
-                <button class="quiz-option" onclick="evaluateQuiz(this, true, 'Correct! DSP A is rejected by the floor price. DSP B wins and clears at its bid of $2.60.')">B. DSP B wins and clears at $2.60.</button>
-                <button class="quiz-option" onclick="evaluateQuiz(this, false, 'In a first-price auction, the winner pays their exact bid price, not a second-price increment.')">C. DSP B wins and clears at $2.21.</button>
-              </div>
-              <div class="quiz-feedback" id="quiz-msg-1"></div>
-            </div>
-          `
-        }
+        submodules: [
+          { id: "b1", title: "Evolution: Print & Direct Insertion to Ad Networks", topic: "Online_advertising" },
+          { id: "b2", title: "The Triad: Ad Servers, Supply-Side Platforms (SSPs), & DSPs", topic: "Demand-side_platform" },
+          { id: "b3", title: "Auction Mechanics: First-Price vs. Second-Price Real-Time Bidding", topic: "Real-time_bidding" },
+          { id: "b4", title: "Taxonomy of Modern Digital Formats: Display, Native, Audio, CTV", topic: "Digital_display_advertising" }
+        ]
       },
-      operations: {
-        stageId: "operations",
-        title: "Operations: Trafficking, Yield & Header Bidding",
-        totalLessons: 24,
-        unlocked: false,
+      intermediate: {
+        title: "2. Intermittent (Days 21 to 75)",
+        days: "Days 21 - 75",
+        desc: "Operations: Google Ad Manager (GAM), Priority Hierarchies, Line Items, Creative Trafficking & Discrepancies.",
+        total: 55,
         completed: 0,
-        lessonContent: {
-          title: "Trafficking Architecture: Line Item Hierarchies and Yield Allocation",
-          html: `
-            <h2>Google Ad Manager Priority Tiers</h2>
-            <p>
-              In production ad operations, knowing how an ad server selects a winner is key to hitting delivery goals without cannibalizing high-value direct sponsorships. GAM evaluates line items based on numeric priority tiers:
-            </p>
-            <ul>
-              <li><strong>Sponsorship (Priority 4):</strong> Percentage-based goal (e.g., 100% of impressions on a section). Wins above all other items.</li>
-              <li><strong>Standard (Priority 6-10):</strong> Fixed volume goal (e.g., 500,000 impressions) with pacing rules (Evenly, As Fast As Possible, Frontloaded).</li>
-              <li><strong>Price Priority (Priority 12):</strong> Competes purely on price against programmatic demand. Takes remnant slots whenever its CPM beats incoming bids.</li>
-            </ul>
-          `
-        }
+        unlocked: false,
+        submodules: [
+          { id: "i1", title: "GAM Priority Tiers: Sponsorship (4), Standard (6-10), Price Priority (12)", topic: "Google_Ad_Manager" },
+          { id: "i2", title: "Creative Trafficking & Third-Party Tags (VAST, VPAID, MRAID)", topic: "Video_Ad_Serving_Template" },
+          { id: "i3", title: "Delivery Discrepancy Diagnostics: Publisher vs. DSP Event Logs", topic: "Web_beacon" }
+        ]
       },
       advanced: {
-        stageId: "advanced",
-        title: "Advanced: Identity Resolution & Programmatic Architecture",
-        totalLessons: 30,
-        unlocked: false,
+        title: "3. Advanced (Days 76 to 120)",
+        days: "Days 76 - 120",
+        desc: "Optimization: Client vs. Server Header Bidding, Prebid.js, Privacy Sandbox, UID2 & Identity Resolution.",
+        total: 45,
         completed: 0,
-        lessonContent: {
-          title: "Addressability: The Cookieless Transition and Identity Frameworks",
-          html: `<h2>Identity Graphs & Alternative Identifiers</h2><p>Third-party cookie deprecation shifts audience targeting toward authenticated solutions like Unified ID 2.0 (UID2) and privacy-preserving primitives like the Protected Audience API.</p>`
-        }
+        unlocked: false,
+        submodules: [
+          { id: "a1", title: "Header Bidding Architecture: Prebid.js, Auction Latency & Wrappers", topic: "Header_bidding" },
+          { id: "a2", title: "Cookieless Ecosystem: Identity Graphs, Clean Rooms & Unified ID 2.0", topic: "HTTP_cookie" },
+          { id: "a3", title: "Supply Path Optimization (SPO) & Sellers.json Verification", topic: "Ad_fraud" }
+        ]
       },
-      leadership: {
-        stageId: "leadership",
-        title: "Expert: Revenue Operations & CoE Governance",
-        totalLessons: 18,
-        unlocked: false,
+      expert: {
+        title: "4. Expert (Days 121 to 180)",
+        days: "Days 121 - 180",
+        desc: "Revenue Operations: Dynamic Floor Optimization, Retail Media Networks, Operational SLAs & CoE Leadership.",
+        total: 60,
         completed: 0,
-        lessonContent: {
-          title: "Yield Architecture & Dynamic Floor Strategies",
-          html: `<h2>Floor Price Optimization and Multi-Sellers.json Governance</h2><p>Scale ad operations teams through automated SLA monitoring, discrepancy audits, and dynamic bid-shading analysis.</p>`
-        }
+        unlocked: false,
+        submodules: [
+          { id: "e1", title: "Dynamic Yield Optimization: Setting Hard vs. Soft Floors", topic: "Yield_management" },
+          { id: "e2", title: "Retail Media Networks (RMN): Closed-Loop Attribution Architecture", topic: "Retail_media" },
+          { id: "e3", title: "Enterprise Operations Governance: SLA Design, Error Rates & Root Cause Analysis", topic: "Service-level_agreement" }
+        ]
       }
     };
 
+    const JARGONS_DATABASE = [
+      { term: "DSP", title: "Demand-Side Platform", def: "Software used by advertisers to automate the procurement of mobile, video, and web inventory via real-time auctions." },
+      { term: "SSP", title: "Supply-Side Platform", def: "Publisher monetization engine that manages ad slot auctions, yield rules, and connections to multiple DSPs/exchanges." },
+      { term: "Ad Server", title: "Ad Server (e.g. GAM)", def: "The final decision-making engine that stores creative assets, applies priority rankings, and tracks impression events." },
+      { term: "Header Bidding", title: "Header Bidding", def: "Publisher technology executing client- or server-side real-time auctions across multiple SSPs before making a primary ad server call." },
+      { term: "OpenRTB", title: "OpenRTB Protocol", def: "The IAB standard communication protocol defining JSON payloads for bid requests and bid responses across exchanges." },
+      { term: "VAST", title: "Video Ad Serving Template", def: "An XML schema developed by the IAB that transfers video ad metadata, media files, and tracking events across players." },
+      { term: "Floor Price", title: "CPM Floor Price", def: "The minimum eCPM threshold required by a publisher to accept an incoming bid." },
+      { term: "Discrepancy", title: "Impression Discrepancy", def: "Percentage difference between impressions logged by the primary ad server versus the buyer DSP (typically 2-5% is normal)." }
+    ];
+
+    let currentTrackId = null;
+    let currentSubmoduleId = null;
+
     /* =========================================================================
-       APPLICATION CORE CONTROLLER
+       PERSISTENCE & STATE MANAGEMENT
        ========================================================================= */
 
-    function initializeApplication() {
-      loadSavedState();
-      renderHomeScreen();
-      runRtbSandbox();
-      renderGlossaryIndex();
+    function loadState() {
+      const saved = localStorage.getItem("adops_curriculum_state_v2");
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved);
+          TRACK_METRICS.beginner.completed = parsed.beginner_completed || 0;
+          TRACK_METRICS.intermediate.unlocked = parsed.intermediate_unlocked || false;
+          TRACK_METRICS.intermediate.completed = parsed.intermediate_completed || 0;
+          TRACK_METRICS.advanced.unlocked = parsed.advanced_unlocked || false;
+          TRACK_METRICS.advanced.completed = parsed.advanced_completed || 0;
+          TRACK_METRICS.expert.unlocked = parsed.expert_unlocked || false;
+          TRACK_METRICS.expert.completed = parsed.expert_completed || 0;
+        } catch(e) {
+          console.error("Could not parse saved storage", e);
+        }
+      }
     }
 
     function saveState() {
       const state = {
-        foundationsUnlocked: CURRICULUM_DATA.foundations.unlocked,
-        foundationsCompleted: CURRICULUM_DATA.foundations.completed,
-        operationsUnlocked: CURRICULUM_DATA.operations.unlocked,
-        operationsCompleted: CURRICULUM_DATA.operations.completed,
-        advancedUnlocked: CURRICULUM_DATA.advanced.unlocked,
-        advancedCompleted: CURRICULUM_DATA.advanced.completed,
-        leadershipUnlocked: CURRICULUM_DATA.leadership.unlocked,
-        leadershipCompleted: CURRICULUM_DATA.leadership.completed
+        beginner_completed: TRACK_METRICS.beginner.completed,
+        intermediate_unlocked: TRACK_METRICS.intermediate.unlocked,
+        intermediate_completed: TRACK_METRICS.intermediate.completed,
+        advanced_unlocked: TRACK_METRICS.advanced.unlocked,
+        advanced_completed: TRACK_METRICS.advanced.completed,
+        expert_unlocked: TRACK_METRICS.expert.unlocked,
+        expert_completed: TRACK_METRICS.expert.completed
       };
-      localStorage.setItem("adops_training_state", JSON.stringify(state));
+      localStorage.setItem("adops_curriculum_state_v2", JSON.stringify(state));
     }
 
-    function loadSavedState() {
-      const saved = localStorage.getItem("adops_training_state");
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved);
-          CURRICULUM_DATA.foundations.completed = parsed.foundationsCompleted || 0;
-          CURRICULUM_DATA.operations.unlocked = parsed.operationsUnlocked || false;
-          CURRICULUM_DATA.operations.completed = parsed.operationsCompleted || 0;
-          CURRICULUM_DATA.advanced.unlocked = parsed.advancedUnlocked || false;
-          CURRICULUM_DATA.advanced.completed = parsed.advancedCompleted || 0;
-          CURRICULUM_DATA.leadership.unlocked = parsed.leadershipUnlocked || false;
-          CURRICULUM_DATA.leadership.completed = parsed.leadershipCompleted || 0;
-        } catch(e) {
-          console.error("Could not parse saved progress", e);
-        }
-      }
-    }
+    /* =========================================================================
+       UI VIEW ROUTER
+       ========================================================================= */
 
-    function renderHomeScreen() {
-      // Calculate overall progress across all modules
-      const totalUnits = 12 + 24 + 30 + 18;
-      const totalDone = CURRICULUM_DATA.foundations.completed +
-                        CURRICULUM_DATA.operations.completed +
-                        CURRICULUM_DATA.advanced.completed +
-                        CURRICULUM_DATA.leadership.completed;
-      const pct = Math.round((totalDone / totalUnits) * 100);
-
-      document.getElementById("global-progress-percent").innerText = pct + "%";
-      document.getElementById("global-progress-bar").style.width = pct + "%";
-
-      // Render Stage 1 (Foundations)
-      document.getElementById("foundations-completion").innerText = `${CURRICULUM_DATA.foundations.completed}/12 Done`;
-
-      // Render Stage 2 (Operations)
-      const opCard = document.getElementById("stage-card-operations");
-      if (CURRICULUM_DATA.operations.unlocked) {
-        opCard.classList.remove("locked");
-        document.getElementById("operations-status").innerText = "ACTIVE";
-        document.getElementById("operations-status").style.color = "var(--accent-blue)";
-        document.getElementById("operations-completion").innerText = `${CURRICULUM_DATA.operations.completed}/24 Done`;
-      }
-
-      // Render Stage 3 (Advanced)
-      const advCard = document.getElementById("stage-card-advanced");
-      if (CURRICULUM_DATA.advanced.unlocked) {
-        advCard.classList.remove("locked");
-        document.getElementById("advanced-status").innerText = "ACTIVE";
-        document.getElementById("advanced-status").style.color = "var(--accent-amber)";
-        document.getElementById("advanced-completion").innerText = `${CURRICULUM_DATA.advanced.completed}/30 Done`;
-      }
-
-      // Render Stage 4 (Expert)
-      const leadCard = document.getElementById("stage-card-leadership");
-      if (CURRICULUM_DATA.leadership.unlocked) {
-        leadCard.classList.remove("locked");
-        document.getElementById("leadership-status").innerText = "ACTIVE";
-        document.getElementById("leadership-status").style.color = "var(--accent-rose)";
-        document.getElementById("leadership-completion").innerText = `${CURRICULUM_DATA.leadership.completed}/18 Done`;
-      }
-    }
-
-    function switchView(viewId) {
-      document.querySelectorAll(".view-panel").forEach(panel => panel.classList.remove("active"));
-      document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
-      
+    function openView(viewId) {
+      document.querySelectorAll(".view-screen").forEach(el => el.classList.remove("active"));
       const target = document.getElementById(viewId);
-      if (target) target.classList.add("active");
-
-      if (viewId === "home-view") document.getElementById("nav-btn-home").classList.add("active");
-      if (viewId === "glossary-view") document.getElementById("nav-btn-glossary").classList.add("active");
-      if (viewId === "certification-view") document.getElementById("nav-btn-cert").classList.add("active");
-      if (viewId === "search-view") document.getElementById("nav-btn-search").classList.add("active");
+      if (target) {
+        target.classList.add("active");
+        window.scrollTo(0, 0);
+      }
+      if (viewId === "jargons-view") renderJargons(JARGONS_DATABASE);
+      if (viewId === "analytics-view") renderAnalyticsView();
     }
 
-    function openModule(stageId) {
-      const stage = CURRICULUM_DATA[stageId];
-      if (!stage.unlocked) {
-        alert("This module is locked. Complete the earlier stages to unlock it.");
+    function refreshLandingTiles() {
+      // Tile 1: Beginner
+      const bPct = Math.round((TRACK_METRICS.beginner.completed / TRACK_METRICS.beginner.total) * 100);
+      document.getElementById("prog-beginner").innerText = `${bPct}% Complete`;
+
+      // Tile 2: Intermediate
+      const intTile = document.getElementById("tile-intermediate");
+      if (TRACK_METRICS.intermediate.unlocked) {
+        intTile.classList.remove("locked");
+        document.getElementById("badge-intermediate").innerText = "UNLOCKED";
+        document.getElementById("badge-intermediate").style.color = "var(--accent-blue)";
+        const iPct = Math.round((TRACK_METRICS.intermediate.completed / TRACK_METRICS.intermediate.total) * 100);
+        document.getElementById("prog-intermediate").innerText = `${iPct}% Complete`;
+      }
+
+      // Tile 3: Advanced
+      const advTile = document.getElementById("tile-advanced");
+      if (TRACK_METRICS.advanced.unlocked) {
+        advTile.classList.remove("locked");
+        document.getElementById("badge-advanced").innerText = "UNLOCKED";
+        document.getElementById("badge-advanced").style.color = "var(--accent-amber)";
+        const aPct = Math.round((TRACK_METRICS.advanced.completed / TRACK_METRICS.advanced.total) * 100);
+        document.getElementById("prog-advanced").innerText = `${aPct}% Complete`;
+      }
+
+      // Tile 4: Expert
+      const expTile = document.getElementById("tile-expert");
+      if (TRACK_METRICS.expert.unlocked) {
+        expTile.classList.remove("locked");
+        document.getElementById("badge-expert").innerText = "UNLOCKED";
+        document.getElementById("badge-expert").style.color = "var(--accent-rose)";
+        const ePct = Math.round((TRACK_METRICS.expert.completed / TRACK_METRICS.expert.total) * 100);
+        document.getElementById("prog-expert").innerText = `${ePct}% Complete`;
+      }
+
+      // Total Completion Calculation
+      const totalUnits = TRACK_METRICS.beginner.total + TRACK_METRICS.intermediate.total + TRACK_METRICS.advanced.total + TRACK_METRICS.expert.total;
+      const totalDone = TRACK_METRICS.beginner.completed + TRACK_METRICS.intermediate.completed + TRACK_METRICS.advanced.completed + TRACK_METRICS.expert.completed;
+      const grandPct = Math.round((totalDone / totalUnits) * 100);
+      document.getElementById("total-pct-badge").innerText = `${grandPct}% Total`;
+    }
+
+    function openTrack(trackId) {
+      const track = TRACK_METRICS[trackId];
+      if (!track.unlocked) {
+        alert("This block is locked. You must complete the earlier stage to unlock it.");
         return;
       }
+      currentTrackId = trackId;
+      document.getElementById("explorer-track-name").innerText = track.title;
+      document.getElementById("explorer-track-desc").innerText = track.desc;
 
-      document.getElementById("reader-stage-title").innerText = stage.title;
-      document.getElementById("reader-content").innerHTML = stage.lessonContent.html;
-      
-      // Add completion trigger button at bottom of module
-      const footerBtn = document.createElement("div");
-      footerBtn.style.marginTop = "30px";
-      footerBtn.innerHTML = `
-        <button class="back-btn" style="width:100%; padding:14px; background:var(--accent-blue); border:none; color:#fff;" onclick="completeModule('${stageId}')">
-          Mark Lesson Complete & Save Progress
-        </button>
-      `;
-      document.getElementById("reader-content").appendChild(footerBtn);
+      const listContainer = document.getElementById("explorer-submodules");
+      listContainer.innerHTML = "";
 
-      switchView("reader-view");
-      runRtbSandbox();
+      track.submodules.forEach((sub, idx) => {
+        const item = document.createElement("div");
+        item.className = "submodule-item";
+        item.onclick = () => loadFullLesson(trackId, sub);
+        item.innerHTML = `
+          <div>
+            <div style="font-size:0.75rem; color:var(--accent-cyan); font-weight:700;">MODULE ${idx + 1}</div>
+            <div style="font-size:0.9rem; font-weight:700; color:var(--text-primary);">${sub.title}</div>
+          </div>
+          <span style="font-size:1.1rem; color:var(--text-muted);">→</span>
+        `;
+        listContainer.appendChild(item);
+      });
+
+      openView("track-explorer-view");
     }
 
-    function completeModule(stageId) {
-      const stage = CURRICULUM_DATA[stageId];
-      if (stage.completed < stage.totalLessons) {
-        stage.completed = stage.totalLessons; // Mark module complete
+    /* =========================================================================
+       DYNAMIC KNOWLEDGE ENGINE (REAL-TIME ONLINE SOURCES)
+       ========================================================================= */
+
+    async function loadFullLesson(trackId, submodule) {
+      currentSubmoduleId = submodule.id;
+      document.getElementById("reader-breadcrumb").innerText = submodule.title;
+      document.getElementById("reader-stream").innerHTML = "<div class='loader' style='display:block;'>Connecting to Global Knowledge Streams (IAB/Wikipedia Engine)...</div>";
+      openView("reader-view");
+
+      let onlineText = "";
+      try {
+        // Query Wikipedia REST API for real-time article extracts
+        const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(submodule.topic)}`);
+        if (res.ok) {
+          const data = await res.json();
+          onlineText = `
+            <h2>${data.title}</h2>
+            <p><strong>Operational Architecture Overview:</strong> ${data.extract}</p>
+            <p style="font-size:0.8rem; color:var(--text-muted);"><a href="${data.content_urls.desktop.page}" target="_blank" style="color:var(--accent-cyan);">Read full reference manual on Wikipedia ↗</a></p>
+          `;
+        }
+      } catch (err) {
+        console.warn("Real-time network stream fallback triggered", err);
       }
 
-      // Progression logic: unlock next stage
-      if (stageId === "foundations") {
-        CURRICULUM_DATA.operations.unlocked = true;
-      } else if (stageId === "operations") {
-        CURRICULUM_DATA.advanced.unlocked = true;
-      } else if (stageId === "advanced") {
-        CURRICULUM_DATA.leadership.unlocked = true;
+      // Generate structured 70/20/5/5 content
+      const contentHtml = `
+        ${onlineText || `<h2>${submodule.title}</h2><p>In digital ad operations, this module covers the real-world execution of publisher and advertiser delivery architectures.</p>`}
+        
+        <!-- 70% Operational Deep Dive -->
+        <h3>Production Workflow & Technical Specifications</h3>
+        <p>
+          Understanding this module requires mastering the end-to-end handshake between user browsers, edge servers, SSP wrappers, and DSP decision nodes. In high-volume trafficking, misconfiguring key-values, line-item priorities, or floor pricing can immediately cause revenue losses or under-delivery penalties.
+        </p>
+        <ul>
+          <li><strong>Direct vs. Programmatic Priority:</strong> How internal auction engines arbitrate between direct line-item commitments and OpenRTB bids.</li>
+          <li><strong>Ad Call Lifecycle:</strong> From client-side JavaScript execution to final pixel tracking.</li>
+          <li><strong>Latency Budgets:</strong> Managing the 100ms response window across server hops to prevent auction timeouts.</li>
+        </ul>
+
+        <!-- 20% Architecture Diagram -->
+        <div class="diagram-panel">
+          <svg viewBox="0 0 420 110" width="100%" height="100%" style="max-height:140px;">
+            <rect x="10" y="30" width="80" height="50" rx="8" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+            <text x="50" y="55" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Ad Request</text>
+            <text x="50" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Browser / App</text>
+
+            <path d="M 90 55 L 130 55" stroke="#06b6d4" stroke-width="2"/>
+
+            <rect x="135" y="30" width="80" height="50" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+            <text x="175" y="55" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Prebid Wrapper</text>
+            <text x="175" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Parallel Auction</text>
+
+            <path d="M 215 55 L 255 55" stroke="#3b82f6" stroke-width="2"/>
+
+            <rect x="260" y="30" width="80" height="50" rx="8" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+            <text x="300" y="55" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="middle">Ad Server (GAM)</text>
+            <text x="300" y="68" fill="#94a3b8" font-size="8" text-anchor="middle">Priority Decision</text>
+
+            <path d="M 340 55 L 375 55" stroke="#8b5cf6" stroke-width="2"/>
+
+            <rect x="380" y="38" width="30" height="34" rx="4" fill="#10b981"/>
+            <text x="395" y="58" fill="#fff" font-size="8" font-weight="bold" text-anchor="middle">Win</text>
+          </svg>
+          <div class="diagram-caption">Figure: OpenRTB Header Bidding to GAM Decision Path</div>
+        </div>
+
+        <!-- 5% Interactive Calculator -->
+        <div class="interactive-box">
+          <div class="interactive-title">Live Yield & Delivery Sandbox</div>
+          <div class="control-row">
+            <div class="control-labels">
+              <span>Goal Impressions (Delivered / Goal)</span>
+              <span id="calc-impr-display">850,000 / 1,000,000</span>
+            </div>
+            <input type="range" id="calc-impr" min="100000" max="2000000" step="50000" value="850000" oninput="updateYieldSandbox()"/>
+          </div>
+          <div class="control-row">
+            <div class="control-labels">
+              <span>Campaign Time Elapsed (%)</span>
+              <span id="calc-time-display">90%</span>
+            </div>
+            <input type="range" id="calc-time" min="1" max="100" step="1" value="90" oninput="updateYieldSandbox()"/>
+          </div>
+          <div class="calc-output" id="calc-output-box">Evaluating pacing metrics...</div>
+        </div>
+
+        <!-- 5% Sample Verification Quizzes -->
+        <div class="quiz-container">
+          <div class="quiz-q">Check 1: What is the primary difference between a first-price auction and a legacy second-price auction in real-time bidding?</div>
+          <div class="quiz-options-group">
+            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! In a first-price auction, the winning buyer pays their submitted bid price, reducing bid-shading complexity.')">A. The winning buyer pays their submitted bid amount exactly.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Paying one cent above the second-highest bid is the definition of a second-price auction.')">B. The winning buyer pays $0.01 above the second-highest bid.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: First-price auctions do not average buyer bids.')">C. The winning price is the mathematical average of all submitted bids.</button>
+          </div>
+          <div class="quiz-expl"></div>
+        </div>
+
+        <div class="quiz-container">
+          <div class="quiz-q">Check 2: If a third-party creative tag fails to fire impression tracking pixels while serving, what operational error occurs?</div>
+          <div class="quiz-options-group">
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Click-through rates measure user clicks relative to impressions.')">A. The ad server defaults to an automatic 100% CTR.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! The publisher serves the ad, but the buyer logs zero impressions, causing an impression discrepancy.')">B. An impression discrepancy arises between publisher and buyer billing logs.</button>
+            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: VAST errors do not alter floor prices.')">C. The publisher floor price drops automatically.</button>
+          </div>
+          <div class="quiz-expl"></div>
+        </div>
+      `;
+
+      document.getElementById("reader-stream").innerHTML = contentHtml;
+      updateYieldSandbox();
+    }
+
+    function markLessonComplete() {
+      const track = TRACK_METRICS[currentTrackId];
+      if (track.completed < track.total) {
+        track.completed += 1;
+      }
+
+      // Unlock progression rules
+      if (currentTrackId === "beginner" && track.completed >= 1) {
+        TRACK_METRICS.intermediate.unlocked = true;
+      } else if (currentTrackId === "intermediate" && track.completed >= 1) {
+        TRACK_METRICS.advanced.unlocked = true;
+      } else if (currentTrackId === "advanced" && track.completed >= 1) {
+        TRACK_METRICS.expert.unlocked = true;
       }
 
       saveState();
-      renderHomeScreen();
-      alert("Lesson marked as complete! Unlocked track state updated.");
-      switchView("home-view");
+      refreshLandingTiles();
+      alert(`Progress logged! Lesson marked as complete.`);
+      openView("track-explorer-view");
     }
 
     /* =========================================================================
-       INTERACTIVE SANDBOX & QUIZ ENGINES
+       INTERACTIVE SANDBOXES & QUIZZES
        ========================================================================= */
 
-    function runRtbSandbox() {
-      const floorInput = document.getElementById("input-floor");
-      const bidInput = document.getElementById("input-bid");
-      if (!floorInput || !bidInput) return;
+    function updateYieldSandbox() {
+      const imprInput = document.getElementById("calc-impr");
+      const timeInput = document.getElementById("calc-time");
+      if (!imprInput || !timeInput) return;
 
-      const floor = parseFloat(floorInput.value);
-      const bid = parseFloat(bidInput.value);
+      const delivered = parseFloat(imprInput.value);
+      const goal = 1000000;
+      const timePct = parseFloat(timeInput.value);
 
-      document.getElementById("display-floor").innerText = `$${floor.toFixed(2)}`;
-      document.getElementById("display-bid").innerText = `$${bid.toFixed(2)}`;
+      document.getElementById("calc-impr-display").innerText = `${delivered.toLocaleString()} / ${goal.toLocaleString()}`;
+      document.getElementById("calc-time-display").innerText = `${timePct}%`;
 
-      const log = document.getElementById("sandbox-log");
-      if (bid >= floor) {
-        log.style.color = "var(--accent-emerald)";
-        log.innerText = `[AUCTION SUCCESS: 200 OK]\n` +
-          `-> Publisher Floor: $${floor.toFixed(2)}\n` +
-          `-> Winning DSP Bid: $${bid.toFixed(2)}\n` +
-          `-> Auction Model: First-Price Clear\n` +
-          `-> Net Publisher Revenue (eCPM): $${bid.toFixed(2)}\n` +
-          `-> Creative Payload dispatched to browser in 48ms.`;
+      const deliveryPct = (delivered / goal) * 100;
+      const pacingIndex = (deliveryPct / timePct).toFixed(2);
+      const out = document.getElementById("calc-output-box");
+
+      let verdict = "";
+      if (pacingIndex < 0.90) {
+        out.style.color = "var(--accent-rose)";
+        verdict = "[CRITICAL UNDER-PACING]\nLine item is delivering below schedule. Action: Broaden geo/device targeting or increase line-item priority tier.";
+      } else if (pacingIndex > 1.10) {
+        out.style.color = "var(--accent-amber)";
+        verdict = "[OVER-PACING WARNING]\nLine item is consuming daily budget too fast. Action: Set strict daily impression caps.";
       } else {
-        log.style.color = "var(--accent-rose)";
-        log.innerText = `[BID REJECTED: 204 NO CONTENT]\n` +
-          `-> Publisher Floor: $${floor.toFixed(2)}\n` +
-          `-> DSP Submitted Bid: $${bid.toFixed(2)}\n` +
-          `-> Reason: Below minimum yield threshold.\n` +
-          `-> Fallback: Inventory passed to downstream Ad Server waterfall.`;
+        out.style.color = "var(--accent-emerald)";
+        verdict = "[OPTIMAL DELIVERY]\nPacing is on schedule. Minimal revenue loss or discrepancy expected.";
       }
+
+      out.innerText = `PACING INDEX: ${pacingIndex}\nDelivered: ${deliveryPct.toFixed(1)}% | Time Elapsed: ${timePct}%\n${verdict}`;
     }
 
-    function evaluateQuiz(buttonElement, isCorrect, explanation) {
-      const parent = buttonElement.closest(".quiz-card");
-      parent.querySelectorAll(".quiz-option").forEach(btn => {
-        btn.disabled = true;
-      });
-
-      const feedback = parent.querySelector(".quiz-feedback");
-      feedback.style.display = "block";
-      feedback.innerText = explanation;
+    function checkQuiz(btn, isCorrect, explanation) {
+      const parent = btn.closest(".quiz-container");
+      parent.querySelectorAll(".quiz-btn").forEach(b => b.disabled = true);
+      const expl = parent.querySelector(".quiz-expl");
+      expl.style.display = "block";
+      expl.innerText = explanation;
 
       if (isCorrect) {
-        buttonElement.classList.add("correct");
-        feedback.style.color = "var(--accent-emerald)";
+        btn.classList.add("correct");
+        expl.style.color = "var(--accent-emerald)";
       } else {
-        buttonElement.classList.add("incorrect");
-        feedback.style.color = "var(--accent-rose)";
+        btn.classList.add("incorrect");
+        expl.style.color = "var(--accent-rose)";
       }
     }
 
     /* =========================================================================
-       LEXICON & SEARCH ENGINES
+       GLOBAL WEB SEARCH ENGINE (TILE 7)
        ========================================================================= */
 
-    function lookupJargon(key) {
-      const item = LEXICON[key];
-      if (!item) return;
-      document.getElementById("modal-term-title").innerText = item.term;
-      document.getElementById("modal-term-description").innerText = item.definition;
-      document.getElementById("jargon-modal").classList.add("open");
+    async function executeGlobalSearch() {
+      const query = document.getElementById("global-web-query").value.trim();
+      if (!query) return;
+
+      const loader = document.getElementById("search-loader");
+      const resultsContainer = document.getElementById("global-search-results");
+      loader.style.display = "block";
+      resultsContainer.innerHTML = "";
+
+      try {
+        // Query Wikipedia Open Search REST API for real-time online results
+        const endpoint = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=6&namespace=0&format=json&origin=*`;
+        const res = await fetch(endpoint);
+        const data = await res.json();
+        loader.style.display = "none";
+
+        const titles = data[1] || [];
+        const descriptions = data[2] || [];
+        const urls = data[3] || [];
+
+        if (titles.length === 0) {
+          resultsContainer.innerHTML = "<div style='color:var(--text-muted); font-size:0.85rem;'>No matches found on the open web. Try terms like 'Header Bidding', 'Ad Server', or 'DSP'.</div>";
+          return;
+        }
+
+        titles.forEach((title, i) => {
+          const item = document.createElement("div");
+          item.className = "tile";
+          item.style.minHeight = "auto";
+          item.innerHTML = `
+            <div class="api-badge">Open Web Verified</div>
+            <div class="tile-title" style="color:var(--accent-cyan);">${title}</div>
+            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Detailed entry available on the live web registry."}</div>
+            <a href="${urls[i]}" target="_blank" style="color:var(--accent-blue); font-size:0.75rem; text-decoration:none; font-weight:700;">Open Reference Manual ↗</a>
+          `;
+          resultsContainer.appendChild(item);
+        });
+
+      } catch (err) {
+        loader.style.display = "none";
+        resultsContainer.innerHTML = `<div style="color:var(--accent-rose); font-size:0.85rem;">Failed to fetch live results: ${err.message}</div>`;
+      }
     }
 
-    function closeModal(e) {
-      document.getElementById("jargon-modal").classList.remove("open");
-    }
+    /* =========================================================================
+       JARGONS & ANALYTICS RENDERING
+       ========================================================================= */
 
-    function renderGlossaryIndex() {
-      const container = document.getElementById("glossary-list");
+    function renderJargons(list) {
+      const container = document.getElementById("jargons-container");
       container.innerHTML = "";
-      Object.keys(LEXICON).forEach(key => {
-        const item = LEXICON[key];
-        const card = document.createElement("div");
-        card.className = "stage-card";
-        card.style.cursor = "default";
-        card.innerHTML = `
-          <div class="stage-name" style="color:var(--accent-cyan);">${item.term}</div>
-          <div class="stage-desc">${item.definition}</div>
+      list.forEach(j => {
+        const item = document.createElement("div");
+        item.className = "tile";
+        item.style.minHeight = "auto";
+        item.innerHTML = `
+          <div class="tile-title" style="color:var(--accent-violet);">${j.term} - ${j.title}</div>
+          <div class="tile-subtitle" style="margin-top:4px;">${j.def}</div>
         `;
-        container.appendChild(card);
+        container.appendChild(item);
       });
     }
 
-    function filterGlossary() {
-      const query = document.getElementById("glossary-search").value.toLowerCase();
-      const container = document.getElementById("glossary-list");
-      container.innerHTML = "";
-      Object.keys(LEXICON).forEach(key => {
-        const item = LEXICON[key];
-        if (item.term.toLowerCase().includes(query) || item.definition.toLowerCase().includes(query)) {
-          const card = document.createElement("div");
-          card.className = "stage-card";
-          card.innerHTML = `
-            <div class="stage-name" style="color:var(--accent-cyan);">${item.term}</div>
-            <div class="stage-desc">${item.definition}</div>
-          `;
-          container.appendChild(card);
-        }
-      });
+    function filterJargonList() {
+      const query = document.getElementById("jargon-input").value.toLowerCase();
+      const filtered = JARGONS_DATABASE.filter(j => 
+        j.term.toLowerCase().includes(query) || 
+        j.title.toLowerCase().includes(query) || 
+        j.def.toLowerCase().includes(query)
+      );
+      renderJargons(filtered);
     }
 
-    function handleGlobalSearch() {
-      const query = document.getElementById("global-search-input").value.toLowerCase();
-      const container = document.getElementById("search-results-list");
-      container.innerHTML = "";
-      if (!query.trim()) return;
+    function renderAnalyticsView() {
+      const totalUnits = TRACK_METRICS.beginner.total + TRACK_METRICS.intermediate.total + TRACK_METRICS.advanced.total + TRACK_METRICS.expert.total;
+      const totalDone = TRACK_METRICS.beginner.completed + TRACK_METRICS.intermediate.completed + TRACK_METRICS.advanced.completed + TRACK_METRICS.expert.completed;
+      const grandPct = Math.round((totalDone / totalUnits) * 100);
+      document.getElementById("analytics-grand-pct").innerText = `${grandPct}%`;
 
-      // Search Lexicon
-      Object.keys(LEXICON).forEach(key => {
-        const item = LEXICON[key];
-        if (item.term.toLowerCase().includes(query) || item.definition.toLowerCase().includes(query)) {
-          const res = document.createElement("div");
-          res.className = "stage-card";
-          res.onclick = () => lookupJargon(key);
-          res.innerHTML = `
-            <div class="stage-badge badge-foundations" style="width:max-content; margin-bottom:4px;">Lexicon Match</div>
-            <div class="stage-name">${item.term}</div>
-            <div class="stage-desc">${item.definition}</div>
-          `;
-          container.appendChild(res);
-        }
-      });
-
-      // Search Modules
-      Object.keys(CURRICULUM_DATA).forEach(stageKey => {
-        const stage = CURRICULUM_DATA[stageKey];
-        if (stage.title.toLowerCase().includes(query) || stage.lessonContent.title.toLowerCase().includes(query)) {
-          const res = document.createElement("div");
-          res.className = "stage-card";
-          res.onclick = () => openModule(stageKey);
-          res.innerHTML = `
-            <div class="stage-badge badge-operations" style="width:max-content; margin-bottom:4px;">Curriculum Lesson</div>
-            <div class="stage-name">${stage.lessonContent.title}</div>
-            <div class="stage-desc">From Track: ${stage.title}</div>
-          `;
-          container.appendChild(res);
-        }
-      });
+      const breakdown = document.getElementById("analytics-breakdown");
+      breakdown.innerHTML = `
+        <div class="tile" style="min-height:auto;">
+          <div class="tile-title">1. Beginner (Days 1-20)</div>
+          <div class="tile-subtitle">Completed: ${TRACK_METRICS.beginner.completed} / ${TRACK_METRICS.beginner.total} modules</div>
+        </div>
+        <div class="tile" style="min-height:auto;">
+          <div class="tile-title">2. Intermittent (Days 21-75)</div>
+          <div class="tile-subtitle">Status: ${TRACK_METRICS.intermediate.unlocked ? "Active" : "Locked"} | Completed: ${TRACK_METRICS.intermediate.completed} / ${TRACK_METRICS.intermediate.total} modules</div>
+        </div>
+        <div class="tile" style="min-height:auto;">
+          <div class="tile-title">3. Advanced (Days 76-120)</div>
+          <div class="tile-subtitle">Status: ${TRACK_METRICS.advanced.unlocked ? "Active" : "Locked"} | Completed: ${TRACK_METRICS.advanced.completed} / ${TRACK_METRICS.advanced.total} modules</div>
+        </div>
+        <div class="tile" style="min-height:auto;">
+          <div class="tile-title">4. Expert (Days 121-180)</div>
+          <div class="tile-subtitle">Status: ${TRACK_METRICS.expert.unlocked ? "Active" : "Locked"} | Completed: ${TRACK_METRICS.expert.completed} / ${TRACK_METRICS.expert.total} modules</div>
+        </div>
+      `;
     }
 
-    function startCertification(level) {
-      alert(`Launching the Level certification assessment for [${level.toUpperCase()}]. Passing score: 80% to generate credential.`);
+    function launchCertExam(blockName) {
+      alert(`Launching timed assessment for [Block: ${blockName}]. 30 Scenario-based AdOps questions loaded. Passing mark is 80%.`);
     }
 
-    // Initialize when DOM is ready
-    window.addEventListener("DOMContentLoaded", initializeApplication);
+    // App Initialization
+    window.addEventListener("DOMContentLoaded", () => {
+      loadState();
+      refreshLandingTiles();
+    });
   </script>
 </body>
 </html>
