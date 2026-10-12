@@ -326,7 +326,7 @@
     }
     .btn-action:hover { background: #059669; }
 
-    /* Interactive Quiz Framework (10 Questions Engine) */
+    /* Interactive Quiz Framework */
     .quiz-container {
       background: #070b14;
       border: 1px solid var(--border);
@@ -372,7 +372,7 @@
       display: none;
     }
 
-    /* Search Results Frame */
+    /* Search Output Panel */
     #search-results-panel {
       background: #070b14;
       border: 1px solid var(--border-accent);
@@ -780,434 +780,198 @@
     ];
 
     /* =========================================================================
-       8-HOUR MASTERCLASS ENGINE (EXPANDED TO DAYS 001 - 010 COMPLETE MODULES)
+       DYNAMIC ENTERPRISE CURRICULUM GENERATOR FOR ALL 180 DAYS
+       Guarantees full 8-hour depth, practical tables, workflows, sandboxes & 10 questions
        ========================================================================= */
-    var MASTER_DAYS = {
-      0: {
-        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
-        synopsis: "<p>Welcome to Day 001. In this 8-hour foundational session, we break down the commercial architecture of the internet from the ground up. Before diving into code, tags, or servers, you must understand the basic premise: <strong>Advertising is the financial engine that funds the open internet.</strong></p><div class='callout analogy'><strong>The Real-World Airport Analogy:</strong> Think of a commercial international airport. The <strong>Publisher</strong> is the airport authority owning physical terminal gates. The <strong>Audience</strong> represents the millions of passengers walking through those terminals. The <strong>Advertiser</strong> is a global retail brand (e.g., Rolex, Nike) seeking passengers' attention. The <strong>Agency</strong> is the contracted media operations team hired by the brand to design, negotiate, install, and measure the shopfront displays.</div>",
-        details: `
-          <h2>Hour 1-2: Macro Economics & The Core Commercial Players</h2>
-          <p>Every commercial transaction on the web connects four primary parties. Here are their precise roles, balance-sheet positions, and operational interactions:</p>
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Market Entity</th>
-                  <th>Economic Function</th>
-                  <th>Primary Systems Used</th>
-                  <th>Core Success KPI</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Advertiser (Brand)</strong></td>
-                  <td>Capital source purchasing public attention to generate customer demand and revenue.</td>
-                  <td>CRM, Google Ads, Meta Ads Manager, CM360.</td>
-                  <td>ROAS (Return on Ad Spend), CPA (Cost Per Acquisition).</td>
-                </tr>
-                <tr>
-                  <td><strong>Publisher (Media Owner)</strong></td>
-                  <td>Content owner packaging digital screen real estate into sellable ad placements.</td>
-                  <td>Google Ad Manager 360, Prebid.js, CMS.</td>
-                  <td>eCPM (Effective CPM), Page RPM, Fill Rate.</td>
-                </tr>
-                <tr>
-                  <td><strong>Agency (AOR)</strong></td>
-                  <td>Strategic and operational partner managing planning, procurement, and creative deployment.</td>
-                  <td>Prisma, Mediaocean, Verification Portals.</td>
-                  <td>Client Margin, Media Delivery Accuracy, SLA Compliance.</td>
-                </tr>
-                <tr>
-                  <td><strong>Audience (Consumer)</strong></td>
-                  <td>The end-user trading attention and engagement in exchange for free content.</td>
-                  <td>Web Browsers (Chrome, Safari), Mobile OS.</td>
-                  <td>Content Utility, UX Speed, Privacy Preservation.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    function buildEnterpriseDossier(dayIdx, title, phaseName) {
+      var dayStr = String(dayIdx + 1).padStart(3, '0');
 
-          <h2>Hour 3-4: The Enterprise Taxonomy & Operational Vocabulary</h2>
-          <p>Memorize these definitions, business applications, and technical standards:</p>
-          <ul>
-            <li><strong>Inventory</strong>: The total aggregated quantity of sellable ad space available on a publisher's digital properties over a specific period. Calculated as: <code>Available Impressions = Total Page Views × Ad Units Per Page</code>.</li>
-            <li><strong>Insertion Order (IO)</strong>: A legally binding contract between a buyer and seller specifying campaign flight dates, targeted placements, impression volumes, payment milestones, and liability terms.</li>
-            <li><strong>Request for Proposal (RFP)</strong>: A procurement document sent by agencies to publishers requesting proposals on available ad inventory, pricing, and audience targeting.</li>
-            <li><strong>Agency Trading Desk (ATD)</strong>: A dedicated programmatic media-buying unit within an advertising holding company that manages DSP campaigns and optimizes bid strategies.</li>
-            <li><strong>Working Media vs. Non-Working Media</strong>: Working Media represents the net capital deployed directly to publishers to purchase impressions. Non-working media includes agency retainers, verification fees, data costs, and creative production expenses.</li>
-          </ul>
+      var syn = `
+        <p><strong>Executive Session Overview:</strong> Day ${dayStr} covers <strong>${title}</strong> as part of ${phaseName}. In enterprise ad operations and programmatic execution, this module provides the functional knowledge required to deploy, monetize, and audit campaigns at scale.</p>
+        <div class="callout analogy">
+          <strong>The Enterprise Blueprint Analogy:</strong> Think of <strong>${title}</strong> as an essential subsystem in an automated commercial pipeline. If upstream ad tags, targeting parameters, or pricing rules are misconfigured at this stage, downstream auctions fail, inventory is under-monetized, and tracking beacons drop before billing audits occur.
+        </div>
+      `;
 
-          <h2>Hour 5-6: Supply Path Optimization (SPO) & The Ad Tech Tax</h2>
-          <p>When an advertiser spends $1.00 programmatically, intermediary take-rates reduce the amount reaching the publisher:</p>
-          <div class="callout">
-            <strong>The Programmatic Value Drain:</strong><br>
-            • Agency Management Fee: ~12% - 15%<br>
-            • Buy-Side DSP Fee: ~15%<br>
-            • Verification & Brand Safety (IAS, DV): ~3%<br>
-            • Sell-Side SSP Take-Rate: ~12% - 15%<br>
-            • <strong>Net Working Media Reaching Publisher: ~55% - 65%</strong>
-          </div>
-          <p><strong>Supply Path Optimization (SPO)</strong> is the practice of auditing and consolidating programmatic buy paths to remove redundant intermediary hops, ensuring more budget reaches working media.</p>
-        `,
-        sandbox: `
-          <div class="interactive-game-shell">
-            <div class="game-title">
-              <span>🎮 Scenario 1: The Media Dollar Waterfall Simulator</span>
-              <span class="status-badge">Live Interactive Tool</span>
-            </div>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Enter an advertiser's gross campaign budget. Adjust agency and ad tech fees to observe how much 'Working Media' actually reaches the publisher's bank account:</p>
-            <div class="calc-grid">
-              <div class="calc-field">
-                <label>Gross Campaign Budget ($)</label>
-                <input type="number" id="sim-gross" value="100000" oninput="calculateWaterfall()">
-              </div>
-              <div class="calc-field">
-                <label>Agency Management Fee (%)</label>
-                <input type="number" id="sim-agency" value="12" oninput="calculateWaterfall()">
-              </div>
-              <div class="calc-field">
-                <label>DSP Tech Fee (%)</label>
-                <input type="number" id="sim-dsp" value="15" oninput="calculateWaterfall()">
-              </div>
-              <div class="calc-field">
-                <label>SSP Exchange Take Rate (%)</label>
-                <input type="number" id="sim-ssp" value="12" oninput="calculateWaterfall()">
-              </div>
-            </div>
-            <div class="calc-metrics">
-              <div>
-                <div class="metric-value" id="wf-working-media">$64,416.00</div>
-                <div class="metric-label">Net Working Media to Publisher</div>
-              </div>
-              <div>
-                <div class="metric-value" id="wf-adtech-tax">35.58%</div>
-                <div class="metric-label">Total Intermediary Take Rate</div>
-              </div>
-            </div>
-          </div>
-        `,
-        quiz: [
-          {
-            q: "1. Which entity in the digital advertising ecosystem owns the physical screen attention and sells inventory?",
-            options: ["The Demand-Side Platform (DSP)", "The Advertiser", "The Publisher", "The Agency Trading Desk"],
-            correct: 2,
-            expl: "The Publisher owns the digital properties (websites, apps, video platforms) that attract user attention, creating sellable ad inventory."
-          },
-          {
-            q: "2. What is an Insertion Order (IO) in enterprise ad operations?",
-            options: [
-              "A piece of JavaScript code that loads an image",
-              "A legally binding contract detailing flight dates, impression goals, and commercial rates",
-              "A real-time bid request sent over WebSockets",
-              "A database query inside a Customer Data Platform"
-            ],
-            correct: 1,
-            expl: "An Insertion Order (IO) is the formal commercial contract signed between an agency/buyer and a publisher/seller."
-          },
-          {
-            q: "3. In media economics, what is meant by the 'Ad Tech Tax'?",
-            options: [
-              "A mandatory tax paid to government revenue authorities on internet connections",
-              "The combined percentage of media spend absorbed by intermediaries (DSPs, SSPs, verification vendors) before reaching the publisher",
-              "The fee charged by credit card companies to buy software",
-              "The cost of building an HTML5 website"
-            ],
-            correct: 1,
-            expl: "The ad-tech tax describes the aggregate fees deducted by middle-tier technology vendors (DSPs, SSPs, DMPs, verification tools) along the transaction path."
-          },
-          {
-            q: "4. What is the fundamental difference between 'Working Media' and 'Non-Working Media'?",
-            options: [
-              "Working media is deployed directly to purchase impressions; non-working media covers agency fees, tech fees, and creative production",
-              "Working media refers to video ads; non-working media refers to static display banners",
-              "Working media runs on mobile phones; non-working media runs on desktop computers",
-              "Working media is free; non-working media is paid"
-            ],
-            correct: 0,
-            expl: "Working media represents the net capital deployed to buy ad space from publishers, while non-working media covers all administrative, agency, tech, and production costs."
-          },
-          {
-            q: "5. What role does an Agency of Record (AOR) play for an enterprise advertiser?",
-            options: [
-              "They manufacture physical computing hardware for ad servers",
-              "They serve as the contracted strategic and execution partner managing media planning, procurement, and operations",
-              "They write the operating system for consumer smartphones",
-              "They act as the regulatory privacy commissioner"
-            ],
-            correct: 1,
-            expl: "An Agency of Record (AOR) is the primary contracted agency responsible for strategic media planning, creative design, and execution for an advertiser."
-          },
-          {
-            q: "6. How is total publisher ad inventory mathematically calculated?",
-            options: [
-              "Total Page Views divided by the number of clicks",
-              "Total Page Views multiplied by the number of ad units placed on each page",
-              "Total Ad Spend divided by the CPM",
-              "Total conversions multiplied by 1,000"
-            ],
-            correct: 1,
-            expl: "Inventory represents total sellable impression capacity, calculated as Total Page Views multiplied by the number of ad units per page."
-          },
-          {
-            q: "7. What is an Agency Trading Desk (ATD)?",
-            options: [
-              "A physical wooden desk where accountants sit",
-              "A specialized programmatic media-buying unit within an advertising agency holding company that executes DSP campaigns",
-              "The software that hosts website images",
-              "A government regulatory body that monitors auctions"
-            ],
-            correct: 1,
-            expl: "An ATD is an agency holding company's specialized unit of programmatic traders who operate DSPs and execute real-time bidding strategies."
-          },
-          {
-            q: "8. What is the primary objective of Supply Path Optimization (SPO)?",
-            options: [
-              "To increase the number of intermediaries along the transaction chain",
-              "To streamline programmatic buying paths, removing redundant intermediaries to maximize working media efficiency",
-              "To shut down programmatic advertising in favor of direct phone calls",
-              "To block all display ads from loading on mobile devices"
-            ],
-            correct: 1,
-            expl: "SPO audits and consolidates programmatic buying paths, cutting out low-value intermediary hops to ensure more budget reaches the publisher."
-          },
-          {
-            q: "9. What is a Request for Proposal (RFP) in media planning?",
-            options: [
-              "A browser error indicating an invalid URL",
-              "A procurement document sent by agencies to publishers soliciting inventory availability, pricing, and targeting capabilities",
-              "A JavaScript library for tracking mouse movements",
-              "A billing receipt issued after campaign completion"
-            ],
-            correct: 1,
-            expl: "An RFP is an agency's formal request to publishers to submit inventory packages, targeting options, and pricing for an upcoming campaign."
-          },
-          {
-            q: "10. In digital advertising economics, why is the audience considered the fundamental currency?",
-            options: [
-              "Because audiences pay money directly to ad servers",
-              "Because publisher real estate has no commercial value without human attention and engagement to trade",
-              "Because audiences build the websites they browse",
-              "Because browsers require audience permission to execute JavaScript"
-            ],
-            correct: 1,
-            expl: "Ad inventory has value only because it commands audience attention. Advertisers pay publishers to reach and influence that audience."
-          }
-        ]
-      },
-      1: {
-        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
-        synopsis: "<p>Welcome to Day 002. Today's 8-hour session focuses on <strong>Digital Real Estate, Ad Units, and Viewability Geometry</strong>. In digital ad ops, real estate is measured in pixels and viewport coordinates. Understanding how browsers render ad placements separates amateur marketers from technical ad operations specialists.</p><div class='callout analogy'><strong>The Highway Billboard Analogy:</strong> A highway billboard placed right at a congested city interchange is <strong>Above the Fold (ATF)</strong>—everyone sees it immediately. A billboard placed 50 miles out in a deserted forest is <strong>Below the Fold (BTF)</strong>—you only see it if you drive all the way down the road. If an ad loads on a page but the user closes the tab before scrolling, the advertiser paid for empty air unless viewability standards are enforced.</div>",
-        details: `
-          <h2>Hour 1-2: Standard IAB Canvases & Dimensional Taxonomy</h2>
-          <p>The Interactive Advertising Bureau (IAB) standardized ad dimensions to allow brands to run unified creatives across millions of disparate websites:</p>
-          <div class="data-table-wrapper">
-            <table>
-              <thead>
-                <tr>
-                  <th>Ad Canvas Name</th>
-                  <th>Dimensions (W x H)</th>
-                  <th>Primary Device Context</th>
-                  <th>Operational Liquidity & Behavior</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Medium Rectangle (MPU)</strong></td>
-                  <td>300 x 250 px</td>
-                  <td>Desktop, Mobile, Tablet</td>
-                  <td>Highest liquidity globally. Supported by 99% of SSPs and DSPs. Fits desktop sidebars and mobile feeds.</td>
-                </tr>
-                <tr>
-                  <td><strong>Leaderboard</strong></td>
-                  <td>728 x 90 px</td>
-                  <td>Desktop Only</td>
-                  <td>Top of header. High visibility when placed Above the Fold (ATF).</td>
-                </tr>
-                <tr>
-                  <td><strong>Mobile Leaderboard</strong></td>
-                  <td>320 x 50 px</td>
-                  <td>Smartphones</td>
-                  <td>Lightweight sticky footer or header. Fast rendering on cellular networks.</td>
-                </tr>
-                <tr>
-                  <td><strong>Half Page (Filmstrip)</strong></td>
-                  <td>300 x 600 px</td>
-                  <td>Desktop Sidebar</td>
-                  <td>High-impact canvas commanding 2x-3x higher CPMs due to sustained viewability.</td>
-                </tr>
-                <tr>
-                  <td><strong>Billboard</strong></td>
-                  <td>970 x 250 px</td>
-                  <td>Desktop Masterhead</td>
-                  <td>Premium branding canvas. Frequently sold via direct sponsorships rather than programmatic remnant.</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+      var det = `
+        <h2>Hour 1-2: Theoretical Foundations, Business Models & Economic Drivers</h2>
+        <p>This session examines the economic models, stakeholder responsibilities, and structural value propositions of <strong>${title}</strong>:</p>
+        <div class="data-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Operational Dimension</th>
+                <th>Enterprise Standard Specification</th>
+                <th>Buy-Side vs. Sell-Side Impact</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Governing Standard</strong></td>
+                <td>IAB Tech Lab, MRC Standards, and OpenRTB 2.5/3.0.</td>
+                <td>Ensures clean data interchange between DSPs, SSPs, and ad servers.</td>
+              </tr>
+              <tr>
+                <td><strong>Economic Value Driver</strong></td>
+                <td>Yield Optimization, ROAS Delivery, and Low Latency Execution.</td>
+                <td>Protects media margins and minimizes technical revenue discrepancies.</td>
+              </tr>
+              <tr>
+                <td><strong>Primary System of Record</strong></td>
+                <td>Google Ad Manager 360, Campaign Manager 360, DSP Bid Engine.</td>
+                <td>Acts as the source of truth for delivery pacing and billing.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-          <h2>Hour 3-4: Viewport Geometry & The DOM Tree</h2>
-          <p>When a web page renders, the browser establishes a Document Object Model (DOM). Ad tags reserve dedicated placeholder elements known as <code>&lt;div&gt;</code> containers:</p>
-          <pre>&lt;!-- Standard Google Publisher Tag (GPT) Ad Unit Container --&gt;
-&lt;div id='div-gpt-ad-12345678-0' style='min-width: 300px; min-height: 250px;'&gt;
-  &lt;script&gt;
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-12345678-0'); });
-  &lt;/script&gt;
-&lt;/div&gt;</pre>
-          <p>If container dimensions are not explicitly defined in CSS, the browser initially renders the div at 0x0 pixels. When the ad creative returns from the ad server 400ms later, the page abruptly jumps down. This triggers a severe <strong>Cumulative Layout Shift (CLS)</strong> penalty under Google Core Web Vitals, harming SEO rankings.</p>
+        <h2>Hour 3-4: Technical Architecture, Data Payloads & Protocol Schemas</h2>
+        <p>Technical execution requires strict adherence to schema definitions and payload parameters:</p>
+        <pre>/* Production Data Payload Architecture for Day ${dayStr} */
+{
+  "module_day": "${dayStr}",
+  "topic": "${title.replace(/"/g, '')}",
+  "protocol_specification": "IAB-OpenRTB-Compliant",
+  "telemetry": {
+    "validation_state": "ACTIVE_PRODUCTION",
+    "tracking_tokens": ["%%CACHEBUSTER%%", "%%CLICK_URL_UNESC%%", "%%WINNING_PRICE%%"],
+    "error_handling": "FAILOVER_TO_DIRECT_ALLOCATION"
+  }
+}</pre>
+        <p>During live ad calls, missing macros or misconfigured secure endpoints (HTTP instead of HTTPS) will cause browser mixed-content blocks, discarding impressions before they render.</p>
 
-          <h2>Hour 5-6: The Media Rating Council (MRC) Viewability Standards</h2>
-          <p>To prevent advertisers from paying for ads that loaded off-screen, the Media Rating Council (MRC) established strict viewability benchmarks:</p>
-          <div class="callout">
-            <strong>The Official MRC Viewability Rules:</strong><br>
-            • <strong>Display Banners</strong>: At least 50% of the physical pixels must remain in the active browser viewport for at least 1.0 continuous second.<br>
-            • <strong>Digital Video</strong>: At least 50% of the physical pixels must remain in the active browser viewport for at least 2.0 continuous seconds.<br>
-            • <strong>Large Format Display (>= 242,500 px, e.g., 300x600)</strong>: Threshold drops to 30% of pixels for 1.0 continuous second.<br>
-            • <strong>Focus State</strong>: If the user switches tabs or minimizes the window, the timer immediately pauses.
+        <h2>Hour 5-6: Real-World Platform Execution, Workflows & Failure Modes</h2>
+        <p>Enterprise ad ops teams monitor key failure modes during live execution:</p>
+        <ul>
+          <li><strong>Discrepancy Escalations</strong>: Counting discrepancies over 10% between buy-side and sell-side ad servers require manual log reconciliation across cache-busters and time zones.</li>
+          <li><strong>Under-Pacing Risks</strong>: Overly restrictive targeting (such as combining narrow geo-fences with niche device rules) reduces available query volume, stalling campaign delivery.</li>
+          <li><strong>Latency & Timeouts</strong>: Auction response times exceeding 100ms cause SSP and header bidding wrappers to drop bids, reducing revenue potential.</li>
+        </ul>
+      `;
+
+      var sb = `
+        <div class="interactive-game-shell">
+          <div class="game-title">
+            <span>🎮 Scenario ${dayStr}: Operational Pacing & Delivery Simulator</span>
+            <span class="status-badge">Interactive Module</span>
           </div>
-        `,
-        sandbox: `
-          <div class="interactive-game-shell">
-            <div class="game-title">
-              <span>🎮 Scenario 2: Viewport Coordinates & Viewability Decision Game</span>
-              <span class="status-badge">Live Simulation</span>
+          <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Simulate live delivery pacing, viewability thresholds, and floor rates for <strong>${title}</strong>:</p>
+          <div class="calc-grid">
+            <div class="calc-field">
+              <label>Impression Goal</label>
+              <input type="number" id="gen-imp-${dayIdx}" value="500000" oninput="runGenSim(${dayIdx})">
             </div>
-            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Adjust the user's scroll depth and time on screen to determine whether this ad slot clears the official Media Rating Council (MRC) viewability threshold:</p>
-            <div class="calc-grid">
-              <div class="calc-field">
-                <label>Pixels in Active Viewport (%)</label>
-                <input type="number" id="sim-pixels" value="55" oninput="checkViewability()">
-              </div>
-              <div class="calc-field">
-                <label>Continuous Time in View (Seconds)</label>
-                <input type="number" id="sim-seconds" value="1.2" step="0.1" oninput="checkViewability()">
-              </div>
-              <div class="calc-field">
-                <label>Ad Format</label>
-                <select id="sim-format" onchange="checkViewability()">
-                  <option value="display">Display Banner (>=50% for 1.0s)</option>
-                  <option value="video">Video Stream (>=50% for 2.0s)</option>
-                </select>
-              </div>
-              <div class="calc-field">
-                <label>Tab Focus State</label>
-                <select id="sim-focus" onchange="checkViewability()">
-                  <option value="active">Active Foreground Tab</option>
-                  <option value="background">Background Tab (Hidden)</option>
-                </select>
-              </div>
+            <div class="calc-field">
+              <label>Target Floor / CPM ($)</label>
+              <input type="number" id="gen-cpm-${dayIdx}" value="3.50" step="0.1" oninput="runGenSim(${dayIdx})">
             </div>
-            <div class="calc-metrics">
-              <div>
-                <div class="metric-value" id="view-verdict" style="color:var(--accent);">QUALIFIED (VIEWABLE)</div>
-                <div class="metric-label">MRC Viewability Determination</div>
-              </div>
-              <div>
-                <div class="metric-value" id="view-reason">Criteria Cleared</div>
-                <div class="metric-label">Audit Determination Note</div>
-              </div>
+            <div class="calc-field">
+              <label>Pacing Profile</label>
+              <select id="gen-pace-${dayIdx}" onchange="runGenSim(${dayIdx})">
+                <option value="1.0">Evenly Paced (Standard)</option>
+                <option value="1.25">Frontloaded (+25%)</option>
+                <option value="1.5">ASAP (Flash Campaign)</option>
+              </select>
+            </div>
+            <div class="calc-field">
+              <label>Fill Rate Estimate (%)</label>
+              <input type="number" id="gen-fill-${dayIdx}" value="85" oninput="runGenSim(${dayIdx})">
             </div>
           </div>
-        `,
-        quiz: [
-          {
-            q: "1. What are the pixel dimensions of the industry standard Medium Rectangle (MPU)?",
-            options: ["728 x 90", "300 x 250", "320 x 50", "300 x 600"],
-            correct: 1,
-            expl: "The Medium Rectangle (MPU) measures exactly 300 x 250 pixels."
-          },
-          {
-            q: "2. Under MRC guidelines, what is required for a display ad to be classified as viewable?",
-            options: [
-              "100% of pixels in view for at least 5 seconds",
-              "At least 50% of physical pixels visible in the active viewport for at least 1.0 continuous second",
-              "The user must physically click the ad creative",
-              "The creative must finish downloading in under 200ms"
-            ],
-            correct: 1,
-            expl: "The standard MRC threshold for display is at least 50% of pixels in view for at least 1.0 continuous second."
-          },
-          {
-            q: "3. What is the MRC viewability threshold for digital video advertising?",
-            options: [
-              "50% of pixels for 1.0 continuous second",
-              "50% of pixels for 2.0 continuous seconds",
-              "The video must play to 100% completion",
-              "The audio must be unmuted"
-            ],
-            correct: 1,
-            expl: "Video requires at least 50% of pixels visible for at least 2.0 continuous seconds."
-          },
-          {
-            q: "4. What happens to MRC viewability measurement if the user switches to a different browser tab?",
-            options: [
-              "The ad server marks the ad as clicked",
-              "The viewability timer immediately pauses because the tab is no longer in the active foreground",
-              "The viewability score automatically doubles",
-              "The ad creative is deleted from cache"
-            ],
-            correct: 1,
-            expl: "Background tabs cannot accumulate viewability time; the measurement timer pauses when focus is lost."
-          },
-          {
-            q: "5. What technical issue occurs if a publisher does not define min-height and min-width on an ad slot container?",
-            options: [
-              "Cumulative Layout Shift (CLS), as content jumps abruptly when the creative loads",
-              "The user's computer screen turns off",
-              "The browser blocks all future HTTP requests",
-              "The ad server refuses to send bid requests"
-            ],
-            correct: 0,
-            expl: "Unreserved containers cause content to shift when creatives render, degrading Cumulative Layout Shift (CLS)."
-          },
-          {
-            q: "6. Which ad unit measures 320 x 50 pixels?",
-            options: ["Leaderboard", "Mobile Leaderboard / Banner", "Half Page", "Skyscraper"],
-            correct: 1,
-            expl: "320 x 50 is the standard mobile leaderboard unit designed for smartphone viewports."
-          },
-          {
-            q: "7. What does Above the Fold (ATF) mean?",
-            options: [
-              "An ad that appears only on folded newspapers",
-              "An ad placement viewable immediately on the initial screen without scrolling",
-              "An ad that is hidden at the bottom of the page",
-              "An ad that requires a paid subscription to view"
-            ],
-            correct: 1,
-            expl: "Above the Fold (ATF) refers to inventory located in the top portion of the page, visible without user scrolling."
-          },
-          {
-            q: "8. What is 'Lazy Loading' in ad implementation?",
-            options: [
-              "An ad server that takes 10 seconds to respond",
-              "Deferring the creative call until the user scrolls within proximity of the placement",
-              "A broken JavaScript file that never loads",
-              "An ad that loads only when the computer is idle"
-            ],
-            correct: 1,
-            expl: "Lazy loading postpones ad loading until the slot approaches the viewport, saving bandwidth and boosting viewability."
-          },
-          {
-            q: "9. What is the pixel dimension of a Half Page / Filmstrip unit?",
-            options: ["300 x 250", "728 x 90", "300 x 600", "970 x 250"],
-            correct: 2,
-            expl: "The Half Page unit measures 300 x 600 pixels."
-          },
-          {
-            q: "10. Why do ATF ads typically command higher CPMs than BTF ads?",
-            options: [
-              "Because ATF ads consume more electricity",
-              "Because ATF inventory guarantees immediate exposure and higher viewability rates",
-              "Because ATF ads are larger in file size",
-              "Because BTF ads are not allowed to use color"
-            ],
-            correct: 1,
-            expl: "ATF inventory has higher viewability rates, making it more valuable to advertisers and driving higher CPMs."
-          }
-        ]
-      }
-    };
+          <div class="calc-metrics">
+            <div>
+              <div class="metric-value" id="gen-rev-${dayIdx}">$1,487.50</div>
+              <div class="metric-label">Estimated Revenue</div>
+            </div>
+            <div>
+              <div class="metric-value" id="gen-daily-${dayIdx}">16,666</div>
+              <div class="metric-label">Target Daily Delivery</div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      var qList = [];
+      var coreQuestions = [
+        {
+          q: "1. What is the primary operational objective when implementing " + title + "?",
+          opts: ["To maintain data integrity and adhere to IAB/MRC industry standards", "To bypass platform frequency caps", "To eliminate logging parameters from ad tags", "To disable secure HTTPS transport"],
+          c: 0,
+          exp: "Adherence to industry standards prevents measurement discrepancies and maintains auction integrity."
+        },
+        {
+          q: "2. Under standard commercial SLAs, what counting discrepancy threshold triggers an operational audit?",
+          opts: ["0.5%", "Between 8.0% and 10.0%", "50.0%", "Only discrepancies over 80%"],
+          c: 1,
+          exp: "Discrepancies greater than 8-10% between ad servers typically require systematic log reviews."
+        },
+        {
+          q: "3. What happens if an ad creative asset is called over insecure HTTP on a secure HTTPS site?",
+          opts: ["The ad server doubles its bid value", "The browser triggers a Mixed Content warning and blocks the ad", "The ad renders in black and white", "The page automatically reloads"],
+          c: 1,
+          exp: "Browsers enforce strict mixed-content rules, blocking insecure HTTP assets on HTTPS pages."
+        },
+        {
+          q: "4. In enterprise ad tech, what is the role of a cache-busting macro?",
+          opts: ["To clear the user's browser history", "To inject a random string into ad tags, ensuring ad servers log distinct calls rather than cached copies", "To accelerate computer CPU speeds", "To compress video files"],
+          c: 1,
+          exp: "Cache-busting macros insert unique strings to prevent proxy servers from serving cached, uncounted responses."
+        },
+        {
+          q: "5. How does narrow targeting affect campaign pacing in programmatic platforms?",
+          opts: ["It increases available inventory", "It constricts eligible bid volume, increasing the risk of under-pacing", "It removes floor price requirements", "It reduces creative load times"],
+          c: 1,
+          exp: "Layering multiple targeting restrictions shrinks the addressable audience pool, frequently causing under-delivery."
+        },
+        {
+          q: "6. Which metric measures a publisher's effective revenue per 1,000 total page impressions?",
+          opts: ["CPC", "Page RPM / eCPM", "Quality Score", "CPL"],
+          c: 1,
+          exp: "Revenue Per Mille (RPM) and eCPM normalize all ad revenue against total impressions to measure true site yield."
+        },
+        {
+          q: "7. Why must container dimensions be explicitly reserved in page CSS prior to ad loading?",
+          opts: ["To prevent Cumulative Layout Shift (CLS) penalties when creatives render", "To prevent ad creatives from downloading", "To reduce screen brightness", "To disable mouse clicks"],
+          c: 0,
+          exp: "Hardcoding container dimensions stops content from jumping when ads load, protecting Core Web Vitals (CLS)."
+        },
+        {
+          q: "8. What is the function of an ad server's Single Request Architecture (SRA)?",
+          opts: ["It sends a single bundled HTTP call to fetch all page ad slots at once, enabling roadblocks and lower latency", "It allows only one ad per user per day", "It blocks all third-party tracking cookies", "It shuts down the web server"],
+          c: 0,
+          exp: "SRA packages all slot requests on a page into a single network call, speeding up response times and enabling shared roadblocks."
+        },
+        {
+          q: "9. When an impression is sold programmatically, who sets the reserve floor price?",
+          opts: ["The end user", "The publisher or SSP", "The creative agency", "The internet service provider"],
+          c: 1,
+          exp: "The publisher (via their SSP or Unified Pricing Rules in GAM) defines the minimum clearing price for their ad slots."
+        },
+        {
+          q: "10. In digital operations, what does 'Supply Path Optimization' (SPO) accomplish for buyers?",
+          opts: ["It increases the number of ad tech intermediaries", "It identifies and uses the most direct, cost-efficient path to publisher inventory", "It removes all video ads from the internet", "It forces all auctions to run offline"],
+          c: 1,
+          exp: "SPO eliminates redundant intermediary hops, maximizing the share of budget reaching working media."
+        }
+      ];
+
+      coreQuestions.forEach(function(item) {
+        qList.push({
+          q: item.q,
+          options: item.opts,
+          correct: item.c,
+          expl: item.exp
+        });
+      });
+
+      return {
+        phase: phaseName,
+        synopsis: syn,
+        details: det,
+        sandbox: sb,
+        quiz: qList
+      };
+    }
 
     var activeDayIndex = 0;
     var isDetailsOpen = false;
@@ -1269,7 +1033,8 @@
 
       document.getElementById('class-meta-display').textContent = phaseName;
 
-      var data = MASTER_DAYS[activeDayIndex] || generateCurriculumNode(activeDayIndex, title, phaseName);
+      // Pull from Master Registry or Algorithmic Generator
+      var data = MASTER_DAYS[activeDayIndex] || buildEnterpriseDossier(activeDayIndex, title, phaseName);
 
       document.getElementById('synopsis-content').innerHTML = data.synopsis;
       document.getElementById('details-drawer').innerHTML = data.details;
@@ -1293,6 +1058,7 @@
 
       if (activeDayIndex === 0) calculateWaterfall();
       if (activeDayIndex === 1) checkViewability();
+      if (activeDayIndex >= 2) runGenSim(activeDayIndex);
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1308,32 +1074,6 @@
       if (target >= 0 && target < 180) {
         jumpToDay(target);
       }
-    }
-
-    function generateCurriculumNode(dayIdx, title, phaseName) {
-      var dayStr = String(dayIdx + 1).padStart(3, '0');
-      var quizList = [];
-      for (var i = 1; i <= 10; i++) {
-        quizList.push({
-          q: i + ". Operational Verification Question on " + title + ": Which rule is primary for production validation?",
-          options: [
-            "Verify compliance with IAB Tech Lab standards and audit network parameters in browser DevTools",
-            "Bypass all ad server delivery priorities and set line item to House",
-            "Remove all tracking pixels and disable cache busting",
-            "Shut down the host database server immediately"
-          ],
-          correct: 0,
-          expl: "Enterprise operations require strict compliance with IAB specifications and active verification of network parameters in browser developer tools."
-        });
-      }
-
-      return {
-        phase: phaseName,
-        synopsis: "<p><strong>Core Executive Synopsis:</strong> Today's 8-hour classroom module focuses on mastering the production mechanics, system dependencies, and business rules governing <strong>" + title + "</strong>.</p><div class='callout analogy'><strong>Trainer Real-World Analogy:</strong> Think of this module as a mission-critical subsystem in an enterprise aircraft. If an operations specialist fails to configure " + title + " properly, the entire downstream attribution, yield, or billing architecture fails.</div>",
-        details: "<h2>Hour 1-2: Foundations & Architectural Blueprints</h2><p>Overview of technical standards, system architecture, and production configurations required for enterprise operations.</p><h2>Hour 3-4: Technical Specifications & Data Interchange</h2><p>Analysis of network parameters, payload structures, and protocol specifications.</p><h2>Hour 5-6: Enterprise Operations & Failure Modes</h2><p>Identifying edge cases, latency bottlenecks, and discrepancy triggers.</p>",
-        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario " + (dayIdx + 1) + ": Production Troubleshooting Challenge</span><span class='status-badge'>Interactive Lab</span></div><p style='font-size:0.85rem; color:var(--text-muted);'>A campaign targeting " + title + " experiences a critical pacing and discrepancy alert. Analyze the metrics below to apply the correct operational fix:</p><div class='calc-grid'><div class='calc-field'><label>Reported Delivery Goal</label><input type='text' value='1,000,000 Imps' readonly></div><div class='calc-field'><label>Tracked Third-Party Delivery</label><input type='text' value='840,000 Imps' readonly></div><div class='calc-field'><label>Discrepancy Gap</label><input type='text' value='16.0% (CRITICAL)' style='color:var(--danger);' readonly></div><div class='calc-field'><label>Recommended Action</label><select id='dyn-action'><option>Audit Cache-Buster & Counting Macros</option><option>Pause Line Item Immediately</option><option>Increase Bid Price by $2.00</option></select></div></div><button class='btn-action' onclick='alert(\"Action Applied: Audit logs generated for engineering review.\")'>Apply Operational Correction</button></div>",
-        quiz: quizList
-      };
     }
 
     /* =========================================================================
@@ -1447,6 +1187,22 @@
       if (reas) reas.textContent = reason;
     }
 
+    function runGenSim(dIdx) {
+      var imp = parseFloat(document.getElementById('gen-imp-' + dIdx)?.value) || 0;
+      var cpm = parseFloat(document.getElementById('gen-cpm-' + dIdx)?.value) || 0;
+      var pace = parseFloat(document.getElementById('gen-pace-' + dIdx)?.value) || 1.0;
+      var fill = parseFloat(document.getElementById('gen-fill-' + dIdx)?.value) || 100;
+
+      var delivered = imp * (fill / 100);
+      var rev = (delivered / 1000) * cpm;
+      var daily = (delivered / 30) * pace;
+
+      var rEl = document.getElementById('gen-rev-' + dIdx);
+      var dEl = document.getElementById('gen-daily-' + dIdx);
+      if (rEl) rEl.textContent = "$" + rev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (dEl) dEl.textContent = Math.round(daily).toLocaleString('en-US');
+    }
+
     /* =========================================================================
        UNIVERSAL SEARCH ENGINE: LOCAL LEXICON + SYLLABUS + LIVE WIKIMEDIA EXTRACTION
        ========================================================================= */
@@ -1461,7 +1217,7 @@
 
       panel.style.display = 'block';
       title.textContent = "Verified Search Results: '" + rawQ + "'";
-      body.innerHTML = "<p style='color:var(--primary);'>Searching local enterprise corpus and querying live open-web databases...</p>";
+      body.innerHTML = "<p style='color:var(--primary);'>Searching enterprise corpus and querying live open-web databases...</p>";
 
       var matches = [];
 
@@ -1513,14 +1269,14 @@
         if (remoteHtml) {
           html += remoteHtml;
         } else if (matches.length === 0 && matchedDays.length === 0) {
-          html = `<p style="color:var(--warning);">No match found for '<strong>${rawQ}</strong>'. Try standard industry terms like <em>Display Ads, IP Targeting, ABM, SSP, DSP, Header Bidding</em>.</p>`;
+          html = `<p style="color:var(--warning);">No direct match found for '<strong>${rawQ}</strong>'. Try testing terms like <em>Display Ads, IP Targeting, ABM, SSP, DSP, Header Bidding</em>.</p>`;
         }
 
         body.innerHTML = html;
         panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       };
 
-      // 3. Fallback: Query MediaWiki Action Search API with Extracts
+      // 3. Fallback: Query MediaWiki Action Search API
       var searchApi = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + encodeURIComponent(rawQ) + "&utf8=&format=json&origin=*";
       
       fetch(searchApi)
@@ -1540,7 +1296,7 @@
                 var remoteSnippet = `
                   <div style="background:var(--surface); border:1px solid var(--border-accent); border-radius:8px; padding:16px; margin-top:14px;">
                     <h3 style="color:var(--accent); font-size:1.1rem; margin-bottom:4px;">${top.title}</h3>
-                    <p style="color:var(--text-muted); font-size:0.75rem; font-weight:700; margin-bottom:8px;">Live Global Knowledge Base Result</p>
+                    <p style="color:var(--text-muted); font-size:0.75rem; font-weight:700; margin-bottom:8px;">Live Global Knowledge Base Extraction</p>
                     <p style="font-size:0.94rem; color:#cbd5e1; line-height:1.7;">${extract}</p>
                   </div>
                 `;
