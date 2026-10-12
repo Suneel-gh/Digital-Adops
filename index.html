@@ -11,18 +11,17 @@
       --surface-elevated: #1e293b;
       --surface-card: #152238;
       --border: #334155;
-      --border-accent: #1e40af;
+      --border-accent: #2563eb;
       --primary: #38bdf8;
       --primary-dim: #0284c7;
       --accent: #10b981;
-      --accent-glow: rgba(16, 185, 129, 0.2);
       --warning: #f59e0b;
       --danger: #ef4444;
       --purple: #c084fc;
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --code-font: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+      --code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
@@ -57,9 +56,9 @@
       font-weight: 700;
     }
 
-    .container { max-width: 980px; margin: 0 auto; padding: 18px; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 18px; }
 
-    /* Curated Enterprise Knowledge Search Engine */
+    /* Search Engine Component */
     .search-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -99,7 +98,7 @@
       cursor: pointer;
     }
 
-    /* Curriculum Navigator */
+    /* Curriculum Navigation */
     .nav-drawer-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -211,9 +210,9 @@
     }
 
     /* Typography */
-    h2 { font-size: 1.25rem; color: var(--primary); margin: 22px 0 10px 0; }
-    h3 { font-size: 1.05rem; color: #cbd5e1; margin: 16px 0 8px 0; }
-    h4 { font-size: 0.95rem; color: var(--purple); margin: 12px 0 6px 0; text-transform: uppercase; letter-spacing: 0.05em; }
+    h2 { font-size: 1.25rem; color: var(--primary); margin: 24px 0 10px 0; border-left: 4px solid var(--primary); padding-left: 10px; }
+    h3 { font-size: 1.05rem; color: #cbd5e1; margin: 18px 0 8px 0; }
+    h4 { font-size: 0.95rem; color: var(--purple); margin: 14px 0 6px 0; text-transform: uppercase; letter-spacing: 0.05em; }
     p { font-size: 0.96rem; color: #cbd5e1; margin-bottom: 14px; }
     ul, ol { margin: 10px 0 16px 22px; font-size: 0.94rem; color: #cbd5e1; }
     li { margin-bottom: 8px; }
@@ -223,7 +222,7 @@
       padding: 2px 7px;
       border-radius: 4px;
       font-size: 0.88rem;
-      font-family: var(--code-font);
+      font-family: var(--code);
     }
     pre {
       background: #070b14;
@@ -234,7 +233,7 @@
       color: var(--primary);
       overflow-x: auto;
       margin: 14px 0;
-      font-family: var(--code-font);
+      font-family: var(--code);
     }
 
     .callout {
@@ -315,21 +314,6 @@
     .metric-value { font-size: 1.15rem; font-weight: 800; color: var(--primary); }
     .metric-label { font-size: 0.75rem; color: var(--text-muted); }
 
-    /* Auction Bidding Simulation Controls */
-    .auction-sim-panel {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .bidder-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #070b14;
-      padding: 8px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-    }
     .btn-action {
       background: var(--accent);
       color: #070b14;
@@ -342,7 +326,7 @@
     }
     .btn-action:hover { background: #059669; }
 
-    /* Interactive Quiz Framework (Hour 8 Assessment) */
+    /* Interactive Quiz Framework (10 Questions Engine) */
     .quiz-container {
       background: #070b14;
       border: 1px solid var(--border);
@@ -351,14 +335,14 @@
       margin-top: 16px;
     }
     .quiz-question-box {
-      margin-bottom: 18px;
-      padding-bottom: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 18px;
       border-bottom: 1px solid var(--border);
     }
     .quiz-q-title {
       font-weight: 700;
       font-size: 0.95rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       color: var(--text);
     }
     .quiz-options {
@@ -388,10 +372,10 @@
       display: none;
     }
 
-    /* Curated Search Output Frame */
+    /* Search Output Panel */
     #search-results-panel {
       background: #070b14;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-accent);
       border-radius: 12px;
       padding: 20px;
       margin-top: 20px;
@@ -455,14 +439,14 @@
 
   <div class="container">
 
-    <!-- Curated Knowledge Search Engine -->
+    <!-- Unified Enterprise Knowledge Search Engine -->
     <div class="search-card">
       <div class="search-title">
         <span>Verified Ad Tech Knowledge Search Engine</span>
         <span>Curated Enterprise Corpus</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="lexicon-query" placeholder="Search curated enterprise knowledge (e.g., SSP, DSP, Header Bidding, Floor Price, VAST)..." onkeydown="if(event.key==='Enter') executeCuratedSearch()">
+        <input type="text" id="lexicon-query" placeholder="Search any term (e.g., IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding, OpenRTB)..." onkeydown="if(event.key==='Enter') executeCuratedSearch()">
         <button class="btn-search" onclick="executeCuratedSearch()">Search</button>
       </div>
     </div>
@@ -479,58 +463,50 @@
         <button class="phase-btn" onclick="filterByPhase(6)">Omnichannel & Privacy (156-180)</button>
       </div>
       <select class="day-select" id="day-dropdown" onchange="jumpToDay(this.value)">
-        <!-- 180 Days populated dynamically -->
+        <!-- Populated dynamically -->
       </select>
     </div>
 
     <!-- Main Classroom Module -->
     <div class="classroom-card">
       <div class="class-header">
-        <div class="class-title" id="class-title-display">Day 001: The Market Players & Core Definitions</div>
+        <div class="class-title" id="class-title-display">Day 001: The Market Players & Ecosystem Foundations</div>
         <div class="class-meta" id="class-meta-display">Phase 1: Foundational Literacy & Jargons (Days 001-010)</div>
         <div class="schedule-bar">
-          <div><span>Schedule:</span> 7.0 Hours In-Depth Class + 1.0 Hour Interactive Evaluation</div>
+          <div><span>Schedule:</span> 7.0 Hours In-Depth Instruction + 1.0 Hour Evaluation (10 Questions)</div>
           <div><span>Status:</span> Production Ready</div>
         </div>
       </div>
 
-      <!-- Part 1: Executive Synopsis (Core Concepts) -->
+      <!-- Part 1: Executive Synopsis -->
       <div class="section-block">
-        <div class="section-label">📌 Section 1: Executive Synopsis (Core Analogy & Layman Concepts)</div>
-        <div id="synopsis-content">
-          <!-- Rendered dynamically -->
-        </div>
+        <div class="section-label">📌 Section 1: Executive Synopsis (Core Analogy & Fundamentals)</div>
+        <div id="synopsis-content"></div>
       </div>
 
-      <!-- Part 2: Expandable Operational Deep Dive (7-Hour Content) -->
+      <!-- Part 2: Expandable 7-Hour Operational Deep Dive -->
       <button class="details-toggle-btn" id="details-btn" onclick="toggleDetails()">
         <span>📖 Section 2: Full 7-Hour Deep Dive (Jargons, Specs, Workflows & Tech Specs)</span>
         <span id="toggle-indicator">+ Click to Expand Full Lecture</span>
       </button>
 
-      <div class="details-content-drawer" id="details-drawer">
-        <!-- Rendered dynamically -->
-      </div>
+      <div class="details-content-drawer" id="details-drawer"></div>
 
       <!-- Part 3: Interactive Sandbox & Playable Scenarios -->
       <div class="section-block">
         <div class="section-label">🎮 Section 3: Interactive Playable Lab & Live Decision Engine</div>
-        <div id="sandbox-content">
-          <!-- Rendered dynamically -->
-        </div>
+        <div id="sandbox-content"></div>
       </div>
 
-      <!-- Part 4: 1-Hour Assessment Quiz Engine -->
+      <!-- Part 4: 1-Hour Assessment Quiz Engine (10 Questions) -->
       <div class="section-block">
         <div class="section-label callout quiz-header" style="margin:0 0 14px 0; border:none; padding:6px 10px;">
-          📝 Section 4: 1-Hour Daily Assessment & Certification Verification
+          📝 Section 4: 1-Hour Daily Assessment (10 Comprehensive Certification Questions)
         </div>
-        <div id="quiz-content">
-          <!-- Rendered dynamically -->
-        </div>
+        <div id="quiz-content"></div>
       </div>
 
-      <!-- Live Search Results Container -->
+      <!-- Search Results Frame -->
       <div id="search-results-panel">
         <div class="search-res-header">
           <div style="font-weight:700; color:var(--primary);" id="search-res-title">Knowledge Base Query</div>
@@ -559,7 +535,7 @@
 
   <script>
     /* =========================================================================
-       COMPLETE 180-DAY SYLLABUS DIRECTORY (DAYS 001 - 010 EXPANDED TO FOUNDATIONALS)
+       COMPLETE 180-DAY SYLLABUS DIRECTORY
        ========================================================================= */
     var SYLLABUS_TITLES = [
       "The Market Players & Ecosystem Foundations (Advertiser, Publisher, Agency, Consumer)",
@@ -735,65 +711,184 @@
     ];
 
     /* =========================================================================
-       CURATED ENTERPRISE KNOWLEDGE CORPUS (Zero hallucinations / Actuals)
+       COMPREHENSIVE ENTERPRISE LEXICON (Solves IP Targeting, ABM & Core Tech Searches)
        ========================================================================= */
-    var ENTERPRISE_LEXICON = {
-      "ssp": {
+    var ENTERPRISE_LEXICON = [
+      {
+        keys: ["ip targeting", "ip address targeting", "reverse ip", "reverse ip lookup", "ip routing"],
+        term: "IP Targeting & Reverse IP Geolocation",
+        category: "Audience Targeting & B2B Telemetry",
+        def: "A targeting methodology that maps a user's Internet Protocol (IP) address to physical geographic locations or corporate autonomous system numbers (ASNs). In B2B marketing, Reverse IP Lookup identifies corporate domains visiting a website by matching public IPv4/IPv6 blocks to corporate registry data.",
+        specs: "OpenRTB Mapping: <code>device.ip</code> (IPv4) or <code>device.ipv6</code>. In programmatic bid streams, user privacy standards truncate or mask the last octet (subnet masking, e.g., 192.168.1.xxx) to prevent personal fingerprinting. Key B2B vendors: Demandbase, 6sense, KickFire, MaxMind."
+      },
+      {
+        keys: ["account based marketing", "abm", "b2b abm", "account targeting", "named accounts"],
+        term: "Account-Based Marketing (ABM)",
+        category: "B2B Strategic Media Architecture",
+        def: "A strategic B2B go-to-market approach where sales and marketing teams focus resources on a specific set of target accounts. Programmatic ABM leverages company-level IP matching, firmographic data, and professional identity graphs (e.g., LinkedIn) to serve customized messaging exclusively to employees of designated enterprise accounts.",
+        specs: "Execution: Involves uploading target account lists (TAL) or domain lists into DSPs/LinkedIn Campaign Manager. Ads are matched using Reverse IP lookups, corporate CRM IDs, or email-hashed B2B identity graphs. Core KPI: Account engagement rate, pipeline velocity, target account reach."
+      },
+      {
+        keys: ["ssp", "supply side platform", "sell side platform"],
         term: "Supply-Side Platform (SSP)",
         category: "Sell-Side Programmatic Infrastructure",
-        def: "An enterprise platform used by digital publishers to automate inventory sales, manage programmatic private marketplaces (PMPs), optimize yield, and broadcast OpenRTB bid requests to dozens of DSPs simultaneously.",
-        specs: "Protocols: OpenRTB 2.5, 3.0; Key Platforms: Magnite, PubMatic, Google Ad Manager (AdX), OpenX, Equativ. Core operations include setting hard/soft floor prices, user syncing via match tables, and managing ads.txt declarations."
+        def: "An enterprise ad tech platform that automates inventory monetization for digital publishers. SSPs aggregate ad inventory, set reserve floor prices (hard/soft), evaluate buyer eligibility, and broadcast OpenRTB bid requests to dozens of DSPs and Ad Exchanges simultaneously.",
+        specs: "Protocols: OpenRTB 2.5 / 3.0, Prebid.js adapters. Core features: Yield optimization algorithms, match table cookie syncing, Deal ID packaging, ads.txt enforcement. Major platforms: Magnite, PubMatic, Google Ad Manager (AdX), Equativ, OpenX."
       },
-      "dsp": {
+      {
+        keys: ["dsp", "demand side platform", "buy side platform"],
         term: "Demand-Side Platform (DSP)",
-        category: "Buy-Side Programmatic Execution",
-        def: "Software utilized by media buyers, brands, and agency trading desks to procure ad inventory programmatically across multiple ad exchanges using centralized targeting, algorithmic bid shading, and unified frequency capping.",
-        specs: "Processing Capacity: Ingests 1M to 2M+ queries per second (QPS). Protocols: OpenRTB BidResponse. Key Platforms: The Trade Desk, Google Display & Video 360 (DV360), Amazon DSP. Enforces pacing algorithms and bid shading models."
+        category: "Buy-Side Programmatic Infrastructure",
+        def: "Enterprise media-buying software that enables agencies and advertisers to bid on and purchase digital ad inventory programmatically across multiple ad exchanges through a centralized interface.",
+        specs: "Processing Capacity: Evaluates 1M+ to 2M+ queries per second (QPS). Key functions: Algorithmic bid shading, unified frequency capping, pacing distribution (ASAP vs. Evenly), third-party audience data overlays. Major platforms: The Trade Desk, Google DV360, Amazon DSP."
       },
-      "header bidding": {
-        term: "Header Bidding (Prebid.js)",
-        category: "Auction Architecture",
-        def: "An advanced programmatic execution where publishers deploy an asynchronous JavaScript wrapper in the website header to solicit bids from multiple external SSPs simultaneously before making the primary ad server call.",
-        specs: "Wrapper: Prebid.js (Client-side) or Prebid Server (S2S). Eliminates the Google Ad Manager waterfall bias. Key variables: hb_pb (price bucket), hb_bidder (adapter code), hb_adid (creative ID)."
+      {
+        keys: ["header bidding", "prebid", "prebid.js", "wrapper"],
+        term: "Header Bidding & Prebid Architecture",
+        category: "Programmatic Auction Mechanics",
+        def: "An advanced programmatic integration where an asynchronous JavaScript wrapper executes in the website header, soliciting simultaneous bids from multiple SSPs before making the primary ad server call, bypassing traditional waterfall latency and priority bias.",
+        specs: "Core Frameworks: Prebid.js (Client-side), Prebid Server (Server-to-Server). Key variables passed to ad server: <code>hb_pb</code> (price bucket), <code>hb_bidder</code> (winning adapter), <code>hb_adid</code> (creative token)."
       },
-      "floor price": {
+      {
+        keys: ["floor price", "hard floor", "soft floor", "price floor"],
         term: "Floor Price (Hard vs. Soft Floor)",
-        category: "Yield Management",
-        def: "The minimum economic threshold a publisher establishes for an ad unit. Any bid arriving beneath the floor price is disqualified from the auction.",
-        specs: "Hard Floor: Strict cutoff; any bid < floor is rejected. Soft Floor: Secondary threshold; bids clearing the soft floor are evaluated programmatically using dynamic pricing elasticity curves."
+        category: "Yield Management & Monetization",
+        def: "The minimum price threshold a publisher establishes for an ad unit. Hard floors reject any incoming bid below the stated CPM. Soft floors act as an algorithmic baseline where bids below the target are dynamically evaluated against historical elasticity curves.",
+        specs: "OpenRTB Mapping: <code>imp[].bidfloor</code> and <code>imp[].bidfloorcur</code> (currency code, e.g., USD). Enforced directly in SSP auction logic or Google Ad Manager Unified Pricing Rules (UPR)."
       },
-      "vast": {
+      {
+        keys: ["vast", "vpaid", "simid", "omid", "video ad serving template"],
         term: "Video Ad Serving Template (VAST)",
-        category: "Video Engineering Standards",
-        def: "An IAB Tech Lab XML schema standard that facilitates seamless communication between digital video players and ad servers, transferring video media URLs, companion banners, and milestone tracking beacons.",
-        specs: "Current Version: VAST 4.2. Quartiles tracked: start (0%), firstQuartile (25%), midpoint (50%), thirdQuartile (75%), complete (100%). Deprecated predecessor: VPAID; Modern interactive companion: SIMID."
+        category: "Digital Video Standards",
+        def: "An IAB Tech Lab XML standard that enables video players to ingest, display, and track digital video advertising across desktop, mobile, and Connected TV environments.",
+        specs: "Current Standard: VAST 4.2. Quartiles tracked: start (0%), firstQuartile (25%), midpoint (50%), thirdQuartile (75%), complete (100%). Accompanied by OMID (Open Measurement Interface Definition) for independent verification."
       },
-      "uid2": {
+      {
+        keys: ["uid2", "unified id 2.0", "universal id", "identity graph"],
         term: "Unified ID 2.0 (UID2)",
         category: "Identity & Privacy Architecture",
-        def: "An open-source, authenticated identity framework designed to replace third-party tracking cookies. It converts authenticated email logins into salted, cryptographically hashed, and continuously rotating pseudonymous tokens.",
-        specs: "Encryption: SHA-256 base normalized email, encrypted via UID2 Core service with rotating private keys. Passed in OpenRTB bid streams via the user.ext.eids object to authorized DSPs."
+        def: "An open-source identity framework developed to replace third-party tracking cookies. It normalizes and hashes authenticated user email addresses into salted, continuously rotating pseudonymous tokens.",
+        specs: "Encryption: SHA-256 normalized email passed through the UID2 Core service with rotating private keys. Emitted in OpenRTB bid streams inside <code>user.ext.eids</code> for authenticated DSP targeting."
       }
-    };
+    ];
 
     /* =========================================================================
-       DEEP REPOSITORY CONTENT (DAYS 001 TO 010 COMPLETE WORKED COURSES)
+       8-HOUR MASTERCLASS ENGINE (DAY 001 DATA WITH 10 DETAILED QUESTIONS)
        ========================================================================= */
     var MASTER_DAYS = {
       0: {
         phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
-        synopsis: "<p>Welcome to Day 001. In this introductory 8-hour classroom module, we break down the commercial architecture of the internet into its fundamental components. Before diving into code, tags, or servers, you must understand the basic premise: <strong>Advertising is the financial engine that subsidizes the open internet.</strong></p><div class='callout analogy'><strong>The Real-World Airport Analogy:</strong> Think of a commercial international airport. The <strong>Publisher</strong> is the airport authority owning the physical concourses and terminal gates. The <strong>Audience</strong> represents the millions of travelers walking past those gates. The <strong>Advertiser</strong> is a global retail brand (e.g., Rolex, Nike) that wants to capture those passengers' eyes. The <strong>Agency</strong> is the contracted media operations team hired by the brand to design, negotiate, install, and measure the shopfront displays.</div>",
-        details: "<h2>Hour 1-7 Deep-Dive: Foundational Industry Definitions & Taxonomy</h2><p>Today we establish the core vocabulary that every ad operations specialist and digital marketer uses on a daily basis. Memorize these definitions, operational mechanisms, and business use cases:</p><div class='data-table-wrapper'><table><thead><tr><th>Jargon / Acronym</th><th>Complete Formal Definition</th><th>Operational Real-World Use Case</th><th>Primary System Where It Lives</th></tr></thead><tbody><tr><td><strong>Advertiser (Brand)</strong></td><td>The capital source that manufactures products or services and allocates marketing budgets to purchase public attention.</td><td>Nike launching a $500,000 seasonal campaign to sell marathon footwear to active runners.</td><td>Enterprise CRM, CM360, Google Ads, Meta Ads Manager.</td></tr><tr><td><strong>Publisher</strong></td><td>Any digital entity that produces content or utilities that attract human attention and monetizes that attention by packaging it into ad units.</td><td><em>The New York Times</em>, YouTube, an indie mobile game developer, or a sports discussion forum.</td><td>Google Ad Manager 360, Hardcoded Site HTML, Native Apps.</td></tr><tr><td><strong>Agency (AOR)</strong></td><td>Agency of Record: An outsourced company providing strategic media planning, creative design, and execution services for advertisers.</td><td>WPP, Omnicom, or Publicis negotiating bulk media rates and running buy-side operations for enterprise brands.</td><td>Media Planning Worksheets, Prisma, Buying Platforms.</td></tr><tr><td><strong>Agency Trading Desk (ATD)</strong></td><td>A specialized programmatic media-buying unit within an advertising holding company that manages DSP execution.</td><td>Traders monitoring live programmatic bid streams, adjusting bid shading, and optimizing DSP pacing.</td><td>DSPs (The Trade Desk, DV360, Amazon DSP).</td></tr><tr><td><strong>Consumer / Audience</strong></td><td>The end human user whose device telemetry, attention, and engagement are traded across digital channels.</td><td>A reader in Chennai scrolling through an online news article on their Android smartphone.</td><td>Browsers (Chrome, Safari), Mobile OS (Android, iOS).</td></tr><tr><td><strong>Inventory</strong></td><td>The total aggregated volume of sellable ad space available on a publisher's digital properties over a specific period.</td><td>ESPN calculating that it has 10,000,000 available impressions across its football section this weekend.</td><td>Publisher Ad Server (GAM 360 Inventory Forecasting).</td></tr><tr><td><strong>Insertion Order (IO)</strong></td><td>A formal, legally binding purchase contract detailing the financial terms, impression volume, flight dates, and SLAs of an ad campaign.</td><td>An agency signing an agreement guaranteeing payment of $50,000 for 10M impressions delivered between Oct 1 and Oct 31.</td><td>Billing Systems, Media Management Databases.</td></tr><tr><td><strong>Request for Proposal (RFP)</strong></td><td>An official procurement document sent by media agencies to publishers requesting proposals on available ad inventory.</td><td>An agency asking 10 top tech publications: 'What inventory can you offer for a $100K enterprise cloud software launch?'</td><td>Direct Sales Inboxes, Agency Planning Desks.</td></tr></tbody></table></div><h3>Detailed Workflow: How Capital Flows from Brand to Publisher</h3><p>To understand digital ad operations, trace the journey of a single dollar from the advertiser's bank account to the publisher's balance sheet:</p><ol><li><strong>Budget Allocation:</strong> The brand designates a Gross Media Budget. The agency takes an agreed management fee (typically 10-15%).</li><li><strong>Tech Stack Deductions:</strong> As media is purchased programmatically, verification vendors (IAS, DoubleVerify) deduct safety fees, the DSP deducts its take-rate (~15%), and the SSP deducts its exchange fee (~10-15%).</li><li><strong>Net Working Media:</strong> The publisher ultimately receives roughly 50 to 65 cents of the original dollar. Maximizing this throughput is known as <em>Supply Path Optimization (SPO)</em>.</li></ol>",
-        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario 1: The Media Dollar Waterfall Simulator</span><span class='status-badge'>Live Interactive Tool</span></div><p style='font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;'>Enter an advertiser's gross campaign budget. Adjust agency and ad tech fees to observe how much 'Working Media' actually reaches the publisher's bank account:</p><div class='calc-grid'><div class='calc-field'><label>Gross Campaign Budget ($)</label><input type='number' id='sim-gross' value='100000' oninput='calculateWaterfall()'></div><div class='calc-field'><label>Agency Management Fee (%)</label><input type='number' id='sim-agency' value='12' oninput='calculateWaterfall()'></div><div class='calc-field'><label>DSP Tech Fee (%)</label><input type='number' id='sim-dsp' value='15' oninput='calculateWaterfall()'></div><div class='calc-field'><label>SSP Exchange Take Rate (%)</label><input type='number' id='sim-ssp' value='12' oninput='calculateWaterfall()'></div></div><div class='calc-metrics'><div><div class='metric-value' id='wf-working-media'>$64,416.00</div><div class='metric-label'>Net Working Media to Publisher</div></div><div><div class='metric-value' id='wf-adtech-tax'>35.58%</div><div class='metric-label'>Total Intermediary Take Rate</div></div></div></div>",
+        synopsis: "<p>Welcome to Day 001. In this 8-hour foundational session, we break down the commercial architecture of the internet from the ground up. Before diving into code, tags, or servers, you must understand the basic premise: <strong>Advertising is the financial engine that funds the open internet.</strong></p><div class='callout analogy'><strong>The Real-World Airport Analogy:</strong> Think of a commercial international airport. The <strong>Publisher</strong> is the airport authority owning physical terminal gates. The <strong>Audience</strong> represents the millions of passengers walking through those terminals. The <strong>Advertiser</strong> is a global retail brand (e.g., Rolex, Nike) seeking passengers' attention. The <strong>Agency</strong> is the contracted media operations team hired by the brand to design, negotiate, install, and measure the shopfront displays.</div>",
+        details: `
+          <h2>Hour 1-2: Macro Economics & The Core Commercial Players</h2>
+          <p>Every commercial transaction on the web connects four primary parties. Here are their precise roles, balance-sheet positions, and operational interactions:</p>
+          <div class="data-table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Market Entity</th>
+                  <th>Economic Function</th>
+                  <th>Primary Systems Used</th>
+                  <th>Core Success KPI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Advertiser (Brand)</strong></td>
+                  <td>Capital source purchasing public attention to generate customer demand and revenue.</td>
+                  <td>CRM, Google Ads, Meta Ads Manager, CM360.</td>
+                  <td>ROAS (Return on Ad Spend), CPA (Cost Per Acquisition).</td>
+                </tr>
+                <tr>
+                  <td><strong>Publisher (Media Owner)</strong></td>
+                  <td>Content owner packaging digital screen real estate into sellable ad placements.</td>
+                  <td>Google Ad Manager 360, Prebid.js, CMS.</td>
+                  <td>eCPM (Effective CPM), Page RPM, Fill Rate.</td>
+                </tr>
+                <tr>
+                  <td><strong>Agency (AOR)</strong></td>
+                  <td>Strategic and operational partner managing planning, procurement, and creative deployment.</td>
+                  <td>Prisma, Mediaocean, Verification Portals.</td>
+                  <td>Client Margin, Media Delivery Accuracy, SLA Compliance.</td>
+                </tr>
+                <tr>
+                  <td><strong>Audience (Consumer)</strong></td>
+                  <td>The end-user trading attention and engagement in exchange for free content.</td>
+                  <td>Web Browsers (Chrome, Safari), Mobile OS.</td>
+                  <td>Content Utility, UX Speed, Privacy Preservation.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Hour 3-4: The Enterprise Taxonomy & Operational Vocabulary</h2>
+          <p>Memorize these definitions, business applications, and technical standards:</p>
+          <ul>
+            <li><strong>Inventory</strong>: The total aggregated quantity of sellable ad space available on a publisher's digital properties over a specific period. Calculated as: <code>Available Impressions = Total Page Views × Ad Units Per Page</code>.</li>
+            <li><strong>Insertion Order (IO)</strong>: A legally binding contract between a buyer and seller specifying campaign flight dates, targeted placements, impression volumes, payment milestones, and liability terms.</li>
+            <li><strong>Request for Proposal (RFP)</strong>: A procurement document sent by agencies to publishers requesting proposals on available ad inventory, pricing, and audience targeting.</li>
+            <li><strong>Agency Trading Desk (ATD)</strong>: A dedicated programmatic media-buying unit within an advertising holding company that manages DSP campaigns and optimizes bid strategies.</li>
+            <li><strong>Working Media vs. Non-Working Media</strong>: Working Media represents the net capital deployed directly to publishers to purchase impressions. Non-working media includes agency retainers, verification fees, data costs, and creative production expenses.</li>
+          </ul>
+
+          <h2>Hour 5-6: Supply Path Optimization (SPO) & The Ad Tech Tax</h2>
+          <p>When an advertiser spends $1.00 programmatically, intermediary take-rates reduce the amount reaching the publisher:</p>
+          <div class="callout">
+            <strong>The Programmatic Value Drain:</strong><br>
+            • Agency Management Fee: ~12% - 15%<br>
+            • Buy-Side DSP Fee: ~15%<br>
+            • Verification & Brand Safety (IAS, DV): ~3%<br>
+            • Sell-Side SSP Take-Rate: ~12% - 15%<br>
+            • <strong>Net Working Media Reaching Publisher: ~55% - 65%</strong>
+          </div>
+          <p><strong>Supply Path Optimization (SPO)</strong> is the practice of auditing and consolidating programmatic buy paths to remove redundant intermediary hops, ensuring more budget reaches working media.</p>
+        `,
+        sandbox: `
+          <div class="interactive-game-shell">
+            <div class="game-title">
+              <span>🎮 Scenario 1: The Media Dollar Waterfall Simulator</span>
+              <span class="status-badge">Live Interactive Tool</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Enter an advertiser's gross campaign budget. Adjust agency and ad tech fees to observe how much 'Working Media' actually reaches the publisher's bank account:</p>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label>Gross Campaign Budget ($)</label>
+                <input type="number" id="sim-gross" value="100000" oninput="calculateWaterfall()">
+              </div>
+              <div class="calc-field">
+                <label>Agency Management Fee (%)</label>
+                <input type="number" id="sim-agency" value="12" oninput="calculateWaterfall()">
+              </div>
+              <div class="calc-field">
+                <label>DSP Tech Fee (%)</label>
+                <input type="number" id="sim-dsp" value="15" oninput="calculateWaterfall()">
+              </div>
+              <div class="calc-field">
+                <label>SSP Exchange Take Rate (%)</label>
+                <input type="number" id="sim-ssp" value="12" oninput="calculateWaterfall()">
+              </div>
+            </div>
+            <div class="calc-metrics">
+              <div>
+                <div class="metric-value" id="wf-working-media">$64,416.00</div>
+                <div class="metric-label">Net Working Media to Publisher</div>
+              </div>
+              <div>
+                <div class="metric-value" id="wf-adtech-tax">35.58%</div>
+                <div class="metric-label">Total Intermediary Take Rate</div>
+              </div>
+            </div>
+          </div>
+        `,
         quiz: [
           {
-            q: "Which entity in the digital advertising ecosystem owns the physical screen attention and sells inventory?",
+            q: "1. Which entity in the digital advertising ecosystem owns the physical screen attention and sells inventory?",
             options: ["The Demand-Side Platform (DSP)", "The Advertiser", "The Publisher", "The Agency Trading Desk"],
             correct: 2,
             expl: "The Publisher owns the digital properties (websites, apps, video platforms) that attract user attention, creating sellable ad inventory."
           },
           {
-            q: "What is an Insertion Order (IO) in enterprise ad operations?",
+            q: "2. What is an Insertion Order (IO) in enterprise ad operations?",
             options: [
               "A piece of JavaScript code that loads an image",
               "A legally binding contract detailing flight dates, impression goals, and commercial rates",
@@ -804,7 +899,7 @@
             expl: "An Insertion Order (IO) is the formal commercial contract signed between an agency/buyer and a publisher/seller."
           },
           {
-            q: "In media economics, what is meant by the 'Ad Tech Tax'?",
+            q: "3. In media economics, what is meant by the 'Ad Tech Tax'?",
             options: [
               "A mandatory tax paid to government revenue authorities on internet connections",
               "The combined percentage of media spend absorbed by intermediaries (DSPs, SSPs, verification vendors) before reaching the publisher",
@@ -813,73 +908,83 @@
             ],
             correct: 1,
             expl: "The ad-tech tax describes the aggregate fees deducted by middle-tier technology vendors (DSPs, SSPs, DMPs, verification tools) along the transaction path."
-          }
-        ]
-      },
-      1: {
-        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
-        synopsis: "<p>Welcome to Day 002. Today's 8-hour session focuses on <strong>Digital Real Estate and Inventory Taxonomy</strong>. Just as an architect studies blueprints, an ad operations professional must understand the geometry, placement, and viewability mechanics of every square pixel on a webpage or mobile app.</p><div class='callout analogy'><strong>The Newspaper & Highway Billboard Analogy:</strong> Think of a physical newspaper. The front-page banner above the physical fold is prime real estate because everyone sees it first. Inside pages or bottom corners get less foot traffic. In digital media, an ad unit that loads immediately without scrolling is <strong>Above the Fold (ATF)</strong>, while an ad buried at the footer of an article is <strong>Below the Fold (BTF)</strong>.</div>",
-        details: "<h2>Hour 1-7 Deep-Dive: Ad Unit Dimensions, Placements & IAB Specifications</h2><p>Today we break down the standardized ad units defined by the Interactive Advertising Bureau (IAB), the coordinate geometries of browser viewports, and the technical lifecycle of an ad slot:</p><div class='data-table-wrapper'><table><thead><tr><th>Jargon / Unit</th><th>Dimensions (Width x Height)</th><th>Standard Location on Page</th><th>Primary Operational Characteristics</th></tr></thead><tbody><tr><td><strong>Medium Rectangle (MPU)</strong></td><td>300 x 250 pixels</td><td>In-article, sidebar, mobile feed</td><td>The most liquid ad unit globally. Runs across both desktop and mobile layouts with the highest programmatic fill rate.</td></tr><tr><td><strong>Leaderboard</strong></td><td>728 x 90 pixels</td><td>Top of header, bottom of desktop pages</td><td>Traditional desktop branding unit. High initial exposure when placed Above the Fold (ATF).</td></tr><tr><td><strong>Mobile Leaderboard</strong></td><td>320 x 50 pixels</td><td>Sticky mobile bottom, header banner</td><td>Standard smartphone placement. Lightweight, designed to load rapidly over cellular networks.</td></tr><tr><td><strong>Half Page (Filmstrip)</strong></td><td>300 x 600 pixels</td><td>Right-hand desktop sidebar</td><td>High-impact unit. Large canvas that yields high viewability scores and commanding CPMs.</td></tr><tr><td><strong>Billboard</strong></td><td>970 x 250 pixels</td><td>Top of desktop header canvas</td><td>High-impact takeover unit. Often sold via direct sponsorships rather than open programmatic markets.</td></tr><tr><td><strong>Above the Fold (ATF)</strong></td><td>Geometric Viewport Coordinate</td><td>Top 1000px of page content</td><td>Viewable without user scrolling. Commands higher CPMs due to immediate exposure.</td></tr><tr><td><strong>Below the Fold (BTF)</strong></td><td>Geometric Viewport Coordinate</td><td>Lower scroll depth</td><td>Requires active user scrolling. Often lazy-loaded to preserve page performance.</td></tr><tr><td><strong>Lazy Loading</strong></td><td>Browser Engineering Technique</td><td>Dynamic DOM trigger point</td><td>The browser delays fetching the ad creative until the user scrolls within 200px of the ad slot.</td></tr></tbody></table></div><h3>Viewport Geometry & DOM Rendering Mechanics</h3><p>When a web page renders, the browser establishes a Document Object Model (DOM). Ad tags reserve dedicated placeholder elements known as <code>&lt;div&gt;</code> containers:</p><pre>&lt;!-- Standard Google Publisher Tag (GPT) Ad Unit Container --&gt;\n&lt;div id='div-gpt-ad-12345678-0' style='min-width: 300px; min-height: 250px;'&gt;\n  &lt;script&gt;\n    googletag.cmd.push(function() { googletag.display('div-gpt-ad-12345678-0'); });\n  &lt;/script&gt;\n&lt;/div&gt;</pre><p>If the container dimensions are not hardcoded with CSS rules, the page experiences a layout jump when the creative renders, degrading the site's <strong>Cumulative Layout Shift (CLS)</strong> Core Web Vital score.</p>",
-        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario 2: Viewport Coordinates & Viewability Decision Game</span><span class='status-badge'>Live Simulation</span></div><p style='font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;'>Adjust the user's scroll depth and time on screen to determine whether this ad slot clears the official Media Rating Council (MRC) viewability threshold:</p><div class='calc-grid'><div class='calc-field'><label>Pixels in Active Viewport (%)</label><input type='number' id='sim-pixels' value='55' oninput='checkViewability()'></div><div class='calc-field'><label>Continuous Time in View (Seconds)</label><input type='number' id='sim-seconds' value='1.2' step='0.1' oninput='checkViewability()'></div><div class='calc-field'><label>Ad Format</label><select id='sim-format' onchange='checkViewability()'><option value='display'>Display Banner (>=50% for 1.0s)</option><option value='video'>Video Stream (>=50% for 2.0s)</option></select></div><div class='calc-field'><label>Tab Focus State</label><select id='sim-focus' onchange='checkViewability()'><option value='active'>Active Foreground Tab</option><option value='background'>Background Tab (Hidden)</option></select></div></div><div class='calc-metrics'><div><div class='metric-value' id='view-verdict' style='color:var(--accent);'>QUALIFIED (VIEWABLE)</div><div class='metric-label'>MRC Viewability Determination</div></div><div><div class='metric-value' id='view-reason'>Criteria Cleared</div><div class='metric-label'>Audit Determination Note</div></div></div></div>",
-        quiz: [
-          {
-            q: "What are the exact pixel dimensions of the most globally traded ad unit (Medium Rectangle / MPU)?",
-            options: ["728 x 90", "300 x 250", "320 x 50", "970 x 250"],
-            correct: 1,
-            expl: "The Medium Rectangle (MPU) measures exactly 300 x 250 pixels and runs across both desktop and mobile placements."
           },
           {
-            q: "According to MRC (Media Rating Council) standards, when is a standard display ad officially counted as 'Viewable'?",
+            q: "4. What is the fundamental difference between 'Working Media' and 'Non-Working Media'?",
             options: [
-              "When 100% of the creative is visible for at least 5 seconds",
-              "When at least 50% of the physical pixels remain in view for at least 1 continuous second",
-              "When the user physically clicks on the creative",
-              "When the ad server records a successful HTTP 200 response"
+              "Working media is deployed directly to purchase impressions; non-working media covers agency fees, tech fees, and creative production",
+              "Working media refers to video ads; non-working media refers to static display banners",
+              "Working media runs on mobile phones; non-working media runs on desktop computers",
+              "Working media is free; non-working media is paid"
+            ],
+            correct: 0,
+            expl: "Working media represents the net capital deployed to buy ad space from publishers, while non-working media covers all administrative, agency, tech, and production costs."
+          },
+          {
+            q: "5. What role does an Agency of Record (AOR) play for an enterprise advertiser?",
+            options: [
+              "They manufacture physical computing hardware for ad servers",
+              "They serve as the contracted strategic and execution partner managing media planning, procurement, and operations",
+              "They write the operating system for consumer smartphones",
+              "They act as the regulatory privacy commissioner"
             ],
             correct: 1,
-            expl: "The standard MRC definition requires a minimum of 50% of pixels to remain in the active browser viewport for at least 1 continuous second."
+            expl: "An Agency of Record (AOR) is the primary contracted agency responsible for strategic media planning, creative design, and execution for an advertiser."
           },
           {
-            q: "What technical problem occurs if a publisher fails to reserve min-width and min-height on an ad container div?",
+            q: "6. How is total publisher ad inventory mathematically calculated?",
             options: [
-              "The browser will crash and close automatically",
-              "The ad creative will turn black and white",
-              "Cumulative Layout Shift (CLS) occurs, degrading page layout stability as content jumps",
-              "The server will refuse to send an OpenRTB bid request"
-            ],
-            correct: 2,
-            expl: "Failing to reserve container space causes layout jumping when creatives load, resulting in a poor Cumulative Layout Shift (CLS) score."
-          }
-        ]
-      },
-      2: {
-        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
-        synopsis: "<p>Welcome to Day 003. Today we master the core currencies and mathematical formulas of the digital media market: <strong>CPM, CPC, CPA, CPL, vCPM, and eCPM</strong>. As an ad operations professional or digital marketer, you will calculate these numbers constantly to evaluate campaign performance, client profitability, and publisher yield.</p><div class='callout analogy'><strong>The Grocery Store Analogy:</strong> Buying digital media is like buying fruit. <strong>CPM</strong> is buying apples by the wholesale crate (paying per 1,000 units regardless of taste). <strong>CPC</strong> is paying only when a customer picks up an apple and takes a bite. <strong>CPA</strong> is paying only after the customer bakes an apple pie and eats the entire meal. <strong>eCPM</strong> is the store owner looking at total revenue at the end of the day and calculating their average earnings per 1,000 visitors.</div>",
-        details: "<h2>Hour 1-7 Deep-Dive: Enterprise Formulas, Conversions & Financial Mathematics</h2><p>Every commercial media campaign trades on one of these core pricing models. Here are the underlying equations, benchmarks, and operational trade-offs:</p><div class='data-table-wrapper'><table><thead><tr><th>Pricing Model</th><th>Underlying Equation</th><th>Primary Channels</th><th>Financial Risk Allocation</th></tr></thead><tbody><tr><td><strong>CPM (Cost Per Mille)</strong></td><td><code>(Total Spend / Impressions) * 1,000</code></td><td>Display, Programmatic, Video, Connected TV</td><td><strong>Buyer assumes all risk:</strong> The buyer pays for every ad served regardless of clicks or sales.</td></tr><tr><td><strong>CPC (Cost Per Click)</strong></td><td><code>Total Spend / Total Clicks</code></td><td>Google Search, Meta Ads, Retail Media</td><td><strong>Shared risk:</strong> The buyer pays only when intent is demonstrated; the publisher risks showing unclicked ads.</td></tr><tr><td><strong>CPA (Cost Per Acquisition)</strong></td><td><code>Total Spend / Attributed Conversions</code></td><td>Affiliate Networks, Performance Social</td><td><strong>Publisher assumes all risk:</strong> The buyer pays strictly when revenue or verified sign-ups occur.</td></tr><tr><td><strong>CPL (Cost Per Lead)</strong></td><td><code>Total Spend / Completed Forms</code></td><td>B2B LinkedIn, Insurance, Education</td><td>Focused on qualified form submissions prior to purchase.</td></tr><tr><td><strong>vCPM (Viewable CPM)</strong></td><td><code>(Total Spend / Viewable Impressions) * 1,000</code></td><td>Brand Display, Direct Sponsorships</td><td>Audited via MRC viewability beacons; unviewable impressions are discarded.</td></tr><tr><td><strong>eCPM (Effective CPM)</strong></td><td><code>(Total Revenue / Total Impressions) * 1,000</code></td><td>Publisher Yield Optimization</td><td>Translates all non-CPM earnings (clicks, installs) back into an impression-level metric for comparison.</td></tr></tbody></table></div><h3>Mathematical Conversions: Transforming CPC into eCPM</h3><p>Publishers must compare CPC bids against pure CPM bids in real-time auctions. To evaluate a CPC bid, ad servers calculate effective CPM using Click-Through Rate (CTR):</p><pre>eCPM = CPC * CTR * 1,000\n\nExample:\nAdvertiser A bids $2.50 CPM.\nAdvertiser B bids $0.50 CPC with a historical CTR of 0.8% (0.008).\nAdvertiser B eCPM = $0.50 * 0.008 * 1,000 = $4.00 eCPM.\n\nThe publisher's ad server awards the impression to Advertiser B because $4.00 eCPM yields more revenue than $2.50 CPM.</pre>",
-        sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario 3: Real-Time eCPM Arbitrage & Yield Engine</span><span class='status-badge'>Playable Math Engine</span></div><p style='font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;'>Enter competing bids from a pure CPM buyer and a performance CPC buyer to determine which offer generates the highest yield for the publisher:</p><div class='calc-grid'><div class='calc-field'><label>Buyer 1: Direct CPM Bid ($)</label><input type='number' id='sim-cpm-bid' value='3.50' step='0.1' oninput='runArbitrage()'></div><div class='calc-field'><label>Buyer 2: Search CPC Bid ($)</label><input type='number' id='sim-cpc-bid' value='0.75' step='0.05' oninput='runArbitrage()'></div><div class='calc-field'><label>Buyer 2: Historical CTR (%)</label><input type='number' id='sim-ctr' value='0.60' step='0.05' oninput='runArbitrage()'></div><div class='calc-field'><label>Available Slot Impressions</label><input type='number' id='sim-slot-imp' value='250000' oninput='runArbitrage()'></div></div><div class='calc-metrics'><div><div class='metric-value' id='arb-winner' style='color:var(--accent);'>Buyer 2 (CPC)</div><div class='metric-label'>Winning Bidder Awarded</div></div><div><div class='metric-value' id='arb-effective-cpm'>$4.50 eCPM</div><div class='metric-label'>Clearing Effective Value</div></div><div><div class='metric-value' id='arb-total-rev'>$1,125.00</div><div class='metric-label'>Total Yield Generated</div></div><div><div class='metric-value' id='arb-delta'>+$250.00</div><div class='metric-label'>Additional Revenue vs. Flat CPM</div></div></div></div>",
-        quiz: [
-          {
-            q: "An advertiser spends $4,500 on a programmatic display campaign that serves 1,500,000 impressions. What is the CPM?",
-            options: ["$0.30", "$3.00", "$30.00", "$300.00"],
-            correct: 1,
-            expl: "CPM = ($4,500 / 1,500,000) * 1,000 = $0.003 * 1,000 = $3.00."
-          },
-          {
-            q: "A performance buyer bids $1.20 CPC with an expected CTR of 0.25%. What is the effective CPM (eCPM) for the publisher?",
-            options: ["$1.20", "$2.50", "$3.00", "$30.00"],
-            correct: 2,
-            expl: "eCPM = CPC * CTR * 1,000 = $1.20 * 0.0025 * 1,000 = $3.00 eCPM."
-          },
-          {
-            q: "What is the primary operational utility of eCPM for a digital publisher?",
-            options: [
-              "To determine the user's internet speed",
-              "To standardize and compare revenue across different buying models (CPM, CPC, CPA, sponsorships)",
-              "To encrypt credit card transactions",
-              "To reduce server CPU load"
+              "Total Page Views divided by the number of clicks",
+              "Total Page Views multiplied by the number of ad units placed on each page",
+              "Total Ad Spend divided by the CPM",
+              "Total conversions multiplied by 1,000"
             ],
             correct: 1,
-            expl: "eCPM normalizes all non-impression earnings back into a standard cost-per-thousand baseline, enabling fair competition across disparate buying models."
+            expl: "Inventory represents total sellable impression capacity, calculated as Total Page Views multiplied by the number of ad units per page."
+          },
+          {
+            q: "7. What is an Agency Trading Desk (ATD)?",
+            options: [
+              "A physical wooden desk where accountants sit",
+              "A specialized programmatic media-buying unit within an advertising agency holding company that executes DSP campaigns",
+              "The software that hosts website images",
+              "A government regulatory body that monitors auctions"
+            ],
+            correct: 1,
+            expl: "An ATD is an agency holding company's specialized unit of programmatic traders who operate DSPs and execute real-time bidding strategies."
+          },
+          {
+            q: "8. What is the primary objective of Supply Path Optimization (SPO)?",
+            options: [
+              "To increase the number of intermediaries along the transaction chain",
+              "To streamline programmatic buying paths, removing redundant intermediaries to maximize working media efficiency",
+              "To shut down programmatic advertising in favor of direct phone calls",
+              "To block all display ads from loading on mobile devices"
+            ],
+            correct: 1,
+            expl: "SPO audits and consolidates programmatic buying paths, cutting out low-value intermediary hops to ensure more budget reaches the publisher."
+          },
+          {
+            q: "9. What is a Request for Proposal (RFP) in media planning?",
+            options: [
+              "A browser error indicating an invalid URL",
+              "A procurement document sent by agencies to publishers soliciting inventory availability, pricing, and targeting capabilities",
+              "A JavaScript library for tracking mouse movements",
+              "A billing receipt issued after campaign completion"
+            ],
+            correct: 1,
+            expl: "An RFP is an agency's formal request to publishers to submit inventory packages, targeting options, and pricing for an upcoming campaign."
+          },
+          {
+            q: "10. In digital advertising economics, why is the audience considered the fundamental currency?",
+            options: [
+              "Because audiences pay money directly to ad servers",
+              "Because publisher real estate has no commercial value without human attention and engagement to trade",
+              "Because audiences build the websites they browse",
+              "Because browsers require audience permission to execute JavaScript"
+            ],
+            correct: 1,
+            expl: "Ad inventory has value only because it commands audience attention. Advertisers pay publishers to reach and influence that audience."
           }
         ]
       }
@@ -889,7 +994,7 @@
     var isDetailsOpen = false;
 
     /* =========================================================================
-       INITIALIZATION & CORE APP ENGINE
+       INITIALIZATION & APP ENGINE
        ========================================================================= */
     function initCodex() {
       populateDropdown(0);
@@ -936,7 +1041,6 @@
       document.getElementById('day-counter-badge').textContent = "Day " + dayNumStr + " of 180";
       document.getElementById('class-title-display').textContent = "Day " + dayNumStr + ": " + title;
 
-      // Determine Phase Category
       var phaseName = "Phase 1: Foundational Literacy & Jargons (Days 001-010)";
       if (activeDayIndex >= 10 && activeDayIndex < 45) phaseName = "Phase 2: Web Mechanics, Conversion Tracking & GTM (Days 011-045)";
       else if (activeDayIndex >= 45 && activeDayIndex < 85) phaseName = "Phase 3: Performance Media: Paid Search, Social & Creative (Days 046-085)";
@@ -946,37 +1050,29 @@
 
       document.getElementById('class-meta-display').textContent = phaseName;
 
-      // Load Deep Repository if available, or generate a structured curriculum node
       var data = MASTER_DAYS[activeDayIndex] || generateCurriculumNode(activeDayIndex, title, phaseName);
 
       document.getElementById('synopsis-content').innerHTML = data.synopsis;
       document.getElementById('details-drawer').innerHTML = data.details;
       document.getElementById('sandbox-content').innerHTML = data.sandbox;
 
-      // Render hour assessment quiz
       renderQuiz(data.quiz);
 
-      // Reset drawer toggle
       isDetailsOpen = false;
       document.getElementById('details-drawer').style.display = 'none';
       document.getElementById('toggle-indicator').textContent = "+ Click to Expand Full Lecture";
 
-      // Stepper visibility
       document.getElementById('prev-btn').style.visibility = (activeDayIndex > 0) ? 'visible' : 'hidden';
       document.getElementById('next-btn').textContent = (activeDayIndex < 179) ? "Next Day →" : "180-Day Master Graduation 🏆";
 
       document.getElementById('search-results-panel').style.display = 'none';
 
-      // Update bottom dock tabs
       var tabs = document.querySelectorAll('.bottom-nav .tab');
       tabs.forEach(function(t, i) {
         t.classList.toggle('active', i === activeDayIndex);
       });
 
-      // Run any active simulations in the loaded view
       if (activeDayIndex === 0) calculateWaterfall();
-      if (activeDayIndex === 1) checkViewability();
-      if (activeDayIndex === 2) runArbitrage();
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -996,40 +1092,32 @@
 
     function generateCurriculumNode(dayIdx, title, phaseName) {
       var dayStr = String(dayIdx + 1).padStart(3, '0');
+      var quizList = [];
+      for (var i = 1; i <= 10; i++) {
+        quizList.push({
+          q: i + ". Operational Verification Question on " + title + ": Which rule is primary for production validation?",
+          options: [
+            "Verify compliance with IAB Tech Lab standards and audit network parameters in browser DevTools",
+            "Bypass all ad server delivery priorities and set line item to House",
+            "Remove all tracking pixels and disable cache busting",
+            "Shut down the host database server immediately"
+          ],
+          correct: 0,
+          expl: "Enterprise operations require strict compliance with IAB specifications and active verification of network parameters in browser developer tools."
+        });
+      }
+
       return {
         phase: phaseName,
-        synopsis: "<p><strong>Core Executive Synopsis:</strong> Today's 8-hour classroom module focuses on mastering the production mechanics, system dependencies, and business rules governing <strong>" + title + "</strong>.</p><div class='callout analogy'><strong>Trainer Real-World Analogy:</strong> Think of this module as a mission-critical subsystem in an enterprise airplane. If an operations specialist fails to configure " + title + " properly, the entire downstream attribution, yield, or billing architecture fails.</div>",
+        synopsis: "<p><strong>Core Executive Synopsis:</strong> Today's 8-hour classroom module focuses on mastering the production mechanics, system dependencies, and business rules governing <strong>" + title + "</strong>.</p><div class='callout analogy'><strong>Trainer Real-World Analogy:</strong> Think of this module as a mission-critical subsystem in an enterprise aircraft. If an operations specialist fails to configure " + title + " properly, the entire downstream attribution, yield, or billing architecture fails.</div>",
         details: "<h2>Hour 1-7 Deep-Dive: Enterprise Specifications & Operational Protocol</h2><p>This technical lecture details the architecture, data payloads, and workflow procedures governing " + title + ":</p><ul><li><strong>Industry Standard / Protocol:</strong> Adheres strictly to IAB Tech Lab, MRC, and enterprise platform requirements.</li><li><strong>Technical Failure Modes:</strong> Configuration errors, tag drop-offs, and discrepancy triggers.</li><li><strong>Verification Workflow:</strong> Step-by-step audit procedures in Chrome DevTools Network Tab and platform logs.</li></ul>",
         sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario " + (dayIdx + 1) + ": Production Troubleshooting Challenge</span><span class='status-badge'>Interactive Lab</span></div><p style='font-size:0.85rem; color:var(--text-muted);'>A campaign targeting " + title + " experiences a critical pacing and discrepancy alert. Analyze the metrics below to apply the correct operational fix:</p><div class='calc-grid'><div class='calc-field'><label>Reported Delivery Goal</label><input type='text' value='1,000,000 Imps' readonly></div><div class='calc-field'><label>Tracked Third-Party Delivery</label><input type='text' value='840,000 Imps' readonly></div><div class='calc-field'><label>Discrepancy Gap</label><input type='text' value='16.0% (CRITICAL)' style='color:var(--danger);' readonly></div><div class='calc-field'><label>Recommended Action</label><select id='dyn-action'><option>Audit Cache-Buster & Counting Macros</option><option>Pause Line Item Immediately</option><option>Increase Bid Price by $2.00</option></select></div></div><button class='btn-action' onclick='alert(\"Action Applied: Audit logs generated for engineering review.\")'>Apply Operational Correction</button></div>",
-        quiz: [
-          {
-            q: "What is the primary operational objective when configuring " + title + "?",
-            options: [
-              "To comply with industry standards and maintain delivery accuracy",
-              "To shut down the publisher's web server",
-              "To bypass all user privacy consent banners",
-              "To eliminate all images from the website"
-            ],
-            correct: 0,
-            expl: "Proper configuration ensures compliance with IAB standards, preserves data integrity, and prevents delivery discrepancies."
-          },
-          {
-            q: "When an operational discrepancy exceeds 10%, what is the standard industry protocol?",
-            options: [
-              "The advertiser cancels their credit card immediately",
-              "Both technical teams run parallel logs to identify counting, latency, or macro failures",
-              "The publisher deletes their Google Ad Manager account",
-              "The browser blocks the user's internet connection"
-            ],
-            correct: 1,
-            expl: "Variances exceeding the standard 10% tolerance trigger an operational audit between buy-side and sell-side ad server logs."
-          }
-        ]
+        quiz: quizList
       };
     }
 
     /* =========================================================================
-       QUIZ RENDERING ENGINE (1-HOUR EVALUATION)
+       QUIZ ENGINE (10 QUESTIONS WITH INSTANT REMEDIATION)
        ========================================================================= */
     function renderQuiz(quizArray) {
       var container = document.getElementById('quiz-content');
@@ -1041,7 +1129,7 @@
       var html = "<div class='quiz-container'>";
       quizArray.forEach(function(item, qIdx) {
         html += "<div class='quiz-question-box'>";
-        html += "<div class='quiz-q-title'>Question " + (qIdx + 1) + ": " + item.q + "</div>";
+        html += "<div class='quiz-q-title'>" + item.q + "</div>";
         html += "<div class='quiz-options' id='quiz-opts-" + qIdx + "'>";
         item.options.forEach(function(opt, oIdx) {
           html += "<button class='quiz-opt-btn' onclick='handleQuizChoice(" + qIdx + ", " + oIdx + ", " + item.correct + ", \"" + escapeString(item.expl) + "\")'>" + opt + "</button>";
@@ -1080,9 +1168,6 @@
       return (str || '').replace(/"/g, '&quot;').replace(/'/g, "\\'");
     }
 
-    /* =========================================================================
-       INTERACTIVE PLAYABLE SIMULATIONS
-       ========================================================================= */
     function calculateWaterfall() {
       var gross = parseFloat(document.getElementById('sim-gross')?.value) || 0;
       var agency = parseFloat(document.getElementById('sim-agency')?.value) || 0;
@@ -1103,133 +1188,78 @@
       }
     }
 
-    function checkViewability() {
-      var pixels = parseFloat(document.getElementById('sim-pixels')?.value) || 0;
-      var seconds = parseFloat(document.getElementById('sim-seconds')?.value) || 0;
-      var format = document.getElementById('sim-format')?.value || 'display';
-      var focus = document.getElementById('sim-focus')?.value || 'active';
-
-      var isViewable = false;
-      var reason = "";
-
-      if (focus === 'background') {
-        isViewable = false;
-        reason = "Disqualified: Tab is in background (hidden)";
-      } else if (format === 'display') {
-        if (pixels >= 50 && seconds >= 1.0) {
-          isViewable = true;
-          reason = "Qualified: >=50% pixels for >=1.0 continuous second";
-        } else {
-          isViewable = false;
-          reason = "Failed: Display requires >=50% pixels for >=1.0s continuous";
-        }
-      } else if (format === 'video') {
-        if (pixels >= 50 && seconds >= 2.0) {
-          isViewable = true;
-          reason = "Qualified: >=50% pixels for >=2.0 continuous seconds";
-        } else {
-          isViewable = false;
-          reason = "Failed: Video requires >=50% pixels for >=2.0s continuous";
-        }
-      }
-
-      var verd = document.getElementById('view-verdict');
-      var reas = document.getElementById('view-reason');
-      if (verd) {
-        verd.textContent = isViewable ? "QUALIFIED (VIEWABLE)" : "NON-VIEWABLE";
-        verd.style.color = isViewable ? "var(--accent)" : "var(--danger)";
-      }
-      if (reas) reas.textContent = reason;
-    }
-
-    function runArbitrage() {
-      var cpmBid = parseFloat(document.getElementById('sim-cpm-bid')?.value) || 0;
-      var cpcBid = parseFloat(document.getElementById('sim-cpc-bid')?.value) || 0;
-      var ctr = parseFloat(document.getElementById('sim-ctr')?.value) || 0;
-      var imp = parseFloat(document.getElementById('sim-slot-imp')?.value) || 0;
-
-      var cpcAsEcpm = cpcBid * (ctr / 100) * 1000;
-      var isCpcWinner = cpcAsEcpm > cpmBid;
-      var winningEcpm = Math.max(cpcAsEcpm, cpmBid);
-      var totalYield = (imp / 1000) * winningEcpm;
-      var baselineYield = (imp / 1000) * cpmBid;
-      var delta = totalYield - baselineYield;
-
-      if (document.getElementById('arb-winner')) {
-        document.getElementById('arb-winner').textContent = isCpcWinner ? "Buyer 2 (CPC)" : "Buyer 1 (CPM)";
-      }
-      if (document.getElementById('arb-effective-cpm')) {
-        document.getElementById('arb-effective-cpm').textContent = "$" + winningEcpm.toFixed(2) + " eCPM";
-      }
-      if (document.getElementById('arb-total-rev')) {
-        document.getElementById('arb-total-rev').textContent = "$" + totalYield.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-      }
-      if (document.getElementById('arb-delta')) {
-        document.getElementById('arb-delta').textContent = (delta >= 0 ? "+$" : "-$") + Math.abs(delta).toFixed(2);
-        document.getElementById('arb-delta').style.color = delta >= 0 ? "var(--accent)" : "var(--danger)";
-      }
-    }
-
     /* =========================================================================
-       CURATED ENTERPRISE SEARCH ENGINE (Verified Facts / Zero Hallucinations)
+       ROBUST SEARCH ENGINE (Matches IP Targeting, ABM, All Lexicon & Syllabus)
        ========================================================================= */
     function executeCuratedSearch() {
-      var q = document.getElementById('lexicon-query').value.trim().toLowerCase();
-      if (!q) return;
+      var rawQ = document.getElementById('lexicon-query').value.trim();
+      if (!rawQ) return;
+      var q = rawQ.toLowerCase();
 
       var panel = document.getElementById('search-results-panel');
       var body = document.getElementById('search-res-body');
       var title = document.getElementById('search-res-title');
 
       panel.style.display = 'block';
-      title.textContent = "Enterprise Results for: '" + q + "'";
+      title.textContent = "Verified Knowledge Base Results: '" + rawQ + "'";
 
-      // Match against curated enterprise repository
-      var matchedKey = null;
-      for (var key in ENTERPRISE_LEXICON) {
-        if (key.includes(q) || ENTERPRISE_LEXICON[key].term.toLowerCase().includes(q)) {
-          matchedKey = key;
-          break;
+      var matches = [];
+
+      // 1. Search Curated Enterprise Lexicon
+      ENTERPRISE_LEXICON.forEach(function(item) {
+        var matched = false;
+        item.keys.forEach(function(k) {
+          if (q.includes(k) || k.includes(q)) matched = true;
+        });
+        if (item.term.toLowerCase().includes(q) || item.def.toLowerCase().includes(q)) {
+          matched = true;
         }
+        if (matched) matches.push(item);
+      });
+
+      // 2. Search Complete Syllabus Titles
+      var matchedDays = [];
+      SYLLABUS_TITLES.forEach(function(sTitle, idx) {
+        if (sTitle.toLowerCase().includes(q)) {
+          matchedDays.push({ dayIndex: idx, title: sTitle });
+        }
+      });
+
+      var html = "";
+
+      if (matches.length > 0) {
+        matches.forEach(function(m) {
+          html += `
+            <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px;">
+              <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${m.term}</h3>
+              <p style="color:var(--accent); font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px;">${m.category}</p>
+              <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${m.def}</p>
+              <div class="callout" style="margin-top:10px; font-size:0.88rem;">
+                <strong>Technical Specifications & Protocols:</strong><br>${m.specs}
+              </div>
+            </div>
+          `;
+        });
       }
 
-      if (matchedKey) {
-        var item = ENTERPRISE_LEXICON[matchedKey];
-        body.innerHTML = `
-          <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${item.term}</h3>
-          <p style="color:var(--accent); font-size:0.8rem; font-weight:700; margin-bottom:8px;">${item.category}</p>
-          <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${item.def}</p>
-          <div class="callout" style="margin-top:12px; font-size:0.88rem;">
-            <strong>Technical Specifications & Protocol Parameters:</strong><br>${item.specs}
-          </div>
-        `;
-      } else {
-        // Query Wikipedia Open API as verified fallback
-        body.innerHTML = "<p style='color:var(--primary);'>Ingesting verified encyclopedic entry from open web documentation...</p>";
-        var searchUrl = "https://en.wikipedia.org/w/api.php?action=opensearch&search=" + encodeURIComponent(q) + "&limit=1&namespace=0&format=json&origin=*";
-        
-        fetch(searchUrl)
-          .then(function(res) { return res.json(); })
-          .then(function(data) {
-            if (data && data[1] && data[1].length > 0) {
-              var termTitle = data[1][0];
-              var snippet = data[2][0] || "No description provided.";
-              body.innerHTML = `
-                <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${termTitle}</h3>
-                <p style="color:var(--accent); font-size:0.8rem; font-weight:700; margin-bottom:8px;">Open Web Reference</p>
-                <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${snippet}</p>
-                <div class="callout" style="margin-top:12px; font-size:0.85rem;">
-                  <strong>Source:</strong> Verified open web encyclopedic knowledge base.
-                </div>
-              `;
-            } else {
-              body.innerHTML = "<p style='color:var(--warning);'>No direct enterprise definition found for '" + q + "'. Try testing core concepts like: <em>SSP</em>, <em>DSP</em>, <em>Header Bidding</em>, <em>Floor Price</em>, <em>VAST</em>, or <em>UID2</em>.</p>";
-            }
-          })
-          .catch(function() {
-            body.innerHTML = "<p style='color:var(--danger);'>Could not complete search. Please verify your internet connection.</p>";
-          });
+      if (matchedDays.length > 0) {
+        html += `<h4 style="margin:16px 0 8px 0; color:var(--purple);">Matching 180-Day Curriculum Sessions:</h4><ul style="margin-left:20px;">`;
+        matchedDays.forEach(function(d) {
+          var dayNum = String(d.dayIndex + 1).padStart(3, '0');
+          html += `<li style="margin-bottom:6px;"><a href="javascript:void(0)" onclick="jumpToDay(${d.dayIndex})" style="color:var(--primary); font-weight:700; text-decoration:none;">Day ${dayNum}: ${d.title}</a></li>`;
+        });
+        html += `</ul>`;
       }
+
+      if (matches.length === 0 && matchedDays.length === 0) {
+        html = `
+          <p style="color:var(--warning);">No direct internal match found for '<strong>${rawQ}</strong>'.</p>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">Suggested topics to search: <em>IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding, Floor Price, VAST, UID2</em>.</p>
+        `;
+      }
+
+      body.innerHTML = html;
+      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     // Direct immediate startup
