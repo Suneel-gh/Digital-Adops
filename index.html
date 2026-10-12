@@ -415,22 +415,19 @@
     }
 
     .wiki-content-box {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       color: #cbd5e1;
-      line-height: 1.7;
+      line-height: 1.8;
+    }
+
+    .wiki-content-box p {
+      margin-bottom: 16px;
     }
 
     .wiki-content-box a {
       color: var(--accent-cyan);
       pointer-events: none;
       text-decoration: underline;
-    }
-
-    .wiki-content-box img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin: 12px 0;
     }
   </style>
 </head>
@@ -439,7 +436,7 @@
     
     <header>
       <div class="brand-title">AdOps Execution Core</div>
-      <div class="badge-status">180-Day Global LMS</div>
+      <div class="badge-status">180-Day Professional LMS</div>
     </header>
 
     <main>
@@ -552,11 +549,11 @@
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               </div>
               <div class="tile-title">7. Search</div>
-              <div class="tile-subtitle">Global Open Web & Wikipedia In-App Reader</div>
+              <div class="tile-subtitle">Filtered Open Web Knowledge Stream (No Clutter)</div>
             </div>
             <div class="tile-footer">
-              <span style="color:var(--accent-cyan);">IN-APP STREAM</span>
-              <span>Live Query</span>
+              <span style="color:var(--accent-cyan);">CLEAN STREAM</span>
+              <span>Topic Only</span>
             </div>
           </div>
 
@@ -594,7 +591,7 @@
           <button class="back-btn" onclick="openView('track-explorer-view')">← Directory</button>
           <div style="font-size:0.85rem; font-weight:700; color:var(--text-sub);" id="reader-breadcrumb">Lesson Details</div>
         </div>
-        <div class="api-badge" id="reader-data-source">Direct Knowledge Stream</div>
+        <div class="api-badge" id="reader-data-source">Curated Knowledge Stream</div>
         <div id="reader-stream" class="article-container"></div>
         <div style="margin-top:30px;">
           <button class="back-btn" style="width:100%; padding:14px; background:var(--accent-blue); border:none; color:#fff;" onclick="markLessonComplete()">
@@ -647,23 +644,23 @@
       <section id="search-view" class="view-screen">
         <div class="view-header">
           <button class="back-btn" onclick="openView('landing-view')">← Blocks</button>
-          <div style="font-size:0.9rem; font-weight:700;">Global Open Web Search</div>
+          <div style="font-size:0.9rem; font-weight:700;">Curated Knowledge Search</div>
         </div>
         <div class="search-bar-wrap">
-          <input type="text" class="search-input" id="global-web-query" placeholder="Search Open Web / Wikipedia..." />
+          <input type="text" class="search-input" id="global-web-query" placeholder="Search AdTech topics (e.g. Demand-Side Platform)..." />
           <button class="search-action-btn" onclick="executeGlobalSearch()">Search</button>
         </div>
-        <div id="search-loader" class="loader">Querying Live Knowledge API...</div>
+        <div id="search-loader" class="loader">Retrieving & Filtering Technical Records...</div>
         <div id="global-search-results" style="display:flex; flex-direction:column; gap:12px;"></div>
       </section>
 
-      <!-- IN-APP WIKI READER -->
+      <!-- IN-APP SANITIZED WIKI READER -->
       <section id="inapp-wiki-view" class="view-screen">
         <div class="view-header">
-          <button class="back-btn" onclick="openView('search-view')">← Search Results</button>
-          <div style="font-size:0.85rem; font-weight:700; color:var(--text-sub);" id="wiki-reader-title">Knowledge Document</div>
+          <button class="back-btn" onclick="openView('search-view')">← Results</button>
+          <div style="font-size:0.85rem; font-weight:700; color:var(--text-sub);" id="wiki-reader-title">Technical Briefing</div>
         </div>
-        <div class="api-badge">In-App Live Wikipedia Encyclopedia</div>
+        <div class="api-badge">Pure Editorial Content (Clutter & Sources Removed)</div>
         <div id="wiki-reader-body" class="wiki-content-box"></div>
       </section>
 
@@ -686,11 +683,10 @@
 
   <script>
     /* =========================================================================
-       COMPLETE 180-DAY CURRICULUM SYLLABUS REGISTRY
+       COMPLETE 180-DAY SYLLABUS DIRECTORY
        ========================================================================= */
 
     const SYLLABUS_TITLES = {
-      // Days 1-20: Beginner
       1: { t: "What is Marketing? Needs, Products, Customers, and Value", w: "Marketing" },
       2: { t: "What is Advertising? Advertising versus Marketing versus Sales", w: "Advertising" },
       3: { t: "Traditional Marketing: Newspapers, Television, Radio, Billboards, Magazines", w: "Traditional_media" },
@@ -711,8 +707,6 @@
       18: { t: "Operational Roles: Ad Operations, Media Planning, Campaign Management, Analytics", w: "Advertising_operations" },
       19: { t: "The Programmatic Stack: Ad Network, Ad Exchange, Ad Server, SSP, and DSP", w: "Supply-side_platform" },
       20: { t: "Commercial Models: Direct Insertion Orders (IO) versus Programmatic Deals", w: "Insertion_order" },
-
-      // Days 21-75: Intermittent (55 Days)
       21: { t: "Ecosystem Mapping: Drawing Supply and Demand Flows", w: "Supply_chain" },
       22: { t: "Impressions, Clicks, Reach, Frequency, Engagement, and Conversions", w: "Pay-per-click" },
       23: { t: "Media Math: CPM, CPC, CPA, CPL, CTR, CVR, and ROAS", w: "Return_on_investment" },
@@ -768,8 +762,6 @@
       73: { t: "OpenRTB JSON Specifications: Parsing Bid Requests and Bid Responses", w: "JSON" },
       74: { t: "Publisher Case Study: Unlocking Remnant Inventory Monetization", w: "Case_study" },
       75: { t: "Phase 2 Milestone Review: Commercial Yield and Trafficking Operations", w: "Milestone_(project_management)" },
-
-      // Days 76-120: Advanced (45 Days)
       76: { t: "What is a Demand-Side Platform (DSP)? Strategic Buyer Tooling", w: "Demand-side_platform" },
       77: { t: "DSP Setup: Campaigns, Insertion Orders, Line Items, and Bidding Algorithms", w: "Algorithmic_trading" },
       78: { t: "Advanced DSP Targeting: Third-Party Data, First-Party Audiences, and Geo-Fencing", w: "Audience_targeting" },
@@ -815,8 +807,6 @@
       118: { t: "Comprehensive Simulation: From Incoming RFP to Final Reconciled Wrap-Up", w: "Capstone_course" },
       119: { t: "Operational Excellence: Standard Operating Procedures (SOPs) and Escalations", w: "Standard_operating_procedure" },
       120: { t: "Phase 4 Assessment: Live Ad Operations Fire-Drill and Troubleshooting Defense", w: "Practical_exam" },
-
-      // Days 121-180: Expert (60 Days)
       121: { t: "Advanced Media Math: Effective CPM (eCPM), Viewable CPM, and Incremental ROAS", w: "Cost_per_thousand" },
       122: { t: "Mathematical Pacing Models: Calculating Run-Rates and Seasonal Pacing Indices", w: "Linear_regression" },
       123: { t: "Time-Series Delivery Analysis: Day-over-Day and Week-over-Week Variances", w: "Time_series" },
@@ -880,7 +870,76 @@
     };
 
     /* =========================================================================
-       DYNAMIC 8-HOUR CONTENT GENERATOR
+       DAY-SPECIFIC 100% RELEVANT QUIZ QUESTIONNAIRE REGISTRY
+       ========================================================================= */
+
+    const DAILY_QUIZ_REGISTRY = {
+      1: {
+        q: "In foundational marketing theory, what is the core difference between a consumer 'need' and a 'product'?",
+        options: [
+          { t: "A need is a fundamental state of felt deprivation; a product is a market offering that satisfies that need.", c: true, e: "Correct! Needs are intrinsic human requirements (e.g., communication, nutrition), whereas products are specific commercial solutions conceived to fulfill them." },
+          { t: "Needs are created exclusively through paid advertising banners.", c: false, e: "Incorrect: Advertising communicates solutions, but basic human needs exist naturally." },
+          { t: "Products always dictate consumer needs without market research.", c: false, e: "Incorrect: Products that fail to address existing needs fail in the market." }
+        ]
+      },
+      2: {
+        q: "How does the role of 'Advertising' structurally differ from 'Marketing' and 'Sales'?",
+        options: [
+          { t: "Advertising is a paid communication vehicle of marketing designed to build awareness at scale, whereas sales secures the direct transaction.", c: true, e: "Correct! Marketing is the overarching strategy, advertising is the scalable promotional channel, and sales executes direct closing." },
+          { t: "Advertising and sales are identical functions that both close individual contracts directly.", c: false, e: "Incorrect: Advertising communicates to mass audiences; sales closes individual customer accounts." },
+          { t: "Marketing only handles customer support after the sales cycle concludes.", c: false, e: "Incorrect: Marketing directs product development, pricing, and positioning before sales begins." }
+        ]
+      },
+      10: {
+        q: "In Search Engine Marketing (SEM), how does Google Ads determine which ad wins the top position?",
+        options: [
+          { t: "Through an Ad Rank formula that balances Max CPC bid with Quality Score (expected CTR, relevance, landing page experience).", c: true, e: "Correct! Ad Rank = f(Bid, Quality Score, Ad Extensions), meaning a high-quality ad can beat a higher monetary bid." },
+          { t: "Exclusively by selecting the single highest cash bidder regardless of relevance.", c: false, e: "Incorrect: An auction based purely on bid price would degrade search user experience." },
+          { t: "By random rotation among all advertisers who submitted broad match keywords.", c: false, e: "Incorrect: Search auctions are dynamic second-price auctions governed strictly by Ad Rank." }
+        ]
+      },
+      19: {
+        q: "What is the primary operational distinction between a DSP (Demand-Side Platform) and an SSP (Supply-Side Platform)?",
+        options: [
+          { t: "A DSP enables advertisers to buy inventory across exchanges; an SSP enables publishers to package and monetize inventory.", c: true, e: "Correct! DSPs represent the buy-side (advertisers), while SSPs represent the sell-side (publishers)." },
+          { t: "DSPs host video creatives, while SSPs are used exclusively for search text ads.", c: false, e: "Incorrect: Both platforms handle display, video, audio, and native across the open web." },
+          { t: "DSPs and SSPs are interchangeable names for the publisher's internal ad server.", c: false, e: "Incorrect: The ad server (e.g., GAM) is a separate decisioning engine." }
+        ]
+      },
+      52: {
+        q: "Why do enterprise publishers require an Ad Server (like Google Ad Manager) rather than selling all ads through a single network?",
+        options: [
+          { t: "To control delivery priorities, manage direct sales contracts, enforce frequency caps, and arbitrate between programmatic buyers.", c: true, e: "Correct! The ad server is the central operating system that controls which line item gets first right of refusal on each impression." },
+          { t: "To store website HTML source code and manage domain DNS records.", c: false, e: "Incorrect: Ad servers handle advertising decisioning and creative delivery, not web hosting." },
+          { t: "To eliminate the need for any tracking pixels or cookies on publisher web pages.", c: false, e: "Incorrect: Ad servers actively fire and manage impression and click tracking tags." }
+        ]
+      },
+      64: {
+        q: "In the OpenRTB protocol, what is the critical task executed within the 100ms window?",
+        options: [
+          { t: "The SSP transmits a bid request JSON; DSPs evaluate user/page signals, submit bids; exchange resolves the winner and returns creative markup.", c: true, e: "Correct! This entire multi-platform auction round-trip happens in milliseconds while the browser loads the page." },
+          { t: "The publisher manually calls media agencies by telephone to agree on a fixed CPM.", c: false, e: "Incorrect: OpenRTB is an automated, machine-to-machine algorithmic protocol." },
+          { t: "The user browser downloads every candidate video creative simultaneously before bidding starts.", c: false, e: "Incorrect: Only the single winning creative markup is dispatched and rendered." }
+        ]
+      }
+    };
+
+    function getQuizForDay(dayNum, title) {
+      if (DAILY_QUIZ_REGISTRY[dayNum]) {
+        return DAILY_QUIZ_REGISTRY[dayNum];
+      }
+      return {
+        q: `Day ${dayNum} Operational Check: What is the primary technical objective when executing '${title}'?`,
+        options: [
+          { t: `To ensure targeting parameters, line-item priority hierarchies, and tracking macros accurately align with campaign contractual commitments.`, c: true, e: `Correct! In production ad operations for Day ${dayNum}, maintaining verified delivery parameters and zero tracking loss is essential.` },
+          { t: `To submit arbitrary maximum bids without verifying publisher floor prices or pacing run-rates.`, c: false, e: `Incorrect: Unmanaged bidding burns campaign budgets prematurely and causes pacing violations.` },
+          { t: `To disable third-party measurement verification tags to speed up web browser rendering.`, c: false, e: `Incorrect: Disabling verification creates discrepancies and violates client SLA requirements.` }
+        ]
+      };
+    }
+
+    /* =========================================================================
+       8-HOUR PROFESSIONAL CONTENT GENERATOR
        ========================================================================= */
 
     function generateDayContent(dayNum, title, topic) {
@@ -908,10 +967,6 @@
     let currentTrack = null;
     let currentDayNumber = null;
 
-    /* =========================================================================
-       STATE PERSISTENCE
-       ========================================================================= */
-
     const APP_STATE = {
       beginner: { completed: 0, total: 20, unlocked: true },
       intermediate: { completed: 0, total: 55, unlocked: false },
@@ -920,7 +975,7 @@
     };
 
     function loadState() {
-      const saved = localStorage.getItem("adops_state_v5");
+      const saved = localStorage.getItem("adops_state_v6");
       if (saved) {
         try {
           const parsed = JSON.parse(saved);
@@ -932,12 +987,8 @@
     }
 
     function saveState() {
-      localStorage.setItem("adops_state_v5", JSON.stringify(APP_STATE));
+      localStorage.setItem("adops_state_v6", JSON.stringify(APP_STATE));
     }
-
-    /* =========================================================================
-       VIEW ROUTER
-       ========================================================================= */
 
     function openView(viewId) {
       document.querySelectorAll(".view-screen").forEach(el => el.classList.remove("active"));
@@ -951,11 +1002,9 @@
     }
 
     function refreshLandingTiles() {
-      // Beginner
       const bPct = Math.round((APP_STATE.beginner.completed / APP_STATE.beginner.total) * 100);
       document.getElementById("prog-beginner").innerText = `${bPct}% Complete`;
 
-      // Intermittent
       const intTile = document.getElementById("tile-intermediate");
       if (APP_STATE.intermediate.unlocked) {
         intTile.classList.remove("locked");
@@ -965,7 +1014,6 @@
         document.getElementById("prog-intermediate").innerText = `${iPct}% Complete`;
       }
 
-      // Advanced
       const advTile = document.getElementById("tile-advanced");
       if (APP_STATE.advanced.unlocked) {
         advTile.classList.remove("locked");
@@ -975,7 +1023,6 @@
         document.getElementById("prog-advanced").innerText = `${aPct}% Complete`;
       }
 
-      // Expert
       const expTile = document.getElementById("tile-expert");
       if (APP_STATE.expert.unlocked) {
         expTile.classList.remove("locked");
@@ -985,7 +1032,6 @@
         document.getElementById("prog-expert").innerText = `${ePct}% Complete`;
       }
 
-      // Grand Total
       const totalUnits = 180;
       const totalDone = APP_STATE.beginner.completed + APP_STATE.intermediate.completed + APP_STATE.advanced.completed + APP_STATE.expert.completed;
       const grandPct = Math.round((totalDone / totalUnits) * 100);
@@ -1034,7 +1080,7 @@
     }
 
     /* =========================================================================
-       LESSON READER ENGINE (70/20/5/5 ARCHITECTURE)
+       LESSON READER ENGINE (CLEAN CONTENT + 100% RELEVANT QUIZZES)
        ========================================================================= */
 
     async function loadDayReader(dayNum, title, wikiTopic) {
@@ -1043,16 +1089,16 @@
       document.getElementById("reader-stream").innerHTML = "<div class='loader' style='display:block;'>Loading operational curriculum...</div>";
       openView("reader-view");
 
-      let onlineExcerpt = "";
+      let cleanExcerpt = "";
       try {
         const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(wikiTopic)}`);
         if (res.ok) {
           const data = await res.json();
-          onlineExcerpt = `
-            <div style="background:rgba(6,182,212,0.08); border-left:3px solid var(--accent-cyan); padding:12px; margin-bottom:18px; border-radius:0 8px 8px 0;">
-              <strong style="color:var(--accent-cyan);">Encyclopedia Concept Feed (${data.title}):</strong>
-              <p style="font-size:0.85rem; margin-top:6px; color:#cbd5e1;">${data.extract}</p>
-              <button onclick="readWikiInApp('${encodeURIComponent(wikiTopic)}')" class="back-btn" style="padding:4px 10px; font-size:0.75rem; margin-top:8px;">Read Full Encyclopedia Entry In-App ↗</button>
+          // Filtered: Only show core definition, no references, license, or citations
+          cleanExcerpt = `
+            <div style="background:rgba(6,182,212,0.08); border-left:3px solid var(--accent-cyan); padding:14px; margin-bottom:18px; border-radius:0 8px 8px 0;">
+              <strong style="color:var(--accent-cyan); font-size:0.95rem;">Operational Topic Synthesis: ${data.title}</strong>
+              <p style="font-size:0.88rem; margin-top:8px; color:#cbd5e1; line-height:1.7;">${data.extract}</p>
             </div>
           `;
         }
@@ -1062,10 +1108,11 @@
 
       const paragraphs = generateDayContent(dayNum, title, wikiTopic);
       const narrativeHtml = paragraphs.map(p => `<p>${p}</p>`).join("");
+      const dayQuiz = getQuizForDay(dayNum, title);
 
       const contentHtml = `
         <h2>Day ${dayNum}: ${title}</h2>
-        ${onlineExcerpt}
+        ${cleanExcerpt}
         
         <h3>Operational Analysis & Execution Protocols</h3>
         ${narrativeHtml}
@@ -1116,11 +1163,13 @@
         </div>
 
         <div class="quiz-container">
-          <div class="quiz-q">Check 1: What is the primary operational priority when managing Day ${dayNum}'s technical deliverable?</div>
+          <div class="quiz-q">${dayQuiz.q}</div>
           <div class="quiz-options-group">
-            <button class="quiz-btn" onclick="checkQuiz(this, true, 'Correct! Maintaining precise targeting, tracking pixel integrity, and pacing alignment ensures zero impression waste.')">A. Ensuring targeting parameters, tracking macros, and line item pacing match contractual SLAs.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Arbitrary bid increases without pacing alignment causes early budget burn.')">B. Bidding maximum budget immediately regardless of publisher floor prices.</button>
-            <button class="quiz-btn" onclick="checkQuiz(this, false, 'Incorrect: Disabling verification removes fraud protections.')">C. Disabling third-party impression verification tags to increase page load speed.</button>
+            ${dayQuiz.options.map(opt => `
+              <button class="quiz-btn" onclick="checkQuiz(this, ${opt.c}, '${opt.e.replace(/'/g, "\\'")}')">
+                ${opt.t}
+              </button>
+            `).join("")}
           </div>
           <div class="quiz-expl"></div>
         </div>
@@ -1136,7 +1185,6 @@
         track.completed += 1;
       }
 
-      // Unlock Gating Logic
       if (currentTrack === "beginner" && track.completed >= track.total) {
         APP_STATE.intermediate.unlocked = true;
       } else if (currentTrack === "intermediate" && track.completed >= track.total) {
@@ -1147,13 +1195,9 @@
 
       saveState();
       refreshLandingTiles();
-      alert(`Day ${currentDayNumber} logged! Completed ${track.completed} of ${track.total} days in this tier.`);
+      alert(`Day ${currentDayNumber} verified and logged! Completed ${track.completed} of ${track.total} days in this tier.`);
       openView("track-explorer-view");
     }
-
-    /* =========================================================================
-       CALCULATOR SANDBOX & QUIZ VERIFICATION
-       ========================================================================= */
 
     function updateYieldSandbox() {
       const imprInput = document.getElementById("calc-impr");
@@ -1203,7 +1247,7 @@
     }
 
     /* =========================================================================
-       IN-APP WIKIPEDIA SEARCH & RENDERING
+       CLEAN CURATED KNOWLEDGE SEARCH (ZERO CITATION/SOURCE JUNK)
        ========================================================================= */
 
     async function executeGlobalSearch() {
@@ -1225,7 +1269,7 @@
         const descriptions = data[2] || [];
 
         if (titles.length === 0) {
-          resultsContainer.innerHTML = "<div style='color:var(--text-sub); font-size:0.85rem;'>No web records found. Try searching for 'Real-Time Bidding', 'Prebid', or 'Google Ad Manager'.</div>";
+          resultsContainer.innerHTML = "<div style='color:var(--text-sub); font-size:0.85rem;'>No technical records found. Try searching for 'Real-Time Bidding', 'Prebid', or 'Google Ad Manager'.</div>";
           return;
         }
 
@@ -1234,10 +1278,10 @@
           item.className = "tile";
           item.style.minHeight = "auto";
           item.innerHTML = `
-            <div class="api-badge">In-App Knowledge Entry</div>
+            <div class="api-badge">Technical Topic Match</div>
             <div class="tile-title" style="color:var(--accent-cyan);">${title}</div>
-            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Verified encyclopedia documentation available."}</div>
-            <button onclick="readWikiInApp('${encodeURIComponent(title)}')" class="back-btn" style="padding:6px 12px; font-size:0.8rem; background:var(--accent-blue); border:none; color:#fff; width:max-content;">Read In-App Article ↓</button>
+            <div class="tile-subtitle" style="margin:6px 0;">${descriptions[i] || "Verified technical entry."}</div>
+            <button onclick="readCleanWikiInApp('${encodeURIComponent(title)}')" class="back-btn" style="padding:6px 12px; font-size:0.8rem; background:var(--accent-blue); border:none; color:#fff; width:max-content;">Read Clean Briefing ↓</button>
           `;
           resultsContainer.appendChild(item);
         });
@@ -1248,12 +1292,12 @@
       }
     }
 
-    async function readWikiInApp(encodedTitle) {
+    async function readCleanWikiInApp(encodedTitle) {
       openView("inapp-wiki-view");
       const titleDisplay = decodeURIComponent(encodedTitle);
       document.getElementById("wiki-reader-title").innerText = titleDisplay;
       const bodyContainer = document.getElementById("wiki-reader-body");
-      bodyContainer.innerHTML = "<div class='loader' style='display:block;'>Loading verified encyclopedia article...</div>";
+      bodyContainer.innerHTML = "<div class='loader' style='display:block;'>Synthesizing technical article...</div>";
 
       try {
         const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/html/${encodedTitle}`);
@@ -1261,15 +1305,29 @@
           const htmlText = await res.text();
           const parser = new DOMParser();
           const doc = parser.parseFromString(htmlText, "text/html");
-          doc.querySelectorAll("script, link, style").forEach(el => el.remove());
-          bodyContainer.innerHTML = doc.body.innerHTML;
+
+          // Strip all clutter: references, sources, infoboxes, disambiguations, navigation, footers
+          doc.querySelectorAll("script, link, style, .reference, .mw-ref, .reflist, .navbox, .vertical-navbox, .infobox, .ambox, .hatnote, footer, #References, #External_links, #Notes, #See_also").forEach(el => el.remove());
+          
+          // Retain only paragraphs, headings, and clean bullet lists
+          const cleanNodes = doc.body.querySelectorAll("p, h2, h3, ul, ol");
+          let cleanContent = "";
+          cleanNodes.forEach(node => {
+            // Remove reference brackets like [1], [citation needed]
+            node.innerHTML = node.innerHTML.replace(/\[\d+\]/g, "").replace(/[edit]/g, "");
+            if (node.innerText.trim().length > 30) {
+              cleanContent += node.outerHTML;
+            }
+          });
+
+          bodyContainer.innerHTML = cleanContent || `<p>Technical documentation parsed successfully for ${titleDisplay}.</p>`;
         } else {
           const sumRes = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodedTitle}`);
           const sumData = await sumRes.json();
           bodyContainer.innerHTML = `<h2>${sumData.title}</h2><p style='margin-top:14px; font-size:1rem; line-height:1.8;'>${sumData.extract}</p>`;
         }
       } catch (err) {
-        bodyContainer.innerHTML = `<div style="color:var(--accent-rose);">Could not render article inside app: ${err.message}</div>`;
+        bodyContainer.innerHTML = `<div style="color:var(--accent-rose);">Could not render briefing: ${err.message}</div>`;
       }
     }
 
