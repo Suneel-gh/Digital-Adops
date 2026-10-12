@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>OmniAdTech: Zero-to-Hero Interactive Academy</title>
+  <title>OmniAdTech Academy</title>
   <style>
     :root {
       --bg: #090d16;
       --surface: #131c2e;
-      --surface-hover: #1c2942;
       --border: #233554;
       --primary: #38bdf8;
-      --primary-dim: #0284c7;
       --accent: #10b981;
-      --warning: #f59e0b;
       --danger: #ef4444;
       --purple: #a855f7;
       --text: #f1f5f9;
@@ -34,7 +31,6 @@
       position: sticky;
       top: 0;
       background: rgba(9, 13, 22, 0.95);
-      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       padding: 12px 16px;
       z-index: 100;
@@ -44,7 +40,7 @@
     }
     .brand { font-size: 1.1rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; gap: 8px; }
     .badge {
-      font-size: 0.72rem;
+      font-size: 0.75rem;
       padding: 4px 10px;
       background: #1e293b;
       border: 1px solid var(--border);
@@ -66,7 +62,6 @@
       font-size: 0.95rem;
       outline: none;
     }
-    .search-box input:focus { border-color: var(--primary); }
 
     .explore-shelf { margin-bottom: 20px; }
     .shelf-title {
@@ -87,7 +82,6 @@
       font-weight: 600;
       cursor: pointer;
     }
-    .term-chip:active { background: var(--primary); color: var(--bg); }
 
     .mode-switch {
       display: flex;
@@ -119,9 +113,8 @@
       padding: 20px;
       margin-bottom: 16px;
     }
-    .card-header { margin-bottom: 16px; }
     .card-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
-    .card-meta { font-size: 0.8rem; color: var(--text-muted); }
+    .card-meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px; }
 
     h3 { font-size: 1.05rem; color: var(--primary); margin: 18px 0 8px 0; }
     p { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 12px; }
@@ -221,7 +214,7 @@
 
   <header>
     <div class="brand"><span>🌐</span> OmniAdTech Academy</div>
-    <div class="badge" id="syllabus-count">0 Classes</div>
+    <div class="badge" id="syllabus-count">8 Classes Ready</div>
   </header>
 
   <div class="container">
@@ -231,7 +224,14 @@
 
     <div class="explore-shelf">
       <div class="shelf-title">Explore Immediate Deep-Dives</div>
-      <div class="chip-cloud" id="quick-chips"></div>
+      <div class="chip-cloud" id="quick-chips">
+        <div class="term-chip" onclick="openDeepDive('ssp')">⚡ SSP (Supply-Side)</div>
+        <div class="term-chip" onclick="openDeepDive('dsp')">🎯 DSP (Demand-Side)</div>
+        <div class="term-chip" onclick="openDeepDive('rtb')">⏱️ 100ms RTB Cycle</div>
+        <div class="term-chip" onclick="openDeepDive('vast')">🎬 VAST Video Ads</div>
+        <div class="term-chip" onclick="loadClassByIndex(1)">📖 CPM & CPC Math</div>
+        <div class="term-chip" onclick="loadClassByIndex(2)">📖 Ad Server Traffic Cop</div>
+      </div>
     </div>
 
     <div class="mode-switch">
@@ -241,15 +241,27 @@
 
     <div class="card" id="lesson-card">
       <div class="card-header">
-        <div class="card-title" id="class-title">Loading Class...</div>
-        <div class="card-meta" id="class-meta">Curriculum</div>
+        <div class="card-title" id="class-title">Class 1: Why Digital Advertising Exists (The Big Picture)</div>
+        <div class="card-meta" id="class-meta">Category: Foundations • Module 1 of 4</div>
       </div>
-      <div id="class-content"></div>
+      <div id="class-content">
+        <p>Imagine you open a small local bakery in your town. You want people to come buy your freshly baked cakes.</p>
+        <div class="callout analogy">
+          <strong>The Old Traditional Way:</strong> You print 5,000 paper leaflets and hand them out at the train station. Most end up in the trash bin, and you have no idea who actually walked into your store because of that paper.
+        </div>
+        <p><strong>The Digital Revolution:</strong> Instead of guessing, you run an ad on Instagram or Google that only shows to people within 3 km who have a birthday coming up this week. You see exactly how many people looked, clicked, and ordered.</p>
+        <h3>The 3 Basic Pillars:</h3>
+        <ul>
+          <li><strong>1. The Audience (You & Me):</strong> Regular people browsing apps or sites.</li>
+          <li><strong>2. The Publisher:</strong> Anyone who owns digital space that attracts attention (ESPN, YouTube, news sites).</li>
+          <li><strong>3. The Advertiser:</strong> Any business with a product wanting to reach that audience (Nike, local shops).</li>
+        </ul>
+      </div>
       <div id="web-resources-container"></div>
       <div id="quiz-container"></div>
 
       <div class="nav-buttons">
-        <button class="action-btn btn-prev" id="btn-back" onclick="previousClass()">← Previous Class</button>
+        <button class="action-btn btn-prev" id="btn-back" style="visibility:hidden;" onclick="previousClass()">← Previous Class</button>
         <button class="action-btn btn-next" id="btn-fwd" onclick="nextClass()">Next Class →</button>
       </div>
     </div>
@@ -263,33 +275,17 @@
   </div>
 
   <script>
-    let currentLevel = 'layman';
-    let activeClassIndex = 0;
-    window.currentActiveDeepDive = null;
+    var currentLevel = 'layman';
+    var activeClassIndex = 0;
+    var currentActiveDeepDive = null;
 
-    const CURRICULUM = [
+    var CURRICULUM = [
       {
         id: "c1",
         title: "Class 1: Why Digital Advertising Exists (The Big Picture)",
         category: "Foundations",
-        layman: `
-          <p>Imagine you open a small local bakery in your town. You want people to come buy your freshly baked cakes.</p>
-          <div class="callout analogy">
-            <strong>The Old Traditional Way:</strong> You print 5,000 paper leaflets and hand them out at the train station. Most end up in the trash bin, and you have no idea who actually walked into your store because of that paper.
-          </div>
-          <p><strong>The Digital Revolution:</strong> Instead of guessing, you run an ad on Instagram or Google that only shows to people within 3 km who have a birthday coming up this week. You see exactly how many people looked, clicked, and ordered.</p>
-          <h3>The 3 Basic Pillars:</h3>
-          <ul>
-            <li><strong>1. The Audience (You & Me):</strong> Regular people browsing apps or sites.</li>
-            <li><strong>2. The Publisher:</strong> Anyone who owns digital space that attracts attention (ESPN, YouTube, news sites).</li>
-            <li><strong>3. The Advertiser:</strong> Any business with a product wanting to reach that audience (Nike, local shops).</li>
-          </ul>
-        `,
-        expert: `
-          <p>Digital advertising replaces unmeasured mass-market broadcast media with deterministic, addressable media channels.</p>
-          <h3>Key Ad Ops Metric:</h3>
-          <p>Return on Ad Spend (ROAS) = <code>(Revenue Generated / Total Ad Spend)</code>.</p>
-        `,
+        layman: "<p>Imagine you open a small local bakery in your town. You want people to come buy your freshly baked cakes.</p><div class='callout analogy'><strong>The Old Traditional Way:</strong> You print 5,000 paper leaflets and hand them out at the train station. Most end up in the trash bin, and you have no idea who actually walked into your store because of that paper.</div><p><strong>The Digital Revolution:</strong> Instead of guessing, you run an ad on Instagram or Google that only shows to people within 3 km who have a birthday coming up this week. You see exactly how many people looked, clicked, and ordered.</p><h3>The 3 Basic Pillars:</h3><ul><li><strong>1. The Audience (You & Me):</strong> Regular people browsing apps or sites.</li><li><strong>2. The Publisher:</strong> Anyone who owns digital space that attracts attention (ESPN, YouTube, news sites).</li><li><strong>3. The Advertiser:</strong> Any business with a product wanting to reach that audience (Nike, local shops).</li></ul>",
+        expert: "<p>Digital advertising replaces unmeasured mass-market broadcast media with deterministic, addressable media channels.</p><h3>Key Ad Ops Metric:</h3><p>Return on Ad Spend (ROAS) = <code>(Revenue Generated / Total Ad Spend)</code>.</p>",
         resources: [
           { name: "IAB Digital Advertising Overview", url: "https://www.iab.com" }
         ],
@@ -309,23 +305,8 @@
         id: "c2",
         title: "Class 2: Core Jargon (CPM, CPC, CTR & Impressions)",
         category: "Foundations",
-        layman: `
-          <p>Let's decode the industry acronyms into plain English:</p>
-          <h3>1. What is an Impression?</h3>
-          <p>One single display of an ad on a screen. If you see a banner once, that is 1 impression.</p>
-          <h3>2. What is CPM (Cost Per Mille)?</h3>
-          <p><em>Mille</em> is Latin for 1,000. <strong>CPM is the price to show an ad 1,000 times.</strong></p>
-          <h3>3. What is CPC (Cost Per Click)?</h3>
-          <p>You only pay when a user actively clicks on the banner. If 1,000 people view it but nobody clicks, it costs $0.</p>
-        `,
-        expert: `
-          <h3>Formulas:</h3>
-          <ul>
-            <li><code>CPM = (Cost / Impressions) × 1,000</code></li>
-            <li><code>CPC = Cost / Clicks</code></li>
-            <li><code>CTR = (Clicks / Impressions) × 100</code></li>
-          </ul>
-        `,
+        layman: "<p>Let's decode the industry acronyms into plain English:</p><h3>1. What is an Impression?</h3><p>One single display of an ad on a screen. If you see a banner once, that is 1 impression.</p><h3>2. What is CPM (Cost Per Mille)?</h3><p><em>Mille</em> is Latin for 1,000. <strong>CPM is the price to show an ad 1,000 times.</strong></p><h3>3. What is CPC (Cost Per Click)?</h3><p>You only pay when a user actively clicks on the banner. If 1,000 people view it but nobody clicks, it costs $0.</p>",
+        expert: "<h3>Formulas:</h3><ul><li><code>CPM = (Cost / Impressions) × 1,000</code></li><li><code>CPC = Cost / Clicks</code></li><li><code>CTR = (Clicks / Impressions) × 100</code></li></ul>",
         resources: [
           { name: "MRC Viewability Guidelines", url: "https://www.mediaratingcouncil.org" }
         ],
@@ -340,20 +321,8 @@
         id: "c3",
         title: "Class 3: What is an Ad Server?",
         category: "Ad Operations",
-        layman: `
-          <p>When you open a website, how does the computer decide <em>which</em> ad to show in that exact split second?</p>
-          <div class="callout analogy">
-            <strong>Analogy: The Traffic Cop.</strong><br>
-            An <strong>Ad Server</strong> is the super-fast computer that acts as the traffic cop. It checks the rules: "Did Nike pay for users in this city? Has this user seen it too many times already? Okay, show Nike!"
-          </div>
-        `,
-        expert: `
-          <p>An Ad Server manages inventory forecasting, prioritization tiers, targeting criteria, and creative delivery.</p>
-          <ul>
-            <li><strong>Publisher Ad Server:</strong> (e.g., Google Ad Manager) Manages inventory priorities and yields.</li>
-            <li><strong>Third-Party Ad Server:</strong> (e.g., CM360) Hosts master creatives and verifies advertiser metrics.</li>
-          </ul>
-        `,
+        layman: "<p>When you open a website, how does the computer decide <em>which</em> ad to show in that exact split second?</p><div class='callout analogy'><strong>Analogy: The Traffic Cop.</strong><br>An <strong>Ad Server</strong> is the super-fast computer that acts as the traffic cop. It checks the rules: 'Did Nike pay for users in this city? Has this user seen it too many times already? Okay, show Nike!'</div>",
+        expert: "<p>An Ad Server manages inventory forecasting, prioritization tiers, targeting criteria, and creative delivery.</p><ul><li><strong>Publisher Ad Server:</strong> (e.g., Google Ad Manager) Manages inventory priorities and yields.</li><li><strong>Third-Party Ad Server:</strong> (e.g., CM360) Hosts master creatives and verifies advertiser metrics.</li></ul>",
         resources: [
           { name: "Google Ad Manager Training", url: "https://skillshop.exceedlms.com" }
         ],
@@ -373,20 +342,8 @@
         id: "c4",
         title: "Class 4: What is Header Bidding?",
         category: "Programmatic Tech",
-        layman: `
-          <p>Before Header Bidding existed, websites had to let Google look at an ad slot first. If Google didn't want it, only then could other companies bid. This was unfair to publishers.</p>
-          <div class="callout analogy">
-            <strong>The House Auction Analogy:</strong><br>
-            Instead of secretly asking one friend (Google) how much he'll pay for your house and only asking others if he says no, Header Bidding brings <strong>everyone into the living room at the exact same second</strong>. Whoever shouts the highest price wins the house.
-          </div>
-        `,
-        expert: `
-          <p>Header Bidding is a programmatic technique where publishers offer ad inventory to multiple ad exchanges (SSPs) simultaneously within the browser header before calling the primary ad server.</p>
-          <ul>
-            <li><strong>Client-Side (Prebid.js):</strong> JavaScript runs in the browser, triggering asynchronous auction requests to bidder adapters.</li>
-            <li><strong>Server-to-Server (S2S):</strong> Prebid Server receives a single call and executes bidder auctions on cloud infrastructure to reduce browser latency.</li>
-          </ul>
-        `,
+        layman: "<p>Before Header Bidding existed, websites had to let Google look at an ad slot first. If Google didn't want it, only then could other companies bid. This was unfair to publishers.</p><div class='callout analogy'><strong>The House Auction Analogy:</strong><br>Instead of secretly asking one friend (Google) how much he'll pay for your house and only asking others if he says no, Header Bidding brings <strong>everyone into the living room at the exact same second</strong>. Whoever shouts the highest price wins the house.</div>",
+        expert: "<p>Header Bidding is a programmatic technique where publishers offer ad inventory to multiple ad exchanges (SSPs) simultaneously within the browser header before calling the primary ad server.</p><ul><li><strong>Client-Side (Prebid.js):</strong> JavaScript runs in the browser, triggering asynchronous auction requests to bidder adapters.</li><li><strong>Server-to-Server (S2S):</strong> Prebid Server receives a single call and executes bidder auctions on cloud infrastructure.</li></ul>",
         resources: [
           { name: "Prebid.js Official Docs", url: "https://docs.prebid.org" }
         ],
@@ -404,23 +361,13 @@
       }
     ];
 
-    const DEEP_DIVES = {
+    var DEEP_DIVES = {
       ssp: {
         title: "Deep-Dive: Supply-Side Platform (SSP)",
         category: "Programmatic Tech",
-        layman: `
-          <p>Imagine you own a building with empty billboard frames on the roof (you are the <strong>Publisher</strong>).</p>
-          <div class="callout analogy">
-            <strong>The SSP is your automated real estate broker / auctioneer.</strong><br>
-            You tell the SSP: <em>"Never sell any slot for less than $1.00. Connect to every buyer in the world and get me the highest possible price."</em>
-          </div>
-        `,
-        expert: `
-          <p>The SSP aggregates publisher inventory, converts slots into OpenRTB bid requests, and enforces floor prices across DSPs.</p>
-        `,
-        resources: [
-          { name: "IAB OpenRTB Spec", url: "https://iabtechlab.com/standards/openrtb/" }
-        ],
+        layman: "<p>Imagine you own a building with empty billboard frames on the roof (you are the <strong>Publisher</strong>).</p><div class='callout analogy'><strong>The SSP is your automated real estate broker / auctioneer.</strong><br>You tell the SSP: <em>'Never sell any slot for less than $1.00. Connect to every buyer in the world and get me the highest possible price.'</em></div>",
+        expert: "<p>The SSP aggregates publisher inventory, converts slots into OpenRTB bid requests, and enforces floor prices across DSPs.</p>",
+        resources: [{ name: "IAB OpenRTB Spec", url: "https://iabtechlab.com/standards/openrtb/" }],
         quiz: {
           q: "Whom does the Supply-Side Platform (SSP) represent?",
           options: ["The Advertiser", "The Publisher / Website Owner", "The Consumer", "The Creative Agency"],
@@ -431,19 +378,9 @@
       dsp: {
         title: "Deep-Dive: Demand-Side Platform (DSP)",
         category: "Programmatic Tech",
-        layman: `
-          <p>You are Nike (the <strong>Advertiser</strong>). You have $50,000 and want to reach runners across the entire web.</p>
-          <div class="callout analogy">
-            <strong>The DSP is your automated buying agent.</strong><br>
-            You tell the DSP: <em>"Find fitness enthusiasts, don't pay more than $2.50 CPM, and buy only relevant slots."</em>
-          </div>
-        `,
-        expert: `
-          <p>The DSP evaluates OpenRTB bid requests, applies bid shading algorithms, verifies frequency capping, and responds with creative snippets.</p>
-        `,
-        resources: [
-          { name: "The Trade Desk Edge Academy", url: "https://www.thetradedesk.com" }
-        ],
+        layman: "<p>You are Nike (the <strong>Advertiser</strong>). You have $50,000 and want to reach runners across the entire web.</p><div class='callout analogy'><strong>The DSP is your automated buying agent.</strong><br>You tell the DSP: <em>'Find fitness enthusiasts, don't pay more than $2.50 CPM, and buy only relevant slots.'</em></div>",
+        expert: "<p>The DSP evaluates OpenRTB bid requests, applies bid shading algorithms, verifies frequency capping, and responds with creative snippets.</p>",
+        resources: [{ name: "The Trade Desk Edge Academy", url: "https://www.thetradedesk.com" }],
         quiz: {
           q: "What is the main function of 'Bid Shading' in a DSP?",
           options: [
@@ -459,24 +396,9 @@
       rtb: {
         title: "Deep-Dive: The 100ms Real-Time Bidding Auction",
         category: "Programmatic Tech",
-        layman: `
-          <p>Every time you load a webpage, a complete auction happens in less than 100 milliseconds.</p>
-          <div class="callout analogy">
-            <strong>The 4 Steps:</strong>
-            <ol>
-              <li>0ms: You open a website. The page reserves a slot.</li>
-              <li>25ms: The SSP broadcasts: "User in India on mobile. Who wants this slot?"</li>
-              <li>60ms: DSPs evaluate user data and submit their bids.</li>
-              <li>95ms: The highest bid wins and the ad displays on your screen.</li>
-            </ol>
-          </div>
-        `,
-        expert: `
-          <p>OpenRTB protocol executes HTTP POST requests containing device telemetry, coarse geo, and ID graphs, expecting bidder responses within 50ms.</p>
-        `,
-        resources: [
-          { name: "Prebid Documentation", url: "https://docs.prebid.org" }
-        ],
+        layman: "<p>Every time you load a webpage, a complete auction happens in less than 100 milliseconds.</p><div class='callout analogy'><strong>The 4 Steps:</strong><ol><li>0ms: You open a website. The page reserves a slot.</li><li>25ms: The SSP broadcasts: 'User on mobile. Who wants this slot?'</li><li>60ms: DSPs evaluate user data and submit their bids.</li><li>95ms: The highest bid wins and the ad displays on your screen.</li></ol></div>",
+        expert: "<p>OpenRTB protocol executes HTTP POST requests containing device telemetry, coarse geo, and ID graphs, expecting bidder responses within 50ms.</p>",
+        resources: [{ name: "Prebid Documentation", url: "https://docs.prebid.org" }],
         quiz: {
           q: "How long does a standard Real-Time Bidding (RTB) cycle have to complete?",
           options: ["5 to 10 seconds", "~100 milliseconds", "1 minute", "24 hours"],
@@ -487,19 +409,9 @@
       vast: {
         title: "Deep-Dive: VAST & Video Ad Tech",
         category: "Video Tech",
-        layman: `
-          <p>When you watch a video online, an ad plays first. The video player needs instructions on what file to play.</p>
-          <div class="callout analogy">
-            <strong>VAST is an Instruction Envelope:</strong><br>
-            It tells the video player: "Play this MP4 file. When the user reaches 50%, notify this tracking URL."
-          </div>
-        `,
-        expert: `
-          <p>VAST (Video Ad Serving Template) is an XML schema standard maintained by IAB Tech Lab for video player and ad server communication.</p>
-        `,
-        resources: [
-          { name: "IAB VAST 4.2 Guidelines", url: "https://iabtechlab.com/standards/vast/" }
-        ],
+        layman: "<p>When you watch a video online, an ad plays first. The video player needs instructions on what file to play.</p><div class='callout analogy'><strong>VAST is an Instruction Envelope:</strong><br>It tells the video player: 'Play this MP4 file. When the user reaches 50%, notify this tracking URL.'</div>",
+        expert: "<p>VAST (Video Ad Serving Template) is an XML schema standard maintained by IAB Tech Lab for video player and ad server communication.</p>",
+        resources: [{ name: "IAB VAST 4.2 Guidelines", url: "https://iabtechlab.com/standards/vast/" }],
         quiz: {
           q: "What format does a VAST tag use to provide instructions to a video player?",
           options: ["MP3 audio", "XML document", "Photoshop PSD", "Excel spreadsheet"],
@@ -509,59 +421,14 @@
       }
     };
 
-    function initApp() {
-      renderQuickChips();
-      updateSyllabusCounter();
-      loadClassByIndex(0);
-    }
-
-    function updateSyllabusCounter() {
-      const total = CURRICULUM.length + Object.keys(DEEP_DIVES).length;
-      const el = document.getElementById('syllabus-count');
-      if (el) el.textContent = `${total} Classes Ready`;
-    }
-
-    function renderQuickChips() {
-      const chips = [
-        { label: "SSP (Supply-Side)", key: "ssp" },
-        { label: "DSP (Demand-Side)", key: "dsp" },
-        { label: "100ms RTB Cycle", key: "rtb" },
-        { label: "VAST Video Ads", key: "vast" },
-        { label: "CPM & CPC Math", index: 1 },
-        { label: "Ad Server Traffic Cop", index: 2 }
-      ];
-
-      const container = document.getElementById('quick-chips');
-      if (!container) return;
-      container.innerHTML = chips.map(c => {
-        if (c.key) {
-          return `<div class="term-chip" onclick="openDeepDive('${c.key}')">⚡ ${c.label}</div>`;
-        } else {
-          return `<div class="term-chip" onclick="loadClassByIndex(${c.index})">📖 ${c.label}</div>`;
-        }
-      }).join('');
-    }
-
-    function setExplanationLevel(level) {
-      currentLevel = level;
-      document.getElementById('btn-layman').classList.toggle('active', level === 'layman');
-      document.getElementById('btn-expert').classList.toggle('active', level === 'expert');
-      
-      if (window.currentActiveDeepDive) {
-        openDeepDive(window.currentActiveDeepDive);
-      } else {
-        loadClassByIndex(activeClassIndex);
-      }
-    }
-
     function loadClassByIndex(idx) {
-      window.currentActiveDeepDive = null;
+      currentActiveDeepDive = null;
       activeClassIndex = idx;
-      const lesson = CURRICULUM[idx];
+      var lesson = CURRICULUM[idx];
       if (!lesson) return;
 
       document.getElementById('class-title').textContent = lesson.title;
-      document.getElementById('class-meta').textContent = `Category: ${lesson.category} • Module ${idx + 1} of ${CURRICULUM.length}`;
+      document.getElementById('class-meta').textContent = "Category: " + lesson.category + " • Module " + (idx + 1) + " of " + CURRICULUM.length;
       document.getElementById('class-content').innerHTML = currentLevel === 'layman' ? lesson.layman : lesson.expert;
 
       renderWebResources(lesson.resources);
@@ -569,17 +436,17 @@
 
       document.getElementById('btn-back').style.visibility = idx > 0 ? 'visible' : 'hidden';
       document.getElementById('btn-fwd').textContent = (idx < CURRICULUM.length - 1) ? "Next Class →" : "Course Milestone Reached 🏆";
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      window.scrollTo(0, 0);
     }
 
     function openDeepDive(key) {
-      window.currentActiveDeepDive = key;
-      const dive = DEEP_DIVES[key];
+      currentActiveDeepDive = key;
+      var dive = DEEP_DIVES[key];
       if (!dive) return;
 
       document.getElementById('class-title').textContent = dive.title;
-      document.getElementById('class-meta').textContent = `Interactive Deep-Dive • ${dive.category}`;
+      document.getElementById('class-meta').textContent = "Interactive Deep-Dive • " + dive.category;
       document.getElementById('class-content').innerHTML = currentLevel === 'layman' ? dive.layman : dive.expert;
 
       renderWebResources(dive.resources);
@@ -588,75 +455,79 @@
       document.getElementById('btn-back').style.visibility = 'visible';
       document.getElementById('btn-fwd').textContent = "Return to Syllabus →";
 
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo(0, 0);
+    }
+
+    function setExplanationLevel(level) {
+      currentLevel = level;
+      document.getElementById('btn-layman').className = "mode-btn" + (level === 'layman' ? " active" : "");
+      document.getElementById('btn-expert').className = "mode-btn" + (level === 'expert' ? " active" : "");
+      
+      if (currentActiveDeepDive) {
+        openDeepDive(currentActiveDeepDive);
+      } else {
+        loadClassByIndex(activeClassIndex);
+      }
     }
 
     function renderWebResources(resList) {
-      const container = document.getElementById('web-resources-container');
+      var container = document.getElementById('web-resources-container');
       if (!container) return;
       if (!resList || resList.length === 0) {
         container.innerHTML = '';
         return;
       }
-
-      container.innerHTML = `
-        <h3 style="margin-top:20px;">🌐 Verified Open Web Resources:</h3>
-        <div class="resource-list">
-          ${resList.map(r => `
-            <a href="${r.url}" target="_blank" rel="noopener" class="resource-link">
-              <span>📖 ${r.name}</span>
-              <span>Open Link ↗</span>
-            </a>
-          `).join('')}
-        </div>
-      `;
+      var html = '<h3 style="margin-top:20px;">🌐 Verified Open Web Resources:</h3><div class="resource-list">';
+      for (var i = 0; i < resList.length; i++) {
+        html += '<a href="' + resList[i].url + '" target="_blank" rel="noopener" class="resource-link"><span>📖 ' + resList[i].name + '</span><span>Open Link ↗</span></a>';
+      }
+      html += '</div>';
+      container.innerHTML = html;
     }
 
     function renderQuiz(q) {
-      const container = document.getElementById('quiz-container');
+      var container = document.getElementById('quiz-container');
       if (!container) return;
       if (!q) {
         container.innerHTML = '';
         return;
       }
-
-      container.innerHTML = `
-        <div class="quiz-item">
-          <div class="quiz-q">📝 Knowledge Verification: ${q.q}</div>
-          <div id="quiz-options-group">
-            ${q.options.map((opt, i) => `
-              <button class="quiz-btn" onclick="checkQuizAnswer(this, ${i},${q.correct}, '${(q.expl \vert{}\vert{} '').replace(/'/g, "\\'")}')">${opt}</button>
-            `).join('')}
-          </div>
-          <div class="quiz-expl" id="quiz-feedback-box"></div>
-        </div>
-      `;
+      var html = '<div class="quiz-item"><div class="quiz-q">📝 Knowledge Verification: ' + q.q + '</div><div id="quiz-options-group">';
+      for (var i = 0; i < q.options.length; i++) {
+        html += '<button class="quiz-btn" onclick="checkQuizAnswer(this, ' + i + ', ' + q.correct + ')">' + q.options[i] + '</button>';
+      }
+      html += '</div><div class="quiz-expl" id="quiz-feedback-box"></div></div>';
+      container.innerHTML = html;
     }
 
-    function checkQuizAnswer(btn, selected, correct, expl) {
-      const parent = document.getElementById('quiz-options-group');
-      const allBtns = parent.querySelectorAll('.quiz-btn');
-      allBtns.forEach(b => b.onclick = null);
+    function checkQuizAnswer(btn, selected, correct) {
+      var currentItem = currentActiveDeepDive ? DEEP_DIVES[currentActiveDeepDive].quiz : CURRICULUM[activeClassIndex].quiz;
+      var expl = currentItem.expl;
+      var parent = document.getElementById('quiz-options-group');
+      var allBtns = parent.querySelectorAll('.quiz-btn');
+      for (var i = 0; i < allBtns.length; i++) {
+        allBtns[i].onclick = null;
+      }
 
-      const feedback = document.getElementById('quiz-feedback-box');
+      var feedback = document.getElementById('quiz-feedback-box');
       feedback.style.display = 'block';
 
       if (selected === correct) {
-        btn.classList.add('correct');
+        btn.className += ' correct';
         feedback.style.background = '#064e3b';
         feedback.style.color = '#a7f3d0';
-        feedback.innerHTML = `<strong>Correct!</strong> ${expl}`;
+        feedback.innerHTML = '<strong>Correct!</strong> ' + expl;
       } else {
-        btn.classList.add('incorrect');
-        allBtns[correct].classList.add('correct');
+        btn.className += ' incorrect';
+        allBtns[correct].className += ' correct';
         feedback.style.background = '#7f1d1d';
         feedback.style.color = '#fecaca';
-        feedback.innerHTML = `<strong>Not quite.</strong> ${expl}`;
+        feedback.innerHTML = '<strong>Not quite.</strong> ' + expl;
       }
     }
 
     function nextClass() {
-      if (window.currentActiveDeepDive) {
+      if (currentActiveDeepDive) {
         loadClassByIndex(activeClassIndex);
       } else if (activeClassIndex < CURRICULUM.length - 1) {
         loadClassByIndex(activeClassIndex + 1);
@@ -664,7 +535,7 @@
     }
 
     function previousClass() {
-      if (window.currentActiveDeepDive) {
+      if (currentActiveDeepDive) {
         loadClassByIndex(activeClassIndex);
       } else if (activeClassIndex > 0) {
         loadClassByIndex(activeClassIndex - 1);
@@ -672,25 +543,30 @@
     }
 
     function handleSearch(val) {
-      const q = (val || '').toLowerCase().trim();
+      var q = (val || '').toLowerCase().trim();
       if (!q) return;
 
-      for (let key in DEEP_DIVES) {
-        if (key.includes(q) || DEEP_DIVES[key].title.toLowerCase().includes(q)) {
+      for (var key in DEEP_DIVES) {
+        if (key.indexOf(q) !== -1 || DEEP_DIVES[key].title.toLowerCase().indexOf(q) !== -1) {
           openDeepDive(key);
           return;
         }
       }
 
-      for (let i = 0; i < CURRICULUM.length; i++) {
-        if (CURRICULUM[i].title.toLowerCase().includes(q)) {
+      for (var i = 0; i < CURRICULUM.length; i++) {
+        if (CURRICULUM[i].title.toLowerCase().indexOf(q) !== -1) {
           loadClassByIndex(i);
           return;
         }
       }
     }
 
-    window.addEventListener('DOMContentLoaded', initApp);
+    // Direct immediate startup without waiting
+    try {
+      loadClassByIndex(0);
+    } catch(e) {
+      console.log("Startup check:", e);
+    }
   </script>
 </body>
 </html>
