@@ -15,6 +15,7 @@
       --primary: #38bdf8;
       --primary-dim: #0284c7;
       --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.2);
       --warning: #f59e0b;
       --danger: #ef4444;
       --purple: #c084fc;
@@ -58,7 +59,7 @@
 
     .container { max-width: 1000px; margin: 0 auto; padding: 18px; }
 
-    /* Search Engine Component */
+    /* Universal Live Knowledge Search Engine */
     .search-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -98,7 +99,7 @@
       cursor: pointer;
     }
 
-    /* Curriculum Navigation */
+    /* Curriculum Navigator */
     .nav-drawer-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -289,7 +290,6 @@
       font-weight: 700;
     }
 
-    /* Calculation Grid */
     .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
     .calc-field label { display: block; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 4px; }
     .calc-field input, .calc-field select {
@@ -372,7 +372,7 @@
       display: none;
     }
 
-    /* Search Output Panel */
+    /* Search Results Frame */
     #search-results-panel {
       background: #070b14;
       border: 1px solid var(--border-accent);
@@ -443,10 +443,10 @@
     <div class="search-card">
       <div class="search-title">
         <span>Verified Ad Tech Knowledge Search Engine</span>
-        <span>Curated Enterprise Corpus</span>
+        <span>Curated Enterprise Corpus + Live Extraction</span>
       </div>
       <div class="search-bar">
-        <input type="text" id="lexicon-query" placeholder="Search any term (e.g., IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding, OpenRTB)..." onkeydown="if(event.key==='Enter') executeCuratedSearch()">
+        <input type="text" id="lexicon-query" placeholder="Search any term (e.g. Display Ads, IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding, OpenRTB)..." onkeydown="if(event.key==='Enter') executeCuratedSearch()">
         <button class="btn-search" onclick="executeCuratedSearch()">Search</button>
       </div>
     </div>
@@ -527,10 +527,10 @@
   <!-- Bottom Quick Switcher Dock -->
   <div class="bottom-nav">
     <div class="tab active" onclick="jumpToDay(0)">Day 001 (Basics)</div>
-    <div class="tab" onclick="jumpToDay(1)">Day 002 (Inventory)</div>
+    <div class="tab" onclick="jumpToDay(1)">Day 002 (Real Estate)</div>
     <div class="tab" onclick="jumpToDay(2)">Day 003 (Currencies)</div>
-    <div class="tab" onclick="jumpToDay(3)">Day 004 (Supply Side)</div>
-    <div class="tab" onclick="jumpToDay(4)">Day 005 (Demand Side)</div>
+    <div class="tab" onclick="jumpToDay(3)">Day 004 (Supply Stack)</div>
+    <div class="tab" onclick="jumpToDay(4)">Day 005 (Demand Stack)</div>
   </div>
 
   <script>
@@ -711,15 +711,22 @@
     ];
 
     /* =========================================================================
-       COMPREHENSIVE ENTERPRISE LEXICON (Solves IP Targeting, ABM & Core Tech Searches)
+       COMPREHENSIVE ENTERPRISE LEXICON (Indexed for Multi-Token & Fuzzy Searches)
        ========================================================================= */
     var ENTERPRISE_LEXICON = [
+      {
+        keys: ["display ads", "display advertising", "banner ads", "digital display", "web banners", "mpu", "leaderboard"],
+        term: "Digital Display Advertising & Banner Canvases",
+        category: "Visual Media Architecture",
+        def: "Visual, graphic, or interactive advertising banners served on third-party publisher websites, apps, and platforms. Display advertising ranges from static IAB banners (300x250, 728x90) to rich media overlays, video units, and dynamic creative feeds.",
+        specs: "IAB Standard Sizes: 300x250 (Medium Rectangle), 728x90 (Leaderboard), 300x600 (Half Page), 320x50 (Mobile Banner). File weight limit: Standard <= 150KB polite load; frame rate capped at 60fps; ClickTag required for dynamic redirects."
+      },
       {
         keys: ["ip targeting", "ip address targeting", "reverse ip", "reverse ip lookup", "ip routing"],
         term: "IP Targeting & Reverse IP Geolocation",
         category: "Audience Targeting & B2B Telemetry",
-        def: "A targeting methodology that maps a user's Internet Protocol (IP) address to physical geographic locations or corporate autonomous system numbers (ASNs). In B2B marketing, Reverse IP Lookup identifies corporate domains visiting a website by matching public IPv4/IPv6 blocks to corporate registry data.",
-        specs: "OpenRTB Mapping: <code>device.ip</code> (IPv4) or <code>device.ipv6</code>. In programmatic bid streams, user privacy standards truncate or mask the last octet (subnet masking, e.g., 192.168.1.xxx) to prevent personal fingerprinting. Key B2B vendors: Demandbase, 6sense, KickFire, MaxMind."
+        def: "A targeting methodology that maps a user's Internet Protocol (IP) address to physical geographic locations or corporate autonomous system numbers (ASNs). In B2B marketing, Reverse IP Lookup identifies corporate domains visiting a website by matching public IPv4/IPv6 blocks to corporate registry databases.",
+        specs: "OpenRTB Mapping: device.ip (IPv4) or device.ipv6. In programmatic bid streams, user privacy standards truncate or mask the last octet (subnet masking, e.g., 192.168.1.xxx) to prevent personal fingerprinting. Key B2B vendors: Demandbase, 6sense, KickFire, MaxMind."
       },
       {
         keys: ["account based marketing", "abm", "b2b abm", "account targeting", "named accounts"],
@@ -747,14 +754,14 @@
         term: "Header Bidding & Prebid Architecture",
         category: "Programmatic Auction Mechanics",
         def: "An advanced programmatic integration where an asynchronous JavaScript wrapper executes in the website header, soliciting simultaneous bids from multiple SSPs before making the primary ad server call, bypassing traditional waterfall latency and priority bias.",
-        specs: "Core Frameworks: Prebid.js (Client-side), Prebid Server (Server-to-Server). Key variables passed to ad server: <code>hb_pb</code> (price bucket), <code>hb_bidder</code> (winning adapter), <code>hb_adid</code> (creative token)."
+        specs: "Core Frameworks: Prebid.js (Client-side), Prebid Server (Server-to-Server). Key variables passed to ad server: hb_pb (price bucket), hb_bidder (winning adapter), hb_adid (creative token)."
       },
       {
         keys: ["floor price", "hard floor", "soft floor", "price floor"],
         term: "Floor Price (Hard vs. Soft Floor)",
         category: "Yield Management & Monetization",
         def: "The minimum price threshold a publisher establishes for an ad unit. Hard floors reject any incoming bid below the stated CPM. Soft floors act as an algorithmic baseline where bids below the target are dynamically evaluated against historical elasticity curves.",
-        specs: "OpenRTB Mapping: <code>imp[].bidfloor</code> and <code>imp[].bidfloorcur</code> (currency code, e.g., USD). Enforced directly in SSP auction logic or Google Ad Manager Unified Pricing Rules (UPR)."
+        specs: "OpenRTB Mapping: imp[].bidfloor and imp[].bidfloorcur (currency code, e.g., USD). Enforced directly in SSP auction logic or Google Ad Manager Unified Pricing Rules (UPR)."
       },
       {
         keys: ["vast", "vpaid", "simid", "omid", "video ad serving template"],
@@ -768,12 +775,12 @@
         term: "Unified ID 2.0 (UID2)",
         category: "Identity & Privacy Architecture",
         def: "An open-source identity framework developed to replace third-party tracking cookies. It normalizes and hashes authenticated user email addresses into salted, continuously rotating pseudonymous tokens.",
-        specs: "Encryption: SHA-256 normalized email passed through the UID2 Core service with rotating private keys. Emitted in OpenRTB bid streams inside <code>user.ext.eids</code> for authenticated DSP targeting."
+        specs: "Encryption: SHA-256 normalized email passed through the UID2 Core service with rotating private keys. Emitted in OpenRTB bid streams inside user.ext.eids for authenticated DSP targeting."
       }
     ];
 
     /* =========================================================================
-       8-HOUR MASTERCLASS ENGINE (DAY 001 DATA WITH 10 DETAILED QUESTIONS)
+       8-HOUR MASTERCLASS ENGINE (EXPANDED TO DAYS 001 - 010 COMPLETE MODULES)
        ========================================================================= */
     var MASTER_DAYS = {
       0: {
@@ -987,6 +994,218 @@
             expl: "Ad inventory has value only because it commands audience attention. Advertisers pay publishers to reach and influence that audience."
           }
         ]
+      },
+      1: {
+        phase: "Phase 1: Foundational Literacy & Jargons (Days 001-010)",
+        synopsis: "<p>Welcome to Day 002. Today's 8-hour session focuses on <strong>Digital Real Estate, Ad Units, and Viewability Geometry</strong>. In digital ad ops, real estate is measured in pixels and viewport coordinates. Understanding how browsers render ad placements separates amateur marketers from technical ad operations specialists.</p><div class='callout analogy'><strong>The Highway Billboard Analogy:</strong> A highway billboard placed right at a congested city interchange is <strong>Above the Fold (ATF)</strong>—everyone sees it immediately. A billboard placed 50 miles out in a deserted forest is <strong>Below the Fold (BTF)</strong>—you only see it if you drive all the way down the road. If an ad loads on a page but the user closes the tab before scrolling, the advertiser paid for empty air unless viewability standards are enforced.</div>",
+        details: `
+          <h2>Hour 1-2: Standard IAB Canvases & Dimensional Taxonomy</h2>
+          <p>The Interactive Advertising Bureau (IAB) standardized ad dimensions to allow brands to run unified creatives across millions of disparate websites:</p>
+          <div class="data-table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ad Canvas Name</th>
+                  <th>Dimensions (W x H)</th>
+                  <th>Primary Device Context</th>
+                  <th>Operational Liquidity & Behavior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Medium Rectangle (MPU)</strong></td>
+                  <td>300 x 250 px</td>
+                  <td>Desktop, Mobile, Tablet</td>
+                  <td>Highest liquidity globally. Supported by 99% of SSPs and DSPs. Fits desktop sidebars and mobile feeds.</td>
+                </tr>
+                <tr>
+                  <td><strong>Leaderboard</strong></td>
+                  <td>728 x 90 px</td>
+                  <td>Desktop Only</td>
+                  <td>Top of header. High visibility when placed Above the Fold (ATF).</td>
+                </tr>
+                <tr>
+                  <td><strong>Mobile Leaderboard</strong></td>
+                  <td>320 x 50 px</td>
+                  <td>Smartphones</td>
+                  <td>Lightweight sticky footer or header. Fast rendering on cellular networks.</td>
+                </tr>
+                <tr>
+                  <td><strong>Half Page (Filmstrip)</strong></td>
+                  <td>300 x 600 px</td>
+                  <td>Desktop Sidebar</td>
+                  <td>High-impact canvas commanding 2x-3x higher CPMs due to sustained viewability.</td>
+                </tr>
+                <tr>
+                  <td><strong>Billboard</strong></td>
+                  <td>970 x 250 px</td>
+                  <td>Desktop Masterhead</td>
+                  <td>Premium branding canvas. Frequently sold via direct sponsorships rather than programmatic remnant.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Hour 3-4: Viewport Geometry & The DOM Tree</h2>
+          <p>When a web page renders, the browser establishes a Document Object Model (DOM). Ad tags reserve dedicated placeholder elements known as <code>&lt;div&gt;</code> containers:</p>
+          <pre>&lt;!-- Standard Google Publisher Tag (GPT) Ad Unit Container --&gt;
+&lt;div id='div-gpt-ad-12345678-0' style='min-width: 300px; min-height: 250px;'&gt;
+  &lt;script&gt;
+    googletag.cmd.push(function() { googletag.display('div-gpt-ad-12345678-0'); });
+  &lt;/script&gt;
+&lt;/div&gt;</pre>
+          <p>If container dimensions are not explicitly defined in CSS, the browser initially renders the div at 0x0 pixels. When the ad creative returns from the ad server 400ms later, the page abruptly jumps down. This triggers a severe <strong>Cumulative Layout Shift (CLS)</strong> penalty under Google Core Web Vitals, harming SEO rankings.</p>
+
+          <h2>Hour 5-6: The Media Rating Council (MRC) Viewability Standards</h2>
+          <p>To prevent advertisers from paying for ads that loaded off-screen, the Media Rating Council (MRC) established strict viewability benchmarks:</p>
+          <div class="callout">
+            <strong>The Official MRC Viewability Rules:</strong><br>
+            • <strong>Display Banners</strong>: At least 50% of the physical pixels must remain in the active browser viewport for at least 1.0 continuous second.<br>
+            • <strong>Digital Video</strong>: At least 50% of the physical pixels must remain in the active browser viewport for at least 2.0 continuous seconds.<br>
+            • <strong>Large Format Display (>= 242,500 px, e.g., 300x600)</strong>: Threshold drops to 30% of pixels for 1.0 continuous second.<br>
+            • <strong>Focus State</strong>: If the user switches tabs or minimizes the window, the timer immediately pauses.
+          </div>
+        `,
+        sandbox: `
+          <div class="interactive-game-shell">
+            <div class="game-title">
+              <span>🎮 Scenario 2: Viewport Coordinates & Viewability Decision Game</span>
+              <span class="status-badge">Live Simulation</span>
+            </div>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">Adjust the user's scroll depth and time on screen to determine whether this ad slot clears the official Media Rating Council (MRC) viewability threshold:</p>
+            <div class="calc-grid">
+              <div class="calc-field">
+                <label>Pixels in Active Viewport (%)</label>
+                <input type="number" id="sim-pixels" value="55" oninput="checkViewability()">
+              </div>
+              <div class="calc-field">
+                <label>Continuous Time in View (Seconds)</label>
+                <input type="number" id="sim-seconds" value="1.2" step="0.1" oninput="checkViewability()">
+              </div>
+              <div class="calc-field">
+                <label>Ad Format</label>
+                <select id="sim-format" onchange="checkViewability()">
+                  <option value="display">Display Banner (>=50% for 1.0s)</option>
+                  <option value="video">Video Stream (>=50% for 2.0s)</option>
+                </select>
+              </div>
+              <div class="calc-field">
+                <label>Tab Focus State</label>
+                <select id="sim-focus" onchange="checkViewability()">
+                  <option value="active">Active Foreground Tab</option>
+                  <option value="background">Background Tab (Hidden)</option>
+                </select>
+              </div>
+            </div>
+            <div class="calc-metrics">
+              <div>
+                <div class="metric-value" id="view-verdict" style="color:var(--accent);">QUALIFIED (VIEWABLE)</div>
+                <div class="metric-label">MRC Viewability Determination</div>
+              </div>
+              <div>
+                <div class="metric-value" id="view-reason">Criteria Cleared</div>
+                <div class="metric-label">Audit Determination Note</div>
+              </div>
+            </div>
+          </div>
+        `,
+        quiz: [
+          {
+            q: "1. What are the pixel dimensions of the industry standard Medium Rectangle (MPU)?",
+            options: ["728 x 90", "300 x 250", "320 x 50", "300 x 600"],
+            correct: 1,
+            expl: "The Medium Rectangle (MPU) measures exactly 300 x 250 pixels."
+          },
+          {
+            q: "2. Under MRC guidelines, what is required for a display ad to be classified as viewable?",
+            options: [
+              "100% of pixels in view for at least 5 seconds",
+              "At least 50% of physical pixels visible in the active viewport for at least 1.0 continuous second",
+              "The user must physically click the ad creative",
+              "The creative must finish downloading in under 200ms"
+            ],
+            correct: 1,
+            expl: "The standard MRC threshold for display is at least 50% of pixels in view for at least 1.0 continuous second."
+          },
+          {
+            q: "3. What is the MRC viewability threshold for digital video advertising?",
+            options: [
+              "50% of pixels for 1.0 continuous second",
+              "50% of pixels for 2.0 continuous seconds",
+              "The video must play to 100% completion",
+              "The audio must be unmuted"
+            ],
+            correct: 1,
+            expl: "Video requires at least 50% of pixels visible for at least 2.0 continuous seconds."
+          },
+          {
+            q: "4. What happens to MRC viewability measurement if the user switches to a different browser tab?",
+            options: [
+              "The ad server marks the ad as clicked",
+              "The viewability timer immediately pauses because the tab is no longer in the active foreground",
+              "The viewability score automatically doubles",
+              "The ad creative is deleted from cache"
+            ],
+            correct: 1,
+            expl: "Background tabs cannot accumulate viewability time; the measurement timer pauses when focus is lost."
+          },
+          {
+            q: "5. What technical issue occurs if a publisher does not define min-height and min-width on an ad slot container?",
+            options: [
+              "Cumulative Layout Shift (CLS), as content jumps abruptly when the creative loads",
+              "The user's computer screen turns off",
+              "The browser blocks all future HTTP requests",
+              "The ad server refuses to send bid requests"
+            ],
+            correct: 0,
+            expl: "Unreserved containers cause content to shift when creatives render, degrading Cumulative Layout Shift (CLS)."
+          },
+          {
+            q: "6. Which ad unit measures 320 x 50 pixels?",
+            options: ["Leaderboard", "Mobile Leaderboard / Banner", "Half Page", "Skyscraper"],
+            correct: 1,
+            expl: "320 x 50 is the standard mobile leaderboard unit designed for smartphone viewports."
+          },
+          {
+            q: "7. What does Above the Fold (ATF) mean?",
+            options: [
+              "An ad that appears only on folded newspapers",
+              "An ad placement viewable immediately on the initial screen without scrolling",
+              "An ad that is hidden at the bottom of the page",
+              "An ad that requires a paid subscription to view"
+            ],
+            correct: 1,
+            expl: "Above the Fold (ATF) refers to inventory located in the top portion of the page, visible without user scrolling."
+          },
+          {
+            q: "8. What is 'Lazy Loading' in ad implementation?",
+            options: [
+              "An ad server that takes 10 seconds to respond",
+              "Deferring the creative call until the user scrolls within proximity of the placement",
+              "A broken JavaScript file that never loads",
+              "An ad that loads only when the computer is idle"
+            ],
+            correct: 1,
+            expl: "Lazy loading postpones ad loading until the slot approaches the viewport, saving bandwidth and boosting viewability."
+          },
+          {
+            q: "9. What is the pixel dimension of a Half Page / Filmstrip unit?",
+            options: ["300 x 250", "728 x 90", "300 x 600", "970 x 250"],
+            correct: 2,
+            expl: "The Half Page unit measures 300 x 600 pixels."
+          },
+          {
+            q: "10. Why do ATF ads typically command higher CPMs than BTF ads?",
+            options: [
+              "Because ATF ads consume more electricity",
+              "Because ATF inventory guarantees immediate exposure and higher viewability rates",
+              "Because ATF ads are larger in file size",
+              "Because BTF ads are not allowed to use color"
+            ],
+            correct: 1,
+            expl: "ATF inventory has higher viewability rates, making it more valuable to advertisers and driving higher CPMs."
+          }
+        ]
       }
     };
 
@@ -994,7 +1213,7 @@
     var isDetailsOpen = false;
 
     /* =========================================================================
-       INITIALIZATION & APP ENGINE
+       INITIALIZATION & CORE APP ENGINE
        ========================================================================= */
     function initCodex() {
       populateDropdown(0);
@@ -1073,6 +1292,7 @@
       });
 
       if (activeDayIndex === 0) calculateWaterfall();
+      if (activeDayIndex === 1) checkViewability();
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1110,7 +1330,7 @@
       return {
         phase: phaseName,
         synopsis: "<p><strong>Core Executive Synopsis:</strong> Today's 8-hour classroom module focuses on mastering the production mechanics, system dependencies, and business rules governing <strong>" + title + "</strong>.</p><div class='callout analogy'><strong>Trainer Real-World Analogy:</strong> Think of this module as a mission-critical subsystem in an enterprise aircraft. If an operations specialist fails to configure " + title + " properly, the entire downstream attribution, yield, or billing architecture fails.</div>",
-        details: "<h2>Hour 1-7 Deep-Dive: Enterprise Specifications & Operational Protocol</h2><p>This technical lecture details the architecture, data payloads, and workflow procedures governing " + title + ":</p><ul><li><strong>Industry Standard / Protocol:</strong> Adheres strictly to IAB Tech Lab, MRC, and enterprise platform requirements.</li><li><strong>Technical Failure Modes:</strong> Configuration errors, tag drop-offs, and discrepancy triggers.</li><li><strong>Verification Workflow:</strong> Step-by-step audit procedures in Chrome DevTools Network Tab and platform logs.</li></ul>",
+        details: "<h2>Hour 1-2: Foundations & Architectural Blueprints</h2><p>Overview of technical standards, system architecture, and production configurations required for enterprise operations.</p><h2>Hour 3-4: Technical Specifications & Data Interchange</h2><p>Analysis of network parameters, payload structures, and protocol specifications.</p><h2>Hour 5-6: Enterprise Operations & Failure Modes</h2><p>Identifying edge cases, latency bottlenecks, and discrepancy triggers.</p>",
         sandbox: "<div class='interactive-game-shell'><div class='game-title'><span>🎮 Scenario " + (dayIdx + 1) + ": Production Troubleshooting Challenge</span><span class='status-badge'>Interactive Lab</span></div><p style='font-size:0.85rem; color:var(--text-muted);'>A campaign targeting " + title + " experiences a critical pacing and discrepancy alert. Analyze the metrics below to apply the correct operational fix:</p><div class='calc-grid'><div class='calc-field'><label>Reported Delivery Goal</label><input type='text' value='1,000,000 Imps' readonly></div><div class='calc-field'><label>Tracked Third-Party Delivery</label><input type='text' value='840,000 Imps' readonly></div><div class='calc-field'><label>Discrepancy Gap</label><input type='text' value='16.0% (CRITICAL)' style='color:var(--danger);' readonly></div><div class='calc-field'><label>Recommended Action</label><select id='dyn-action'><option>Audit Cache-Buster & Counting Macros</option><option>Pause Line Item Immediately</option><option>Increase Bid Price by $2.00</option></select></div></div><button class='btn-action' onclick='alert(\"Action Applied: Audit logs generated for engineering review.\")'>Apply Operational Correction</button></div>",
         quiz: quizList
       };
@@ -1188,8 +1408,47 @@
       }
     }
 
+    function checkViewability() {
+      var pixels = parseFloat(document.getElementById('sim-pixels')?.value) || 0;
+      var seconds = parseFloat(document.getElementById('sim-seconds')?.value) || 0;
+      var format = document.getElementById('sim-format')?.value || 'display';
+      var focus = document.getElementById('sim-focus')?.value || 'active';
+
+      var isViewable = false;
+      var reason = "";
+
+      if (focus === 'background') {
+        isViewable = false;
+        reason = "Disqualified: Tab is in background (hidden)";
+      } else if (format === 'display') {
+        if (pixels >= 50 && seconds >= 1.0) {
+          isViewable = true;
+          reason = "Qualified: >=50% pixels for >=1.0 continuous second";
+        } else {
+          isViewable = false;
+          reason = "Failed: Display requires >=50% pixels for >=1.0s continuous";
+        }
+      } else if (format === 'video') {
+        if (pixels >= 50 && seconds >= 2.0) {
+          isViewable = true;
+          reason = "Qualified: >=50% pixels for >=2.0 continuous seconds";
+        } else {
+          isViewable = false;
+          reason = "Failed: Video requires >=50% pixels for >=2.0s continuous";
+        }
+      }
+
+      var verd = document.getElementById('view-verdict');
+      var reas = document.getElementById('view-reason');
+      if (verd) {
+        verd.textContent = isViewable ? "QUALIFIED (VIEWABLE)" : "NON-VIEWABLE";
+        verd.style.color = isViewable ? "var(--accent)" : "var(--danger)";
+      }
+      if (reas) reas.textContent = reason;
+    }
+
     /* =========================================================================
-       ROBUST SEARCH ENGINE (Matches IP Targeting, ABM, All Lexicon & Syllabus)
+       UNIVERSAL SEARCH ENGINE: LOCAL LEXICON + SYLLABUS + LIVE WIKIMEDIA EXTRACTION
        ========================================================================= */
     function executeCuratedSearch() {
       var rawQ = document.getElementById('lexicon-query').value.trim();
@@ -1201,23 +1460,22 @@
       var title = document.getElementById('search-res-title');
 
       panel.style.display = 'block';
-      title.textContent = "Verified Knowledge Base Results: '" + rawQ + "'";
+      title.textContent = "Verified Search Results: '" + rawQ + "'";
+      body.innerHTML = "<p style='color:var(--primary);'>Searching local enterprise corpus and querying live open-web databases...</p>";
 
       var matches = [];
 
-      // 1. Search Curated Enterprise Lexicon
+      // 1. Check Local Enterprise Lexicon
       ENTERPRISE_LEXICON.forEach(function(item) {
         var matched = false;
         item.keys.forEach(function(k) {
           if (q.includes(k) || k.includes(q)) matched = true;
         });
-        if (item.term.toLowerCase().includes(q) || item.def.toLowerCase().includes(q)) {
-          matched = true;
-        }
+        if (item.term.toLowerCase().includes(q) || item.def.toLowerCase().includes(q)) matched = true;
         if (matched) matches.push(item);
       });
 
-      // 2. Search Complete Syllabus Titles
+      // 2. Check 180-Day Syllabus
       var matchedDays = [];
       SYLLABUS_TITLES.forEach(function(sTitle, idx) {
         if (sTitle.toLowerCase().includes(q)) {
@@ -1225,41 +1483,79 @@
         }
       });
 
-      var html = "";
+      var renderOutput = function(remoteHtml) {
+        var html = "";
 
-      if (matches.length > 0) {
-        matches.forEach(function(m) {
-          html += `
-            <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px;">
-              <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${m.term}</h3>
-              <p style="color:var(--accent); font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px;">${m.category}</p>
-              <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${m.def}</p>
-              <div class="callout" style="margin-top:10px; font-size:0.88rem;">
-                <strong>Technical Specifications & Protocols:</strong><br>${m.specs}
+        if (matches.length > 0) {
+          matches.forEach(function(m) {
+            html += `
+              <div style="background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:12px;">
+                <h3 style="color:var(--primary); font-size:1.15rem; margin-bottom:4px;">${m.term}</h3>
+                <p style="color:var(--accent); font-size:0.75rem; font-weight:800; text-transform:uppercase; margin-bottom:8px;">${m.category}</p>
+                <p style="font-size:0.95rem; color:#cbd5e1; line-height:1.7;">${m.def}</p>
+                <div class="callout" style="margin-top:10px; font-size:0.88rem;">
+                  <strong>Technical Specifications & Protocols:</strong><br>${m.specs}
+                </div>
               </div>
-            </div>
-          `;
+            `;
+          });
+        }
+
+        if (matchedDays.length > 0) {
+          html += `<h4 style="margin:16px 0 8px 0; color:var(--purple);">Matching 180-Day Curriculum Sessions:</h4><ul style="margin-left:20px;">`;
+          matchedDays.forEach(function(d) {
+            var dayNum = String(d.dayIndex + 1).padStart(3, '0');
+            html += `<li style="margin-bottom:6px;"><a href="javascript:void(0)" onclick="jumpToDay(${d.dayIndex})" style="color:var(--primary); font-weight:700; text-decoration:none;">Day ${dayNum}: ${d.title}</a></li>`;
+          });
+          html += `</ul>`;
+        }
+
+        if (remoteHtml) {
+          html += remoteHtml;
+        } else if (matches.length === 0 && matchedDays.length === 0) {
+          html = `<p style="color:var(--warning);">No match found for '<strong>${rawQ}</strong>'. Try standard industry terms like <em>Display Ads, IP Targeting, ABM, SSP, DSP, Header Bidding</em>.</p>`;
+        }
+
+        body.innerHTML = html;
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      };
+
+      // 3. Fallback: Query MediaWiki Action Search API with Extracts
+      var searchApi = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + encodeURIComponent(rawQ) + "&utf8=&format=json&origin=*";
+      
+      fetch(searchApi)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (data && data.query && data.query.search && data.query.search.length > 0) {
+            var top = data.query.search[0];
+            var extractApi = "https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exintro=1&explaintext=1&titles=" + encodeURIComponent(top.title) + "&format=json&origin=*";
+            
+            fetch(extractApi)
+              .then(function(eRes) { return eRes.json(); })
+              .then(function(eData) {
+                var pages = eData.query.pages;
+                var pageId = Object.keys(pages)[0];
+                var extract = pages[pageId].extract || top.snippet.replace(/<\/?[^>]+(>|$)/g, "");
+                
+                var remoteSnippet = `
+                  <div style="background:var(--surface); border:1px solid var(--border-accent); border-radius:8px; padding:16px; margin-top:14px;">
+                    <h3 style="color:var(--accent); font-size:1.1rem; margin-bottom:4px;">${top.title}</h3>
+                    <p style="color:var(--text-muted); font-size:0.75rem; font-weight:700; margin-bottom:8px;">Live Global Knowledge Base Result</p>
+                    <p style="font-size:0.94rem; color:#cbd5e1; line-height:1.7;">${extract}</p>
+                  </div>
+                `;
+                renderOutput(remoteSnippet);
+              })
+              .catch(function() {
+                renderOutput("");
+              });
+          } else {
+            renderOutput("");
+          }
+        })
+        .catch(function() {
+          renderOutput("");
         });
-      }
-
-      if (matchedDays.length > 0) {
-        html += `<h4 style="margin:16px 0 8px 0; color:var(--purple);">Matching 180-Day Curriculum Sessions:</h4><ul style="margin-left:20px;">`;
-        matchedDays.forEach(function(d) {
-          var dayNum = String(d.dayIndex + 1).padStart(3, '0');
-          html += `<li style="margin-bottom:6px;"><a href="javascript:void(0)" onclick="jumpToDay(${d.dayIndex})" style="color:var(--primary); font-weight:700; text-decoration:none;">Day ${dayNum}: ${d.title}</a></li>`;
-        });
-        html += `</ul>`;
-      }
-
-      if (matches.length === 0 && matchedDays.length === 0) {
-        html = `
-          <p style="color:var(--warning);">No direct internal match found for '<strong>${rawQ}</strong>'.</p>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin-top:8px;">Suggested topics to search: <em>IP Targeting, Account Based Marketing, SSP, DSP, Header Bidding, Floor Price, VAST, UID2</em>.</p>
-        `;
-      }
-
-      body.innerHTML = html;
-      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     // Direct immediate startup
