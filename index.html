@@ -500,6 +500,40 @@
           correct: 1,
           expl: "The Publisher Ad Server governs inventory management, priority delivery (direct sales vs. programmatic backfill), and creative rendering."
         }
+      },
+            {
+        id: "c4",
+        title: "Class 4: What is Header Bidding?",
+        category: "Programmatic Tech",
+        layman: `
+          <p>Before Header Bidding existed, websites had to let Google look at an ad slot first. If Google didn't want it, only then could other companies bid. This was unfair to publishers.</p>
+          <div class="callout analogy">
+            <strong>The House Auction Analogy:</strong><br>
+            Instead of secretly asking one friend (Google) how much he'll pay for your house and only asking others if he says no, Header Bidding brings <strong>everyone into the living room at the exact same second</strong>. Whoever shouts the highest price wins the house.
+          </div>
+        `,
+        expert: `
+          <p>Header Bidding is an advanced programmatic technique where publishers offer ad inventory to multiple ad exchanges (SSPs) simultaneously within the browser header before calling the primary ad server (GAM).</p>
+          <ul>
+            <li><strong>Client-Side (Prebid.js):</strong> JavaScript runs in the browser, triggering asynchronous auction requests to bidder adapters.</li>
+            <li><strong>Server-to-Server (S2S):</strong> Prebid Server receives a single call and executes bidder auctions on cloud infrastructure to reduce browser latency.</li>
+          </ul>
+        `,
+        diagram: null,
+        resources: [
+          { name: "Prebid.js Official Docs", url: "https://docs.prebid.org" }
+        ],
+        quiz: {
+          q: "What is the primary benefit of Header Bidding for a publisher?",
+          options: [
+            "It eliminates the need for an internet connection",
+            "It allows multiple ad exchanges to bid simultaneously, maximizing revenue",
+            "It automatically creates ad graphics",
+            "It stops users from viewing web pages"
+          ],
+          correct: 1,
+          expl: "Header Bidding creates a unified, simultaneous auction across multiple demand sources, driving higher CPMs for publishers."
+        }
       }
     ];
 
@@ -630,6 +664,35 @@
           correct: 1,
           expl: "RTB auctions must clear in roughly 100 milliseconds to avoid degrading user page-load speeds."
         }
+      },
+            vast: {
+        title: "Deep-Dive Masterclass: VAST & Video Ad Tech",
+        category: "Video Tech",
+        layman: `
+          <h3>What is VAST?</h3>
+          <p>Ever watched a YouTube video or a news clip and an ad played before it? The video player needs instructions on what video file to play.</p>
+          <div class="callout analogy">
+            <strong>Analogy: A Postal Envelope with Instructions.</strong><br>
+            VAST stands for <em>Video Ad Serving Template</em>. Think of it as a standard digital envelope sent to the video player. Inside, it says: "Here is the MP4 video link. Play it for 15 seconds. When the user reaches 50%, notify this tracking URL."
+          </div>
+        `,
+        expert: `
+          <h3>Technical Architecture of VAST:</h3>
+          <p>VAST is an XML schema standard maintained by the IAB Tech Lab that facilitates communication between ad servers and video players.</p>
+          <ul>
+            <li><strong>InLine vs. Wrapper:</strong> An InLine tag contains direct media files (MP4/HLS). A Wrapper tag redirects the player to another downstream ad server.</li>
+            <li><strong>Tracking Events:</strong> Fires impression beacons at Quartiles: <code>start</code>, <code>firstQuartile</code> (25%), <code>midpoint</code> (50%), <code>thirdQuartile</code> (75%), and <code>complete</code> (100%).</li>
+          </ul>
+        `,
+        resources: [
+          { name: "IAB VAST 4.2 Guidelines", url: "https://iabtechlab.com/standards/vast/" }
+        ],
+        quiz: {
+          q: "What format does a VAST tag use to send instructions to a video player?",
+          options: ["MP3 audio", "XML document", "Photoshop PSD", "Excel Spreadsheet"],
+          correct: 1,
+          expl: "VAST relies on a standardized XML structure to transmit media URLs and tracking event beacons to video players."
+        }
       }
     };
 
@@ -655,6 +718,7 @@
         { label: "100ms RTB Cycle", key: "rtb" },
         { label: "CPM & CPC Math", index: 1 },
         { label: "Ad Server Traffic Cop", index: 2 }
+        { label: "VAST Video Ads", key: "vast" },
       ];
 
       const container = document.getElementById('quick-chips');
